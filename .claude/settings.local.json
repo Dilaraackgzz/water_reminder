@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(flutter pub:*)",
+      "Bash(flutter packages pub run build_runner build:*)",
+      "Bash(flutter:*)",
+      "Bash(./gradlew:*)",
+      "Bash(adb shell:*)",
+      "Bash(aapt list:*)",
+      "Bash(unzip:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
