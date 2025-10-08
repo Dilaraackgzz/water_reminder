@@ -132,7 +132,3 @@ class LocalStorageService {
     await _settingsBox.close();
   }
 }
-
-final localStorageServiceProvider = Provider<LocalStorageService>((ref) {
-  return LocalStorageService();
-});

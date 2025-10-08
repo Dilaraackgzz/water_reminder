@@ -9,9 +9,14 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 
 import '../constants/app_constants.dart';
 import '../../shared/services/local_storage_service.dart';
+import '../../features/splash/presentation/splash_screen.dart';
 
 final sharedPreferencesProvider = Provider<SharedPreferences>((ref) {
   throw UnimplementedError('SharedPreferences must be initialized');
+});
+
+final localStorageServiceProvider = Provider<LocalStorageService>((ref) {
+  throw UnimplementedError('LocalStorageService must be initialized');
 });
 
 final firebaseAuthProvider = Provider<FirebaseAuth>((ref) {
@@ -68,19 +73,6 @@ final connectivityStatusProvider = StreamProvider<List<ConnectivityResult>>((ref
   final connectivity = ref.watch(connectivityProvider);
   return connectivity.onConnectivityChanged;
 });
-
-class SplashScreen extends StatelessWidget {
-  const SplashScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: CircularProgressIndicator(),
-      ),
-    );
-  }
-}
 
 class OnboardingScreen extends StatelessWidget {
   const OnboardingScreen({super.key});
