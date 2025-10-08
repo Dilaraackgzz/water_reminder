@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../core/themes/app_theme.dart';
 
 class SplashScreen extends ConsumerStatefulWidget {
   const SplashScreen({super.key});
@@ -91,7 +90,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen>
               style: GoogleFonts.poppins(
                 fontSize: 18,
                 fontWeight: FontWeight.w400,
-                color: const Color(0xFF00BCD4).withOpacity(0.7), // Match with animation
+                color: const Color(0xFF00BCD4).withAlpha(179), // 0.7 * 255 = 179
                 letterSpacing: 2.0,
               ),
             ),

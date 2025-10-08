@@ -152,7 +152,7 @@ class CuteTapPainter extends CustomPainter {
       ..strokeCap = StrokeCap.round;
 
     final innerPaint = Paint()
-      ..color = AppTheme.primaryBlue.withOpacity(0.3)
+      ..color = AppTheme.primaryBlue.withAlpha(77)
       ..style = PaintingStyle.fill;
 
     final faucetPath = Path();
@@ -184,14 +184,14 @@ class CuteWaterPouringPainter extends CustomPainter {
         begin: Alignment.topCenter,
         end: Alignment.bottomCenter,
         colors: [
-          AppTheme.lightBlue.withOpacity(0.8),
-          AppTheme.primaryBlue.withOpacity(0.9),
+          AppTheme.lightBlue.withAlpha(204),
+          AppTheme.primaryBlue.withAlpha(230),
         ],
       ).createShader(Rect.fromLTWH(0, 0, size.width, size.height))
       ..style = PaintingStyle.fill;
 
     final outlinePaint = Paint()
-      ..color = AppTheme.darkBlue.withOpacity(0.3)
+      ..color = AppTheme.darkBlue.withAlpha(77)
       ..style = PaintingStyle.stroke
       ..strokeWidth = 1.5;
 
@@ -240,7 +240,7 @@ class GlassPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = AppTheme.primaryBlue.withOpacity(0.3)
+      ..color = AppTheme.primaryBlue.withAlpha(77)
       ..style = PaintingStyle.stroke
       ..strokeWidth = 3.0;
 
@@ -263,9 +263,9 @@ class GlassPainter extends CustomPainter {
         begin: Alignment.topLeft,
         end: Alignment.bottomRight,
         colors: [
-          Colors.white.withOpacity(0.6),
-          Colors.white.withOpacity(0.1),
-          Colors.white.withOpacity(0.0),
+          Colors.white.withAlpha(153),
+          Colors.white.withAlpha(26),
+          Colors.white.withAlpha(0),
         ],
       ).createShader(Rect.fromLTWH(0, 0, width * 0.3, height))
       ..style = PaintingStyle.fill;
@@ -300,9 +300,9 @@ class WaterFillPainter extends CustomPainter {
         begin: Alignment.topCenter,
         end: Alignment.bottomCenter,
         colors: [
-          AppTheme.lightBlue.withOpacity(0.7),
-          AppTheme.primaryBlue.withOpacity(0.8),
-          AppTheme.darkBlue.withOpacity(0.9),
+          AppTheme.lightBlue.withAlpha(179),
+          AppTheme.primaryBlue.withAlpha(204),
+          AppTheme.darkBlue.withAlpha(230),
         ],
         stops: const [0.0, 0.5, 1.0],
       ).createShader(Rect.fromLTWH(0, 0, size.width, size.height))
@@ -356,7 +356,7 @@ class WaterFillPainter extends CustomPainter {
 
   void _drawBubbles(Canvas canvas, Size size, double waterHeight) {
     final bubblePaint = Paint()
-      ..color = Colors.white.withOpacity(0.4)
+      ..color = Colors.white.withAlpha(102)
       ..style = PaintingStyle.fill;
 
     final bubbles = [
@@ -388,7 +388,7 @@ class CuteGlassPainter extends CustomPainter {
       ..strokeJoin = StrokeJoin.round;
 
     final shinePaint = Paint()
-      ..color = Colors.white.withOpacity(0.4)
+      ..color = Colors.white.withAlpha(102)
       ..style = PaintingStyle.fill;
 
     final width = size.width;
@@ -437,8 +437,8 @@ class CuteWaterFillPainter extends CustomPainter {
         begin: Alignment.topCenter,
         end: Alignment.bottomCenter,
         colors: [
-          AppTheme.lightBlue.withOpacity(0.8),
-          AppTheme.primaryBlue.withOpacity(0.9),
+          AppTheme.lightBlue.withAlpha(204),
+          AppTheme.primaryBlue.withAlpha(230),
         ],
       ).createShader(Rect.fromLTWH(0, 0, size.width, size.height))
       ..style = PaintingStyle.fill;
@@ -484,11 +484,11 @@ class CuteWaterFillPainter extends CustomPainter {
 
   void _drawCuteBubbles(Canvas canvas, Size size, double waterHeight, double time) {
     final bubblePaint = Paint()
-      ..color = Colors.white.withOpacity(0.6)
+      ..color = Colors.white.withAlpha(153)
       ..style = PaintingStyle.fill;
 
     final bubbleOutline = Paint()
-      ..color = AppTheme.lightBlue.withOpacity(0.4)
+      ..color = AppTheme.lightBlue.withAlpha(102)
       ..style = PaintingStyle.stroke
       ..strokeWidth = 1.5;
 
@@ -511,7 +511,7 @@ class CuteWaterFillPainter extends CustomPainter {
       canvas.drawCircle(
         Offset(adjustedPos.dx - radius * 0.3, adjustedPos.dy - radius * 0.3),
         radius * 0.3,
-        Paint()..color = Colors.white.withOpacity(0.8),
+        Paint()..color = Colors.white.withAlpha(204),
       );
     }
   }
@@ -601,7 +601,7 @@ class HappyFacePainter extends CustomPainter {
 
     // Cute blush
     final blushPaint = Paint()
-      ..color = Colors.pink.withOpacity(0.3)
+      ..color = Colors.pink.withAlpha(77)
       ..style = PaintingStyle.fill;
 
     canvas.drawOval(
@@ -644,8 +644,8 @@ class SimpleWaterPouringPainter extends CustomPainter {
         begin: Alignment.topCenter,
         end: Alignment.bottomCenter,
         colors: [
-          AppTheme.lightBlue.withOpacity(0.7),
-          AppTheme.primaryBlue.withOpacity(0.85),
+          AppTheme.lightBlue.withAlpha(179),
+          AppTheme.primaryBlue.withAlpha(217),
         ],
       ).createShader(Rect.fromLTWH(0, 0, size.width, size.height))
       ..style = PaintingStyle.fill;
@@ -674,7 +674,7 @@ class SimpleGlassPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final outlinePaint = Paint()
-      ..color = AppTheme.primaryBlue.withOpacity(0.6)
+      ..color = AppTheme.primaryBlue.withAlpha(153)
       ..style = PaintingStyle.stroke
       ..strokeWidth = 3.0
       ..strokeCap = StrokeCap.round;
@@ -693,7 +693,7 @@ class SimpleGlassPainter extends CustomPainter {
 
     // Add subtle shine
     final shinePaint = Paint()
-      ..color = Colors.white.withOpacity(0.3)
+      ..color = Colors.white.withAlpha(77)
       ..style = PaintingStyle.fill;
 
     final shinePath = Path();
@@ -726,8 +726,8 @@ class SimpleWaterFillPainter extends CustomPainter {
         begin: Alignment.topCenter,
         end: Alignment.bottomCenter,
         colors: [
-          AppTheme.lightBlue.withOpacity(0.75),
-          AppTheme.primaryBlue.withOpacity(0.85),
+          AppTheme.lightBlue.withAlpha(191),
+          AppTheme.primaryBlue.withAlpha(217),
         ],
       ).createShader(Rect.fromLTWH(0, 0, size.width, size.height))
       ..style = PaintingStyle.fill;
@@ -767,7 +767,7 @@ class SimpleWaterFillPainter extends CustomPainter {
 
   void _drawSimpleBubbles(Canvas canvas, Size size, double waterHeight) {
     final bubblePaint = Paint()
-      ..color = Colors.white.withOpacity(0.5)
+      ..color = Colors.white.withAlpha(128)
       ..style = PaintingStyle.fill;
 
     final bubbles = [

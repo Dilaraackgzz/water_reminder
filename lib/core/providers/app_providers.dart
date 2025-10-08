@@ -6,10 +6,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
-
 import '../constants/app_constants.dart';
 import '../../shared/services/local_storage_service.dart';
 import '../../features/splash/presentation/splash_screen.dart';
+import '../../features/onboarding/presentation/onboarding_screen.dart';
 
 final sharedPreferencesProvider = Provider<SharedPreferences>((ref) {
   throw UnimplementedError('SharedPreferences must be initialized');
@@ -74,19 +74,6 @@ final connectivityStatusProvider = StreamProvider<List<ConnectivityResult>>((ref
   return connectivity.onConnectivityChanged;
 });
 
-class OnboardingScreen extends StatelessWidget {
-  const OnboardingScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text('Onboarding Screen'),
-      ),
-    );
-  }
-}
-
 class AuthScreen extends StatelessWidget {
   const AuthScreen({super.key});
 
@@ -94,7 +81,7 @@ class AuthScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Center(
-        child: Text('Auth Screen'),
+        child: Text('Auth Screen - Coming Soon'),
       ),
     );
   }
@@ -107,7 +94,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Center(
-        child: Text('Home Screen'),
+        child: Text('Home Screen - Coming Soon'),
       ),
     );
   }

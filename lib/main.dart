@@ -5,7 +5,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:timezone/data/latest.dart' as tz;
-
 import 'firebase_options.dart';
 import 'core/themes/app_theme.dart';
 import 'core/providers/app_providers.dart';
