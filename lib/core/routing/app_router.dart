@@ -6,7 +6,7 @@ import '../../features/onboarding/presentation/onboarding_screen.dart';
 import '../../features/auth/presentation/screens/login_screen.dart';
 import '../../features/auth/presentation/screens/register_screen.dart';
 import '../../features/auth/presentation/screens/forgot_password_screen.dart';
-import '../providers/app_providers.dart';
+import '../../features/home/presentation/screens/home_screen.dart';
 import '../services/onboarding_service.dart';
 
 // Router provider with auth state management
