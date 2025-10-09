@@ -13,9 +13,19 @@ import 'shared/services/local_storage_service.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  // Initialize Firebase - check if already initialized
+  try {
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+  } catch (e) {
+    // Firebase already initialized during hot reload
+    if (e.toString().contains('duplicate-app')) {
+      debugPrint('Firebase already initialized');
+    } else {
+      rethrow;
+    }
+  }
 
   await Hive.initFlutter();
 
