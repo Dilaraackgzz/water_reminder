@@ -7,6 +7,7 @@ import 'package:timezone/data/latest.dart' as tz;
 import 'firebase_options.dart';
 import 'core/themes/app_theme.dart';
 import 'core/providers/app_providers.dart';
+import 'core/routing/app_router.dart';
 import 'shared/services/local_storage_service.dart';
 
 void main() async {

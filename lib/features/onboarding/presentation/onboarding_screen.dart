@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:go_router/go_router.dart';
 import '../../../core/themes/app_theme.dart';
+import '../../../core/services/onboarding_service.dart';
 import '../widgets/onboarding_page.dart';
 
 class OnboardingScreen extends ConsumerStatefulWidget {
@@ -69,7 +70,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
     });
   }
 
-  void _nextPage() {
+  Future<void> _nextPage() async {
     if (_currentPage < _pages.length - 1) {
       _pageController.animateToPage(
         _currentPage + 1,
@@ -77,13 +78,26 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
         curve: Curves.easeInOut,
       );
     } else {
-      // Navigate to auth/home
-      context.go('/auth');
+      // Mark onboarding as completed
+      final onboardingService = ref.read(onboardingServiceProvider);
+      await onboardingService.completeOnboarding();
+
+      // Navigate to login
+      if (mounted) {
+        context.go('/login');
+      }
     }
   }
 
-  void _skip() {
-    context.go('/auth');
+  Future<void> _skip() async {
+    // Mark onboarding as completed even when skipped
+    final onboardingService = ref.read(onboardingServiceProvider);
+    await onboardingService.completeOnboarding();
+
+    // Navigate to login
+    if (mounted) {
+      context.go('/login');
+    }
   }
 
   @override

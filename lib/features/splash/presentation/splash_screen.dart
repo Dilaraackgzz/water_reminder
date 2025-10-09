@@ -3,6 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../../core/routing/app_router.dart';
+import '../../../core/services/onboarding_service.dart';
 
 class SplashScreen extends ConsumerStatefulWidget {
   const SplashScreen({super.key});
@@ -29,8 +31,23 @@ class _SplashScreenState extends ConsumerState<SplashScreen>
     // Wait for lottie animation to complete
     await Future.delayed(const Duration(milliseconds: 3000));
 
-    // Navigate to onboarding or home based on app state
-    if (mounted) {
+    if (!mounted) return;
+
+    // Get auth state and onboarding status
+    final authState = ref.read(authStateProvider);
+    final isOnboardingCompleted = ref.read(isOnboardingCompletedProvider);
+
+    // Determine next route based on state
+    final isAuthenticated = authState.value != null;
+
+    if (isAuthenticated) {
+      // User is logged in -> go to home
+      context.go('/home');
+    } else if (isOnboardingCompleted) {
+      // User has seen onboarding but not logged in -> go to login
+      context.go('/login');
+    } else {
+      // First time user -> show onboarding
       context.go('/onboarding');
     }
   }
