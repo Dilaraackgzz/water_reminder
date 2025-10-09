@@ -54,22 +54,22 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'demo-api-key-android',
-    appId: '1:123456789:android:abcdef123456',
-    messagingSenderId: '123456789',
-    projectId: 'aquareminder-demo',
-    storageBucket: 'aquareminder-demo.appspot.com',
+    apiKey: 'AIzaSyCgn35n9Fsb3Je3qp3trNp1A1jS2L3L9d4',
+    appId: '1:850036774299:android:86d636b93cf4aea176fd3e',
+    messagingSenderId: '850036774299',
+    projectId: 'aqualert-7850d',
+    storageBucket: 'aqualert-7850d.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'demo-api-key-ios',
-    appId: '1:123456789:ios:abcdef123456',
-    messagingSenderId: '123456789',
-    projectId: 'aquareminder-demo',
-    storageBucket: 'aquareminder-demo.appspot.com',
-    androidClientId: '123456789-abcdef123456.apps.googleusercontent.com',
-    iosClientId: '123456789-abcdef123456.apps.googleusercontent.com',
-    iosBundleId: 'com.example.waterReminder',
+    apiKey: 'AIzaSyA0Q1N1C9tekb5eBfFQBEUbZ8tQiHtSSFE',
+    appId: '1:850036774299:ios:aa12a9d2581c50da76fd3e',
+    messagingSenderId: '850036774299',
+    projectId: 'aqualert-7850d',
+    storageBucket: 'aqualert-7850d.firebasestorage.app',
+    androidClientId: '850036774299-9t116fu5rhf9iu3bjlf04jigd2vi09ij.apps.googleusercontent.com',
+    iosClientId: '850036774299-7pr2tcmo7j053t4v3n0pocjlffhiac2d.apps.googleusercontent.com',
+    iosBundleId: 'com.dlrackgz.aqualert',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
