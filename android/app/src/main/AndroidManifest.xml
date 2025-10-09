@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.water_reminder">
+    package="com.dlrackgz.aqualert">
     <application
-        android:label="water_reminder"
+        android:label="Aqualert"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

@@ -85,8 +85,9 @@ lib/
 ## 📱 Uygulama Özellikleri
 
 ### 1. Authentication & Onboarding
-- [ ] Firebase Auth ile giriş/kayıt
+- [✅] Firebase Auth ile giriş/kayıt
 - [ ] Google Sign-In
+- [ ] Apple Sign-In
 - [ ] Email/Password authentication
 - [ ] Onboarding süreci (hedef belirleme, profil oluşturma)
 - [ ] Animasyonlu welcome screens

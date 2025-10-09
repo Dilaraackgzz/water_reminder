@@ -1,4 +1,4 @@
-package com.example.water_reminder
+package com.dlrackgz.aqualert
 
 import io.flutter.embedding.android.FlutterActivity
 
