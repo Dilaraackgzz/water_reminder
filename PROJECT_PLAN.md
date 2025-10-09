@@ -86,11 +86,11 @@ lib/
 
 ### 1. Authentication & Onboarding
 - [✅] Firebase Auth ile giriş/kayıt
-- [ ] Google Sign-In
+- [✅] Google Sign-In
 - [ ] Apple Sign-In
-- [ ] Email/Password authentication
-- [ ] Onboarding süreci (hedef belirleme, profil oluşturma)
-- [ ] Animasyonlu welcome screens
+- [✅] Email/Password authentication
+- [✅] Onboarding süreci (hedef belirleme, profil oluşturma)
+- [✅] Animasyonlu welcome screens
 
 ### 2. Ana Dashboard
 - [ ] Günlük su tüketimi progress ring

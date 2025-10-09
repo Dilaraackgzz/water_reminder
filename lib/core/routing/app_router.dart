@@ -7,19 +7,46 @@ import '../../features/auth/presentation/screens/login_screen.dart';
 import '../../features/auth/presentation/screens/register_screen.dart';
 import '../../features/auth/presentation/screens/forgot_password_screen.dart';
 import '../providers/app_providers.dart';
+import '../services/onboarding_service.dart';
 
 // Router provider with auth state management
 final routerProvider = Provider<GoRouter>((ref) {
   final authState = ref.watch(authStateProvider);
+  final isOnboardingCompleted = ref.watch(isOnboardingCompletedProvider);
 
   return GoRouter(
-    initialLocation: '/splash',
+    initialLocation: '/',
     redirect: (context, state) {
       final isInitialized = authState.hasValue;
       final isAuthenticated = authState.value != null;
 
-      // Special handling for splash screen - always allow
+      // Root route - decide where to go based on auth state and onboarding
+      if (state.matchedLocation == '/') {
+        if (!isInitialized) {
+          return '/splash'; // Show splash while checking auth
+        }
+
+        if (isAuthenticated) {
+          return '/home';
+        }
+
+        // Not authenticated - check onboarding status
+        if (isOnboardingCompleted) {
+          return '/login'; // Skip splash, go directly to login
+        }
+
+        return '/splash'; // First time user, show splash
+      }
+
+      // Special handling for splash screen
       if (state.matchedLocation == '/splash') {
+        if (isInitialized && isAuthenticated) {
+          return '/home';
+        }
+        // If onboarding completed but not authenticated, skip splash
+        if (isInitialized && !isAuthenticated && isOnboardingCompleted) {
+          return '/login';
+        }
         return null;
       }
 

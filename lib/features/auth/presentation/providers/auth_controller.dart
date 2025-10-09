@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../domain/models/user_model.dart';
 import 'auth_providers.dart';
+import '../../../../core/services/onboarding_service.dart';
 
 final authControllerProvider =
     StateNotifierProvider<AuthController, AsyncValue<UserModel?>>((ref) {
@@ -17,6 +18,11 @@ class AuthController extends StateNotifier<AsyncValue<UserModel?>> {
     try {
       final authRepository = _ref.read(authRepositoryProvider);
       final user = await authRepository.signInWithGoogle();
+
+      // Mark onboarding as completed on first login
+      final onboardingService = _ref.read(onboardingServiceProvider);
+      await onboardingService.completeOnboarding();
+
       state = AsyncValue.data(user);
     } catch (e, st) {
       state = AsyncValue.error(e, st);
@@ -28,6 +34,11 @@ class AuthController extends StateNotifier<AsyncValue<UserModel?>> {
     try {
       final authRepository = _ref.read(authRepositoryProvider);
       final user = await authRepository.signInWithEmail(email, password);
+
+      // Mark onboarding as completed on first login
+      final onboardingService = _ref.read(onboardingServiceProvider);
+      await onboardingService.completeOnboarding();
+
       state = AsyncValue.data(user);
     } catch (e, st) {
       state = AsyncValue.error(e, st);
@@ -47,6 +58,11 @@ class AuthController extends StateNotifier<AsyncValue<UserModel?>> {
         password,
         displayName,
       );
+
+      // Mark onboarding as completed on registration
+      final onboardingService = _ref.read(onboardingServiceProvider);
+      await onboardingService.completeOnboarding();
+
       state = AsyncValue.data(user);
     } catch (e, st) {
       state = AsyncValue.error(e, st);

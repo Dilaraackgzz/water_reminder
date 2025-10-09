@@ -28,28 +28,32 @@ class _SplashScreenState extends ConsumerState<SplashScreen>
   }
 
   Future<void> _startAnimation() async {
-    // Wait for lottie animation to complete
+    if (!mounted) return;
+
+    // Get auth state and onboarding status immediately
+    final authState = ref.read(authStateProvider);
+    final isOnboardingCompleted = ref.read(isOnboardingCompletedProvider);
+    final isAuthenticated = authState.value != null;
+
+    // If user is authenticated, skip animation and go directly to home
+    if (isAuthenticated) {
+      context.go('/home');
+      return;
+    }
+
+    // If not authenticated but onboarding completed, skip animation and go to login
+    if (isOnboardingCompleted) {
+      context.go('/login');
+      return;
+    }
+
+    // Only show animation for first-time users
     await Future.delayed(const Duration(milliseconds: 3000));
 
     if (!mounted) return;
 
-    // Get auth state and onboarding status
-    final authState = ref.read(authStateProvider);
-    final isOnboardingCompleted = ref.read(isOnboardingCompletedProvider);
-
-    // Determine next route based on state
-    final isAuthenticated = authState.value != null;
-
-    if (isAuthenticated) {
-      // User is logged in -> go to home
-      context.go('/home');
-    } else if (isOnboardingCompleted) {
-      // User has seen onboarding but not logged in -> go to login
-      context.go('/login');
-    } else {
-      // First time user -> show onboarding
-      context.go('/onboarding');
-    }
+    // First time user -> show onboarding
+    context.go('/onboarding');
   }
 
   @override
