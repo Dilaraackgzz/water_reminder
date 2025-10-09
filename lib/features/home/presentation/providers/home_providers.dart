@@ -10,17 +10,13 @@ import '../../domain/models/water_intake.dart';
 import '../../domain/models/daily_goal.dart';
 import '../../domain/models/user_settings.dart';
 
-// Data source providers
+// Data source providers - simple singletons
 final waterLocalDataSourceProvider = Provider<WaterLocalDataSource>((ref) {
-  final dataSource = WaterLocalDataSource();
-  dataSource.init();
-  return dataSource;
+  return WaterLocalDataSource();
 });
 
 final settingsLocalDataSourceProvider = Provider<SettingsLocalDataSource>((ref) {
-  final dataSource = SettingsLocalDataSource();
-  dataSource.init();
-  return dataSource;
+  return SettingsLocalDataSource();
 });
 
 // Repository providers

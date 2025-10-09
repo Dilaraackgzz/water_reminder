@@ -6,34 +6,48 @@ class WaterLocalDataSource {
   static const String _waterIntakesBoxName = 'water_intakes';
   static const String _dailyGoalsBoxName = 'daily_goals';
 
-  Box<Map>? _waterIntakesBox;
-  Box<Map>? _dailyGoalsBox;
+  // Lazy-loaded boxes
+  static Box<Map>? _waterIntakesBox;
+  static Box<Map>? _dailyGoalsBox;
 
-  /// Initialize Hive boxes
-  Future<void> init() async {
-    _waterIntakesBox = await Hive.openBox<Map>(_waterIntakesBoxName);
-    _dailyGoalsBox = await Hive.openBox<Map>(_dailyGoalsBoxName);
+  /// Get or open water intakes box
+  Future<Box<Map>> get _waterIntakes async {
+    if (_waterIntakesBox == null || !_waterIntakesBox!.isOpen) {
+      _waterIntakesBox = await Hive.openBox<Map>(_waterIntakesBoxName);
+    }
+    return _waterIntakesBox!;
+  }
+
+  /// Get or open daily goals box
+  Future<Box<Map>> get _dailyGoals async {
+    if (_dailyGoalsBox == null || !_dailyGoalsBox!.isOpen) {
+      _dailyGoalsBox = await Hive.openBox<Map>(_dailyGoalsBoxName);
+    }
+    return _dailyGoalsBox!;
   }
 
   /// Add water intake
   Future<void> addWaterIntake(WaterIntake intake) async {
-    await _waterIntakesBox?.put(intake.id, intake.toJson());
+    final box = await _waterIntakes;
+    await box.put(intake.id, intake.toJson());
   }
 
   /// Get all water intakes
-  List<WaterIntake> getAllWaterIntakes() {
-    final intakes = _waterIntakesBox?.values.toList() ?? [];
+  Future<List<WaterIntake>> getAllWaterIntakes() async {
+    final box = await _waterIntakes;
+    final intakes = box.values.toList();
     return intakes
         .map((json) => WaterIntake.fromJson(Map<String, dynamic>.from(json)))
         .toList();
   }
 
   /// Get water intakes for a specific date
-  List<WaterIntake> getWaterIntakesForDate(DateTime date) {
+  Future<List<WaterIntake>> getWaterIntakesForDate(DateTime date) async {
     final startOfDay = DateTime(date.year, date.month, date.day);
     final endOfDay = startOfDay.add(const Duration(days: 1));
 
-    return getAllWaterIntakes()
+    final allIntakes = await getAllWaterIntakes();
+    return allIntakes
         .where((intake) =>
             intake.timestamp.isAfter(startOfDay) &&
             intake.timestamp.isBefore(endOfDay))
@@ -42,11 +56,12 @@ class WaterLocalDataSource {
   }
 
   /// Get water intakes for date range
-  List<WaterIntake> getWaterIntakesForDateRange(
+  Future<List<WaterIntake>> getWaterIntakesForDateRange(
     DateTime startDate,
     DateTime endDate,
-  ) {
-    return getAllWaterIntakes()
+  ) async {
+    final allIntakes = await getAllWaterIntakes();
+    return allIntakes
         .where((intake) =>
             intake.timestamp.isAfter(startDate) &&
             intake.timestamp.isBefore(endDate))
@@ -56,32 +71,37 @@ class WaterLocalDataSource {
 
   /// Delete water intake
   Future<void> deleteWaterIntake(String intakeId) async {
-    await _waterIntakesBox?.delete(intakeId);
+    final box = await _waterIntakes;
+    await box.delete(intakeId);
   }
 
   /// Save daily goal
   Future<void> saveDailyGoal(DailyGoal goal) async {
+    final box = await _dailyGoals;
     final key = _getDailyGoalKey(goal.date);
-    await _dailyGoalsBox?.put(key, goal.toJson());
+    await box.put(key, goal.toJson());
   }
 
   /// Get daily goal for a specific date
-  DailyGoal? getDailyGoalForDate(DateTime date) {
+  Future<DailyGoal?> getDailyGoalForDate(DateTime date) async {
+    final box = await _dailyGoals;
     final key = _getDailyGoalKey(date);
-    final json = _dailyGoalsBox?.get(key);
+    final json = box.get(key);
     if (json == null) return null;
     return DailyGoal.fromJson(Map<String, dynamic>.from(json));
   }
 
   /// Watch water intakes changes
-  Stream<List<WaterIntake>> watchWaterIntakes() {
-    return _waterIntakesBox!.watch().map((_) => getAllWaterIntakes());
+  Stream<List<WaterIntake>> watchWaterIntakes() async* {
+    final box = await _waterIntakes;
+    yield* box.watch().asyncMap((_) => getAllWaterIntakes());
   }
 
   /// Watch daily goals changes
-  Stream<DailyGoal?> watchDailyGoalForDate(DateTime date) {
+  Stream<DailyGoal?> watchDailyGoalForDate(DateTime date) async* {
+    final box = await _dailyGoals;
     final key = _getDailyGoalKey(date);
-    return _dailyGoalsBox!.watch(key: key).map((_) => getDailyGoalForDate(date));
+    yield* box.watch(key: key).asyncMap((_) => getDailyGoalForDate(date));
   }
 
   String _getDailyGoalKey(DateTime date) {

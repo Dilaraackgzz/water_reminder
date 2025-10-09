@@ -65,7 +65,7 @@ class WaterRepositoryImpl implements WaterRepository {
     final today = DateTime.now();
     final startOfDay = DateTime(today.year, today.month, today.day);
 
-    var dailyGoal = _localDataSource.getDailyGoalForDate(startOfDay);
+    var dailyGoal = await _localDataSource.getDailyGoalForDate(startOfDay);
 
     // If no goal exists for today, create one
     if (dailyGoal == null) {

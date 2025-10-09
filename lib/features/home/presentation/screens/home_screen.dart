@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
-import '../../../auth/presentation/providers/auth_controller.dart';
 import '../providers/home_providers.dart';
 import '../providers/water_controller.dart';
 import '../widgets/daily_progress_card.dart';
 import '../widgets/quick_add_buttons.dart';
 import '../widgets/motivational_message.dart';
+import '../../../../shared/widgets/modern_app_bar.dart';
+import '../../../../shared/widgets/app_drawer.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
@@ -130,45 +131,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        title: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'AquaReminder',
-              style: GoogleFonts.poppins(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                color: const Color(0xFF00BCD4),
-              ),
-            ),
-            Text(
-              DateFormat('EEEE, MMM d').format(DateTime.now()),
-              style: GoogleFonts.poppins(
-                fontSize: 12,
-                fontWeight: FontWeight.w400,
-                color: Colors.black54,
-              ),
-            ),
-          ],
-        ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.settings, color: Colors.black87),
-            onPressed: () {
-              // TODO: Navigate to settings
-            },
-          ),
-          IconButton(
-            icon: const Icon(Icons.logout, color: Colors.black87),
-            onPressed: () async {
-              await ref.read(authControllerProvider.notifier).signOut();
-            },
-          ),
-        ],
+      appBar: ModernAppBar(
+        title: 'AquaReminder',
+        subtitle: DateFormat('EEEE, MMM d').format(DateTime.now()),
       ),
+      drawer: const AppDrawer(),
       body: SafeArea(
         child: RefreshIndicator(
           onRefresh: () async {

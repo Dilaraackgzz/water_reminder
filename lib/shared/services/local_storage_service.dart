@@ -1,5 +1,4 @@
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // TODO: Import when models are generated
 // import '../models/water_record.dart';
@@ -7,9 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 // import '../models/achievement.dart';
 
 class LocalStorageService {
-  static const String _waterRecordsBoxName = 'water_records';
-  static const String _userProfileBoxName = 'user_profile';
-  static const String _achievementsBoxName = 'achievements';
+  // Removed unused box names - we're using feature-specific storage now
   static const String _settingsBoxName = 'settings';
 
   // late Box<WaterRecord> _waterRecordsBox;

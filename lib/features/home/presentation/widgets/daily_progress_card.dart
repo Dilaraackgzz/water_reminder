@@ -14,12 +14,21 @@ class DailyProgressCard extends ConsumerWidget {
     final dailyGoalAsync = ref.watch(todaysDailyGoalProvider);
     final totalIntake = ref.watch(todaysTotalIntakeProvider);
 
-    return dailyGoalAsync.when(
-      data: (goal) {
-        final progress = goal.progressPercentage / 100;
-        final remaining = goal.remainingAmount;
+    // Show default goal while loading
+    final goal = dailyGoalAsync.maybeWhen(
+      data: (goal) => goal,
+      orElse: () => DailyGoal(
+        userId: '',
+        targetAmount: 2000,
+        date: DateTime.now(),
+        currentAmount: 0,
+      ),
+    );
 
-        return Container(
+    final progress = goal.progressPercentage / 100;
+    final remaining = goal.remainingAmount;
+
+    return Container(
           padding: const EdgeInsets.all(24),
           decoration: BoxDecoration(
             gradient: const LinearGradient(
@@ -142,11 +151,5 @@ class DailyProgressCard extends ConsumerWidget {
             ],
           ),
         );
-      },
-      loading: () => const Center(child: CircularProgressIndicator()),
-      error: (error, stack) => Center(
-        child: Text('Error loading progress: $error'),
-      ),
-    );
   }
 }

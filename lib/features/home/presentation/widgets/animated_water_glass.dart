@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'dart:math' as math;
 
-class AnimatedWaterGlass extends StatefulWidget {
+class AnimatedWaterGlass extends StatelessWidget {
   final double fillPercentage; // 0.0 to 1.0
   final double width;
   final double height;
@@ -18,45 +17,16 @@ class AnimatedWaterGlass extends StatefulWidget {
   });
 
   @override
-  State<AnimatedWaterGlass> createState() => _AnimatedWaterGlassState();
-}
-
-class _AnimatedWaterGlassState extends State<AnimatedWaterGlass>
-    with SingleTickerProviderStateMixin {
-  late AnimationController _waveController;
-
-  @override
-  void initState() {
-    super.initState();
-    _waveController = AnimationController(
-      vsync: this,
-      duration: const Duration(seconds: 2),
-    )..repeat();
-  }
-
-  @override
-  void dispose() {
-    _waveController.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: widget.width,
-      height: widget.height,
-      child: AnimatedBuilder(
-        animation: _waveController,
-        builder: (context, child) {
-          return CustomPaint(
-            painter: _WaterGlassPainter(
-              fillPercentage: widget.fillPercentage.clamp(0.0, 1.0),
-              waterColor: widget.waterColor,
-              glassColor: widget.glassColor,
-              wavePhase: _waveController.value,
-            ),
-          );
-        },
+      width: width,
+      height: height,
+      child: CustomPaint(
+        painter: _WaterGlassPainter(
+          fillPercentage: fillPercentage.clamp(0.0, 1.0),
+          waterColor: waterColor,
+          glassColor: glassColor,
+        ),
       ),
     );
   }
@@ -66,13 +36,11 @@ class _WaterGlassPainter extends CustomPainter {
   final double fillPercentage;
   final Color waterColor;
   final Color glassColor;
-  final double wavePhase;
 
   _WaterGlassPainter({
     required this.fillPercentage,
     required this.waterColor,
     required this.glassColor,
-    required this.wavePhase,
   });
 
   @override
@@ -92,7 +60,7 @@ class _WaterGlassPainter extends CustomPainter {
 
     canvas.drawPath(glassPath, glassPaint);
 
-    // Draw water
+    // Draw water as simple filled area
     if (fillPercentage > 0) {
       final waterHeight = size.height * fillPercentage;
       final waterY = size.height - waterHeight;
@@ -107,28 +75,12 @@ class _WaterGlassPainter extends CustomPainter {
       final topLeftX = size.width * 0.2 + (size.height - waterY) * 0.07;
       waterPath.lineTo(topLeftX, waterY);
 
-      // Draw wave on top of water
-      final wavePoints = 50;
-      final waveWidth = size.width * 0.6;
-      final waveAmplitude = 4.0;
-
-      for (int i = 0; i <= wavePoints; i++) {
-        final x = topLeftX + (waveWidth * i / wavePoints);
-        final phase = wavePhase * 2 * math.pi;
-        final waveY = waterY +
-            math.sin((i / wavePoints) * 4 * math.pi + phase) * waveAmplitude;
-
-        if (i == 0) {
-          waterPath.lineTo(x, waveY);
-        } else {
-          waterPath.lineTo(x, waveY);
-        }
-      }
+      // Draw straight line across the top (water surface)
+      final topRightX = size.width * 0.8 - (size.height - waterY) * 0.07;
+      waterPath.lineTo(topRightX, waterY);
 
       // Draw right side down to bottom
       final bottomRightX = size.width * 0.9 - (size.height - waterY) * 0.07;
-      final topRightX = topLeftX + waveWidth;
-      waterPath.lineTo(topRightX, waterY);
       waterPath.lineTo(bottomRightX, size.height);
       waterPath.close();
 
@@ -156,7 +108,6 @@ class _WaterGlassPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(covariant _WaterGlassPainter oldDelegate) {
-    return oldDelegate.fillPercentage != fillPercentage ||
-        oldDelegate.wavePhase != wavePhase;
+    return oldDelegate.fillPercentage != fillPercentage;
   }
 }

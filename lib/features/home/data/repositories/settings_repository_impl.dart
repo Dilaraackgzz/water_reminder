@@ -17,7 +17,7 @@ class SettingsRepositoryImpl implements SettingsRepository {
 
   @override
   Future<UserSettings> getUserSettings() async {
-    var settings = _localDataSource.getUserSettings(_currentUserId);
+    var settings = await _localDataSource.getUserSettings(_currentUserId);
 
     // If no settings exist, create default settings
     if (settings == null) {
