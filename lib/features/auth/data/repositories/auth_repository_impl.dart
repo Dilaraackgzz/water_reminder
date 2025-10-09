@@ -1,0 +1,141 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import '../../domain/models/user_model.dart';
+import '../../domain/repositories/auth_repository.dart';
+
+class AuthRepositoryImpl implements AuthRepository {
+  final FirebaseAuth _firebaseAuth;
+  final GoogleSignIn _googleSignIn;
+
+  AuthRepositoryImpl({
+    FirebaseAuth? firebaseAuth,
+    GoogleSignIn? googleSignIn,
+  })  : _firebaseAuth = firebaseAuth ?? FirebaseAuth.instance,
+        _googleSignIn = googleSignIn ?? GoogleSignIn();
+
+  @override
+  Stream<User?> get authStateChanges => _firebaseAuth.authStateChanges();
+
+  @override
+  User? get currentUser => _firebaseAuth.currentUser;
+
+  @override
+  Future<UserModel> signInWithGoogle() async {
+    try {
+      final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
+
+      if (googleUser == null) {
+        throw Exception('Google Sign-In was cancelled');
+      }
+
+      final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
+
+      final credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
+      );
+
+      final userCredential = await _firebaseAuth.signInWithCredential(credential);
+
+      return _userToUserModel(userCredential.user!);
+    } catch (e) {
+      throw Exception('Google Sign-In failed: $e');
+    }
+  }
+
+  @override
+  Future<UserModel> signInWithEmail(String email, String password) async {
+    try {
+      final userCredential = await _firebaseAuth.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+
+      return _userToUserModel(userCredential.user!);
+    } on FirebaseAuthException catch (e) {
+      throw _handleAuthException(e);
+    }
+  }
+
+  @override
+  Future<UserModel> registerWithEmail(
+    String email,
+    String password,
+    String displayName,
+  ) async {
+    try {
+      final userCredential = await _firebaseAuth.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+
+      await userCredential.user!.updateDisplayName(displayName);
+      await userCredential.user!.sendEmailVerification();
+
+      return _userToUserModel(userCredential.user!);
+    } on FirebaseAuthException catch (e) {
+      throw _handleAuthException(e);
+    }
+  }
+
+  @override
+  Future<void> signOut() async {
+    await Future.wait([
+      _firebaseAuth.signOut(),
+      _googleSignIn.signOut(),
+    ]);
+  }
+
+  @override
+  Future<void> resetPassword(String email) async {
+    try {
+      await _firebaseAuth.sendPasswordResetEmail(email: email);
+    } on FirebaseAuthException catch (e) {
+      throw _handleAuthException(e);
+    }
+  }
+
+  @override
+  Future<bool> isEmailVerified() async {
+    await _firebaseAuth.currentUser?.reload();
+    return _firebaseAuth.currentUser?.emailVerified ?? false;
+  }
+
+  @override
+  Future<void> sendEmailVerification() async {
+    await _firebaseAuth.currentUser?.sendEmailVerification();
+  }
+
+  UserModel _userToUserModel(User user) {
+    return UserModel(
+      id: user.uid,
+      email: user.email!,
+      displayName: user.displayName,
+      photoUrl: user.photoURL,
+      isEmailVerified: user.emailVerified,
+      createdAt: user.metadata.creationTime,
+      lastLoginAt: user.metadata.lastSignInTime,
+    );
+  }
+
+  String _handleAuthException(FirebaseAuthException e) {
+    switch (e.code) {
+      case 'user-not-found':
+        return 'Bu e-posta ile kayıtlı kullanıcı bulunamadı.';
+      case 'wrong-password':
+        return 'Hatalı şifre girdiniz.';
+      case 'email-already-in-use':
+        return 'Bu e-posta adresi zaten kullanılıyor.';
+      case 'weak-password':
+        return 'Şifreniz çok zayıf. Daha güçlü bir şifre seçin.';
+      case 'invalid-email':
+        return 'Geçersiz e-posta adresi.';
+      case 'operation-not-allowed':
+        return 'Bu işlem şu anda kullanılamıyor.';
+      case 'too-many-requests':
+        return 'Çok fazla deneme yaptınız. Lütfen daha sonra tekrar deneyin.';
+      default:
+        return 'Bir hata oluştu: ${e.message}';
+    }
+  }
+}

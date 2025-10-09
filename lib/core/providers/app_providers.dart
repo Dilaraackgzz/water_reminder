@@ -10,6 +10,9 @@ import '../constants/app_constants.dart';
 import '../../shared/services/local_storage_service.dart';
 import '../../features/splash/presentation/splash_screen.dart';
 import '../../features/onboarding/presentation/onboarding_screen.dart';
+import '../../features/auth/presentation/screens/login_screen.dart';
+import '../../features/auth/presentation/screens/register_screen.dart';
+import '../../features/auth/presentation/screens/forgot_password_screen.dart';
 
 final sharedPreferencesProvider = Provider<SharedPreferences>((ref) {
   throw UnimplementedError('SharedPreferences must be initialized');
@@ -48,8 +51,16 @@ final routerProvider = Provider<GoRouter>((ref) {
         builder: (context, state) => const OnboardingScreen(),
       ),
       GoRoute(
-        path: '/auth',
-        builder: (context, state) => const AuthScreen(),
+        path: '/login',
+        builder: (context, state) => const LoginScreen(),
+      ),
+      GoRoute(
+        path: '/register',
+        builder: (context, state) => const RegisterScreen(),
+      ),
+      GoRoute(
+        path: '/forgot-password',
+        builder: (context, state) => const ForgotPasswordScreen(),
       ),
       GoRoute(
         path: '/home',
@@ -74,18 +85,6 @@ final connectivityStatusProvider = StreamProvider<List<ConnectivityResult>>((ref
   return connectivity.onConnectivityChanged;
 });
 
-class AuthScreen extends StatelessWidget {
-  const AuthScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text('Auth Screen - Coming Soon'),
-      ),
-    );
-  }
-}
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
