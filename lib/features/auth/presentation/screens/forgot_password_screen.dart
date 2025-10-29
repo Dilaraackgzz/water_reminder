@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../../../core/themes/app_theme.dart';
 import '../providers/auth_controller.dart';
 import '../widgets/auth_text_field.dart';
 
@@ -62,6 +63,7 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
@@ -85,7 +87,7 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
                       style: GoogleFonts.poppins(
                         fontSize: 28,
                         fontWeight: FontWeight.bold,
-                        color: theme.primaryColor,
+                        color: AppTheme.primaryBlue,
                       ),
                     ),
                   ],
@@ -105,7 +107,7 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
                   Icon(
                     Icons.lock_reset_outlined,
                     size: 80,
-                    color: theme.primaryColor.withValues(alpha: 0.7),
+                    color: AppTheme.primaryBlue.withAlpha(179),
                   )
                       .animate()
                       .scale(duration: 600.ms, curve: Curves.easeOutBack)
@@ -141,7 +143,7 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
                           child: ElevatedButton(
                             onPressed: _isLoading ? null : _handleResetPassword,
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: theme.primaryColor,
+                              backgroundColor: AppTheme.primaryBlue,
                               foregroundColor: Colors.white,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(16),
@@ -188,7 +190,7 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
                     style: GoogleFonts.poppins(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
-                      color: theme.primaryColor,
+                      color: AppTheme.primaryBlue,
                     ),
                     textAlign: TextAlign.center,
                   ).animate().fadeIn(delay: 200.ms),
@@ -209,7 +211,7 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
                     child: ElevatedButton(
                       onPressed: () => context.pop(),
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: theme.primaryColor,
+                        backgroundColor: AppTheme.primaryBlue,
                         foregroundColor: Colors.white,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(16),

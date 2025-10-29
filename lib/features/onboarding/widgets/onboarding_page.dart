@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../presentation/onboarding_screen.dart';
+import '../../../core/themes/app_theme.dart';
 
 class OnboardingPage extends StatelessWidget {
   final OnboardingPageData data;
@@ -19,20 +20,16 @@ class OnboardingPage extends StatelessWidget {
         children: [
           const Spacer(flex: 1),
 
-          // Animated icon with gradient background
+          // Animated icon with solid color background
           Container(
             width: 200,
             height: 200,
             decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: data.gradient,
-              ),
+              color: AppTheme.primaryBlue,
               shape: BoxShape.circle,
               boxShadow: [
                 BoxShadow(
-                  color: data.gradient[0].withAlpha(77),
+                  color: AppTheme.primaryBlue.withAlpha(77),
                   blurRadius: 30,
                   spreadRadius: 5,
                   offset: const Offset(0, 10),
@@ -55,7 +52,7 @@ class OnboardingPage extends StatelessWidget {
             style: GoogleFonts.poppins(
               fontSize: 16,
               fontWeight: FontWeight.w500,
-              color: data.gradient[1],
+              color: AppTheme.primaryBlue,
               letterSpacing: 1.5,
             ),
           ),

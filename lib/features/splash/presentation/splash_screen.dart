@@ -5,6 +5,7 @@ import 'package:lottie/lottie.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../core/routing/app_router.dart';
 import '../../../core/services/onboarding_service.dart';
+import '../../../core/themes/app_theme.dart';
 
 class SplashScreen extends ConsumerStatefulWidget {
   const SplashScreen({super.key});
@@ -97,7 +98,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen>
               style: GoogleFonts.poppins(
                 fontSize: 56,
                 fontWeight: FontWeight.w700,
-                color: const Color(0xFF00BCD4), // Cyan color to match animation
+                color: AppTheme.primaryBlue,
                 letterSpacing: -0.5,
                 height: 1.2,
               ),
@@ -111,7 +112,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen>
               style: GoogleFonts.poppins(
                 fontSize: 18,
                 fontWeight: FontWeight.w400,
-                color: const Color(0xFF00BCD4).withAlpha(179), // 0.7 * 255 = 179
+                color: AppTheme.primaryBlue.withAlpha(179),
                 letterSpacing: 2.0,
               ),
             ),

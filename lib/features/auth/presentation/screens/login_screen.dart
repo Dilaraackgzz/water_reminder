@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../../../core/themes/app_theme.dart';
 import '../providers/auth_controller.dart';
 import '../widgets/auth_text_field.dart';
 import '../widgets/social_auth_button.dart';
@@ -91,6 +92,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
@@ -107,18 +109,11 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                       width: 100,
                       height: 100,
                       decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                          colors: [
-                            theme.primaryColor,
-                            theme.primaryColor.withValues(alpha: 0.7),
-                          ],
-                        ),
+                        color: AppTheme.primaryBlue,
                         shape: BoxShape.circle,
                         boxShadow: [
                           BoxShadow(
-                            color: theme.primaryColor.withValues(alpha: 0.3),
+                            color: AppTheme.primaryBlue.withAlpha(77),
                             blurRadius: 20,
                             offset: const Offset(0, 10),
                           ),
@@ -139,7 +134,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                       style: GoogleFonts.poppins(
                         fontSize: 32,
                         fontWeight: FontWeight.bold,
-                        color: theme.primaryColor,
+                        color: AppTheme.primaryBlue,
                       ),
                     ).animate().fadeIn(delay: 200.ms).slideY(
                           begin: -0.2,
@@ -227,7 +222,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                             style: GoogleFonts.poppins(
                               fontSize: 13,
                               fontWeight: FontWeight.w500,
-                              color: theme.primaryColor,
+                              color: AppTheme.primaryBlue,
                             ),
                           ),
                         ),
@@ -239,7 +234,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                         child: ElevatedButton(
                           onPressed: _isLoading ? null : _handleEmailSignIn,
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: theme.primaryColor,
+                            backgroundColor: AppTheme.primaryBlue,
                             foregroundColor: Colors.white,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(16),
@@ -323,7 +318,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                       child: Text(
                         'Kayıt Ol',
                         style: GoogleFonts.poppins(
-                          color: theme.primaryColor,
+                          color: AppTheme.primaryBlue,
                           fontSize: 14,
                           fontWeight: FontWeight.w600,
                         ),

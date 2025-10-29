@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../../../core/themes/app_theme.dart';
 import '../providers/auth_controller.dart';
 import '../widgets/auth_text_field.dart';
 import '../widgets/social_auth_button.dart';
@@ -115,6 +116,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
@@ -138,7 +140,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                       style: GoogleFonts.poppins(
                         fontSize: 28,
                         fontWeight: FontWeight.bold,
-                        color: theme.primaryColor,
+                        color: AppTheme.primaryBlue,
                       ),
                     ),
                   ],
@@ -271,7 +273,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                         child: ElevatedButton(
                           onPressed: _isLoading ? null : _handleRegister,
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: theme.primaryColor,
+                            backgroundColor: AppTheme.primaryBlue,
                             foregroundColor: Colors.white,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(16),
@@ -355,7 +357,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                       child: Text(
                         'Giriş Yap',
                         style: GoogleFonts.poppins(
-                          color: theme.primaryColor,
+                          color: AppTheme.primaryBlue,
                           fontSize: 14,
                           fontWeight: FontWeight.w600,
                         ),

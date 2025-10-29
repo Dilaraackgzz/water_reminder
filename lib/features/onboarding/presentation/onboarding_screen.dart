@@ -25,8 +25,8 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
           'Water is essential for your body. Drinking enough water helps maintain energy levels, improves skin health, and supports vital organ functions.',
       icon: Icons.water_drop,
       gradient: [
-        const Color(0xFF64B5F6),
-        const Color(0xFF42A5F5),
+        AppTheme.primaryBlue,
+        AppTheme.primaryBlue,
       ],
     ),
     OnboardingPageData(
@@ -36,8 +36,8 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
           'Set personalized reminders based on your daily routine. Get gentle notifications throughout the day to keep you on track with your hydration goals.',
       icon: Icons.notifications_active,
       gradient: [
-        const Color(0xFF4FC3F7),
-        const Color(0xFF29B6F6),
+        AppTheme.primaryBlue,
+        AppTheme.primaryBlue,
       ],
     ),
     OnboardingPageData(
@@ -47,8 +47,8 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
           'Monitor your daily water intake with beautiful charts and statistics. Celebrate your achievements and build healthy hydration habits.',
       icon: Icons.insights,
       gradient: [
-        const Color(0xFF4DD0E1),
-        const Color(0xFF26C6DA),
+        AppTheme.primaryBlue,
+        AppTheme.primaryBlue,
       ],
     ),
     OnboardingPageData(
@@ -58,8 +58,8 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
           'Join thousands of users who improved their health through better hydration. Start tracking your water intake today!',
       icon: Icons.emoji_events,
       gradient: [
-        const Color(0xFF4DB6AC),
-        const Color(0xFF26A69A),
+        AppTheme.primaryBlue,
+        AppTheme.primaryBlue,
       ],
     ),
   ];
