@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:timezone/data/latest.dart' as tz;
@@ -9,6 +10,8 @@ import 'core/themes/app_theme.dart';
 import 'core/providers/app_providers.dart';
 import 'core/routing/app_router.dart';
 import 'shared/services/local_storage_service.dart';
+import 'shared/services/notification_service.dart';
+import 'shared/services/firebase_messaging_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -37,6 +40,23 @@ void main() async {
   }
 
   tz.initializeTimeZones();
+
+  // Initialize NotificationService
+  final notificationService = NotificationService();
+  try {
+    await notificationService.initialize();
+  } catch (e) {
+    debugPrint('NotificationService initialization failed: $e');
+  }
+
+  // Initialize Firebase Messaging
+  FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
+  final firebaseMessagingService = FirebaseMessagingService();
+  try {
+    await firebaseMessagingService.initialize();
+  } catch (e) {
+    debugPrint('FirebaseMessagingService initialization failed: $e');
+  }
 
   final sharedPreferences = await SharedPreferences.getInstance();
 

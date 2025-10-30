@@ -82,35 +82,68 @@ class MotivationalMessage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(20),
-      decoration: BoxDecoration(
-        color: _getColor().withAlpha(26), // 0.1 * 255
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(
-          color: _getColor().withAlpha(77), // 0.3 * 255
-          width: 1,
-        ),
-      ),
-      child: Row(
-        children: [
-          Icon(
-            _getIcon(),
-            color: _getColor(),
-            size: 32,
+    final message = _getMessage();
+    final icon = _getIcon();
+    final color = _getColor();
+
+    return AnimatedSwitcher(
+      duration: const Duration(milliseconds: 500),
+      transitionBuilder: (child, animation) {
+        return FadeTransition(
+          opacity: animation,
+          child: SlideTransition(
+            position: Tween<Offset>(
+              begin: const Offset(0, 0.1),
+              end: Offset.zero,
+            ).animate(CurvedAnimation(
+              parent: animation,
+              curve: Curves.easeOut,
+            )),
+            child: child,
           ),
-          const SizedBox(width: 16),
-          Expanded(
-            child: Text(
-              _getMessage(),
-              style: GoogleFonts.poppins(
-                fontSize: 14,
-                fontWeight: FontWeight.w500,
-                color: Colors.black87,
+        );
+      },
+      child: Container(
+        key: ValueKey(progressPercentage ~/ 25), // Change key when milestone reached
+        padding: const EdgeInsets.all(20),
+        decoration: BoxDecoration(
+          color: color.withAlpha(26), // 0.1 * 255
+          borderRadius: BorderRadius.circular(16),
+          border: Border.all(
+            color: color.withAlpha(77), // 0.3 * 255
+            width: 1,
+          ),
+        ),
+        child: Row(
+          children: [
+            TweenAnimationBuilder<double>(
+              tween: Tween(begin: 0.8, end: 1.0),
+              duration: const Duration(milliseconds: 600),
+              curve: Curves.elasticOut,
+              builder: (context, scale, child) {
+                return Transform.scale(
+                  scale: scale,
+                  child: Icon(
+                    icon,
+                    color: color,
+                    size: 32,
+                  ),
+                );
+              },
+            ),
+            const SizedBox(width: 16),
+            Expanded(
+              child: Text(
+                message,
+                style: GoogleFonts.poppins(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.black87,
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

@@ -8,6 +8,7 @@ class WaterProgressRing extends StatelessWidget {
   final Color progressColor;
   final Color backgroundColor;
   final Widget? child;
+  final Duration duration;
 
   const WaterProgressRing({
     super.key,
@@ -17,38 +18,58 @@ class WaterProgressRing extends StatelessWidget {
     this.progressColor = const Color(0xFF00BCD4),
     this.backgroundColor = const Color(0xFFE0F7FA),
     this.child,
+    this.duration = const Duration(milliseconds: 800),
   });
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: size,
-      height: size,
-      child: Stack(
-        alignment: Alignment.center,
-        children: [
-          // Background circle
-          CustomPaint(
-            size: Size(size, size),
-            painter: _CirclePainter(
-              progress: 1.0,
-              color: backgroundColor,
-              strokeWidth: strokeWidth,
-            ),
+    return TweenAnimationBuilder<double>(
+      tween: Tween<double>(begin: 0.0, end: progress.clamp(0.0, 1.0)),
+      duration: duration,
+      curve: Curves.easeInOutCubic,
+      builder: (context, animatedProgress, _) {
+        return SizedBox(
+          width: size,
+          height: size,
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              // Background circle
+              CustomPaint(
+                size: Size(size, size),
+                painter: _CirclePainter(
+                  progress: 1.0,
+                  color: backgroundColor,
+                  strokeWidth: strokeWidth,
+                ),
+              ),
+              // Animated progress circle with glow effect
+              if (animatedProgress > 0) ...[
+                // Glow effect
+                CustomPaint(
+                  size: Size(size, size),
+                  painter: _CirclePainter(
+                    progress: animatedProgress,
+                    color: progressColor.withAlpha(77), // 0.3 * 255
+                    strokeWidth: strokeWidth + 4,
+                  ),
+                ),
+                // Main progress
+                CustomPaint(
+                  size: Size(size, size),
+                  painter: _CirclePainter(
+                    progress: animatedProgress,
+                    color: progressColor,
+                    strokeWidth: strokeWidth,
+                  ),
+                ),
+              ],
+              // Child content
+              if (child != null) child!,
+            ],
           ),
-          // Progress circle
-          CustomPaint(
-            size: Size(size, size),
-            painter: _CirclePainter(
-              progress: progress.clamp(0.0, 1.0),
-              color: progressColor,
-              strokeWidth: strokeWidth,
-            ),
-          ),
-          // Child content
-          if (child != null) child!,
-        ],
-      ),
+        );
+      },
     );
   }
 }

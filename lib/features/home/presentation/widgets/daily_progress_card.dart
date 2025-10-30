@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:water_reminder/features/home/domain/models/daily_goal.dart';
 import '../providers/home_providers.dart';
 import 'water_progress_ring.dart';
-import 'animated_water_glass.dart';
+import 'circular_wave_progress.dart';
 
 class DailyProgressCard extends ConsumerWidget {
   const DailyProgressCard({super.key});
@@ -47,21 +47,17 @@ class DailyProgressCard extends ConsumerWidget {
           ),
           child: Row(
             children: [
-              // Progress Ring with Water Glass
-              Stack(
-                alignment: Alignment.center,
-                children: [
-                  WaterProgressRing(
-                    progress: progress,
-                    size: 160,
-                    strokeWidth: 12,
-                  ),
-                  AnimatedWaterGlass(
-                    fillPercentage: progress,
-                    width: 80,
-                    height: 120,
-                  ),
-                ],
+              // Progress Ring with Circular Wave
+              WaterProgressRing(
+                progress: progress,
+                size: 160,
+                strokeWidth: 12,
+                child: CircularWaveProgress(
+                  progress: progress,
+                  size: 130,
+                  waveColor: const Color(0xFF00BCD4),
+                  backgroundColor: Colors.white,
+                ),
               ),
               const SizedBox(width: 24),
               // Progress Info
@@ -72,34 +68,35 @@ class DailyProgressCard extends ConsumerWidget {
                     Text(
                       'Today\'s Progress',
                       style: GoogleFonts.poppins(
-                        fontSize: 16,
+                        fontSize: 13,
                         fontWeight: FontWeight.w500,
                         color: Colors.black54,
                       ),
                     ),
-                    const SizedBox(height: 8),
+                    const SizedBox(height: 4),
                     Text(
                       '${totalIntake}ml',
                       style: GoogleFonts.poppins(
-                        fontSize: 36,
+                        fontSize: 26,
                         fontWeight: FontWeight.bold,
                         color: const Color(0xFF00BCD4),
+                        height: 1.0,
                       ),
                     ),
                     Text(
                       'of ${goal.targetAmount}ml',
                       style: GoogleFonts.poppins(
-                        fontSize: 14,
+                        fontSize: 11,
                         fontWeight: FontWeight.w400,
                         color: Colors.black54,
                       ),
                     ),
-                    const SizedBox(height: 12),
+                    const SizedBox(height: 8),
                     if (remaining > 0) ...[
                       Container(
                         padding: const EdgeInsets.symmetric(
-                          horizontal: 12,
-                          vertical: 6,
+                          horizontal: 10,
+                          vertical: 5,
                         ),
                         decoration: BoxDecoration(
                           color: const Color(0xFF00BCD4).withAlpha(51), // 0.2 * 255
@@ -108,7 +105,7 @@ class DailyProgressCard extends ConsumerWidget {
                         child: Text(
                           '${remaining}ml to go!',
                           style: GoogleFonts.poppins(
-                            fontSize: 12,
+                            fontSize: 10,
                             fontWeight: FontWeight.w600,
                             color: const Color(0xFF00BCD4),
                           ),
@@ -117,8 +114,8 @@ class DailyProgressCard extends ConsumerWidget {
                     ] else ...[
                       Container(
                         padding: const EdgeInsets.symmetric(
-                          horizontal: 12,
-                          vertical: 6,
+                          horizontal: 10,
+                          vertical: 5,
                         ),
                         decoration: BoxDecoration(
                           color: Colors.green.withAlpha(51), // 0.2 * 255
@@ -130,13 +127,13 @@ class DailyProgressCard extends ConsumerWidget {
                             const Icon(
                               Icons.check_circle,
                               color: Colors.green,
-                              size: 14,
+                              size: 12,
                             ),
                             const SizedBox(width: 4),
                             Text(
-                              'Goal Achieved!',
+                              'Completed!',
                               style: GoogleFonts.poppins(
-                                fontSize: 12,
+                                fontSize: 10,
                                 fontWeight: FontWeight.w600,
                                 color: Colors.green,
                               ),
