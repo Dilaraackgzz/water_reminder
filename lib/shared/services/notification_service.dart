@@ -105,8 +105,6 @@ class NotificationService {
       channelDescription: 'Notifications to remind you to drink water',
       importance: Importance.high,
       priority: Priority.high,
-      icon: '@mipmap/ic_launcher',
-      sound: RawResourceAndroidNotificationSound('water_drop'),
       enableVibration: true,
       playSound: true,
     );
@@ -115,7 +113,6 @@ class NotificationService {
       presentAlert: true,
       presentBadge: true,
       presentSound: true,
-      sound: 'water_drop.aiff',
     );
 
     const notificationDetails = NotificationDetails(
@@ -151,8 +148,6 @@ class NotificationService {
       channelDescription: 'Notifications to remind you to drink water',
       importance: Importance.high,
       priority: Priority.high,
-      icon: '@mipmap/ic_launcher',
-      sound: RawResourceAndroidNotificationSound('water_drop'),
       enableVibration: true,
       playSound: true,
     );
@@ -161,7 +156,6 @@ class NotificationService {
       presentAlert: true,
       presentBadge: true,
       presentSound: true,
-      sound: 'water_drop.aiff',
     );
 
     const notificationDetails = NotificationDetails(
@@ -215,8 +209,6 @@ class NotificationService {
       channelDescription: 'Notifications to remind you to drink water',
       importance: Importance.high,
       priority: Priority.high,
-      icon: '@mipmap/ic_launcher',
-      sound: RawResourceAndroidNotificationSound('water_drop'),
       enableVibration: true,
       playSound: true,
     );
@@ -225,7 +217,6 @@ class NotificationService {
       presentAlert: true,
       presentBadge: true,
       presentSound: true,
-      sound: 'water_drop.aiff',
     );
 
     const notificationDetails = NotificationDetails(

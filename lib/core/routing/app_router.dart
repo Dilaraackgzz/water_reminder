@@ -7,6 +7,9 @@ import '../../features/auth/presentation/screens/login_screen.dart';
 import '../../features/auth/presentation/screens/register_screen.dart';
 import '../../features/auth/presentation/screens/forgot_password_screen.dart';
 import '../../features/home/presentation/screens/home_screen.dart';
+import '../../features/statistics/presentation/screens/statistics_screen.dart';
+import '../../features/settings/presentation/screens/settings_screen.dart';
+import '../../features/reminders/presentation/screens/reminders_screen.dart';
 import '../services/onboarding_service.dart';
 
 // Router provider with auth state management
@@ -106,6 +109,21 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: '/home',
         name: 'home',
         builder: (context, state) => const HomeScreen(),
+      ),
+      GoRoute(
+        path: '/statistics',
+        name: 'statistics',
+        builder: (context, state) => const StatisticsScreen(),
+      ),
+      GoRoute(
+        path: '/settings',
+        name: 'settings',
+        builder: (context, state) => const SettingsScreen(),
+      ),
+      GoRoute(
+        path: '/reminders',
+        name: 'reminders',
+        builder: (context, state) => const RemindersScreen(),
       ),
     ],
   );

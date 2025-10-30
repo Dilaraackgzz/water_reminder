@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:go_router/go_router.dart';
 import '../../features/auth/presentation/providers/auth_controller.dart';
 
 class AppDrawer extends ConsumerWidget {
@@ -99,7 +100,7 @@ class AppDrawer extends ConsumerWidget {
                     title: 'Home',
                     onTap: () {
                       Navigator.pop(context);
-                      // Already on home
+                      context.go('/home');
                     },
                   ),
                   _DrawerMenuItem(
@@ -107,16 +108,7 @@ class AppDrawer extends ConsumerWidget {
                     title: 'Statistics',
                     onTap: () {
                       Navigator.pop(context);
-                      // TODO: Navigate to statistics
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text(
-                            'Statistics - Coming Soon!',
-                            style: GoogleFonts.poppins(),
-                          ),
-                          backgroundColor: const Color(0xFF00BCD4),
-                        ),
-                      );
+                      context.push('/statistics');
                     },
                   ),
                   _DrawerMenuItem(
@@ -124,16 +116,7 @@ class AppDrawer extends ConsumerWidget {
                     title: 'Reminders',
                     onTap: () {
                       Navigator.pop(context);
-                      // TODO: Navigate to reminders
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text(
-                            'Reminders - Coming Soon!',
-                            style: GoogleFonts.poppins(),
-                          ),
-                          backgroundColor: const Color(0xFF00BCD4),
-                        ),
-                      );
+                      context.push('/reminders');
                     },
                   ),
                   _DrawerMenuItem(
@@ -158,16 +141,7 @@ class AppDrawer extends ConsumerWidget {
                     title: 'Settings',
                     onTap: () {
                       Navigator.pop(context);
-                      // TODO: Navigate to settings
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text(
-                            'Settings - Coming Soon!',
-                            style: GoogleFonts.poppins(),
-                          ),
-                          backgroundColor: const Color(0xFF00BCD4),
-                        ),
-                      );
+                      context.push('/settings');
                     },
                   ),
                   const Divider(height: 32, thickness: 1),
