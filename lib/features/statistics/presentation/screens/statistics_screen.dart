@@ -6,6 +6,7 @@ import '../../domain/models/water_statistics.dart';
 import '../providers/statistics_providers.dart';
 import '../widgets/statistics_chart.dart';
 import '../widgets/stats_summary_cards.dart';
+import '../widgets/streak_stats_card.dart';
 import '../../../../shared/widgets/modern_app_bar.dart';
 import '../../../../shared/widgets/app_drawer.dart';
 
@@ -46,6 +47,11 @@ class StatisticsScreen extends ConsumerWidget {
                     children: [
                       // Summary Cards
                       StatsSummaryCards(statistics: statistics),
+
+                      const SizedBox(height: 24),
+
+                      // Streak Stats
+                      const StreakStatsCard(),
 
                       const SizedBox(height: 24),
 

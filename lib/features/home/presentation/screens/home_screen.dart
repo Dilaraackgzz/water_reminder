@@ -7,6 +7,7 @@ import '../providers/water_controller.dart';
 import '../widgets/daily_progress_card.dart';
 import '../widgets/quick_add_buttons.dart';
 import '../widgets/motivational_message.dart';
+import '../widgets/streak_card.dart';
 import '../../../../shared/widgets/modern_app_bar.dart';
 import '../../../../shared/widgets/app_drawer.dart';
 
@@ -155,6 +156,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
                 // Motivational Message
                 MotivationalMessage(progressPercentage: progressPercentage),
+
+                const SizedBox(height: 24),
+
+                // Streak Card
+                const StreakCard(),
 
                 const SizedBox(height: 24),
 
