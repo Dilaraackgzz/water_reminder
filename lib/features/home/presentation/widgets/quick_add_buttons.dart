@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../../../core/providers/unit_provider.dart';
 
-class QuickAddButtons extends StatelessWidget {
+class QuickAddButtons extends ConsumerWidget {
   final Function(int) onAddWater;
   final bool isLoading;
 
@@ -12,7 +14,18 @@ class QuickAddButtons extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final unitNotifier = ref.watch(waterUnitProvider.notifier);
+    final amounts = unitNotifier.getQuickAddAmounts();
+    final labels = unitNotifier.getQuickAddLabels();
+
+    final icons = [
+      Icons.local_drink,
+      Icons.local_cafe,
+      Icons.sports_bar,
+      Icons.water_drop,
+    ];
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -29,20 +42,20 @@ class QuickAddButtons extends StatelessWidget {
           children: [
             Expanded(
               child: _QuickAddButton(
-                amount: 250,
-                label: '250ml',
-                icon: Icons.local_drink,
-                onPressed: () => onAddWater(250),
+                amount: amounts[0],
+                label: labels[0],
+                icon: icons[0],
+                onPressed: () => onAddWater(amounts[0]),
                 isLoading: isLoading,
               ),
             ),
             const SizedBox(width: 12),
             Expanded(
               child: _QuickAddButton(
-                amount: 500,
-                label: '500ml',
-                icon: Icons.local_cafe,
-                onPressed: () => onAddWater(500),
+                amount: amounts[1],
+                label: labels[1],
+                icon: icons[1],
+                onPressed: () => onAddWater(amounts[1]),
                 isLoading: isLoading,
               ),
             ),
@@ -53,20 +66,20 @@ class QuickAddButtons extends StatelessWidget {
           children: [
             Expanded(
               child: _QuickAddButton(
-                amount: 750,
-                label: '750ml',
-                icon: Icons.sports_bar,
-                onPressed: () => onAddWater(750),
+                amount: amounts[2],
+                label: labels[2],
+                icon: icons[2],
+                onPressed: () => onAddWater(amounts[2]),
                 isLoading: isLoading,
               ),
             ),
             const SizedBox(width: 12),
             Expanded(
               child: _QuickAddButton(
-                amount: 1000,
-                label: '1L',
-                icon: Icons.water_drop,
-                onPressed: () => onAddWater(1000),
+                amount: amounts[3],
+                label: labels[3],
+                icon: icons[3],
+                onPressed: () => onAddWater(amounts[3]),
                 isLoading: isLoading,
               ),
             ),

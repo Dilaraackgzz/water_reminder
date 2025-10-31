@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:go_router/go_router.dart';
+import 'package:file_picker/file_picker.dart';
 import '../../../../shared/widgets/modern_app_bar.dart';
 import '../../../../shared/widgets/app_drawer.dart';
 import '../../../../shared/services/reminder_service.dart';
 import '../../../../core/providers/app_providers.dart';
+import '../../../../core/providers/theme_provider.dart';
+import '../../../../core/providers/unit_provider.dart';
+import '../../../../core/services/unit_service.dart';
+import '../../../../shared/providers/data_export_provider.dart';
 
 class SettingsScreen extends ConsumerWidget {
   const SettingsScreen({super.key});
@@ -13,6 +19,8 @@ class SettingsScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final reminderService = ref.watch(reminderServiceProvider);
     final isReminderEnabled = reminderService.isReminderEnabled();
+    final themeMode = ref.watch(themeModeProvider);
+    final waterUnit = ref.watch(waterUnitProvider);
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -84,19 +92,17 @@ class SettingsScreen extends ConsumerWidget {
             _SettingCard(
               icon: Icons.palette,
               title: 'Theme',
-              subtitle: 'Light Mode',
+              subtitle: _getThemeModeLabel(themeMode),
               trailing: const Icon(Icons.chevron_right, color: Colors.grey),
-              onTap: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text(
-                      'Theme customization - Coming Soon!',
-                      style: GoogleFonts.poppins(),
-                    ),
-                    backgroundColor: const Color(0xFF00BCD4),
-                  ),
-                );
-              },
+              onTap: () => _showThemeDialog(context, ref, themeMode),
+            ),
+            const SizedBox(height: 12),
+            _SettingCard(
+              icon: Icons.straighten,
+              title: 'Water Unit',
+              subtitle: waterUnit.displayName,
+              trailing: const Icon(Icons.chevron_right, color: Colors.grey),
+              onTap: () => _showUnitDialog(context, ref, waterUnit),
             ),
             const SizedBox(height: 12),
             _SettingCard(
@@ -119,6 +125,27 @@ class SettingsScreen extends ConsumerWidget {
 
             const SizedBox(height: 32),
 
+            // Data Management Section
+            _SectionHeader(title: 'Data Management'),
+            const SizedBox(height: 12),
+            _SettingCard(
+              icon: Icons.file_upload,
+              title: 'Export Data',
+              subtitle: 'Backup your water tracking data',
+              trailing: const Icon(Icons.chevron_right, color: Colors.grey),
+              onTap: () => _handleExportData(context, ref),
+            ),
+            const SizedBox(height: 12),
+            _SettingCard(
+              icon: Icons.file_download,
+              title: 'Import Data',
+              subtitle: 'Restore from backup file',
+              trailing: const Icon(Icons.chevron_right, color: Colors.grey),
+              onTap: () => _handleImportData(context, ref),
+            ),
+
+            const SizedBox(height: 32),
+
             // Account Section
             _SectionHeader(title: 'Account'),
             const SizedBox(height: 12),
@@ -128,33 +155,17 @@ class SettingsScreen extends ConsumerWidget {
               subtitle: 'Update your information',
               trailing: const Icon(Icons.chevron_right, color: Colors.grey),
               onTap: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text(
-                      'Profile editing - Coming Soon!',
-                      style: GoogleFonts.poppins(),
-                    ),
-                    backgroundColor: const Color(0xFF00BCD4),
-                  ),
-                );
+                context.push('/profile');
               },
             ),
             const SizedBox(height: 12),
             _SettingCard(
               icon: Icons.water_drop,
               title: 'Daily Goal',
-              subtitle: 'Customize your water intake goal',
+              subtitle: 'Manage your hydration goal',
               trailing: const Icon(Icons.chevron_right, color: Colors.grey),
               onTap: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text(
-                      'Goal customization - Coming Soon!',
-                      style: GoogleFonts.poppins(),
-                    ),
-                    backgroundColor: const Color(0xFF00BCD4),
-                  ),
-                );
+                context.push('/profile');
               },
             ),
           ],
@@ -167,6 +178,292 @@ class SettingsScreen extends ConsumerWidget {
     final hour = time.hour.toString().padLeft(2, '0');
     final minute = time.minute.toString().padLeft(2, '0');
     return '$hour:$minute';
+  }
+
+  String _getThemeModeLabel(ThemeMode mode) {
+    switch (mode) {
+      case ThemeMode.light:
+        return 'Light Mode';
+      case ThemeMode.dark:
+        return 'Dark Mode';
+      case ThemeMode.system:
+        return 'System Default';
+    }
+  }
+
+  Future<void> _showUnitDialog(
+    BuildContext context,
+    WidgetRef ref,
+    WaterUnit currentUnit,
+  ) async {
+    await showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(
+          'Water Unit',
+          style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
+        ),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            RadioListTile<WaterUnit>(
+              title: Text('Milliliters (ml)', style: GoogleFonts.poppins()),
+              subtitle: Text(
+                'Metric system',
+                style: GoogleFonts.poppins(fontSize: 12, color: Colors.grey),
+              ),
+              value: WaterUnit.milliliters,
+              groupValue: currentUnit,
+              onChanged: (value) async {
+                if (value != null) {
+                  await ref.read(waterUnitProvider.notifier).setWaterUnit(value);
+                  if (context.mounted) Navigator.pop(context);
+                }
+              },
+              activeColor: const Color(0xFF00BCD4),
+            ),
+            RadioListTile<WaterUnit>(
+              title: Text('Fluid Ounces (fl oz)', style: GoogleFonts.poppins()),
+              subtitle: Text(
+                'Imperial system',
+                style: GoogleFonts.poppins(fontSize: 12, color: Colors.grey),
+              ),
+              value: WaterUnit.fluidOunces,
+              groupValue: currentUnit,
+              onChanged: (value) async {
+                if (value != null) {
+                  await ref.read(waterUnitProvider.notifier).setWaterUnit(value);
+                  if (context.mounted) Navigator.pop(context);
+                }
+              },
+              activeColor: const Color(0xFF00BCD4),
+            ),
+          ],
+        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      ),
+    );
+  }
+
+  Future<void> _showThemeDialog(
+    BuildContext context,
+    WidgetRef ref,
+    ThemeMode currentMode,
+  ) async {
+    await showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(
+          'Theme',
+          style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
+        ),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            RadioListTile<ThemeMode>(
+              title: Text('Light Mode', style: GoogleFonts.poppins()),
+              subtitle: Text(
+                'Use light theme',
+                style: GoogleFonts.poppins(fontSize: 12, color: Colors.grey),
+              ),
+              value: ThemeMode.light,
+              groupValue: currentMode,
+              onChanged: (value) async {
+                if (value != null) {
+                  await ref.read(themeModeProvider.notifier).setThemeMode(value);
+                  if (context.mounted) Navigator.pop(context);
+                }
+              },
+              activeColor: const Color(0xFF00BCD4),
+            ),
+            RadioListTile<ThemeMode>(
+              title: Text('Dark Mode', style: GoogleFonts.poppins()),
+              subtitle: Text(
+                'Use dark theme',
+                style: GoogleFonts.poppins(fontSize: 12, color: Colors.grey),
+              ),
+              value: ThemeMode.dark,
+              groupValue: currentMode,
+              onChanged: (value) async {
+                if (value != null) {
+                  await ref.read(themeModeProvider.notifier).setThemeMode(value);
+                  if (context.mounted) Navigator.pop(context);
+                }
+              },
+              activeColor: const Color(0xFF00BCD4),
+            ),
+            RadioListTile<ThemeMode>(
+              title: Text('System Default', style: GoogleFonts.poppins()),
+              subtitle: Text(
+                'Follow system theme',
+                style: GoogleFonts.poppins(fontSize: 12, color: Colors.grey),
+              ),
+              value: ThemeMode.system,
+              groupValue: currentMode,
+              onChanged: (value) async {
+                if (value != null) {
+                  await ref.read(themeModeProvider.notifier).setThemeMode(value);
+                  if (context.mounted) Navigator.pop(context);
+                }
+              },
+              activeColor: const Color(0xFF00BCD4),
+            ),
+          ],
+        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      ),
+    );
+  }
+
+  Future<void> _handleExportData(BuildContext context, WidgetRef ref) async {
+    try {
+      // Show loading dialog
+      showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) => Center(
+          child: Container(
+            padding: const EdgeInsets.all(24),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(16),
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const CircularProgressIndicator(color: Color(0xFF00BCD4)),
+                const SizedBox(height: 16),
+                Text('Exporting data...', style: GoogleFonts.poppins()),
+              ],
+            ),
+          ),
+        ),
+      );
+
+      final exportService = ref.read(dataExportServiceProvider);
+      await exportService.shareExportedData();
+
+      if (context.mounted) {
+        Navigator.pop(context); // Close loading dialog
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              'Data exported successfully!',
+              style: GoogleFonts.poppins(),
+            ),
+            backgroundColor: Colors.green,
+          ),
+        );
+      }
+    } catch (e) {
+      if (context.mounted) {
+        Navigator.pop(context); // Close loading dialog
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              'Export failed: $e',
+              style: GoogleFonts.poppins(),
+            ),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
+    }
+  }
+
+  Future<void> _handleImportData(BuildContext context, WidgetRef ref) async {
+    try {
+      // Pick file
+      final result = await FilePicker.platform.pickFiles(
+        type: FileType.custom,
+        allowedExtensions: ['json'],
+      );
+
+      if (result == null || result.files.single.path == null) {
+        return;
+      }
+
+      // Show loading dialog
+      if (context.mounted) {
+        showDialog(
+          context: context,
+          barrierDismissible: false,
+          builder: (context) => Center(
+            child: Container(
+              padding: const EdgeInsets.all(24),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(16),
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const CircularProgressIndicator(color: Color(0xFF00BCD4)),
+                  const SizedBox(height: 16),
+                  Text('Importing data...', style: GoogleFonts.poppins()),
+                ],
+              ),
+            ),
+          ),
+        );
+      }
+
+      final exportService = ref.read(dataExportServiceProvider);
+      final stats = await exportService.importFromFile(result.files.single.path!);
+
+      if (context.mounted) {
+        Navigator.pop(context); // Close loading dialog
+
+        // Show success dialog with stats
+        showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: Text('Import Complete', style: GoogleFonts.poppins(fontWeight: FontWeight.w600)),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text('Imported successfully:', style: GoogleFonts.poppins(fontWeight: FontWeight.w500)),
+                const SizedBox(height: 12),
+                Text('• ${stats['importedRecords']} water records', style: GoogleFonts.poppins()),
+                Text('• ${stats['importedGoals']} daily goals', style: GoogleFonts.poppins()),
+                if (stats['skippedRecords']! > 0) ...[
+                  const SizedBox(height: 8),
+                  Text(
+                    '• ${stats['skippedRecords']} duplicate records skipped',
+                    style: GoogleFonts.poppins(fontSize: 12, color: Colors.orange),
+                  ),
+                ],
+              ],
+            ),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                  // Refresh data
+                  ref.invalidate(exportStatisticsProvider);
+                },
+                child: Text('OK', style: GoogleFonts.poppins(color: const Color(0xFF00BCD4))),
+              ),
+            ],
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          ),
+        );
+      }
+    } catch (e) {
+      if (context.mounted) {
+        Navigator.pop(context); // Close loading dialog
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              'Import failed: $e',
+              style: GoogleFonts.poppins(),
+            ),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
+    }
   }
 
   Future<void> _showIntervalDialog(

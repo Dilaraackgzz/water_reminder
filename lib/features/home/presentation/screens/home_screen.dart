@@ -10,6 +10,7 @@ import '../widgets/motivational_message.dart';
 import '../widgets/streak_card.dart';
 import '../../../../shared/widgets/modern_app_bar.dart';
 import '../../../../shared/widgets/app_drawer.dart';
+import '../../../../core/providers/unit_provider.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
@@ -31,10 +32,13 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       await controller.addWater(amount);
 
       if (mounted) {
+        final unitNotifier = ref.read(waterUnitProvider.notifier);
+        final formattedAmount = unitNotifier.formatAmount(amount);
+
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(
-              'Added ${amount}ml of water!',
+              'Added $formattedAmount of water!',
               style: GoogleFonts.poppins(),
             ),
             backgroundColor: const Color(0xFF00BCD4),
@@ -65,6 +69,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
   void _showCustomAmountDialog() {
     final controller = TextEditingController();
+    final waterUnit = ref.read(waterUnitProvider);
+    final unitNotifier = ref.read(waterUnitProvider.notifier);
 
     showDialog(
       context: context,
@@ -75,10 +81,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         ),
         content: TextField(
           controller: controller,
-          keyboardType: TextInputType.number,
+          keyboardType: const TextInputType.numberWithOptions(decimal: true),
           autofocus: true,
           decoration: InputDecoration(
-            labelText: 'Amount (ml)',
+            labelText: 'Amount (${waterUnit.shortName})',
             labelStyle: GoogleFonts.poppins(),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
@@ -100,10 +106,12 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           ),
           ElevatedButton(
             onPressed: () {
-              final amount = int.tryParse(controller.text);
-              if (amount != null && amount > 0) {
+              final inputAmount = double.tryParse(controller.text);
+              if (inputAmount != null && inputAmount > 0) {
+                // Convert input to ml based on selected unit
+                final amountInMl = unitNotifier.convertToMl(inputAmount);
                 Navigator.pop(context);
-                _handleAddWater(amount);
+                _handleAddWater(amountInMl);
               }
             },
             style: ElevatedButton.styleFrom(
@@ -129,6 +137,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   Widget build(BuildContext context) {
     final progressPercentage = ref.watch(progressPercentageProvider);
     final todaysIntakesAsync = ref.watch(todaysWaterIntakesProvider);
+    final unitNotifier = ref.watch(waterUnitProvider.notifier);
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -281,7 +290,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      '${intake.amount}ml',
+                                      unitNotifier.formatAmount(intake.amount),
                                       style: GoogleFonts.poppins(
                                         fontSize: 18,
                                         fontWeight: FontWeight.w600,

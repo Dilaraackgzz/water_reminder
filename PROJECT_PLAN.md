@@ -65,10 +65,12 @@ lib/
 ## 🎨 Design System
 
 ### Material 3 Tema
-- Dynamic Color (Material You)
-- Light/Dark mode support
-- Custom color schemes
-- Rounded corner design language
+- ✅ Dynamic Color (Material You)
+- ✅ Light/Dark mode support (fully functional with persistence)
+- ✅ System theme following
+- ✅ Custom color schemes
+- ✅ Rounded corner design language
+- ✅ Theme switching from Settings
 
 ### Animasyonlar
 - Onboarding animasyonları
@@ -107,39 +109,56 @@ lib/
 - [✅] Push notifications (Firebase Cloud Messaging)
 - [✅] Local notifications (scheduled reminders)
 - [✅] Permission handling (iOS & Android)
-- [ ] Streak tracking (ardışık günler)
+- [✅] Streak tracking (ardışık günler)
 - [✅] Custom reminder times
 
 ### 4. Profil & Ayarlar
-- [ ] Kişisel bilgiler (yaş, kilo, boy, aktivite seviyesi)
-- [ ] Günlük su hedefi hesaplama
-- [ ] Tema ayarları (light/dark, renk seçimi)
-- [ ] Bildirim ayarları
-- [ ] Birim ayarları (ml/fl oz)
+- [✅] Kişisel bilgiler (yaş, kilo, boy, aktivite seviyesi, cinsiyet)
+- [✅] Günlük su hedefi hesaplama (BMI ve aktivite bazlı)
+- [✅] Bildirim ayarları (enable/disable, interval, start/end time)
+- [✅] Tema ayarları (Light/Dark/System mode - fully functional)
+- [✅] Birim ayarları (ml/fl oz switcher with full conversion)
+- [✅] Profile screen ile tüm bilgileri düzenleme
+- [✅] Hesaplanan vs custom hedef seçeneği
+- [✅] Theme persistence (SharedPreferences)
+- [✅] Settings navigation (Profile, Daily Goal redirects)
+- [✅] Unit conversion across all screens
 
 ### 5. İstatistikler & Analitik
-- [ ] Günlük, haftalık, aylık grafikler
-- [ ] Su tüketimi trendleri
-- [ ] Hedef başarı oranları
-- [ ] Motivasyonel achievements/badges
+- [✅] Günlük, haftalık, aylık grafikler (fl_chart ile)
+- [✅] Su tüketimi trendleri
+- [✅] Hedef başarı oranları
+- [✅] Best day tracking
+- [✅] Streak statistics
+- [✅] Summary cards (average, total, goal achievement)
+- [ ] Motivasyonel achievements/badges (model var, implement eksik)
 - [ ] Export data functionality
 
 ### 6. Gamification
-- [ ] Daily streaks
-- [ ] Achievement system
-- [ ] Levels ve XP sistemi
+- [✅] Daily streaks (tam functional)
+- [✅] Streak tracking ve gösterimi
+- [✅] Achievement system (8 achievements fully implemented)
+- [✅] Achievement tracking (first drop, daily goal, streaks, total consumption)
+- [✅] Achievement UI (progress bars, unlock states, reward points)
+- [✅] Points system (reward points for achievements)
+- [⚠️] Levels ve XP sistemi (Optional - future enhancement)
+- [⚠️] Badge unlock display (Optional - future enhancement)
 - [ ] Sosyal özellikler (arkadaşlarla karşılaştırma)
 - [ ] Çeşitli su bardağı tipleri unlock
 
 ## 🗂️ Geliştirme Aşamaları
 
-### Phase 1: Temel Kurulum (Haftalar 1-2)
+### Phase 1: Temel Kurulum (Haftalar 1-2) ✅ TAMAMLANDI
 1. ✅ Flutter project setup
-2. ✅ Folder structure ve architecture
-3. ✅ Firebase configuration
-4. ✅ Basic navigation (GoRouter)
-5. ✅ Theme system (Material 3)
-6. ✅ State management setup (Riverpod)
+2. ✅ Folder structure ve architecture (Clean Architecture + Feature-First)
+3. ✅ Firebase configuration (Auth, Firestore, Messaging)
+4. ✅ Basic navigation (GoRouter with auth state redirects)
+5. ✅ Theme system (Material 3 with Light/Dark/System modes)
+6. ✅ State management setup (Riverpod 2.0)
+7. ✅ Theme service ve provider (persistent theme switching)
+8. ✅ Core constants ve utilities
+9. ✅ App providers configuration
+10. ✅ SharedPreferences integration
 
 ### Phase 2: Authentication & Onboarding (Hafta 3)
 1. ✅ Firebase Auth implementation
@@ -166,14 +185,26 @@ lib/
 6. ✅ Custom notification scheduling
 7. ✅ Android/iOS permissions configured
 
-### Phase 5: Advanced Features (Haftalar 7-8) 🔄 DEVAM EDİYOR
-1. [✅] Statistics ve charts (günlük/haftalık/aylık grafikler)
-2. [ ] Settings screens (bildirim ayarları, tema, birimler)
-3. [ ] Profile management (kişisel bilgiler, hedef hesaplama)
-4. [ ] Data export/import functionality
-5. [ ] Gamification features (streaks, achievements, badges)
-6. [ ] Reminder settings UI
-7. [ ] Theme customization (light/dark mode)
+### Phase 5: Advanced Features (Haftalar 7-8) ✅ %85 TAMAMLANDI
+1. [✅] Statistics ve charts (günlük/haftalık/aylık grafikler, fl_chart)
+2. [✅] Statistics summary cards ve best day tracking
+3. [✅] Streak statistics ve gösterim
+4. [✅] Profile management (kişisel bilgiler, BMI, hedef hesaplama)
+5. [✅] Profile screen ile full edit functionality
+6. [✅] Settings screen (bildirim ayarları functional)
+7. [✅] Reminder settings UI (interval, start/end time)
+8. [✅] Streak tracking sistemi (otomatik güncelleme)
+9. [✅] Theme customization (Light/Dark/System - fully functional with persistence)
+10. [✅] Settings integration (Profile ve Daily Goal navigation)
+11. [✅] Birim ayarları (ml/fl oz switcher with auto conversion)
+12. [✅] Unit service ve provider (conversion logic)
+13. [✅] Unit-aware displays (Home, Progress, History, Settings)
+14. [✅] Data export/import functionality (JSON format, file picker, share)
+15. [✅] Achievement system implementation (8 achievements with progress tracking)
+16. [✅] Achievement service ve provider (Firestore integration)
+17. [✅] Achievement UI screen (unlocked/locked display, progress bars)
+18. [⚠️] Levels ve XP sistemi (Optional - out of scope)
+19. [⚠️] Badge unlock display integration (Optional - future enhancement)
 
 ### Phase 6: Polish & Optimization (Hafta 9)
 1. Advanced animations

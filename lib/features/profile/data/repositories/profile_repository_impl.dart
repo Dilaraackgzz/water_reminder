@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import '../../domain/models/user_profile.dart';
 import '../../domain/repositories/profile_repository.dart';
@@ -24,7 +25,7 @@ class ProfileRepositoryImpl implements ProfileRepository {
     try {
       return UserProfile.fromJson(Map<String, dynamic>.from(data));
     } catch (e) {
-      print('Error parsing profile: $e');
+      debugPrint('Error parsing profile: $e');
       return null;
     }
   }

@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:uuid/uuid.dart';
@@ -57,7 +58,7 @@ class WaterController {
       _ref.invalidate(userStreakProvider);
     } catch (e) {
       // Silent fail - don't let streak update failures affect water intake
-      print('Failed to update streak: $e');
+      debugPrint("Failed to update streak: $e");
     }
   }
 

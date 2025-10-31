@@ -124,16 +124,7 @@ class AppDrawer extends ConsumerWidget {
                     title: 'Profile',
                     onTap: () {
                       Navigator.pop(context);
-                      // TODO: Navigate to profile
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text(
-                            'Profile - Coming Soon!',
-                            style: GoogleFonts.poppins(),
-                          ),
-                          backgroundColor: const Color(0xFF00BCD4),
-                        ),
-                      );
+                      context.push('/profile');
                     },
                   ),
                   _DrawerMenuItem(

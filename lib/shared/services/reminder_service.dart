@@ -18,7 +18,6 @@ class ReminderService {
   static const String _reminderIntervalKey = 'reminder_interval_minutes';
   static const String _reminderStartTimeKey = 'reminder_start_time';
   static const String _reminderEndTimeKey = 'reminder_end_time';
-  static const String _customRemindersKey = 'custom_reminders';
 
   // Default values
   static const int _defaultInterval = 60; // 60 minutes

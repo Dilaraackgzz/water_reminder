@@ -79,6 +79,8 @@ enum ActivityLevel {
 /// User profile model
 @freezed
 class UserProfile with _$UserProfile {
+  const UserProfile._(); // Private constructor for custom getters
+
   const factory UserProfile({
     required String userId,
     required String name,

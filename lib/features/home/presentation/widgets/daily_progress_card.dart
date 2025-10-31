@@ -5,6 +5,7 @@ import 'package:water_reminder/features/home/domain/models/daily_goal.dart';
 import '../providers/home_providers.dart';
 import 'water_progress_ring.dart';
 import 'circular_wave_progress.dart';
+import '../../../../core/providers/unit_provider.dart';
 
 class DailyProgressCard extends ConsumerWidget {
   const DailyProgressCard({super.key});
@@ -13,6 +14,7 @@ class DailyProgressCard extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final dailyGoalAsync = ref.watch(todaysDailyGoalProvider);
     final totalIntake = ref.watch(todaysTotalIntakeProvider);
+    final unitNotifier = ref.watch(waterUnitProvider.notifier);
 
     // Show default goal while loading
     final goal = dailyGoalAsync.maybeWhen(
@@ -75,7 +77,7 @@ class DailyProgressCard extends ConsumerWidget {
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      '${totalIntake}ml',
+                      unitNotifier.formatAmount(totalIntake),
                       style: GoogleFonts.poppins(
                         fontSize: 26,
                         fontWeight: FontWeight.bold,
@@ -84,7 +86,7 @@ class DailyProgressCard extends ConsumerWidget {
                       ),
                     ),
                     Text(
-                      'of ${goal.targetAmount}ml',
+                      'of ${unitNotifier.formatAmount(goal.targetAmount)}',
                       style: GoogleFonts.poppins(
                         fontSize: 11,
                         fontWeight: FontWeight.w400,
@@ -103,7 +105,7 @@ class DailyProgressCard extends ConsumerWidget {
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: Text(
-                          '${remaining}ml to go!',
+                          '${unitNotifier.formatAmount(remaining)} to go!',
                           style: GoogleFonts.poppins(
                             fontSize: 10,
                             fontWeight: FontWeight.w600,
