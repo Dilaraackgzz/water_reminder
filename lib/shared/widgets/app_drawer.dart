@@ -120,6 +120,14 @@ class AppDrawer extends ConsumerWidget {
                     },
                   ),
                   _DrawerMenuItem(
+                    icon: Icons.emoji_events,
+                    title: 'Achievements',
+                    onTap: () {
+                      Navigator.pop(context);
+                      context.push('/achievements');
+                    },
+                  ),
+                  _DrawerMenuItem(
                     icon: Icons.person,
                     title: 'Profile',
                     onTap: () {
