@@ -94,6 +94,11 @@ class WaterLocalDataSource {
   /// Watch water intakes changes
   Stream<List<WaterIntake>> watchWaterIntakes() async* {
     final box = await _waterIntakes;
+
+    // Emit initial data first
+    yield await getAllWaterIntakes();
+
+    // Then listen for changes
     yield* box.watch().asyncMap((_) => getAllWaterIntakes());
   }
 
@@ -101,6 +106,11 @@ class WaterLocalDataSource {
   Stream<DailyGoal?> watchDailyGoalForDate(DateTime date) async* {
     final box = await _dailyGoals;
     final key = _getDailyGoalKey(date);
+
+    // Emit initial data first
+    yield await getDailyGoalForDate(date);
+
+    // Then listen for changes
     yield* box.watch(key: key).asyncMap((_) => getDailyGoalForDate(date));
   }
 
