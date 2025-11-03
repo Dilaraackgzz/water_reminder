@@ -4,10 +4,12 @@ import 'dart:math' as math;
 
 class MotivationalMessage extends StatelessWidget {
   final double progressPercentage;
+  final bool isCompact;
 
   const MotivationalMessage({
     super.key,
     required this.progressPercentage,
+    this.isCompact = false,
   });
 
   String _getMessage() {
@@ -80,6 +82,20 @@ class MotivationalMessage extends StatelessWidget {
     }
   }
 
+  String _getShortMessage() {
+    if (progressPercentage >= 100) {
+      return 'Goal Reached!';
+    } else if (progressPercentage >= 75) {
+      return 'Almost there!';
+    } else if (progressPercentage >= 50) {
+      return 'Halfway!';
+    } else if (progressPercentage >= 25) {
+      return 'Good start!';
+    } else {
+      return 'Let\'s begin!';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final message = _getMessage();
@@ -103,47 +119,135 @@ class MotivationalMessage extends StatelessWidget {
           ),
         );
       },
-      child: Container(
-        key: ValueKey(progressPercentage ~/ 25), // Change key when milestone reached
-        padding: const EdgeInsets.all(20),
-        decoration: BoxDecoration(
-          color: color.withAlpha(26), // 0.1 * 255
-          borderRadius: BorderRadius.circular(16),
-          border: Border.all(
-            color: color.withAlpha(77), // 0.3 * 255
-            width: 1,
-          ),
-        ),
-        child: Row(
-          children: [
-            TweenAnimationBuilder<double>(
-              tween: Tween(begin: 0.8, end: 1.0),
-              duration: const Duration(milliseconds: 600),
-              curve: Curves.elasticOut,
-              builder: (context, scale, child) {
-                return Transform.scale(
-                  scale: scale,
-                  child: Icon(
-                    icon,
-                    color: color,
-                    size: 32,
-                  ),
-                );
-              },
+      child: isCompact
+          ? _CompactCard(
+              key: ValueKey(progressPercentage ~/ 25),
+              icon: icon,
+              text: _getShortMessage(),
+              color: color,
+            )
+          : _FullCard(
+              key: ValueKey(progressPercentage ~/ 25),
+              icon: icon,
+              message: message,
+              color: color,
             ),
-            const SizedBox(width: 16),
-            Expanded(
-              child: Text(
-                message,
-                style: GoogleFonts.poppins(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w500,
-                  color: Colors.black87,
+    );
+  }
+}
+
+class _CompactCard extends StatelessWidget {
+  final IconData icon;
+  final String text;
+  final Color color;
+
+  const _CompactCard({
+    super.key,
+    required this.icon,
+    required this.text,
+    required this.color,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
+      decoration: BoxDecoration(
+        color: color.withAlpha(26),
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(
+          color: color.withAlpha(77),
+          width: 1,
+        ),
+      ),
+      child: Row(
+        children: [
+          TweenAnimationBuilder<double>(
+            tween: Tween(begin: 0.8, end: 1.0),
+            duration: const Duration(milliseconds: 600),
+            curve: Curves.elasticOut,
+            builder: (context, scale, child) {
+              return Transform.scale(
+                scale: scale,
+                child: Icon(
+                  icon,
+                  color: color,
+                  size: 32,
                 ),
+              );
+            },
+          ),
+          const SizedBox(width: 16),
+          Expanded(
+            child: Text(
+              text,
+              style: GoogleFonts.poppins(
+                fontSize: 15,
+                fontWeight: FontWeight.w600,
+                color: Colors.black87,
               ),
             ),
-          ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _FullCard extends StatelessWidget {
+  final IconData icon;
+  final String message;
+  final Color color;
+
+  const _FullCard({
+    super.key,
+    required this.icon,
+    required this.message,
+    required this.color,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        color: color.withAlpha(26),
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(
+          color: color.withAlpha(77),
+          width: 1,
         ),
+      ),
+      child: Row(
+        children: [
+          TweenAnimationBuilder<double>(
+            tween: Tween(begin: 0.8, end: 1.0),
+            duration: const Duration(milliseconds: 600),
+            curve: Curves.elasticOut,
+            builder: (context, scale, child) {
+              return Transform.scale(
+                scale: scale,
+                child: Icon(
+                  icon,
+                  color: color,
+                  size: 32,
+                ),
+              );
+            },
+          ),
+          const SizedBox(width: 16),
+          Expanded(
+            child: Text(
+              message,
+              style: GoogleFonts.poppins(
+                fontSize: 14,
+                fontWeight: FontWeight.w500,
+                color: Colors.black87,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

@@ -30,18 +30,34 @@ class DailyProgressCard extends ConsumerWidget {
     final progress = goal.progressPercentage / 100;
     final remaining = goal.remainingAmount;
 
-    return Container(
-          padding: const EdgeInsets.all(24),
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        // Dynamic sizing based on available space
+        final cardWidth = constraints.maxWidth;
+        final padding = (cardWidth * 0.05).clamp(16.0, 24.0);
+        final ringSize = (cardWidth * 0.30).clamp(110.0, 150.0);
+        final strokeWidth = (ringSize * 0.08).clamp(8.0, 12.0);
+        final waveSize = (ringSize * 0.80).clamp(88.0, 120.0);
+        final spacing = (cardWidth * 0.04).clamp(12.0, 24.0);
+
+        // Font sizes
+        final titleFontSize = (ringSize * 0.10).clamp(12.0, 14.0);
+        final amountFontSize = (ringSize * 0.20).clamp(22.0, 30.0);
+        final subFontSize = (ringSize * 0.08).clamp(10.0, 12.0);
+        final badgeFontSize = (ringSize * 0.08).clamp(9.0, 11.0);
+
+        return Container(
+          padding: EdgeInsets.all(padding),
           decoration: BoxDecoration(
             gradient: const LinearGradient(
               colors: [Color(0xFFE0F7FA), Color(0xFFB2EBF2)],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),
-            borderRadius: BorderRadius.circular(24),
+            borderRadius: BorderRadius.circular(20),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withAlpha(13), // 0.05 * 255
+                color: Colors.black.withAlpha(13),
                 blurRadius: 16,
                 offset: const Offset(0, 4),
               ),
@@ -49,19 +65,19 @@ class DailyProgressCard extends ConsumerWidget {
           ),
           child: Row(
             children: [
-              // Progress Ring with Circular Wave
+              // Progress Ring with Circular Wave (Compact)
               WaterProgressRing(
                 progress: progress,
-                size: 160,
-                strokeWidth: 12,
+                size: ringSize,
+                strokeWidth: strokeWidth,
                 child: CircularWaveProgress(
                   progress: progress,
-                  size: 130,
+                  size: waveSize,
                   waveColor: const Color(0xFF00BCD4),
                   backgroundColor: Colors.white,
                 ),
               ),
-              const SizedBox(width: 24),
+              SizedBox(width: spacing),
               // Progress Info
               Expanded(
                 child: Column(
@@ -70,72 +86,79 @@ class DailyProgressCard extends ConsumerWidget {
                     Text(
                       'Today\'s Progress',
                       style: GoogleFonts.poppins(
-                        fontSize: 13,
+                        fontSize: titleFontSize,
                         fontWeight: FontWeight.w500,
                         color: Colors.black54,
                       ),
                     ),
-                    const SizedBox(height: 4),
-                    Text(
-                      unitNotifier.formatAmount(totalIntake),
-                      style: GoogleFonts.poppins(
-                        fontSize: 26,
-                        fontWeight: FontWeight.bold,
-                        color: const Color(0xFF00BCD4),
-                        height: 1.0,
+                    SizedBox(height: spacing * 0.2),
+                    FittedBox(
+                      fit: BoxFit.scaleDown,
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        unitNotifier.formatAmount(totalIntake),
+                        style: GoogleFonts.poppins(
+                          fontSize: amountFontSize,
+                          fontWeight: FontWeight.bold,
+                          color: const Color(0xFF00BCD4),
+                          height: 1.0,
+                        ),
                       ),
                     ),
                     Text(
                       'of ${unitNotifier.formatAmount(goal.targetAmount)}',
                       style: GoogleFonts.poppins(
-                        fontSize: 11,
+                        fontSize: subFontSize,
                         fontWeight: FontWeight.w400,
                         color: Colors.black54,
                       ),
                     ),
-                    const SizedBox(height: 8),
+                    SizedBox(height: spacing * 0.4),
                     if (remaining > 0) ...[
                       Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 10,
-                          vertical: 5,
+                        padding: EdgeInsets.symmetric(
+                          horizontal: padding * 0.5,
+                          vertical: spacing * 0.25,
                         ),
                         decoration: BoxDecoration(
-                          color: const Color(0xFF00BCD4).withAlpha(51), // 0.2 * 255
+                          color: const Color(0xFF00BCD4).withAlpha(51),
                           borderRadius: BorderRadius.circular(12),
                         ),
-                        child: Text(
-                          '${unitNotifier.formatAmount(remaining)} to go!',
-                          style: GoogleFonts.poppins(
-                            fontSize: 10,
-                            fontWeight: FontWeight.w600,
-                            color: const Color(0xFF00BCD4),
+                        child: FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: Text(
+                            '${unitNotifier.formatAmount(remaining)} to go!',
+                            style: GoogleFonts.poppins(
+                              fontSize: badgeFontSize,
+                              fontWeight: FontWeight.w600,
+                              color: const Color(0xFF00BCD4),
+                            ),
                           ),
                         ),
                       ),
                     ] else ...[
                       Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 10,
-                          vertical: 5,
+                        padding: EdgeInsets.symmetric(
+                          horizontal: padding * 0.5,
+                          vertical: spacing * 0.25,
                         ),
                         decoration: BoxDecoration(
-                          color: Colors.green.withAlpha(51), // 0.2 * 255
+                          color: Colors.green.withAlpha(51),
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            const Icon(
+                            Icon(
                               Icons.check_circle,
                               color: Colors.green,
-                              size: 12,
+                              size: badgeFontSize + 2,
                             ),
-                            const SizedBox(width: 4),
+                            SizedBox(width: spacing * 0.2),
                             Text(
                               'Completed!',
                               style: GoogleFonts.poppins(
-                                fontSize: 10,
+                                fontSize: badgeFontSize,
                                 fontWeight: FontWeight.w600,
                                 color: Colors.green,
                               ),
@@ -150,5 +173,7 @@ class DailyProgressCard extends ConsumerWidget {
             ],
           ),
         );
+      },
+    );
   }
 }

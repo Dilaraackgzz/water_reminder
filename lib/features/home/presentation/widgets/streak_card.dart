@@ -6,7 +6,9 @@ import '../providers/streak_providers.dart';
 
 /// Widget displaying user's current streak and achievements
 class StreakCard extends ConsumerWidget {
-  const StreakCard({super.key});
+  final bool isCompact;
+
+  const StreakCard({super.key, this.isCompact = false});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -15,12 +17,14 @@ class StreakCard extends ConsumerWidget {
     return streakAsync.when(
       data: (streak) {
         if (streak == null) {
-          return _EmptyStreakCard();
+          return isCompact ? _CompactEmptyStreakCard() : _EmptyStreakCard();
         }
-        return _StreakContent(streak: streak);
+        return isCompact
+            ? _CompactStreakContent(streak: streak)
+            : _StreakContent(streak: streak);
       },
-      loading: () => _LoadingStreakCard(),
-      error: (error, stack) => _ErrorStreakCard(),
+      loading: () => _LoadingStreakCard(isCompact: isCompact),
+      error: (error, stack) => _ErrorStreakCard(isCompact: isCompact),
     );
   }
 }
@@ -267,18 +271,193 @@ class _EmptyStreakCard extends StatelessWidget {
   }
 }
 
-class _LoadingStreakCard extends StatelessWidget {
+class _CompactStreakContent extends StatelessWidget {
+  final UserStreak streak;
+
+  const _CompactStreakContent({required this.streak});
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(20),
+      width: double.infinity,
+      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: streak.currentStreak >= 7
+              ? [const Color(0xFFFFE0B2), const Color(0xFFFFCC80)]
+              : [const Color(0xFFE0F7FA), const Color(0xFFB2EBF2)],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withAlpha(13),
+            blurRadius: 8,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
+      child: Row(
+        children: [
+          Text(
+            streak.streakEmoji,
+            style: const TextStyle(fontSize: 32),
+          ),
+          const SizedBox(width: 16),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Row(
+                  children: [
+                    Text(
+                      '${streak.currentStreak}',
+                      style: GoogleFonts.poppins(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black87,
+                        height: 1.0,
+                      ),
+                    ),
+                    const SizedBox(width: 6),
+                    Text(
+                      'day${streak.currentStreak == 1 ? '' : 's'}',
+                      style: GoogleFonts.poppins(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.black54,
+                      ),
+                    ),
+                    if (streak.isPersonalBest && streak.currentStreak > 0) ...[
+                      const SizedBox(width: 8),
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                        decoration: BoxDecoration(
+                          color: Colors.amber,
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Text(
+                          'Best!',
+                          style: GoogleFonts.poppins(
+                            fontSize: 10,
+                            fontWeight: FontWeight.w700,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ],
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  'Current Streak',
+                  style: GoogleFonts.poppins(
+                    fontSize: 12,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.black54,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _CompactEmptyStreakCard extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
+      decoration: BoxDecoration(
+        gradient: const LinearGradient(
+          colors: [Color(0xFFE0F7FA), Color(0xFFB2EBF2)],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withAlpha(13),
+            blurRadius: 8,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
+      child: Row(
+        children: [
+          Text(
+            '💧',
+            style: const TextStyle(fontSize: 32),
+          ),
+          const SizedBox(width: 16),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Row(
+                  children: [
+                    Text(
+                      '0',
+                      style: GoogleFonts.poppins(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black87,
+                        height: 1.0,
+                      ),
+                    ),
+                    const SizedBox(width: 6),
+                    Text(
+                      'days',
+                      style: GoogleFonts.poppins(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.black54,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  'Start your streak!',
+                  style: GoogleFonts.poppins(
+                    fontSize: 12,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.black54,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _LoadingStreakCard extends StatelessWidget {
+  final bool isCompact;
+
+  const _LoadingStreakCard({this.isCompact = false});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(isCompact ? 12 : 20),
       decoration: BoxDecoration(
         color: Colors.grey[100],
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(isCompact ? 12 : 20),
       ),
       child: Center(
         child: CircularProgressIndicator(
           color: const Color(0xFF00BCD4),
+          strokeWidth: isCompact ? 2 : 4,
         ),
       ),
     );
@@ -286,29 +465,49 @@ class _LoadingStreakCard extends StatelessWidget {
 }
 
 class _ErrorStreakCard extends StatelessWidget {
+  final bool isCompact;
+
+  const _ErrorStreakCard({this.isCompact = false});
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(20),
+      padding: EdgeInsets.all(isCompact ? 12 : 20),
       decoration: BoxDecoration(
         color: Colors.red[50],
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(isCompact ? 12 : 20),
       ),
-      child: Row(
-        children: [
-          Icon(Icons.error_outline, color: Colors.red[700]),
-          const SizedBox(width: 12),
-          Expanded(
-            child: Text(
-              'Failed to load streak data',
-              style: GoogleFonts.poppins(
-                fontSize: 12,
-                color: Colors.red[900],
-              ),
+      child: isCompact
+          ? Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(Icons.error_outline, color: Colors.red[700], size: 20),
+                const SizedBox(height: 4),
+                Text(
+                  'Error',
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.poppins(
+                    fontSize: 10,
+                    color: Colors.red[900],
+                  ),
+                ),
+              ],
+            )
+          : Row(
+              children: [
+                Icon(Icons.error_outline, color: Colors.red[700]),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Text(
+                    'Failed to load streak data',
+                    style: GoogleFonts.poppins(
+                      fontSize: 12,
+                      color: Colors.red[900],
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ),
-        ],
-      ),
     );
   }
 }

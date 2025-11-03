@@ -158,51 +158,54 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                // Daily Progress Card
+                // Daily Progress Card (Compact)
                 const DailyProgressCard(),
 
-                const SizedBox(height: 24),
+                const SizedBox(height: 16),
 
-                // Motivational Message
-                MotivationalMessage(progressPercentage: progressPercentage),
-
-                const SizedBox(height: 24),
-
-                // Streak Card
-                const StreakCard(),
-
-                const SizedBox(height: 24),
-
-                // Quick Add Buttons
+                // Quick Add Buttons (Priority placement)
                 QuickAddButtons(
                   onAddWater: _handleAddWater,
                   isLoading: _isAddingWater,
                 ),
 
-                const SizedBox(height: 16),
+                const SizedBox(height: 12),
 
-                // Custom Amount Button
+                // Custom Amount Button (Compact)
                 OutlinedButton.icon(
                   onPressed: _showCustomAmountDialog,
-                  icon: const Icon(Icons.add_circle_outline),
+                  icon: const Icon(Icons.add_circle_outline, size: 20),
                   label: Text(
                     'Custom Amount',
                     style: GoogleFonts.poppins(
-                      fontSize: 16,
+                      fontSize: 14,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
                   style: OutlinedButton.styleFrom(
                     foregroundColor: const Color(0xFF00BCD4),
                     side: const BorderSide(color: Color(0xFF00BCD4), width: 2),
-                    padding: const EdgeInsets.symmetric(vertical: 16),
+                    padding: const EdgeInsets.symmetric(vertical: 12),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(16),
                     ),
                   ),
                 ),
 
-                const SizedBox(height: 32),
+                const SizedBox(height: 16),
+
+                // Motivational Message Card
+                MotivationalMessage(
+                  progressPercentage: progressPercentage,
+                  isCompact: true,
+                ),
+
+                const SizedBox(height: 12),
+
+                // Streak Card
+                const StreakCard(isCompact: true),
+
+                const SizedBox(height: 24),
 
                 // Today's History
                 Text(

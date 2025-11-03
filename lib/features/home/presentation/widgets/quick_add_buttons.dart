@@ -32,12 +32,12 @@ class QuickAddButtons extends ConsumerWidget {
         Text(
           'Quick Add',
           style: GoogleFonts.poppins(
-            fontSize: 18,
+            fontSize: 16,
             fontWeight: FontWeight.w600,
             color: Colors.black87,
           ),
         ),
-        const SizedBox(height: 16),
+        const SizedBox(height: 12),
         Row(
           children: [
             Expanded(
@@ -143,51 +143,70 @@ class _QuickAddButtonState extends State<_QuickAddButton>
 
   @override
   Widget build(BuildContext context) {
-    return ScaleTransition(
-      scale: _scaleAnimation,
-      child: Material(
-        color: Colors.transparent,
-        child: InkWell(
-          onTap: _handleTap,
-          borderRadius: BorderRadius.circular(16),
-          child: Container(
-            padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
-            decoration: BoxDecoration(
-              gradient: const LinearGradient(
-                colors: [Color(0xFF00BCD4), Color(0xFF00ACC1)],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-              ),
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        // Dynamic sizing based on available space
+        final buttonWidth = constraints.maxWidth;
+        final verticalPadding = (buttonWidth * 0.15).clamp(12.0, 24.0);
+        final horizontalPadding = (buttonWidth * 0.12).clamp(10.0, 20.0);
+        final iconSize = (buttonWidth * 0.24).clamp(28.0, 40.0);
+        final fontSize = (iconSize * 0.45).clamp(13.0, 18.0);
+        final spacing = (iconSize * 0.20).clamp(6.0, 10.0);
+
+        return ScaleTransition(
+          scale: _scaleAnimation,
+          child: Material(
+            color: Colors.transparent,
+            child: InkWell(
+              onTap: _handleTap,
               borderRadius: BorderRadius.circular(16),
-              boxShadow: [
-                BoxShadow(
-                  color: const Color(0xFF00BCD4).withAlpha(77), // 0.3 * 255
-                  blurRadius: 8,
-                  offset: const Offset(0, 4),
+              child: Container(
+                padding: EdgeInsets.symmetric(
+                  vertical: verticalPadding,
+                  horizontal: horizontalPadding,
                 ),
-              ],
-            ),
-            child: Column(
-              children: [
-                Icon(
-                  widget.icon,
-                  color: Colors.white,
-                  size: 32,
-                ),
-                const SizedBox(height: 8),
-                Text(
-                  widget.label,
-                  style: GoogleFonts.poppins(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.white,
+                decoration: BoxDecoration(
+                  gradient: const LinearGradient(
+                    colors: [Color(0xFF00BCD4), Color(0xFF00ACC1)],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
                   ),
+                  borderRadius: BorderRadius.circular(16),
+                  boxShadow: [
+                    BoxShadow(
+                      color: const Color(0xFF00BCD4).withAlpha(77),
+                      blurRadius: 8,
+                      offset: const Offset(0, 4),
+                    ),
+                  ],
                 ),
-              ],
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(
+                      widget.icon,
+                      color: Colors.white,
+                      size: iconSize,
+                    ),
+                    SizedBox(height: spacing),
+                    FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Text(
+                        widget.label,
+                        style: GoogleFonts.poppins(
+                          fontSize: fontSize,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }
