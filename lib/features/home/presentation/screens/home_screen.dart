@@ -30,23 +30,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     try {
       final controller = ref.read(waterControllerProvider);
       await controller.addWater(amount);
-
-      if (mounted) {
-        final unitNotifier = ref.read(waterUnitProvider.notifier);
-        final formattedAmount = unitNotifier.formatAmount(amount);
-
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(
-              'Added $formattedAmount of water!',
-              style: GoogleFonts.poppins(),
-            ),
-            backgroundColor: const Color(0xFF00BCD4),
-            behavior: SnackBarBehavior.floating,
-            duration: const Duration(seconds: 2),
-          ),
-        );
-      }
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(

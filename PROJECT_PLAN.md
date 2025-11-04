@@ -360,7 +360,6 @@ Bu plan, modern Flutter development best practices'lerini takip ederek, store'da
 
 
   TEST SONRASINDA YAPILMASI GEREKENLER
-- Home Page yerleşimleri orantılı değil. Kullanıcı progress'i ve quick add kısmını tek seferde görebilsin.
 - Reminder kısmı düzenlensin.
 - Achievements düzenlensin.
 - Kayıt ol kısmında isim yazıldığında profil kısmında name yerine o isim kullanılsın.
