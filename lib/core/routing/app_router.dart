@@ -6,6 +6,7 @@ import '../../features/onboarding/presentation/onboarding_screen.dart';
 import '../../features/auth/presentation/screens/login_screen.dart';
 import '../../features/auth/presentation/screens/register_screen.dart';
 import '../../features/auth/presentation/screens/forgot_password_screen.dart';
+import '../../features/auth/presentation/screens/email_verification_screen.dart';
 import '../../features/home/presentation/screens/home_screen.dart';
 import '../../features/statistics/presentation/screens/statistics_screen.dart';
 import '../../features/settings/presentation/screens/settings_screen.dart';
@@ -24,6 +25,8 @@ final routerProvider = Provider<GoRouter>((ref) {
     redirect: (context, state) {
       final isInitialized = authState.hasValue;
       final isAuthenticated = authState.value != null;
+      final user = authState.value;
+      final isEmailVerified = user?.emailVerified ?? false;
 
       // Root route - decide where to go based on auth state and onboarding
       if (state.matchedLocation == '/') {
@@ -32,6 +35,10 @@ final routerProvider = Provider<GoRouter>((ref) {
         }
 
         if (isAuthenticated) {
+          // Check email verification
+          if (!isEmailVerified) {
+            return '/verify-email';
+          }
           return '/home';
         }
 
@@ -46,6 +53,9 @@ final routerProvider = Provider<GoRouter>((ref) {
       // Special handling for splash screen
       if (state.matchedLocation == '/splash') {
         if (isInitialized && isAuthenticated) {
+          if (!isEmailVerified) {
+            return '/verify-email';
+          }
           return '/home';
         }
         // If onboarding completed but not authenticated, skip splash
@@ -60,22 +70,44 @@ final routerProvider = Provider<GoRouter>((ref) {
         return null;
       }
 
-      // Auth routes - redirect to home if already authenticated
+      // Email verification screen - only accessible if authenticated but not verified
+      if (state.matchedLocation == '/verify-email') {
+        if (!isAuthenticated) {
+          return '/login';
+        }
+        if (isEmailVerified) {
+          return '/home';
+        }
+        return null;
+      }
+
+      // Auth routes - redirect based on authentication and verification status
       final isOnAuthRoute = state.matchedLocation == '/login' ||
           state.matchedLocation == '/register' ||
           state.matchedLocation == '/forgot-password';
 
       if (isOnAuthRoute && isAuthenticated) {
+        if (!isEmailVerified) {
+          return '/verify-email';
+        }
         return '/home';
       }
 
-      // Protected routes - redirect to login if not authenticated
+      // Protected routes - redirect to login if not authenticated or verify-email if not verified
       final isOnProtectedRoute = state.matchedLocation == '/home' ||
           state.matchedLocation.startsWith('/profile') ||
-          state.matchedLocation.startsWith('/settings');
+          state.matchedLocation.startsWith('/settings') ||
+          state.matchedLocation.startsWith('/statistics') ||
+          state.matchedLocation.startsWith('/reminders') ||
+          state.matchedLocation.startsWith('/achievements');
 
-      if (isOnProtectedRoute && !isAuthenticated) {
-        return '/login';
+      if (isOnProtectedRoute) {
+        if (!isAuthenticated) {
+          return '/login';
+        }
+        if (!isEmailVerified) {
+          return '/verify-email';
+        }
       }
 
       // All good, no redirect needed
@@ -106,6 +138,11 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: '/forgot-password',
         name: 'forgotPassword',
         builder: (context, state) => const ForgotPasswordScreen(),
+      ),
+      GoRoute(
+        path: '/verify-email',
+        name: 'verifyEmail',
+        builder: (context, state) => const EmailVerificationScreen(),
       ),
       GoRoute(
         path: '/home',

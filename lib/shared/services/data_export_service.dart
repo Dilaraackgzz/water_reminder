@@ -100,8 +100,8 @@ class DataExportService {
 
     await Share.shareXFiles(
       [XFile(file.path)],
-      subject: 'AquaReminder Data Backup',
-      text: 'My AquaReminder water tracking data backup',
+      subject: 'Aqualert Data Backup',
+      text: 'My Aqualert water tracking data backup',
     );
   }
 

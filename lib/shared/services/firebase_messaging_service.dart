@@ -93,7 +93,7 @@ class FirebaseMessagingService {
     if (message.notification != null) {
       _notificationService.showNotification(
         id: message.hashCode,
-        title: message.notification!.title ?? 'AquaReminder',
+        title: message.notification!.title ?? 'Aqualert',
         body: message.notification!.body ?? '',
         payload: message.data['payload'],
       );

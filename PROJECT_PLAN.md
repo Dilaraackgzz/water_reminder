@@ -362,8 +362,9 @@ Bu plan, modern Flutter development best practices'lerini takip ederek, store'da
   TEST SONRASINDA YAPILMASI GEREKENLER
 - Reminder kısmı düzenlensin.
 - Achievements düzenlensin.
-- Kayıt ol kısmında isim yazıldığında profil kısmında name yerine o isim kullanılsın.
 - Light/Dark mode ayarlamaları yapılacak.
 - Language desteği ver.
 - Export/Import düzeltilecek.
 - Help and Support yazılacak.
+- Verify kısmında her 3 saniyede 1 kez kontrol ederken buton görünüp kayboluyor. Bu düzeltilecek
+- Verify sayfasında yazılar ile ikon rengi farklı. Yapılması gerekenler kutusu kaldırılacak.

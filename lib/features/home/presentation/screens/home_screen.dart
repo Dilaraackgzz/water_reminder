@@ -125,7 +125,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: ModernAppBar(
-        title: 'AquaReminder',
+        title: 'Aqualert',
         subtitle: DateFormat('EEEE, MMM d').format(DateTime.now()),
       ),
       drawer: const AppDrawer(),

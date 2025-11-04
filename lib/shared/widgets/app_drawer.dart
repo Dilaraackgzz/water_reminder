@@ -228,7 +228,7 @@ class AppDrawer extends ConsumerWidget {
             const Icon(Icons.water_drop, color: Color(0xFF00BCD4), size: 28),
             const SizedBox(width: 12),
             Text(
-              'AquaReminder',
+              'Aqualert',
               style: GoogleFonts.poppins(fontWeight: FontWeight.bold),
             ),
           ],
@@ -246,12 +246,12 @@ class AppDrawer extends ConsumerWidget {
             ),
             const SizedBox(height: 16),
             Text(
-              'Stay hydrated and healthy with AquaReminder. Track your daily water intake and achieve your hydration goals!',
+              'Stay hydrated and healthy with Aqualert. Track your daily water intake and achieve your hydration goals!',
               style: GoogleFonts.poppins(fontSize: 14),
             ),
             const SizedBox(height: 16),
             Text(
-              '© 2024 AquaReminder. All rights reserved.',
+              '© 2024 Aqualert. All rights reserved.',
               style: GoogleFonts.poppins(
                 fontSize: 12,
                 color: Colors.grey[500],

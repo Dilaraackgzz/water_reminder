@@ -67,13 +67,13 @@ void main() async {
         sharedPreferencesProvider.overrideWithValue(sharedPreferences),
         localStorageServiceProvider.overrideWithValue(localStorageService),
       ],
-      child: const AquaReminderApp(),
+      child: const AqualertApp(),
     ),
   );
 }
 
-class AquaReminderApp extends ConsumerWidget {
-  const AquaReminderApp({super.key});
+class AqualertApp extends ConsumerWidget {
+  const AqualertApp({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -81,7 +81,7 @@ class AquaReminderApp extends ConsumerWidget {
     final themeMode = ref.watch(themeModeProvider);
 
     return MaterialApp.router(
-      title: 'AquaReminder',
+      title: 'Aqualert',
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
       themeMode: themeMode,

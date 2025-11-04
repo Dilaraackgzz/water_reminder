@@ -129,7 +129,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                         .fadeIn(),
                     const SizedBox(height: 24),
                     Text(
-                      'AquaReminder',
+                      'Aqualert',
                       style: GoogleFonts.poppins(
                         fontSize: 32,
                         fontWeight: FontWeight.bold,

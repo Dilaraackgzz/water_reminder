@@ -58,14 +58,8 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
           );
 
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Kayıt başarılı! E-postanızı doğrulayın.'),
-            backgroundColor: Colors.green,
-            behavior: SnackBarBehavior.floating,
-          ),
-        );
-        context.go('/home');
+        // Router will automatically redirect to /verify-email
+        context.go('/verify-email');
       }
     } catch (e) {
       if (mounted) {

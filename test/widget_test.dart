@@ -20,7 +20,7 @@ void main() {
           sharedPreferencesProvider.overrideWithValue(sharedPrefs),
           localStorageServiceProvider.overrideWithValue(localStorageService),
         ],
-        child: const AquaReminderApp(),
+        child: const AqualertApp(),
       ),
     );
 

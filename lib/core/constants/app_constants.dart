@@ -1,5 +1,5 @@
 class AppConstants {
-  static const String appName = 'AquaReminder';
+  static const String appName = 'Aqualert';
   static const String appVersion = '1.0.0';
 
   // Water consumption constants
