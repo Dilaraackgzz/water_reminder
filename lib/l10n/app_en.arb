@@ -1,0 +1,286 @@
+{
+  "@@locale": "en",
+
+  "appName": "Aqualert",
+  "@appName": {
+    "description": "Application name"
+  },
+
+  "appTagline": "Stay hydrated for a healthy life",
+  "@appTagline": {
+    "description": "Application tagline"
+  },
+
+  "common_cancel": "Cancel",
+  "common_save": "Save",
+  "common_delete": "Delete",
+  "common_edit": "Edit",
+  "common_add": "Add",
+  "common_ok": "OK",
+  "common_yes": "Yes",
+  "common_no": "No",
+  "common_or": "or",
+  "common_done": "Done",
+  "common_skip": "Skip",
+  "common_next": "Next",
+  "common_back": "Back",
+  "common_continue": "Continue",
+  "common_loading": "Loading...",
+  "common_error": "Error",
+  "common_success": "Success",
+
+  "auth_login_title": "Sign In",
+  "auth_register_title": "Sign Up",
+  "auth_email_label": "Email",
+  "auth_email_hint": "example@email.com",
+  "auth_password_label": "Password",
+  "auth_password_hint": "••••••••",
+  "auth_name_label": "Full Name",
+  "auth_name_hint": "John Doe",
+  "auth_forgot_password": "Forgot Password?",
+  "auth_dont_have_account": "Don't have an account? ",
+  "auth_already_have_account": "Already have an account? ",
+  "auth_sign_in_button": "Sign In",
+  "auth_sign_up_button": "Sign Up",
+  "auth_sign_in_google": "Sign in with Google",
+  "auth_sign_up_google": "Sign up with Google",
+  "auth_logout": "Logout",
+
+  "auth_validation_email_required": "Email is required",
+  "auth_validation_email_invalid": "Please enter a valid email",
+  "auth_validation_password_required": "Password is required",
+  "auth_validation_password_min_length": "Password must be at least 6 characters",
+  "auth_validation_name_required": "Name is required",
+  "auth_validation_name_min_length": "Name must be at least 2 characters",
+
+  "auth_email_verification_title": "Verify Your Email",
+  "auth_email_verification_sent": "We've sent a verification link to:",
+  "auth_email_verification_instruction": "Please check your email and click the verification link to continue.",
+  "auth_email_verification_not_received": "Didn't receive the email?",
+  "auth_email_verification_resend": "Resend Verification Email",
+  "auth_email_verification_check": "I've verified my email",
+  "auth_email_verification_success": "Email verified successfully!",
+  "auth_email_verification_failed": "Email not verified yet. Please check your inbox.",
+
+  "auth_forgot_password_title": "Reset Password",
+  "auth_forgot_password_instruction": "Enter your email address and we'll send you a link to reset your password.",
+  "auth_forgot_password_button": "Send Reset Link",
+  "auth_forgot_password_success": "Password reset email sent! Check your inbox.",
+  "auth_back_to_login": "Back to Sign In",
+
+  "home_title": "Home",
+  "home_daily_goal": "Daily Goal",
+  "home_today": "Today",
+  "home_custom_amount": "Custom Amount",
+  "home_amount_label": "Amount",
+  "home_add_water_success": "Water added successfully!",
+  "home_add_water_failed": "Failed to add water",
+  "home_delete_water_confirm": "Delete this water record?",
+  "home_delete_water_success": "Water record deleted",
+  "home_no_records_today": "No water records today",
+  "home_start_drinking": "Start drinking water!",
+
+  "progress_current": "Current",
+  "progress_goal": "Goal",
+  "progress_remaining": "Remaining",
+  "progress_completed": "Goal completed!",
+  "progress_percentage": "{percent}% of daily goal",
+  "@progress_percentage": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+
+  "motivational_keep_going": "Keep going! You're doing great!",
+  "motivational_almost_there": "Almost there! Just a bit more!",
+  "motivational_goal_reached": "Congratulations! You've reached your goal!",
+  "motivational_good_start": "Great start! Keep it up!",
+  "motivational_stay_hydrated": "Stay hydrated throughout the day!",
+
+  "profile_title": "Profile",
+  "profile_edit": "Edit Profile",
+  "profile_personal_info": "Personal Information",
+  "profile_body_metrics": "Body Metrics",
+  "profile_activity_level": "Activity Level",
+  "profile_name": "Name",
+  "profile_email": "Email",
+  "profile_age": "Age",
+  "profile_gender": "Gender",
+  "profile_weight": "Weight",
+  "profile_height": "Height",
+  "profile_bmi": "BMI",
+  "profile_bmi_category": "BMI Category",
+  "profile_daily_goal": "Daily Water Goal",
+  "profile_use_calculated_goal": "Use Calculated Goal",
+  "profile_custom_goal": "Custom Goal",
+  "profile_save_success": "Profile updated successfully",
+  "profile_save_failed": "Failed to update profile",
+
+  "gender_male": "Male",
+  "gender_female": "Female",
+  "gender_other": "Other",
+
+  "activity_sedentary": "Sedentary",
+  "activity_light": "Lightly Active",
+  "activity_moderate": "Moderately Active",
+  "activity_very_active": "Very Active",
+  "activity_extra_active": "Extra Active",
+
+  "bmi_underweight": "Underweight",
+  "bmi_normal": "Normal Weight",
+  "bmi_overweight": "Overweight",
+  "bmi_obese": "Obese",
+
+  "settings_title": "Settings",
+  "settings_notifications": "Notifications",
+  "settings_reminders": "Reminders",
+  "settings_theme": "Theme",
+  "settings_units": "Units",
+  "settings_language": "Language",
+  "settings_profile": "Profile Settings",
+  "settings_daily_goal": "Daily Goal Settings",
+  "settings_data": "Data Management",
+  "settings_export_data": "Export Data",
+  "settings_import_data": "Import Data",
+  "settings_help": "Help & Support",
+  "settings_about": "About",
+
+  "settings_enable_notifications": "Enable Notifications",
+  "settings_reminder_interval": "Reminder Interval",
+  "settings_reminder_start_time": "Start Time",
+  "settings_reminder_end_time": "End Time",
+  "settings_test_notification": "Test Notification",
+
+  "settings_theme_light": "Light",
+  "settings_theme_dark": "Dark",
+  "settings_theme_system": "System Default",
+
+  "settings_unit_ml": "Milliliters (ml)",
+  "settings_unit_floz": "Fluid Ounces (fl oz)",
+
+  "settings_language_coming_soon": "Coming Soon",
+  "settings_export_success": "Data exported successfully",
+  "settings_export_failed": "Failed to export data",
+  "settings_import_success": "Data imported successfully",
+  "settings_import_failed": "Failed to import data",
+  "settings_import_stats": "Imported {imported} records, skipped {skipped} duplicates",
+  "@settings_import_stats": {
+    "placeholders": {
+      "imported": {
+        "type": "int"
+      },
+      "skipped": {
+        "type": "int"
+      }
+    }
+  },
+
+  "statistics_title": "Statistics",
+  "statistics_weekly": "Weekly",
+  "statistics_monthly": "Monthly",
+  "statistics_yearly": "Yearly",
+  "statistics_average": "Average",
+  "statistics_total": "Total",
+  "statistics_best_day": "Best Day",
+  "statistics_goal_achievement": "Goal Achievement",
+  "statistics_no_data": "No data available for this period",
+  "statistics_chart_label": "Water Intake",
+
+  "achievements_title": "Achievements",
+  "achievements_unlocked": "Unlocked",
+  "achievements_locked": "Locked",
+  "achievements_progress": "Progress",
+  "achievements_reward_points": "Reward Points",
+  "achievements_total_points": "Total Points: {points}",
+  "@achievements_total_points": {
+    "placeholders": {
+      "points": {
+        "type": "int"
+      }
+    }
+  },
+
+  "achievement_first_drop": "First Drop",
+  "achievement_first_drop_desc": "Log your first water intake",
+  "achievement_daily_goal_1": "Goal Achiever",
+  "achievement_daily_goal_1_desc": "Reach your daily goal once",
+  "achievement_streak_3": "3-Day Streak",
+  "achievement_streak_3_desc": "Maintain a 3-day streak",
+  "achievement_streak_7": "Week Warrior",
+  "achievement_streak_7_desc": "Maintain a 7-day streak",
+  "achievement_streak_30": "Month Master",
+  "achievement_streak_30_desc": "Maintain a 30-day streak",
+  "achievement_total_10l": "10 Liters",
+  "achievement_total_10l_desc": "Drink 10 liters total",
+  "achievement_total_100l": "100 Liters",
+  "achievement_total_100l_desc": "Drink 100 liters total",
+  "achievement_consistency": "Consistency Week",
+  "achievement_consistency_desc": "Reach your goal 7 days in a row",
+
+  "reminders_title": "Reminders",
+  "reminders_active": "Active Reminders",
+  "reminders_pending": "Pending Notifications",
+  "reminders_interval_30": "Every 30 minutes",
+  "reminders_interval_45": "Every 45 minutes",
+  "reminders_interval_60": "Every hour",
+  "reminders_interval_90": "Every 1.5 hours",
+  "reminders_interval_120": "Every 2 hours",
+  "reminders_interval_180": "Every 3 hours",
+
+  "notification_reminder_title": "Time to Drink Water!",
+  "notification_reminder_body": "Stay hydrated! Drink some water now.",
+
+  "streak_current": "Current Streak",
+  "streak_days": "{days} days",
+  "@streak_days": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "streak_keep_going": "Keep the streak going!",
+
+  "onboarding_title_1": "Track Your Water",
+  "onboarding_desc_1": "Easily log your daily water intake with just a tap",
+  "onboarding_title_2": "Smart Reminders",
+  "onboarding_desc_2": "Get timely reminders to stay hydrated throughout the day",
+  "onboarding_title_3": "Monitor Progress",
+  "onboarding_desc_3": "View your hydration statistics and achieve your goals",
+  "onboarding_title_4": "Stay Healthy",
+  "onboarding_desc_4": "Build healthy habits and improve your overall wellness",
+  "onboarding_get_started": "Get Started",
+
+  "drawer_home": "Home",
+  "drawer_statistics": "Statistics",
+  "drawer_achievements": "Achievements",
+  "drawer_profile": "Profile",
+  "drawer_reminders": "Reminders",
+  "drawer_settings": "Settings",
+  "drawer_help": "Help & Support",
+
+  "help_title": "Help & Support",
+  "help_faq": "Frequently Asked Questions",
+  "help_contact": "Contact Us",
+  "help_version": "Version",
+
+  "error_generic": "Something went wrong. Please try again.",
+  "error_network": "Network error. Please check your connection.",
+  "error_auth_failed": "Authentication failed. Please try again.",
+  "error_permission_denied": "Permission denied.",
+
+  "unit_ml": "ml",
+  "unit_floz": "fl oz",
+  "unit_kg": "kg",
+  "unit_lb": "lb",
+  "unit_cm": "cm",
+  "unit_ft": "ft",
+  "unit_liter": "L",
+
+  "time_morning": "Morning",
+  "time_afternoon": "Afternoon",
+  "time_evening": "Evening",
+  "time_night": "Night"
+}

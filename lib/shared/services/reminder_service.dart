@@ -18,6 +18,7 @@ class ReminderService {
   static const String _reminderIntervalKey = 'reminder_interval_minutes';
   static const String _reminderStartTimeKey = 'reminder_start_time';
   static const String _reminderEndTimeKey = 'reminder_end_time';
+  static const String _lastScheduleDateKey = 'last_schedule_date';
 
   // Default values
   static const int _defaultInterval = 60; // 60 minutes
@@ -105,6 +106,25 @@ class ReminderService {
     }
   }
 
+  /// Check if reminders need to be rescheduled for today
+  /// Should be called on app startup
+  Future<void> checkAndScheduleDaily() async {
+    if (!isReminderEnabled()) return;
+
+    final lastScheduleDate = _storageService.getSetting<String>(_lastScheduleDateKey);
+    final today = DateTime.now();
+    final todayString = '${today.year}-${today.month}-${today.day}';
+
+    // If never scheduled or last scheduled on a different day, reschedule
+    if (lastScheduleDate == null || lastScheduleDate != todayString) {
+      debugPrint('📅 Scheduling reminders for today: $todayString');
+      await scheduleReminders();
+      await _storageService.saveSetting(_lastScheduleDateKey, todayString);
+    } else {
+      debugPrint('✅ Reminders already scheduled for today');
+    }
+  }
+
   /// Schedule all reminders based on settings
   Future<void> scheduleReminders() async {
     // Cancel existing reminders first
@@ -117,36 +137,62 @@ class ReminderService {
     final endTime = getReminderEndTime();
 
     final now = DateTime.now();
-    final startDateTime = DateTime(
-      now.year,
-      now.month,
-      now.day,
+    final today = DateTime(now.year, now.month, now.day);
+    final tomorrow = today.add(const Duration(days: 1));
+
+    // Schedule for today and tomorrow to ensure continuous coverage
+    final reminderTimes = <DateTime>[];
+    int notificationId = _baseNotificationId;
+
+    // Schedule for today
+    var startDateTime = DateTime(
+      today.year,
+      today.month,
+      today.day,
       startTime.hour,
       startTime.minute,
     );
-    final endDateTime = DateTime(
-      now.year,
-      now.month,
-      now.day,
+    var endDateTime = DateTime(
+      today.year,
+      today.month,
+      today.day,
       endTime.hour,
       endTime.minute,
     );
 
-    // Calculate reminder times
-    final reminderTimes = <DateTime>[];
     var currentTime = startDateTime;
-    int notificationId = _baseNotificationId;
-
     while (currentTime.isBefore(endDateTime)) {
-      // Only schedule if time is in the future
       if (currentTime.isAfter(now)) {
         reminderTimes.add(currentTime);
       }
       currentTime = currentTime.add(Duration(minutes: interval));
     }
 
+    // Schedule for tomorrow
+    startDateTime = DateTime(
+      tomorrow.year,
+      tomorrow.month,
+      tomorrow.day,
+      startTime.hour,
+      startTime.minute,
+    );
+    endDateTime = DateTime(
+      tomorrow.year,
+      tomorrow.month,
+      tomorrow.day,
+      endTime.hour,
+      endTime.minute,
+    );
+
+    currentTime = startDateTime;
+    while (currentTime.isBefore(endDateTime)) {
+      reminderTimes.add(currentTime);
+      currentTime = currentTime.add(Duration(minutes: interval));
+    }
+
     // Schedule notifications
     for (final time in reminderTimes) {
+      if (notificationId >= _baseNotificationId + 100) break; // Safety limit
       await _notificationService.scheduleNotification(
         id: notificationId++,
         title: _getRandomReminderTitle(),
@@ -156,7 +202,11 @@ class ReminderService {
       );
     }
 
-    debugPrint('📅 Scheduled ${reminderTimes.length} reminders');
+    // Update last schedule date
+    final todayString = '${today.year}-${today.month}-${today.day}';
+    await _storageService.saveSetting(_lastScheduleDateKey, todayString);
+
+    debugPrint('📅 Scheduled ${reminderTimes.length} reminders (today + tomorrow)');
   }
 
   /// Cancel all reminders

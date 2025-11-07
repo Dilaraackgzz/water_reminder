@@ -54,13 +54,18 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     final controller = TextEditingController();
     final waterUnit = ref.read(waterUnitProvider);
     final unitNotifier = ref.read(waterUnitProvider.notifier);
+    final isDark = Theme.of(context).brightness == Brightness.dark;
 
     showDialog(
       context: context,
-      builder: (context) => AlertDialog(
+      builder: (dialogContext) => AlertDialog(
+        backgroundColor: isDark ? Colors.grey[900] : Colors.white,
         title: Text(
           'Custom Amount',
-          style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
+          style: GoogleFonts.poppins(
+            fontWeight: FontWeight.w600,
+            color: isDark ? Colors.white : Colors.black87,
+          ),
         ),
         content: TextField(
           controller: controller,
@@ -68,7 +73,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           autofocus: true,
           decoration: InputDecoration(
             labelText: 'Amount (${waterUnit.shortName})',
-            labelStyle: GoogleFonts.poppins(),
+            labelStyle: GoogleFonts.poppins(
+              color: isDark ? Colors.grey[400] : Colors.black54,
+            ),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
             ),
@@ -77,11 +84,13 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               borderSide: const BorderSide(color: Color(0xFF00BCD4), width: 2),
             ),
           ),
-          style: GoogleFonts.poppins(),
+          style: GoogleFonts.poppins(
+            color: isDark ? Colors.white : Colors.black87,
+          ),
         ),
         actions: [
           TextButton(
-            onPressed: () => Navigator.pop(context),
+            onPressed: () => Navigator.pop(dialogContext),
             child: Text(
               'Cancel',
               style: GoogleFonts.poppins(color: Colors.grey),
@@ -93,7 +102,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               if (inputAmount != null && inputAmount > 0) {
                 // Convert input to ml based on selected unit
                 final amountInMl = unitNotifier.convertToMl(inputAmount);
-                Navigator.pop(context);
+                Navigator.pop(dialogContext);
                 _handleAddWater(amountInMl);
               }
             },
@@ -121,9 +130,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     final progressPercentage = ref.watch(progressPercentageProvider);
     final todaysIntakesAsync = ref.watch(todaysWaterIntakesProvider);
     final unitNotifier = ref.watch(waterUnitProvider.notifier);
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final colorScheme = Theme.of(context).colorScheme;
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: isDark ? colorScheme.surface : Colors.grey[50],
       appBar: ModernAppBar(
         title: 'Aqualert',
         subtitle: DateFormat('EEEE, MMM d').format(DateTime.now()),
@@ -196,7 +207,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   style: GoogleFonts.poppins(
                     fontSize: 18,
                     fontWeight: FontWeight.w600,
-                    color: Colors.black87,
+                    color: isDark ? Colors.white : Colors.black87,
                   ),
                 ),
 
@@ -208,7 +219,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                       return Container(
                         padding: const EdgeInsets.all(40),
                         decoration: BoxDecoration(
-                          color: Colors.grey[100],
+                          color: isDark ? Colors.grey[850] : Colors.grey[100],
                           borderRadius: BorderRadius.circular(16),
                         ),
                         child: Column(
@@ -216,14 +227,14 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                             Icon(
                               Icons.water_drop_outlined,
                               size: 48,
-                              color: Colors.grey[400],
+                              color: isDark ? Colors.grey[600] : Colors.grey[400],
                             ),
                             const SizedBox(height: 16),
                             Text(
                               'No water intake yet',
                               style: GoogleFonts.poppins(
                                 fontSize: 16,
-                                color: Colors.grey[600],
+                                color: isDark ? Colors.grey[400] : Colors.grey[600],
                               ),
                             ),
                             const SizedBox(height: 8),
@@ -231,7 +242,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                               'Start adding water to track your progress!',
                               style: GoogleFonts.poppins(
                                 fontSize: 12,
-                                color: Colors.grey[500],
+                                color: isDark ? Colors.grey[500] : Colors.grey[500],
                               ),
                               textAlign: TextAlign.center,
                             ),
@@ -250,10 +261,12 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                           margin: const EdgeInsets.only(bottom: 12),
                           padding: const EdgeInsets.all(16),
                           decoration: BoxDecoration(
-                            color: const Color(0xFFE0F7FA).withAlpha(128), // 0.5 * 255
+                            color: isDark
+                                ? const Color(0xFF00BCD4).withAlpha(26)
+                                : const Color(0xFFE0F7FA).withAlpha(128),
                             borderRadius: BorderRadius.circular(12),
                             border: Border.all(
-                              color: const Color(0xFF00BCD4).withAlpha(51), // 0.2 * 255
+                              color: const Color(0xFF00BCD4).withAlpha(51),
                             ),
                           ),
                           child: Row(
@@ -261,7 +274,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                               Container(
                                 padding: const EdgeInsets.all(12),
                                 decoration: BoxDecoration(
-                                  color: const Color(0xFF00BCD4).withAlpha(51), // 0.2 * 255
+                                  color: const Color(0xFF00BCD4).withAlpha(51),
                                   borderRadius: BorderRadius.circular(12),
                                 ),
                                 child: const Icon(
@@ -280,14 +293,14 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                       style: GoogleFonts.poppins(
                                         fontSize: 18,
                                         fontWeight: FontWeight.w600,
-                                        color: Colors.black87,
+                                        color: isDark ? Colors.white : Colors.black87,
                                       ),
                                     ),
                                     Text(
                                       DateFormat('h:mm a').format(intake.timestamp),
                                       style: GoogleFonts.poppins(
                                         fontSize: 12,
-                                        color: Colors.black54,
+                                        color: isDark ? Colors.white60 : Colors.black54,
                                       ),
                                     ),
                                   ],

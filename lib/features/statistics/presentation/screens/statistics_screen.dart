@@ -17,9 +17,11 @@ class StatisticsScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final selectedPeriod = ref.watch(selectedPeriodProvider);
     final statisticsAsync = ref.watch(currentStatisticsProvider);
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final colorScheme = Theme.of(context).colorScheme;
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: isDark ? colorScheme.surface : Colors.grey[50],
       appBar: ModernAppBar(
         title: 'Statistics',
         subtitle: _getSubtitle(selectedPeriod),
@@ -37,7 +39,7 @@ class StatisticsScreen extends ConsumerWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 // Period Selector
-                _PeriodSelector(),
+                _PeriodSelector(isDark: isDark),
 
                 const SizedBox(height: 24),
 
@@ -61,7 +63,7 @@ class StatisticsScreen extends ConsumerWidget {
                       const SizedBox(height: 24),
 
                       // Achievement Info
-                      _AchievementCard(statistics: statistics),
+                      _AchievementCard(statistics: statistics, isDark: isDark),
                     ],
                   ),
                   loading: () => const Center(
@@ -123,6 +125,10 @@ class StatisticsScreen extends ConsumerWidget {
 }
 
 class _PeriodSelector extends ConsumerWidget {
+  final bool isDark;
+
+  const _PeriodSelector({required this.isDark});
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final selectedPeriod = ref.watch(selectedPeriodProvider);
@@ -130,7 +136,7 @@ class _PeriodSelector extends ConsumerWidget {
     return Container(
       padding: const EdgeInsets.all(4),
       decoration: BoxDecoration(
-        color: Colors.grey[100],
+        color: isDark ? Colors.grey[850] : Colors.grey[100],
         borderRadius: BorderRadius.circular(12),
       ),
       child: Row(
@@ -139,6 +145,7 @@ class _PeriodSelector extends ConsumerWidget {
             child: _PeriodButton(
               label: 'Week',
               isSelected: selectedPeriod == StatisticsPeriod.week,
+              isDark: isDark,
               onTap: () {
                 ref.read(selectedPeriodProvider.notifier).state =
                     StatisticsPeriod.week;
@@ -149,6 +156,7 @@ class _PeriodSelector extends ConsumerWidget {
             child: _PeriodButton(
               label: 'Month',
               isSelected: selectedPeriod == StatisticsPeriod.month,
+              isDark: isDark,
               onTap: () {
                 ref.read(selectedPeriodProvider.notifier).state =
                     StatisticsPeriod.month;
@@ -159,6 +167,7 @@ class _PeriodSelector extends ConsumerWidget {
             child: _PeriodButton(
               label: 'Year',
               isSelected: selectedPeriod == StatisticsPeriod.year,
+              isDark: isDark,
               onTap: () {
                 ref.read(selectedPeriodProvider.notifier).state =
                     StatisticsPeriod.year;
@@ -174,11 +183,13 @@ class _PeriodSelector extends ConsumerWidget {
 class _PeriodButton extends StatelessWidget {
   final String label;
   final bool isSelected;
+  final bool isDark;
   final VoidCallback onTap;
 
   const _PeriodButton({
     required this.label,
     required this.isSelected,
+    required this.isDark,
     required this.onTap,
   });
 
@@ -199,7 +210,9 @@ class _PeriodButton extends StatelessWidget {
           style: GoogleFonts.poppins(
             fontSize: 14,
             fontWeight: FontWeight.w600,
-            color: isSelected ? Colors.white : Colors.black54,
+            color: isSelected
+                ? Colors.white
+                : (isDark ? Colors.white60 : Colors.black54),
           ),
         ),
       ),
@@ -209,30 +222,42 @@ class _PeriodButton extends StatelessWidget {
 
 class _AchievementCard extends StatelessWidget {
   final WaterStatistics statistics;
+  final bool isDark;
 
-  const _AchievementCard({required this.statistics});
+  const _AchievementCard({
+    required this.statistics,
+    required this.isDark,
+  });
 
   @override
   Widget build(BuildContext context) {
     final bestDay = statistics.bestDay;
     final achievementPercent = statistics.achievementPercentage;
 
+    final gradientColors = isDark
+        ? (achievementPercent >= 80
+            ? [Colors.green[900]!.withAlpha(128), Colors.green[800]!.withAlpha(128)]
+            : achievementPercent >= 50
+                ? [const Color(0xFF004D5F), const Color(0xFF006978)]
+                : [Colors.orange[900]!.withAlpha(128), Colors.orange[800]!.withAlpha(128)])
+        : (achievementPercent >= 80
+            ? [Colors.green[50]!, Colors.green[100]!]
+            : achievementPercent >= 50
+                ? [const Color(0xFFE0F7FA), const Color(0xFFB2EBF2)]
+                : [Colors.orange[50]!, Colors.orange[100]!]);
+
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: achievementPercent >= 80
-              ? [Colors.green[50]!, Colors.green[100]!]
-              : achievementPercent >= 50
-                  ? [const Color(0xFFE0F7FA), const Color(0xFFB2EBF2)]
-                  : [Colors.orange[50]!, Colors.orange[100]!],
+          colors: gradientColors,
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withAlpha(13),
+            color: Colors.black.withAlpha(isDark ? 26 : 13),
             blurRadius: 8,
             offset: const Offset(0, 2),
           ),
@@ -265,7 +290,7 @@ class _AchievementCard extends StatelessWidget {
                       style: GoogleFonts.poppins(
                         fontSize: 14,
                         fontWeight: FontWeight.w500,
-                        color: Colors.black54,
+                        color: isDark ? Colors.white60 : Colors.black54,
                       ),
                     ),
                     Text(
@@ -273,7 +298,7 @@ class _AchievementCard extends StatelessWidget {
                       style: GoogleFonts.poppins(
                         fontSize: 28,
                         fontWeight: FontWeight.bold,
-                        color: Colors.black87,
+                        color: isDark ? Colors.white : Colors.black87,
                       ),
                     ),
                   ],
@@ -293,7 +318,7 @@ class _AchievementCard extends StatelessWidget {
                   'Best Day: ',
                   style: GoogleFonts.poppins(
                     fontSize: 13,
-                    color: Colors.black54,
+                    color: isDark ? Colors.white60 : Colors.black54,
                   ),
                 ),
                 Text(
@@ -301,7 +326,7 @@ class _AchievementCard extends StatelessWidget {
                   style: GoogleFonts.poppins(
                     fontSize: 13,
                     fontWeight: FontWeight.w600,
-                    color: Colors.black87,
+                    color: isDark ? Colors.white : Colors.black87,
                   ),
                 ),
                 const Spacer(),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -9,10 +10,13 @@ import 'firebase_options.dart';
 import 'core/themes/app_theme.dart';
 import 'core/providers/app_providers.dart';
 import 'core/providers/theme_provider.dart';
+import 'core/providers/language_provider.dart';
 import 'core/routing/app_router.dart';
+import 'l10n/app_localizations.dart';
 import 'shared/services/local_storage_service.dart';
 import 'shared/services/notification_service.dart';
 import 'shared/services/firebase_messaging_service.dart';
+import 'shared/services/reminder_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -59,6 +63,17 @@ void main() async {
     debugPrint('FirebaseMessagingService initialization failed: $e');
   }
 
+  // Initialize ReminderService and schedule daily reminders
+  final reminderService = ReminderService(
+    notificationService: notificationService,
+    storageService: localStorageService,
+  );
+  try {
+    await reminderService.checkAndScheduleDaily();
+  } catch (e) {
+    debugPrint('ReminderService daily schedule check failed: $e');
+  }
+
   final sharedPreferences = await SharedPreferences.getInstance();
 
   runApp(
@@ -79,14 +94,26 @@ class AqualertApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final router = ref.watch(routerProvider);
     final themeMode = ref.watch(themeModeProvider);
+    final locale = ref.watch(localeProvider);
 
     return MaterialApp.router(
       title: 'Aqualert',
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
       themeMode: themeMode,
+      locale: locale,
       routerConfig: router,
       debugShowCheckedModeBanner: false,
+      localizationsDelegates: const [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        Locale('en', ''), // English
+        Locale('tr', ''), // Turkish
+      ],
     );
   }
 }

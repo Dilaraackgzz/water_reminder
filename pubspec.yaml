@@ -10,6 +10,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
 
   # State Management
   flutter_riverpod: ^2.5.1
@@ -45,7 +47,7 @@ dependencies:
   hive_flutter: ^1.1.0
 
   # Utilities
-  intl: ^0.19.0
+  intl: ^0.20.2
   permission_handler: ^11.3.1
   connectivity_plus: ^6.0.4
   package_info_plus: ^8.0.2
@@ -72,6 +74,7 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  generate: true
 
   assets:
     - assets/images/

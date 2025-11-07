@@ -11,12 +11,15 @@ class AppDrawer extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final user = FirebaseAuth.instance.currentUser;
+    final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Drawer(
       child: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [Color(0xFFE0F7FA), Color(0xFFFFFFFF)],
+            colors: isDark
+                ? [const Color(0xFF1E1E1E), const Color(0xFF121212)]
+                : [const Color(0xFFE0F7FA), const Color(0xFFFFFFFF)],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ),
@@ -46,7 +49,7 @@ class AppDrawer extends ConsumerWidget {
                       shape: BoxShape.circle,
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.black.withAlpha(26), // 0.1 * 255
+                          color: Colors.black.withAlpha(26),
                           blurRadius: 8,
                           offset: const Offset(0, 2),
                         ),
@@ -82,7 +85,7 @@ class AppDrawer extends ConsumerWidget {
                     style: GoogleFonts.poppins(
                       fontSize: 14,
                       fontWeight: FontWeight.w400,
-                      color: Colors.white.withAlpha(230), // 0.9 * 255
+                      color: Colors.white.withAlpha(230),
                     ),
                     overflow: TextOverflow.ellipsis,
                   ),
@@ -98,6 +101,7 @@ class AppDrawer extends ConsumerWidget {
                   _DrawerMenuItem(
                     icon: Icons.home,
                     title: 'Home',
+                    isDark: isDark,
                     onTap: () {
                       Navigator.pop(context);
                       context.go('/home');
@@ -106,6 +110,7 @@ class AppDrawer extends ConsumerWidget {
                   _DrawerMenuItem(
                     icon: Icons.bar_chart,
                     title: 'Statistics',
+                    isDark: isDark,
                     onTap: () {
                       Navigator.pop(context);
                       context.push('/statistics');
@@ -114,6 +119,7 @@ class AppDrawer extends ConsumerWidget {
                   _DrawerMenuItem(
                     icon: Icons.notifications,
                     title: 'Reminders',
+                    isDark: isDark,
                     onTap: () {
                       Navigator.pop(context);
                       context.push('/reminders');
@@ -122,6 +128,7 @@ class AppDrawer extends ConsumerWidget {
                   _DrawerMenuItem(
                     icon: Icons.emoji_events,
                     title: 'Achievements',
+                    isDark: isDark,
                     onTap: () {
                       Navigator.pop(context);
                       context.push('/achievements');
@@ -130,6 +137,7 @@ class AppDrawer extends ConsumerWidget {
                   _DrawerMenuItem(
                     icon: Icons.person,
                     title: 'Profile',
+                    isDark: isDark,
                     onTap: () {
                       Navigator.pop(context);
                       context.push('/profile');
@@ -138,15 +146,21 @@ class AppDrawer extends ConsumerWidget {
                   _DrawerMenuItem(
                     icon: Icons.settings,
                     title: 'Settings',
+                    isDark: isDark,
                     onTap: () {
                       Navigator.pop(context);
                       context.push('/settings');
                     },
                   ),
-                  const Divider(height: 32, thickness: 1),
+                  Divider(
+                    height: 32,
+                    thickness: 1,
+                    color: isDark ? Colors.grey[700] : Colors.grey[300],
+                  ),
                   _DrawerMenuItem(
                     icon: Icons.help_outline,
                     title: 'Help & Support',
+                    isDark: isDark,
                     onTap: () {
                       Navigator.pop(context);
                       // TODO: Navigate to help
@@ -164,6 +178,7 @@ class AppDrawer extends ConsumerWidget {
                   _DrawerMenuItem(
                     icon: Icons.info_outline,
                     title: 'About',
+                    isDark: isDark,
                     onTap: () {
                       Navigator.pop(context);
                       _showAboutDialog(context);
@@ -187,10 +202,10 @@ class AppDrawer extends ConsumerWidget {
                   child: Container(
                     padding: const EdgeInsets.symmetric(vertical: 16),
                     decoration: BoxDecoration(
-                      color: Colors.red.withAlpha(26), // 0.1 * 255
+                      color: Colors.red.withAlpha(26),
                       borderRadius: BorderRadius.circular(12),
                       border: Border.all(
-                        color: Colors.red.withAlpha(51), // 0.2 * 255
+                        color: Colors.red.withAlpha(51),
                         width: 1,
                       ),
                     ),
@@ -220,16 +235,22 @@ class AppDrawer extends ConsumerWidget {
   }
 
   void _showAboutDialog(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     showDialog(
       context: context,
-      builder: (context) => AlertDialog(
+      builder: (dialogContext) => AlertDialog(
+        backgroundColor: isDark ? Colors.grey[900] : Colors.white,
         title: Row(
           children: [
             const Icon(Icons.water_drop, color: Color(0xFF00BCD4), size: 28),
             const SizedBox(width: 12),
             Text(
               'Aqualert',
-              style: GoogleFonts.poppins(fontWeight: FontWeight.bold),
+              style: GoogleFonts.poppins(
+                fontWeight: FontWeight.bold,
+                color: isDark ? Colors.white : Colors.black87,
+              ),
             ),
           ],
         ),
@@ -241,27 +262,30 @@ class AppDrawer extends ConsumerWidget {
               'Version 1.0.0',
               style: GoogleFonts.poppins(
                 fontSize: 14,
-                color: Colors.grey[600],
+                color: isDark ? Colors.grey[400] : Colors.grey[600],
               ),
             ),
             const SizedBox(height: 16),
             Text(
               'Stay hydrated and healthy with Aqualert. Track your daily water intake and achieve your hydration goals!',
-              style: GoogleFonts.poppins(fontSize: 14),
+              style: GoogleFonts.poppins(
+                fontSize: 14,
+                color: isDark ? Colors.white70 : Colors.black87,
+              ),
             ),
             const SizedBox(height: 16),
             Text(
               '© 2024 Aqualert. All rights reserved.',
               style: GoogleFonts.poppins(
                 fontSize: 12,
-                color: Colors.grey[500],
+                color: isDark ? Colors.grey[500] : Colors.grey[500],
               ),
             ),
           ],
         ),
         actions: [
           TextButton(
-            onPressed: () => Navigator.pop(context),
+            onPressed: () => Navigator.pop(dialogContext),
             child: Text(
               'Close',
               style: GoogleFonts.poppins(
@@ -282,11 +306,13 @@ class AppDrawer extends ConsumerWidget {
 class _DrawerMenuItem extends StatelessWidget {
   final IconData icon;
   final String title;
+  final bool isDark;
   final VoidCallback onTap;
 
   const _DrawerMenuItem({
     required this.icon,
     required this.title,
+    required this.isDark,
     required this.onTap,
   });
 
@@ -303,7 +329,7 @@ class _DrawerMenuItem extends StatelessWidget {
         style: GoogleFonts.poppins(
           fontSize: 16,
           fontWeight: FontWeight.w500,
-          color: Colors.black87,
+          color: isDark ? Colors.white70 : Colors.black87,
         ),
       ),
       onTap: onTap,

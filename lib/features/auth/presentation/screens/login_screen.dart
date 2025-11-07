@@ -4,6 +4,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../../core/themes/app_theme.dart';
+import '../../../../l10n/app_localizations.dart';
 import '../providers/auth_controller.dart';
 import '../widgets/auth_text_field.dart';
 import '../widgets/social_auth_button.dart';
@@ -141,7 +142,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                         ),
                     const SizedBox(height: 8),
                     Text(
-                      'Sağlıklı yaşam için su içmeyi unutma',
+                      AppLocalizations.of(context)!.appTagline,
                       style: GoogleFonts.poppins(
                         fontSize: 14,
                         color: Colors.grey[600],
@@ -160,16 +161,16 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                     children: [
                       AuthTextField(
                         controller: _emailController,
-                        label: 'E-posta',
-                        hint: 'ornek@email.com',
+                        label: AppLocalizations.of(context)!.auth_email_label,
+                        hint: AppLocalizations.of(context)!.auth_email_hint,
                         prefixIcon: Icons.email_outlined,
                         keyboardType: TextInputType.emailAddress,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
-                            return 'E-posta adresi gerekli';
+                            return AppLocalizations.of(context)!.auth_validation_email_required;
                           }
                           if (!value.contains('@')) {
-                            return 'Geçerli bir e-posta adresi girin';
+                            return AppLocalizations.of(context)!.auth_validation_email_invalid;
                           }
                           return null;
                         },
@@ -180,8 +181,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                       const SizedBox(height: 16),
                       AuthTextField(
                         controller: _passwordController,
-                        label: 'Şifre',
-                        hint: '••••••••',
+                        label: AppLocalizations.of(context)!.auth_password_label,
+                        hint: AppLocalizations.of(context)!.auth_password_hint,
                         prefixIcon: Icons.lock_outline,
                         obscureText: _obscurePassword,
                         suffixIcon: IconButton(
@@ -198,10 +199,10 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                         ),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
-                            return 'Şifre gerekli';
+                            return AppLocalizations.of(context)!.auth_validation_password_required;
                           }
                           if (value.length < 6) {
-                            return 'Şifre en az 6 karakter olmalı';
+                            return AppLocalizations.of(context)!.auth_validation_password_min_length;
                           }
                           return null;
                         },
@@ -217,7 +218,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                             context.push('/forgot-password');
                           },
                           child: Text(
-                            'Şifremi Unuttum?',
+                            AppLocalizations.of(context)!.auth_forgot_password,
                             style: GoogleFonts.poppins(
                               fontSize: 13,
                               fontWeight: FontWeight.w500,
@@ -250,7 +251,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                   ),
                                 )
                               : Text(
-                                  'Giriş Yap',
+                                  AppLocalizations.of(context)!.auth_sign_in_button,
                                   style: GoogleFonts.poppins(
                                     fontSize: 16,
                                     fontWeight: FontWeight.w600,
@@ -274,7 +275,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16),
                       child: Text(
-                        'veya',
+                        AppLocalizations.of(context)!.common_or,
                         style: GoogleFonts.poppins(
                           color: Colors.grey[600],
                           fontSize: 14,
@@ -291,7 +292,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 SocialAuthButton(
                   onPressed: _isLoading ? null : _handleGoogleSignIn,
                   icon: 'assets/icons/google.png',
-                  label: 'Google ile Giriş Yap',
+                  label: AppLocalizations.of(context)!.auth_sign_in_google,
                 ).animate().fadeIn(delay: 1100.ms).slideY(
                       begin: 0.2,
                       duration: 400.ms,
@@ -304,7 +305,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'Hesabın yok mu? ',
+                      AppLocalizations.of(context)!.auth_dont_have_account,
                       style: GoogleFonts.poppins(
                         color: Colors.grey[600],
                         fontSize: 14,
@@ -315,7 +316,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                         context.push('/register');
                       },
                       child: Text(
-                        'Kayıt Ol',
+                        AppLocalizations.of(context)!.auth_sign_up_button,
                         style: GoogleFonts.poppins(
                           color: AppTheme.primaryBlue,
                           fontSize: 14,

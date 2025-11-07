@@ -13,9 +13,11 @@ class AchievementsScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final achievementsAsync = ref.watch(achievementsProvider);
     final totalPoints = ref.watch(totalPointsProvider);
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final colorScheme = Theme.of(context).colorScheme;
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: isDark ? colorScheme.surface : Colors.grey[50],
       appBar: const ModernAppBar(
         title: 'Achievements',
         subtitle: 'Your progress and rewards',
@@ -66,12 +68,14 @@ class AchievementsScreen extends ConsumerWidget {
                   style: GoogleFonts.poppins(
                     fontSize: 18,
                     fontWeight: FontWeight.w600,
+                    color: isDark ? Colors.white : Colors.black87,
                   ),
                 ),
                 const SizedBox(height: 16),
                 ...unlocked.map((achievement) => _AchievementCard(
                       achievement: achievement,
                       isUnlocked: true,
+                      isDark: isDark,
                     )),
               ],
 
@@ -82,12 +86,14 @@ class AchievementsScreen extends ConsumerWidget {
                   style: GoogleFonts.poppins(
                     fontSize: 18,
                     fontWeight: FontWeight.w600,
+                    color: isDark ? Colors.white : Colors.black87,
                   ),
                 ),
                 const SizedBox(height: 16),
                 ...locked.map((achievement) => _AchievementCard(
                       achievement: achievement,
                       isUnlocked: false,
+                      isDark: isDark,
                     )),
               ],
             ],
@@ -142,10 +148,12 @@ class _StatItem extends StatelessWidget {
 class _AchievementCard extends StatelessWidget {
   final Achievement achievement;
   final bool isUnlocked;
+  final bool isDark;
 
   const _AchievementCard({
     required this.achievement,
     required this.isUnlocked,
+    required this.isDark,
   });
 
   IconData _getIcon(String iconName) {
@@ -167,14 +175,22 @@ class _AchievementCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final backgroundColor = isDark
+        ? (isUnlocked ? const Color(0xFF004D5F) : Colors.grey[850]!)
+        : (isUnlocked ? const Color(0xFFE0F7FA) : Colors.grey[100]!);
+
+    final borderColor = isDark
+        ? (isUnlocked ? const Color(0xFF00BCD4) : Colors.grey[700]!)
+        : (isUnlocked ? const Color(0xFF00BCD4) : Colors.grey[300]!);
+
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: isUnlocked ? const Color(0xFFE0F7FA) : Colors.grey[100],
+        color: backgroundColor,
         borderRadius: BorderRadius.circular(16),
         border: Border.all(
-          color: isUnlocked ? const Color(0xFF00BCD4) : Colors.grey[300]!,
+          color: borderColor,
         ),
       ),
       child: Row(
@@ -184,7 +200,7 @@ class _AchievementCard extends StatelessWidget {
             decoration: BoxDecoration(
               color: isUnlocked
                   ? const Color(0xFF00BCD4)
-                  : Colors.grey[400],
+                  : (isDark ? Colors.grey[700] : Colors.grey[400]),
               borderRadius: BorderRadius.circular(12),
             ),
             child: Icon(
@@ -203,7 +219,9 @@ class _AchievementCard extends StatelessWidget {
                   style: GoogleFonts.poppins(
                     fontSize: 16,
                     fontWeight: FontWeight.w600,
-                    color: isUnlocked ? Colors.black87 : Colors.grey[600],
+                    color: isUnlocked
+                        ? (isDark ? Colors.white : Colors.black87)
+                        : (isDark ? Colors.grey[400] : Colors.grey[600]),
                   ),
                 ),
                 const SizedBox(height: 4),
@@ -211,14 +229,16 @@ class _AchievementCard extends StatelessWidget {
                   achievement.description,
                   style: GoogleFonts.poppins(
                     fontSize: 12,
-                    color: isUnlocked ? Colors.black54 : Colors.grey[500],
+                    color: isUnlocked
+                        ? (isDark ? Colors.white70 : Colors.black54)
+                        : (isDark ? Colors.grey[500] : Colors.grey[500]),
                   ),
                 ),
                 if (!isUnlocked) ...[
                   const SizedBox(height: 8),
                   LinearProgressIndicator(
                     value: achievement.progress,
-                    backgroundColor: Colors.grey[300],
+                    backgroundColor: isDark ? Colors.grey[700] : Colors.grey[300],
                     valueColor: const AlwaysStoppedAnimation(Color(0xFF00BCD4)),
                   ),
                   const SizedBox(height: 4),
@@ -226,7 +246,7 @@ class _AchievementCard extends StatelessWidget {
                     achievement.progressText,
                     style: GoogleFonts.poppins(
                       fontSize: 10,
-                      color: Colors.grey[600],
+                      color: isDark ? Colors.grey[400] : Colors.grey[600],
                     ),
                   ),
                 ],
