@@ -7,7 +7,15 @@
       "Bash(./gradlew:*)",
       "Bash(adb shell:*)",
       "Bash(aapt list:*)",
-      "Bash(unzip:*)"
+      "Bash(unzip:*)",
+      "Bash(for f in lib/features/*/presentation/screens/*.dart)",
+      "Bash(do grep -L AppLocalizations $f)",
+      "Bash(done)",
+      "Bash(find:*)",
+      "Bash(firebase --version:*)",
+      "Bash(firebase projects:list:*)",
+      "Bash(firebase deploy:*)",
+      "Bash(tee:*)"
     ],
     "deny": [],
     "ask": []

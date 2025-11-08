@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:go_router/go_router.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'dart:async';
+import 'package:water_reminder/l10n/app_localizations.dart';
 import '../../../../core/themes/app_theme.dart';
 
 class EmailVerificationScreen extends ConsumerStatefulWidget {
@@ -54,16 +55,19 @@ class _EmailVerificationScreenState
         _timer?.cancel();
 
         // Navigate to home after successful verification
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(
-              'Email verified successfully!',
-              style: GoogleFonts.poppins(),
+        final l10n = AppLocalizations.of(context);
+        if (l10n != null) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                l10n.auth_email_verification_success,
+                style: GoogleFonts.poppins(),
+              ),
+              backgroundColor: Colors.green,
+              behavior: SnackBarBehavior.floating,
             ),
-            backgroundColor: Colors.green,
-            behavior: SnackBarBehavior.floating,
-          ),
-        );
+          );
+        }
 
         // Wait a bit before navigating
         await Future.delayed(const Duration(seconds: 1));
@@ -97,16 +101,19 @@ class _EmailVerificationScreenState
 
         // Navigate to home after successful verification
         if (mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(
-                'Email verified successfully!',
-                style: GoogleFonts.poppins(),
+          final l10n = AppLocalizations.of(context);
+          if (l10n != null) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(
+                  l10n.auth_email_verification_success,
+                  style: GoogleFonts.poppins(),
+                ),
+                backgroundColor: Colors.green,
+                behavior: SnackBarBehavior.floating,
               ),
-              backgroundColor: Colors.green,
-              behavior: SnackBarBehavior.floating,
-            ),
-          );
+            );
+          }
 
           // Wait a bit before navigating
           await Future.delayed(const Duration(seconds: 1));
@@ -118,16 +125,19 @@ class _EmailVerificationScreenState
         setState(() => _isManuallyChecking = false);
 
         if (mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(
-                'Email not verified yet. Please check your inbox.',
-                style: GoogleFonts.poppins(),
+          final l10n = AppLocalizations.of(context);
+          if (l10n != null) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(
+                  l10n.auth_email_verification_failed,
+                  style: GoogleFonts.poppins(),
+                ),
+                backgroundColor: Colors.orange,
+                behavior: SnackBarBehavior.floating,
               ),
-              backgroundColor: Colors.orange,
-              behavior: SnackBarBehavior.floating,
-            ),
-          );
+            );
+          }
         }
       }
     } catch (e) {
@@ -155,16 +165,19 @@ class _EmailVerificationScreenState
       await FirebaseAuth.instance.currentUser?.sendEmailVerification();
 
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(
-              'Verification email sent! Please check your inbox.',
-              style: GoogleFonts.poppins(),
+        final l10n = AppLocalizations.of(context);
+        if (l10n != null) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                l10n.auth_email_verification_resend,
+                style: GoogleFonts.poppins(),
+              ),
+              backgroundColor: AppTheme.primaryBlue,
+              behavior: SnackBarBehavior.floating,
             ),
-            backgroundColor: AppTheme.primaryBlue,
-            behavior: SnackBarBehavior.floating,
-          ),
-        );
+          );
+        }
       }
 
       // Start countdown for resend button (60 seconds)
@@ -222,6 +235,7 @@ class _EmailVerificationScreenState
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final user = FirebaseAuth.instance.currentUser;
     final size = MediaQuery.of(context).size;
 
@@ -255,7 +269,7 @@ class _EmailVerificationScreenState
 
                 // Title
                 Text(
-                  'Verify Your Email',
+                  l10n.auth_email_verification_title,
                   style: GoogleFonts.poppins(
                     fontSize: 28,
                     fontWeight: FontWeight.bold,
@@ -268,7 +282,7 @@ class _EmailVerificationScreenState
 
                 // Subtitle
                 Text(
-                  'We sent a verification email to:',
+                  l10n.auth_email_verification_sent,
                   style: GoogleFonts.poppins(
                     fontSize: 16,
                     color: Colors.grey[600],
@@ -308,7 +322,7 @@ class _EmailVerificationScreenState
                             ),
                           ),
                     label: Text(
-                      _isManuallyChecking ? 'Checking...' : 'I\'ve Verified',
+                      _isManuallyChecking ? l10n.common_loading : l10n.auth_email_verification_check,
                       style: GoogleFonts.poppins(
                         fontSize: 16,
                         fontWeight: FontWeight.w600,
@@ -336,7 +350,7 @@ class _EmailVerificationScreenState
                     icon: const Icon(Icons.email_outlined),
                     label: Text(
                       _canResendEmail
-                          ? 'Resend Email'
+                          ? l10n.auth_email_verification_resend
                           : 'Resend in ${_resendCountdown}s',
                       style: GoogleFonts.poppins(
                         fontSize: 16,
@@ -362,7 +376,7 @@ class _EmailVerificationScreenState
 
                 // Help Text
                 Text(
-                  'Didn\'t receive the email? Check your spam folder.',
+                  l10n.auth_email_verification_not_received,
                   style: GoogleFonts.poppins(
                     fontSize: 12,
                     color: Colors.grey[600],
@@ -376,7 +390,7 @@ class _EmailVerificationScreenState
                 TextButton(
                   onPressed: _signOut,
                   child: Text(
-                    'Sign Out',
+                    l10n.auth_logout,
                     style: GoogleFonts.poppins(
                       fontSize: 14,
                       color: Colors.red[400],

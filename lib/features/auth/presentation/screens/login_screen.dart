@@ -130,7 +130,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                         .fadeIn(),
                     const SizedBox(height: 24),
                     Text(
-                      'Aqualert',
+                      AppLocalizations.of(context)!.appName,
                       style: GoogleFonts.poppins(
                         fontSize: 32,
                         fontWeight: FontWeight.bold,

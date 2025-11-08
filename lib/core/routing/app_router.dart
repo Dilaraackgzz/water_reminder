@@ -13,6 +13,7 @@ import '../../features/settings/presentation/screens/settings_screen.dart';
 import '../../features/reminders/presentation/screens/reminders_screen.dart';
 import '../../features/profile/presentation/screens/profile_screen.dart';
 import '../../features/achievements/presentation/screens/achievements_screen.dart';
+import '../../features/help/presentation/screens/help_screen.dart';
 import '../services/onboarding_service.dart';
 
 // Router provider with auth state management
@@ -99,7 +100,8 @@ final routerProvider = Provider<GoRouter>((ref) {
           state.matchedLocation.startsWith('/settings') ||
           state.matchedLocation.startsWith('/statistics') ||
           state.matchedLocation.startsWith('/reminders') ||
-          state.matchedLocation.startsWith('/achievements');
+          state.matchedLocation.startsWith('/achievements') ||
+          state.matchedLocation.startsWith('/help');
 
       if (isOnProtectedRoute) {
         if (!isAuthenticated) {
@@ -173,6 +175,11 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: '/achievements',
         name: 'achievements',
         builder: (context, state) => const AchievementsScreen(),
+      ),
+      GoRoute(
+        path: '/help',
+        name: 'help',
+        builder: (context, state) => const HelpScreen(),
       ),
     ],
   );

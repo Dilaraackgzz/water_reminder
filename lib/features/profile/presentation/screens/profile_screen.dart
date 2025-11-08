@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:water_reminder/l10n/app_localizations.dart';
 import '../../../../shared/widgets/modern_app_bar.dart';
 import '../../../../shared/widgets/app_drawer.dart';
 import '../../domain/models/user_profile.dart';
@@ -12,6 +13,7 @@ class ProfileScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context)!;
     final profileAsync = ref.watch(userProfileProvider);
     final user = FirebaseAuth.instance.currentUser;
     final isDark = Theme.of(context).brightness == Brightness.dark;
@@ -19,13 +21,13 @@ class ProfileScreen extends ConsumerWidget {
 
     return Scaffold(
       backgroundColor: isDark ? colorScheme.surface : Colors.grey[50],
-      appBar: const ModernAppBar(
-        title: 'Profile',
-        subtitle: 'Manage your information',
+      appBar: ModernAppBar(
+        title: l10n.profile_title,
+        subtitle: l10n.profile_edit,
       ),
       drawer: const AppDrawer(),
       body: profileAsync.when(
-        loading: () => const Center(child: CircularProgressIndicator()),
+        loading: () => Center(child: Text(l10n.common_loading)),
         error: (error, stack) => Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -33,7 +35,7 @@ class ProfileScreen extends ConsumerWidget {
               const Icon(Icons.error_outline, size: 60, color: Colors.red),
               const SizedBox(height: 16),
               Text(
-                'Error loading profile',
+                l10n.common_error,
                 style: GoogleFonts.poppins(fontSize: 16),
               ),
             ],
@@ -41,7 +43,7 @@ class ProfileScreen extends ConsumerWidget {
         ),
         data: (profile) {
           if (profile == null) {
-            return const Center(child: Text('No profile found'));
+            return Center(child: Text(l10n.common_error));
           }
 
           return SafeArea(
@@ -49,7 +51,7 @@ class ProfileScreen extends ConsumerWidget {
               child: Column(
                 children: [
                   // Profile Header
-                  _buildProfileHeader(context, user, profile),
+                  _buildProfileHeader(context, user, profile, l10n),
 
                   const SizedBox(height: 24),
 
@@ -60,75 +62,75 @@ class ProfileScreen extends ConsumerWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         // Personal Information Section
-                        _SectionHeader(title: 'Personal Information', isDark: isDark),
+                        _SectionHeader(title: l10n.profile_personal_info, isDark: isDark),
                         const SizedBox(height: 12),
                         _InfoCard(
                           icon: Icons.person,
-                          title: 'Name',
-                          value: profile.name.isEmpty ? 'Not set' : profile.name,
+                          title: l10n.profile_name,
+                          value: profile.name.isEmpty ? l10n.profile_name : profile.name,
                           isDark: isDark,
-                          onTap: () => _showEditNameDialog(context, ref, profile, isDark),
+                          onTap: () => _showEditNameDialog(context, ref, profile, isDark, l10n),
                         ),
                         const SizedBox(height: 8),
                         _InfoCard(
                           icon: Icons.email,
-                          title: 'Email',
-                          value: user?.email ?? 'Not available',
+                          title: l10n.profile_email,
+                          value: user?.email ?? l10n.profile_email,
                           isDark: isDark,
                           onTap: null, // Email is not editable
                         ),
                         const SizedBox(height: 8),
                         _InfoCard(
                           icon: Icons.cake,
-                          title: 'Age',
-                          value: '${profile.age} years',
+                          title: l10n.profile_age,
+                          value: '${profile.age}',
                           isDark: isDark,
-                          onTap: () => _showEditAgeDialog(context, ref, profile, isDark),
+                          onTap: () => _showEditAgeDialog(context, ref, profile, isDark, l10n),
                         ),
                         const SizedBox(height: 8),
                         _InfoCard(
                           icon: Icons.wc,
-                          title: 'Gender',
-                          value: profile.gender.displayName,
+                          title: l10n.profile_gender,
+                          value: _getGenderDisplayName(profile.gender, l10n),
                           isDark: isDark,
-                          onTap: () => _showGenderDialog(context, ref, profile, isDark),
+                          onTap: () => _showGenderDialog(context, ref, profile, isDark, l10n),
                         ),
 
                         const SizedBox(height: 24),
 
                         // Body Metrics Section
-                        _SectionHeader(title: 'Body Metrics', isDark: isDark),
+                        _SectionHeader(title: l10n.profile_body_metrics, isDark: isDark),
                         const SizedBox(height: 12),
                         _InfoCard(
                           icon: Icons.monitor_weight,
-                          title: 'Weight',
-                          value: '${profile.weight} kg',
+                          title: l10n.profile_weight,
+                          value: '${profile.weight} ${l10n.unit_kg}',
                           isDark: isDark,
-                          onTap: () => _showEditWeightDialog(context, ref, profile, isDark),
+                          onTap: () => _showEditWeightDialog(context, ref, profile, isDark, l10n),
                         ),
                         const SizedBox(height: 8),
                         _InfoCard(
                           icon: Icons.height,
-                          title: 'Height',
-                          value: '${profile.height.toInt()} cm',
+                          title: l10n.profile_height,
+                          value: '${profile.height.toInt()} ${l10n.unit_cm}',
                           isDark: isDark,
-                          onTap: () => _showEditHeightDialog(context, ref, profile, isDark),
+                          onTap: () => _showEditHeightDialog(context, ref, profile, isDark, l10n),
                         ),
                         const SizedBox(height: 8),
                         _InfoCard(
                           icon: Icons.fitness_center,
-                          title: 'Activity Level',
-                          value: profile.activityLevel.displayName,
+                          title: l10n.profile_activity_level,
+                          value: _getActivityLevelName(profile.activityLevel, l10n),
                           subtitle: profile.activityLevel.description,
                           isDark: isDark,
-                          onTap: () => _showActivityLevelDialog(context, ref, profile, isDark),
+                          onTap: () => _showActivityLevelDialog(context, ref, profile, isDark, l10n),
                         ),
                         const SizedBox(height: 8),
                         _InfoCard(
                           icon: Icons.monitor_heart,
-                          title: 'BMI',
+                          title: l10n.profile_bmi,
                           value: profile.bmi.toStringAsFixed(1),
-                          subtitle: profile.bmiCategory,
+                          subtitle: _getBmiCategoryName(profile.bmiCategory, l10n),
                           isDark: isDark,
                           onTap: null,
                         ),
@@ -136,33 +138,33 @@ class ProfileScreen extends ConsumerWidget {
                         const SizedBox(height: 24),
 
                         // Hydration Goal Section
-                        _SectionHeader(title: 'Hydration Goal', isDark: isDark),
+                        _SectionHeader(title: l10n.profile_daily_goal, isDark: isDark),
                         const SizedBox(height: 12),
                         _InfoCard(
                           icon: Icons.water_drop,
-                          title: 'Daily Goal',
-                          value: '${profile.dailyGoalInLiters} L',
+                          title: l10n.profile_daily_goal,
+                          value: '${profile.dailyGoalInLiters} ${l10n.unit_liter}',
                           subtitle: profile.isCustomGoal
-                              ? 'Custom goal'
-                              : 'Calculated goal (${profile.calculatedDailyGoal} ml)',
+                              ? l10n.profile_custom_goal
+                              : '${profile.calculatedDailyGoal} ${l10n.unit_ml}',
                           isDark: isDark,
                           trailing: profile.isCustomGoal
                               ? TextButton.icon(
-                                  onPressed: () => _applyCalculatedGoal(context, ref, profile),
+                                  onPressed: () => _applyCalculatedGoal(context, ref, profile, l10n),
                                   icon: const Icon(Icons.calculate, size: 16),
                                   label: Text(
-                                    'Use Calculated',
+                                    l10n.profile_use_calculated_goal,
                                     style: GoogleFonts.poppins(fontSize: 12),
                                   ),
                                 )
                               : null,
-                          onTap: () => _showEditGoalDialog(context, ref, profile, isDark),
+                          onTap: () => _showEditGoalDialog(context, ref, profile, isDark, l10n),
                         ),
 
                         const SizedBox(height: 32),
 
                         // Action Buttons
-                        _buildActionButtons(context, ref, profile),
+                        _buildActionButtons(context, ref, profile, l10n),
 
                         const SizedBox(height: 32),
                       ],
@@ -177,7 +179,49 @@ class ProfileScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildProfileHeader(BuildContext context, User? user, UserProfile profile) {
+  String _getGenderDisplayName(Gender gender, AppLocalizations l10n) {
+    switch (gender) {
+      case Gender.male:
+        return l10n.gender_male;
+      case Gender.female:
+        return l10n.gender_female;
+      case Gender.other:
+        return l10n.gender_other;
+    }
+  }
+
+  String _getActivityLevelName(ActivityLevel level, AppLocalizations l10n) {
+    switch (level) {
+      case ActivityLevel.sedentary:
+        return l10n.activity_sedentary;
+      case ActivityLevel.light:
+        return l10n.activity_light;
+      case ActivityLevel.moderate:
+        return l10n.activity_moderate;
+      case ActivityLevel.active:
+        return l10n.activity_very_active;
+      case ActivityLevel.veryActive:
+        return l10n.activity_extra_active;
+    }
+  }
+
+  String _getBmiCategoryName(String category, AppLocalizations l10n) {
+    switch (category.toLowerCase()) {
+      case 'underweight':
+        return l10n.bmi_underweight;
+      case 'normal':
+      case 'normal weight':
+        return l10n.bmi_normal;
+      case 'overweight':
+        return l10n.bmi_overweight;
+      case 'obese':
+        return l10n.bmi_obese;
+      default:
+        return category;
+    }
+  }
+
+  Widget _buildProfileHeader(BuildContext context, User? user, UserProfile profile, AppLocalizations l10n) {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(24),
@@ -221,7 +265,7 @@ class ProfileScreen extends ConsumerWidget {
           const SizedBox(height: 16),
           // User Name
           Text(
-            profile.name.isEmpty ? 'User' : profile.name,
+            profile.name.isEmpty ? l10n.profile_user_default : profile.name,
             style: GoogleFonts.poppins(
               fontSize: 24,
               fontWeight: FontWeight.bold,
@@ -242,17 +286,17 @@ class ProfileScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildActionButtons(BuildContext context, WidgetRef ref, UserProfile profile) {
+  Widget _buildActionButtons(BuildContext context, WidgetRef ref, UserProfile profile, AppLocalizations l10n) {
     return Column(
       children: [
         // Calculate Goal Button
         SizedBox(
           width: double.infinity,
           child: ElevatedButton.icon(
-            onPressed: () => _applyCalculatedGoal(context, ref, profile),
+            onPressed: () => _applyCalculatedGoal(context, ref, profile, l10n),
             icon: const Icon(Icons.calculate),
             label: Text(
-              'Recalculate Recommended Goal',
+              l10n.profile_use_calculated_goal,
               style: GoogleFonts.poppins(
                 fontSize: 16,
                 fontWeight: FontWeight.w600,
@@ -273,7 +317,7 @@ class ProfileScreen extends ConsumerWidget {
   }
 
   // Dialog Methods
-  void _showEditNameDialog(BuildContext context, WidgetRef ref, UserProfile profile, bool isDark) {
+  void _showEditNameDialog(BuildContext context, WidgetRef ref, UserProfile profile, bool isDark, AppLocalizations l10n) {
     final controller = TextEditingController(text: profile.name);
 
     showDialog(
@@ -281,7 +325,7 @@ class ProfileScreen extends ConsumerWidget {
       builder: (context) => AlertDialog(
         backgroundColor: isDark ? Colors.grey[900] : Colors.white,
         title: Text(
-          'Edit Name',
+          l10n.profile_name,
           style: GoogleFonts.poppins(
             fontWeight: FontWeight.bold,
             color: isDark ? Colors.white : Colors.black87,
@@ -291,7 +335,7 @@ class ProfileScreen extends ConsumerWidget {
           controller: controller,
           style: TextStyle(color: isDark ? Colors.white : Colors.black87),
           decoration: InputDecoration(
-            labelText: 'Name',
+            labelText: l10n.profile_name,
             labelStyle: TextStyle(color: isDark ? Colors.white70 : Colors.black54),
             border: const OutlineInputBorder(),
           ),
@@ -299,7 +343,7 @@ class ProfileScreen extends ConsumerWidget {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: Text('Cancel', style: GoogleFonts.poppins()),
+            child: Text(l10n.common_cancel, style: GoogleFonts.poppins()),
           ),
           TextButton(
             onPressed: () async {
@@ -310,14 +354,14 @@ class ProfileScreen extends ConsumerWidget {
               await ref.read(profileControllerProvider).updateProfile(updatedProfile);
               if (context.mounted) Navigator.pop(context);
             },
-            child: Text('Save', style: GoogleFonts.poppins(fontWeight: FontWeight.bold)),
+            child: Text(l10n.common_save, style: GoogleFonts.poppins(fontWeight: FontWeight.bold)),
           ),
         ],
       ),
     );
   }
 
-  void _showEditAgeDialog(BuildContext context, WidgetRef ref, UserProfile profile, bool isDark) {
+  void _showEditAgeDialog(BuildContext context, WidgetRef ref, UserProfile profile, bool isDark, AppLocalizations l10n) {
     final controller = TextEditingController(text: profile.age.toString());
 
     showDialog(
@@ -325,7 +369,7 @@ class ProfileScreen extends ConsumerWidget {
       builder: (context) => AlertDialog(
         backgroundColor: isDark ? Colors.grey[900] : Colors.white,
         title: Text(
-          'Edit Age',
+          l10n.profile_age,
           style: GoogleFonts.poppins(
             fontWeight: FontWeight.bold,
             color: isDark ? Colors.white : Colors.black87,
@@ -336,7 +380,7 @@ class ProfileScreen extends ConsumerWidget {
           keyboardType: TextInputType.number,
           style: TextStyle(color: isDark ? Colors.white : Colors.black87),
           decoration: InputDecoration(
-            labelText: 'Age (years)',
+            labelText: l10n.profile_age,
             labelStyle: TextStyle(color: isDark ? Colors.white70 : Colors.black54),
             border: const OutlineInputBorder(),
           ),
@@ -344,7 +388,7 @@ class ProfileScreen extends ConsumerWidget {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: Text('Cancel', style: GoogleFonts.poppins()),
+            child: Text(l10n.common_cancel, style: GoogleFonts.poppins()),
           ),
           TextButton(
             onPressed: () async {
@@ -356,14 +400,14 @@ class ProfileScreen extends ConsumerWidget {
               await ref.read(profileControllerProvider).updateProfile(updatedProfile);
               if (context.mounted) Navigator.pop(context);
             },
-            child: Text('Save', style: GoogleFonts.poppins(fontWeight: FontWeight.bold)),
+            child: Text(l10n.common_save, style: GoogleFonts.poppins(fontWeight: FontWeight.bold)),
           ),
         ],
       ),
     );
   }
 
-  void _showEditWeightDialog(BuildContext context, WidgetRef ref, UserProfile profile, bool isDark) {
+  void _showEditWeightDialog(BuildContext context, WidgetRef ref, UserProfile profile, bool isDark, AppLocalizations l10n) {
     final controller = TextEditingController(text: profile.weight.toString());
 
     showDialog(
@@ -371,7 +415,7 @@ class ProfileScreen extends ConsumerWidget {
       builder: (context) => AlertDialog(
         backgroundColor: isDark ? Colors.grey[900] : Colors.white,
         title: Text(
-          'Edit Weight',
+          l10n.profile_weight,
           style: GoogleFonts.poppins(
             fontWeight: FontWeight.bold,
             color: isDark ? Colors.white : Colors.black87,
@@ -382,7 +426,7 @@ class ProfileScreen extends ConsumerWidget {
           keyboardType: TextInputType.number,
           style: TextStyle(color: isDark ? Colors.white : Colors.black87),
           decoration: InputDecoration(
-            labelText: 'Weight (kg)',
+            labelText: '${l10n.profile_weight} (${l10n.unit_kg})',
             labelStyle: TextStyle(color: isDark ? Colors.white70 : Colors.black54),
             border: const OutlineInputBorder(),
           ),
@@ -390,7 +434,7 @@ class ProfileScreen extends ConsumerWidget {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: Text('Cancel', style: GoogleFonts.poppins()),
+            child: Text(l10n.common_cancel, style: GoogleFonts.poppins()),
           ),
           TextButton(
             onPressed: () async {
@@ -402,14 +446,14 @@ class ProfileScreen extends ConsumerWidget {
               await ref.read(profileControllerProvider).updateProfile(updatedProfile);
               if (context.mounted) Navigator.pop(context);
             },
-            child: Text('Save', style: GoogleFonts.poppins(fontWeight: FontWeight.bold)),
+            child: Text(l10n.common_save, style: GoogleFonts.poppins(fontWeight: FontWeight.bold)),
           ),
         ],
       ),
     );
   }
 
-  void _showEditHeightDialog(BuildContext context, WidgetRef ref, UserProfile profile, bool isDark) {
+  void _showEditHeightDialog(BuildContext context, WidgetRef ref, UserProfile profile, bool isDark, AppLocalizations l10n) {
     final controller = TextEditingController(text: profile.height.toInt().toString());
 
     showDialog(
@@ -417,7 +461,7 @@ class ProfileScreen extends ConsumerWidget {
       builder: (context) => AlertDialog(
         backgroundColor: isDark ? Colors.grey[900] : Colors.white,
         title: Text(
-          'Edit Height',
+          l10n.profile_height,
           style: GoogleFonts.poppins(
             fontWeight: FontWeight.bold,
             color: isDark ? Colors.white : Colors.black87,
@@ -428,7 +472,7 @@ class ProfileScreen extends ConsumerWidget {
           keyboardType: TextInputType.number,
           style: TextStyle(color: isDark ? Colors.white : Colors.black87),
           decoration: InputDecoration(
-            labelText: 'Height (cm)',
+            labelText: '${l10n.profile_height} (${l10n.unit_cm})',
             labelStyle: TextStyle(color: isDark ? Colors.white70 : Colors.black54),
             border: const OutlineInputBorder(),
           ),
@@ -436,7 +480,7 @@ class ProfileScreen extends ConsumerWidget {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: Text('Cancel', style: GoogleFonts.poppins()),
+            child: Text(l10n.common_cancel, style: GoogleFonts.poppins()),
           ),
           TextButton(
             onPressed: () async {
@@ -448,20 +492,20 @@ class ProfileScreen extends ConsumerWidget {
               await ref.read(profileControllerProvider).updateProfile(updatedProfile);
               if (context.mounted) Navigator.pop(context);
             },
-            child: Text('Save', style: GoogleFonts.poppins(fontWeight: FontWeight.bold)),
+            child: Text(l10n.common_save, style: GoogleFonts.poppins(fontWeight: FontWeight.bold)),
           ),
         ],
       ),
     );
   }
 
-  void _showGenderDialog(BuildContext context, WidgetRef ref, UserProfile profile, bool isDark) {
+  void _showGenderDialog(BuildContext context, WidgetRef ref, UserProfile profile, bool isDark, AppLocalizations l10n) {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
         backgroundColor: isDark ? Colors.grey[900] : Colors.white,
         title: Text(
-          'Select Gender',
+          l10n.profile_gender,
           style: GoogleFonts.poppins(
             fontWeight: FontWeight.bold,
             color: isDark ? Colors.white : Colors.black87,
@@ -472,7 +516,7 @@ class ProfileScreen extends ConsumerWidget {
           children: Gender.values.map((gender) {
             return RadioListTile<Gender>(
               title: Text(
-                gender.displayName,
+                _getGenderDisplayName(gender, l10n),
                 style: GoogleFonts.poppins(
                   color: isDark ? Colors.white70 : Colors.black87,
                 ),
@@ -496,13 +540,13 @@ class ProfileScreen extends ConsumerWidget {
     );
   }
 
-  void _showActivityLevelDialog(BuildContext context, WidgetRef ref, UserProfile profile, bool isDark) {
+  void _showActivityLevelDialog(BuildContext context, WidgetRef ref, UserProfile profile, bool isDark, AppLocalizations l10n) {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
         backgroundColor: isDark ? Colors.grey[900] : Colors.white,
         title: Text(
-          'Activity Level',
+          l10n.profile_activity_level,
           style: GoogleFonts.poppins(
             fontWeight: FontWeight.bold,
             color: isDark ? Colors.white : Colors.black87,
@@ -514,7 +558,7 @@ class ProfileScreen extends ConsumerWidget {
             children: ActivityLevel.values.map((level) {
               return RadioListTile<ActivityLevel>(
                 title: Text(
-                  level.displayName,
+                  _getActivityLevelName(level, l10n),
                   style: GoogleFonts.poppins(
                     color: isDark ? Colors.white70 : Colors.black87,
                   ),
@@ -546,7 +590,7 @@ class ProfileScreen extends ConsumerWidget {
     );
   }
 
-  void _showEditGoalDialog(BuildContext context, WidgetRef ref, UserProfile profile, bool isDark) {
+  void _showEditGoalDialog(BuildContext context, WidgetRef ref, UserProfile profile, bool isDark, AppLocalizations l10n) {
     final controller = TextEditingController(text: profile.dailyGoal.toString());
 
     showDialog(
@@ -554,7 +598,7 @@ class ProfileScreen extends ConsumerWidget {
       builder: (context) => AlertDialog(
         backgroundColor: isDark ? Colors.grey[900] : Colors.white,
         title: Text(
-          'Edit Daily Goal',
+          l10n.profile_daily_goal,
           style: GoogleFonts.poppins(
             fontWeight: FontWeight.bold,
             color: isDark ? Colors.white : Colors.black87,
@@ -568,14 +612,14 @@ class ProfileScreen extends ConsumerWidget {
               keyboardType: TextInputType.number,
               style: TextStyle(color: isDark ? Colors.white : Colors.black87),
               decoration: InputDecoration(
-                labelText: 'Daily Goal (ml)',
+                labelText: '${l10n.profile_daily_goal} (${l10n.unit_ml})',
                 labelStyle: TextStyle(color: isDark ? Colors.white70 : Colors.black54),
                 border: const OutlineInputBorder(),
               ),
             ),
             const SizedBox(height: 8),
             Text(
-              'Recommended: ${profile.calculatedDailyGoal} ml',
+              '${profile.calculatedDailyGoal} ${l10n.unit_ml}',
               style: GoogleFonts.poppins(
                 fontSize: 12,
                 color: isDark ? Colors.grey[400] : Colors.grey,
@@ -586,7 +630,7 @@ class ProfileScreen extends ConsumerWidget {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: Text('Cancel', style: GoogleFonts.poppins()),
+            child: Text(l10n.common_cancel, style: GoogleFonts.poppins()),
           ),
           TextButton(
             onPressed: () async {
@@ -598,21 +642,21 @@ class ProfileScreen extends ConsumerWidget {
               );
               if (context.mounted) Navigator.pop(context);
             },
-            child: Text('Save', style: GoogleFonts.poppins(fontWeight: FontWeight.bold)),
+            child: Text(l10n.common_save, style: GoogleFonts.poppins(fontWeight: FontWeight.bold)),
           ),
         ],
       ),
     );
   }
 
-  void _applyCalculatedGoal(BuildContext context, WidgetRef ref, UserProfile profile) async {
+  void _applyCalculatedGoal(BuildContext context, WidgetRef ref, UserProfile profile, AppLocalizations l10n) async {
     await ref.read(profileControllerProvider).applyCalculatedGoal(profile);
 
     if (context.mounted) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(
-            'Daily goal updated to ${profile.calculatedDailyGoal} ml',
+            '${l10n.profile_daily_goal}: ${profile.calculatedDailyGoal} ${l10n.unit_ml}',
             style: GoogleFonts.poppins(),
           ),
           backgroundColor: const Color(0xFF00BCD4),

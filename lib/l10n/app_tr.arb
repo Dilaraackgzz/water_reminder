@@ -85,6 +85,36 @@
   "motivational_good_start": "Harika bir başlangıç! Devam et!",
   "motivational_stay_hydrated": "Gün boyunca bol su iç!",
 
+  "motivational_100_1": "Tebrikler! Hedefe ulaştın!",
+  "motivational_100_2": "Harika iş! Yarın da susuz kalma!",
+  "motivational_100_3": "Hidrasyon şampiyonusun!",
+  "motivational_100_4": "Mükemmel! Bu harika alışkanlığını sürdür!",
+  "motivational_100_short": "Hedefe Ulaşıldı!",
+
+  "motivational_75_1": "Neredeyse bitti! Biraz daha!",
+  "motivational_75_2": "Harika gidiyorsun! Devam et!",
+  "motivational_75_3": "Hedefe çok yakınsın!",
+  "motivational_75_4": "Fantastik ilerleme! Şimdi durma!",
+  "motivational_75_short": "Neredeyse bitti!",
+
+  "motivational_50_1": "Yarıladın! Harika gidiyorsun!",
+  "motivational_50_2": "Harika iş! Devam et!",
+  "motivational_50_3": "Doğru yoldasın!",
+  "motivational_50_4": "Güzel ilerleme! Tutarlı ol!",
+  "motivational_50_short": "Yarıda!",
+
+  "motivational_25_1": "İyi bir başlangıç! Su içmeye devam et!",
+  "motivational_25_2": "Harika bir başlangıç yaptın!",
+  "motivational_25_3": "Güzel başlangıç! Susuz kalma!",
+  "motivational_25_4": "Devam et! Her yudum önemli!",
+  "motivational_25_short": "İyi başlangıç!",
+
+  "motivational_0_1": "Hidrasyon zamanı! Vücudun sana teşekkür edecek!",
+  "motivational_0_2": "Hadi hidrasyon yolculuğuna başlayalım!",
+  "motivational_0_3": "Güne biraz suyla başla!",
+  "motivational_0_4": "Sağlığın önemli! İçmeye başla!",
+  "motivational_0_short": "Hadi başlayalım!",
+
   "profile_title": "Profil",
   "profile_edit": "Profili Düzenle",
   "profile_personal_info": "Kişisel Bilgiler",
@@ -103,6 +133,7 @@
   "profile_custom_goal": "Özel Hedef",
   "profile_save_success": "Profil başarıyla güncellendi",
   "profile_save_failed": "Profil güncellenemedi",
+  "profile_user_default": "Kullanıcı",
 
   "gender_male": "Erkek",
   "gender_female": "Kadın",
@@ -145,6 +176,36 @@
 
   "settings_unit_ml": "Mililitre (ml)",
   "settings_unit_floz": "Sıvı Ons (fl oz)",
+  "settings_unit_metric": "Metrik sistem",
+  "settings_unit_imperial": "İngiliz sistemi",
+
+  "settings_subtitle": "Deneyimini özelleştir",
+  "settings_reminders_active": "Su hatırlatıcıları aktif",
+  "settings_reminders_inactive": "Hatırlatıcıları açmak için etkinleştir",
+  "settings_minutes": "dakika",
+  "settings_export_subtitle": "Su takip verilerini yedekle",
+  "settings_import_subtitle": "Yedek dosyadan geri yükle",
+  "settings_profile_subtitle": "Bilgilerini güncelle",
+  "settings_daily_goal_subtitle": "Su hedefini yönet",
+  "settings_theme_dialog_title": "Tema",
+  "settings_theme_light_mode": "Açık Mod",
+  "settings_theme_dark_mode": "Koyu Mod",
+  "settings_theme_system_mode": "Sistem Varsayılanı",
+  "settings_theme_light_subtitle": "Açık tema kullan",
+  "settings_theme_dark_subtitle": "Koyu tema kullan",
+  "settings_theme_system_subtitle": "Sistem temasını takip et",
+  "settings_language_dialog_title": "Dil",
+  "settings_export_loading": "Veriler dışa aktarılıyor...",
+  "settings_export_success_message": "Veriler başarıyla dışa aktarıldı!",
+  "settings_export_failed_message": "Dışa aktarma başarısız: {error}",
+  "settings_import_loading": "Veriler içe aktarılıyor...",
+  "settings_import_complete": "İçe Aktarma Tamamlandı",
+  "settings_import_success_subtitle": "Başarıyla içe aktarıldı:",
+  "settings_import_water_records": "su kaydı",
+  "settings_import_daily_goals": "günlük hedef",
+  "settings_import_duplicate_skipped": "tekrarlanan kayıt atlandı",
+  "settings_import_failed_message": "İçe aktarma başarısız: {error}",
+  "settings_reminder_interval_title": "Hatırlatma Aralığı",
 
   "settings_language_coming_soon": "Yakında Gelecek",
   "settings_export_success": "Veriler başarıyla dışa aktarıldı",
@@ -204,6 +265,16 @@
   "streak_current": "Mevcut Seri",
   "streak_days": "{days} gün",
   "streak_keep_going": "Serini sürdür!",
+  "streak_personal_best": "Kişisel Rekor",
+  "streak_best": "Rekor!",
+  "streak_longest": "En Uzun",
+  "streak_next_milestone": "Sonraki Kilometre Taşı",
+  "streak_start_today": "Bugün Serini Başlat!",
+  "streak_complete_goal": "Seri oluşturmak için günlük hedefinize ulaşın",
+  "streak_start": "Serini başlat!",
+  "streak_error": "Seri verileri yüklenemedi",
+  "streak_day_singular": "gün",
+  "streak_day_plural": "gün",
 
   "onboarding_title_1": "Suyunu Takip Et",
   "onboarding_desc_1": "Günlük su tüketimini tek dokunuşla kolayca kaydet",
@@ -222,11 +293,68 @@
   "drawer_reminders": "Hatırlatıcılar",
   "drawer_settings": "Ayarlar",
   "drawer_help": "Yardım ve Destek",
+  "drawer_about": "Hakkında",
+  "drawer_logout": "Çıkış Yap",
+
+  "about_title": "Aqualert",
+  "about_version": "Sürüm 1.0.0",
+  "about_description": "Aqualert ile sağlıklı kal ve susuz kalma. Günlük su tüketimini takip et ve hidrasyon hedeflerine ulaş!",
+  "about_copyright": "© 2024 Aqualert. Tüm hakları saklıdır.",
+  "about_close": "Kapat",
 
   "help_title": "Yardım ve Destek",
+  "help_subtitle": "Yardım alın ve daha fazlasını öğrenin",
   "help_faq": "Sık Sorulan Sorular",
   "help_contact": "Bize Ulaş",
   "help_version": "Sürüm",
+  "help_app_info": "Uygulama Bilgileri",
+  "help_coming_soon": "Yardım ve Destek - Yakında Gelecek!",
+
+  "help_faq_section": "Sık Sorulan Sorular",
+  "help_features_section": "Özellikler Rehberi",
+  "help_about_section": "Hakkında",
+
+  "faq_1_q": "Günlük su hedefim nasıl hesaplanıyor?",
+  "faq_1_a": "Günlük su hedefiniz kilo, boy, yaş, cinsiyet ve aktivite seviyenize göre bilimsel formüller kullanılarak hesaplanır. Profil ayarlarından özel hedef de belirleyebilirsiniz.",
+
+  "faq_2_q": "Su hatırlatıcıları nasıl çalışır?",
+  "faq_2_a": "Hatırlatma aralıkları (30-180 dakika) belirleyip başlangıç/bitiş saatleri seçebilirsiniz. Uygulama bu dönemde susuz kalmamanız için bildirim gönderir.",
+
+  "faq_3_q": "Seriler nedir ve nasıl çalışır?",
+  "faq_3_a": "Seriler, günlük su hedefinize ulaştığınız ardışık günleri takip eder. Serinizi sürdürmek ve artırmak için her gün su içmeye devam edin!",
+
+  "faq_4_q": "Ölçü birimlerini nasıl değiştirebilirim?",
+  "faq_4_a": "Ayarlar → Birimler bölümünden mililitre (ml) ve sıvı ons (fl oz) arasında geçiş yapabilirsiniz. Tüm ölçümler otomatik güncellenir.",
+
+  "faq_5_q": "Su takip verilerimi dışa aktarabilir miyim?",
+  "faq_5_a": "Evet! Ayarlar → Veri Yönetimi → Verileri Dışa Aktar'a gidin. Verilerinizi JSON dosyası olarak paylaşabilir veya kaydedip sonra içe aktarabilirsiniz.",
+
+  "faq_6_q": "Başarımlar nasıl çalışır?",
+  "faq_6_a": "Su takip kilometre taşlarını tamamlayarak başarımların kilidini açın ve ödül puanları kazanın. İlerlemelerinizi Başarımlar ekranından takip edin.",
+
+  "feature_tracking_title": "Su Takibi",
+  "feature_tracking_desc": "Hızlı ekleme butonları (250ml, 350ml, 500ml, 750ml) veya özel miktar girerek günlük su tüketiminizi kolayca kaydedin.",
+
+  "feature_reminders_title": "Akıllı Hatırlatıcılar",
+  "feature_reminders_desc": "Özelleştirilebilir hatırlatma aralıkları belirleyin ve aktif saatleri seçin. Gün boyunca su içmeyi asla unutmayın.",
+
+  "feature_statistics_title": "İstatistikler ve İçgörüler",
+  "feature_statistics_desc": "Haftalık, aylık ve yıllık grafiklerle su tüketim trendlerinizi görüntüleyin. Zaman içindeki ilerlemenizi takip edin.",
+
+  "feature_achievements_title": "Başarımlar ve Seriler",
+  "feature_achievements_desc": "Su hedeflerinize ulaşarak başarımlar kazanın ve günlük serilerinizi sürdürün. Oyunlaştırma ile motive kalın!",
+
+  "feature_profile_title": "Profil ve Hedefler",
+  "feature_profile_desc": "Kişisel bilgilerinizi girin ve uygulamanın vücut ölçülerinize göre optimal günlük su hedefinizi hesaplamasını sağlayın.",
+
+  "help_contact_email": "E-posta ile İletişim",
+  "help_contact_email_address": "destek@aqualert.app",
+  "help_rate_app": "Uygulamayı Değerlendir",
+  "help_rate_desc": "Aqualert'i beğendiniz mi? Bize yorum bırakın!",
+
+  "help_build_number": "Yapı",
+  "help_copyright": "© 2024 Aqualert. Tüm hakları saklıdır.",
+  "help_made_with": "Sağlığınız için ❤️ ile yapıldı",
 
   "error_generic": "Bir şeyler ters gitti. Lütfen tekrar dene.",
   "error_network": "Ağ hatası. Lütfen bağlantını kontrol et.",

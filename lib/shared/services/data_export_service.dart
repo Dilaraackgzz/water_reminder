@@ -20,21 +20,29 @@ class DataExportService {
   /// Export all user data to JSON format
   Future<Map<String, dynamic>> exportUserData() async {
     final userId = _auth.currentUser?.uid;
+    print('🔍 DataExport: Starting export for user: $userId');
+
     if (userId == null) {
+      print('❌ DataExport: User not authenticated');
       throw Exception('User not authenticated');
     }
 
-    // Fetch user profile
-    final profileDoc = await _firestore.collection('users').doc(userId).get();
-    final profileData = profileDoc.data();
+    try {
+      // Fetch user profile
+      print('📊 DataExport: Fetching user profile...');
+      final profileDoc = await _firestore.collection('users').doc(userId).get();
+      final profileData = profileDoc.data();
+      print('✅ DataExport: Profile fetched: ${profileData != null}');
 
-    // Fetch water records
+    // Fetch water records (without orderBy to avoid index requirement)
+    print('💧 DataExport: Fetching water records...');
     final waterRecordsSnapshot = await _firestore
         .collection('water_records')
         .where('userId', isEqualTo: userId)
-        .orderBy('timestamp', descending: true)
         .get();
+    print('✅ DataExport: Water records fetched: ${waterRecordsSnapshot.docs.length} records');
 
+    // Sort in memory
     final waterRecords = waterRecordsSnapshot.docs.map((doc) {
       final data = doc.data();
       return {
@@ -43,15 +51,19 @@ class DataExportService {
         'timestamp': (data['timestamp'] as Timestamp).toDate().toIso8601String(),
         'date': data['date'],
       };
-    }).toList();
+    }).toList()
+      ..sort((a, b) => DateTime.parse(b['timestamp'] as String)
+          .compareTo(DateTime.parse(a['timestamp'] as String)));
 
-    // Fetch daily goals
+    // Fetch daily goals (without orderBy to avoid index requirement)
+    print('🎯 DataExport: Fetching daily goals...');
     final dailyGoalsSnapshot = await _firestore
         .collection('daily_goals')
         .where('userId', isEqualTo: userId)
-        .orderBy('date', descending: true)
         .get();
+    print('✅ DataExport: Daily goals fetched: ${dailyGoalsSnapshot.docs.length} goals');
 
+    // Sort in memory
     final dailyGoals = dailyGoalsSnapshot.docs.map((doc) {
       final data = doc.data();
       return {
@@ -59,50 +71,84 @@ class DataExportService {
         'targetAmount': data['targetAmount'],
         'currentAmount': data['currentAmount'],
       };
-    }).toList();
+    }).toList()
+      ..sort((a, b) => (b['date'] as String).compareTo(a['date'] as String));
 
-    // Create export data
-    final exportData = {
-      'version': '1.0',
-      'exportDate': DateTime.now().toIso8601String(),
-      'userId': userId,
-      'profile': profileData,
-      'waterRecords': waterRecords,
-      'dailyGoals': dailyGoals,
-      'totalRecords': waterRecords.length,
-    };
+      // Create export data
+      print('📦 DataExport: Creating export data structure...');
+      final exportData = {
+        'version': '1.0',
+        'exportDate': DateTime.now().toIso8601String(),
+        'userId': userId,
+        'profile': profileData,
+        'waterRecords': waterRecords,
+        'dailyGoals': dailyGoals,
+        'totalRecords': waterRecords.length,
+      };
 
-    return exportData;
+      print('✅ DataExport: Export data created successfully');
+      return exportData;
+    } catch (e) {
+      print('❌ DataExport: Failed to export data: $e');
+      throw Exception('Failed to export data: ${e.toString()}');
+    }
   }
 
   /// Export data and save to file
   Future<String> exportToFile() async {
-    final exportData = await exportUserData();
-    final jsonString = const JsonEncoder.withIndent('  ').convert(exportData);
+    try {
+      print('📂 DataExport: Starting file export...');
+      final exportData = await exportUserData();
 
-    // Get temporary directory
-    final directory = await getTemporaryDirectory();
-    final timestamp = DateFormat('yyyyMMdd_HHmmss').format(DateTime.now());
-    final fileName = 'aquareminder_backup_$timestamp.json';
-    final filePath = '${directory.path}/$fileName';
+      print('📝 DataExport: Converting to JSON...');
+      final jsonString = const JsonEncoder.withIndent('  ').convert(exportData);
 
-    // Write to file
-    final file = File(filePath);
-    await file.writeAsString(jsonString);
+      // Get temporary directory
+      print('📁 DataExport: Getting temporary directory...');
+      final directory = await getTemporaryDirectory();
+      final timestamp = DateFormat('yyyyMMdd_HHmmss').format(DateTime.now());
+      final fileName = 'aqualert_backup_$timestamp.json';
+      final filePath = '${directory.path}/$fileName';
+      print('📁 DataExport: File path: $filePath');
 
-    return filePath;
+      // Write to file
+      print('💾 DataExport: Writing to file...');
+      final file = File(filePath);
+      await file.writeAsString(jsonString);
+      print('✅ DataExport: File written successfully');
+
+      return filePath;
+    } catch (e) {
+      print('❌ DataExport: Failed to create export file: $e');
+      throw Exception('Failed to create export file: ${e.toString()}');
+    }
   }
 
   /// Share exported data
   Future<void> shareExportedData() async {
-    final filePath = await exportToFile();
-    final file = File(filePath);
+    try {
+      print('🚀 DataExport: Starting share process...');
+      final filePath = await exportToFile();
+      final file = File(filePath);
 
-    await Share.shareXFiles(
-      [XFile(file.path)],
-      subject: 'Aqualert Data Backup',
-      text: 'My Aqualert water tracking data backup',
-    );
+      print('🔍 DataExport: Checking if file exists...');
+      if (!await file.exists()) {
+        print('❌ DataExport: Export file not found at: $filePath');
+        throw Exception('Export file not found');
+      }
+      print('✅ DataExport: File exists, preparing to share...');
+
+      print('📤 DataExport: Sharing file...');
+      await Share.shareXFiles(
+        [XFile(file.path)],
+        subject: 'Aqualert Data Backup',
+        text: 'My Aqualert water tracking data backup',
+      );
+      print('✅ DataExport: Share completed successfully');
+    } catch (e) {
+      print('❌ DataExport: Failed to share export: $e');
+      throw Exception('Failed to share export: ${e.toString()}');
+    }
   }
 
   /// Import data from JSON

@@ -11,6 +11,7 @@ import '../widgets/streak_card.dart';
 import '../../../../shared/widgets/modern_app_bar.dart';
 import '../../../../shared/widgets/app_drawer.dart';
 import '../../../../core/providers/unit_provider.dart';
+import '../../../../l10n/app_localizations.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
@@ -32,10 +33,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       await controller.addWater(amount);
     } catch (e) {
       if (mounted) {
+        final l10n = AppLocalizations.of(context)!;
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(
-              'Failed to add water: $e',
+              l10n.home_add_water_failed,
               style: GoogleFonts.poppins(),
             ),
             backgroundColor: Colors.red,
@@ -51,6 +53,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   }
 
   void _showCustomAmountDialog() {
+    final l10n = AppLocalizations.of(context)!;
     final controller = TextEditingController();
     final waterUnit = ref.read(waterUnitProvider);
     final unitNotifier = ref.read(waterUnitProvider.notifier);
@@ -61,7 +64,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       builder: (dialogContext) => AlertDialog(
         backgroundColor: isDark ? Colors.grey[900] : Colors.white,
         title: Text(
-          'Custom Amount',
+          l10n.home_custom_amount,
           style: GoogleFonts.poppins(
             fontWeight: FontWeight.w600,
             color: isDark ? Colors.white : Colors.black87,
@@ -72,7 +75,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           keyboardType: const TextInputType.numberWithOptions(decimal: true),
           autofocus: true,
           decoration: InputDecoration(
-            labelText: 'Amount (${waterUnit.shortName})',
+            labelText: '${l10n.home_amount_label} (${waterUnit.shortName})',
             labelStyle: GoogleFonts.poppins(
               color: isDark ? Colors.grey[400] : Colors.black54,
             ),
@@ -92,7 +95,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           TextButton(
             onPressed: () => Navigator.pop(dialogContext),
             child: Text(
-              'Cancel',
+              l10n.common_cancel,
               style: GoogleFonts.poppins(color: Colors.grey),
             ),
           ),
@@ -113,7 +116,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               ),
             ),
             child: Text(
-              'Add',
+              l10n.common_add,
               style: GoogleFonts.poppins(color: Colors.white),
             ),
           ),
@@ -127,6 +130,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final progressPercentage = ref.watch(progressPercentageProvider);
     final todaysIntakesAsync = ref.watch(todaysWaterIntakesProvider);
     final unitNotifier = ref.watch(waterUnitProvider.notifier);
@@ -136,7 +140,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     return Scaffold(
       backgroundColor: isDark ? colorScheme.surface : Colors.grey[50],
       appBar: ModernAppBar(
-        title: 'Aqualert',
+        title: l10n.appName,
         subtitle: DateFormat('EEEE, MMM d').format(DateTime.now()),
       ),
       drawer: const AppDrawer(),
@@ -170,7 +174,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   onPressed: _showCustomAmountDialog,
                   icon: const Icon(Icons.add_circle_outline, size: 20),
                   label: Text(
-                    'Custom Amount',
+                    l10n.home_custom_amount,
                     style: GoogleFonts.poppins(
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
@@ -203,7 +207,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
                 // Today's History
                 Text(
-                  'Today\'s History',
+                  l10n.home_today,
                   style: GoogleFonts.poppins(
                     fontSize: 18,
                     fontWeight: FontWeight.w600,
@@ -231,7 +235,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                             ),
                             const SizedBox(height: 16),
                             Text(
-                              'No water intake yet',
+                              l10n.home_no_records_today,
                               style: GoogleFonts.poppins(
                                 fontSize: 16,
                                 color: isDark ? Colors.grey[400] : Colors.grey[600],
@@ -239,7 +243,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                             ),
                             const SizedBox(height: 8),
                             Text(
-                              'Start adding water to track your progress!',
+                              l10n.home_start_drinking,
                               style: GoogleFonts.poppins(
                                 fontSize: 12,
                                 color: isDark ? Colors.grey[500] : Colors.grey[500],
@@ -329,7 +333,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     child: Padding(
                       padding: const EdgeInsets.all(40),
                       child: Text(
-                        'Error loading history: $error',
+                        l10n.error_generic,
                         style: GoogleFonts.poppins(color: Colors.red),
                       ),
                     ),

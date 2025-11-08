@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:water_reminder/l10n/app_localizations.dart';
 import '../../../../shared/widgets/modern_app_bar.dart';
 import '../../../../shared/widgets/app_drawer.dart';
 import '../../../../shared/services/reminder_service.dart';
@@ -37,6 +38,7 @@ class _RemindersScreenState extends ConsumerState<RemindersScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final reminderService = ref.watch(reminderServiceProvider);
     final notificationService = ref.watch(notificationServiceProvider);
     final isDark = Theme.of(context).brightness == Brightness.dark;
@@ -44,9 +46,9 @@ class _RemindersScreenState extends ConsumerState<RemindersScreen> {
 
     return Scaffold(
       backgroundColor: isDark ? colorScheme.surface : Colors.grey[50],
-      appBar: const ModernAppBar(
-        title: 'Reminders',
-        subtitle: 'Manage your water reminders',
+      appBar: ModernAppBar(
+        title: l10n.reminders_title,
+        subtitle: l10n.reminders_active,
       ),
       drawer: const AppDrawer(),
       body: SafeArea(
@@ -62,6 +64,7 @@ class _RemindersScreenState extends ConsumerState<RemindersScreen> {
               _ReminderStatusCard(
                 isEnabled: reminderService.isReminderEnabled(),
                 isDark: isDark,
+                l10n: l10n,
                 onToggle: (value) async {
                   await reminderService.setReminderEnabled(value);
                   ref.invalidate(reminderServiceProvider);
@@ -76,6 +79,7 @@ class _RemindersScreenState extends ConsumerState<RemindersScreen> {
                 _PendingCountCard(
                   count: _pendingCount ?? 0,
                   isDark: isDark,
+                  l10n: l10n,
                 ),
 
               const SizedBox(height: 24),
@@ -85,13 +89,14 @@ class _RemindersScreenState extends ConsumerState<RemindersScreen> {
                 _ScheduleInfoCard(
                   reminderService: reminderService,
                   isDark: isDark,
+                  l10n: l10n,
                 ),
                 const SizedBox(height: 24),
               ],
 
               // Quick Actions
               Text(
-                'Quick Actions',
+                l10n.settings_reminders,
                 style: GoogleFonts.poppins(
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
@@ -102,8 +107,8 @@ class _RemindersScreenState extends ConsumerState<RemindersScreen> {
 
               _ActionCard(
                 icon: Icons.notifications_active,
-                title: 'Test Notification',
-                subtitle: 'Send a test reminder now',
+                title: l10n.settings_test_notification,
+                subtitle: l10n.notification_reminder_body,
                 isDark: isDark,
                 onTap: () async {
                   try {
@@ -115,12 +120,12 @@ class _RemindersScreenState extends ConsumerState<RemindersScreen> {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             content: Text(
-                              'Please enable notification permissions',
+                              l10n.settings_enable_notifications,
                               style: GoogleFonts.poppins(),
                             ),
                             backgroundColor: Colors.orange,
                             action: SnackBarAction(
-                              label: 'Settings',
+                              label: l10n.settings_title,
                               textColor: Colors.white,
                               onPressed: () async {
                                 await openAppSettings();
@@ -135,15 +140,15 @@ class _RemindersScreenState extends ConsumerState<RemindersScreen> {
                     // Send test notification
                     await notificationService.showNotification(
                       id: 9999,
-                      title: '💧 Test Reminder',
-                      body: 'This is a test notification. Stay hydrated!',
+                      title: l10n.notification_reminder_title,
+                      body: l10n.notification_reminder_body,
                     );
 
                     if (context.mounted) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
                           content: Text(
-                            'Test notification sent! Check your notification panel.',
+                            l10n.settings_test_notification,
                             style: GoogleFonts.poppins(),
                           ),
                           backgroundColor: Colors.green,
@@ -156,7 +161,7 @@ class _RemindersScreenState extends ConsumerState<RemindersScreen> {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
                           content: Text(
-                            'Failed to send notification: ${e.toString()}',
+                            '${l10n.common_error}: ${e.toString()}',
                             style: GoogleFonts.poppins(),
                           ),
                           backgroundColor: Colors.red,
@@ -171,8 +176,8 @@ class _RemindersScreenState extends ConsumerState<RemindersScreen> {
 
               _ActionCard(
                 icon: Icons.refresh,
-                title: 'Refresh Schedule',
-                subtitle: 'Reschedule all reminders',
+                title: l10n.settings_reminders,
+                subtitle: l10n.reminders_active,
                 isDark: isDark,
                 onTap: () async {
                   await reminderService.scheduleReminders();
@@ -181,7 +186,7 @@ class _RemindersScreenState extends ConsumerState<RemindersScreen> {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
                         content: Text(
-                          'Reminders rescheduled successfully!',
+                          l10n.common_success,
                           style: GoogleFonts.poppins(),
                         ),
                         backgroundColor: Colors.green,
@@ -195,8 +200,8 @@ class _RemindersScreenState extends ConsumerState<RemindersScreen> {
 
               _ActionCard(
                 icon: Icons.clear_all,
-                title: 'Clear All Reminders',
-                subtitle: 'Cancel all scheduled reminders',
+                title: l10n.common_delete,
+                subtitle: l10n.reminders_pending,
                 isDark: isDark,
                 onTap: () async {
                   await reminderService.cancelAllReminders();
@@ -205,7 +210,7 @@ class _RemindersScreenState extends ConsumerState<RemindersScreen> {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
                         content: Text(
-                          'All reminders cancelled!',
+                          l10n.common_success,
                           style: GoogleFonts.poppins(),
                         ),
                         backgroundColor: Colors.orange,
@@ -218,7 +223,7 @@ class _RemindersScreenState extends ConsumerState<RemindersScreen> {
               const SizedBox(height: 24),
 
               // Info Section
-              _InfoCard(isDark: isDark),
+              _InfoCard(isDark: isDark, l10n: l10n),
             ],
           ),
         ),
@@ -230,11 +235,13 @@ class _RemindersScreenState extends ConsumerState<RemindersScreen> {
 class _ReminderStatusCard extends StatelessWidget {
   final bool isEnabled;
   final bool isDark;
+  final AppLocalizations l10n;
   final Function(bool) onToggle;
 
   const _ReminderStatusCard({
     required this.isEnabled,
     required this.isDark,
+    required this.l10n,
     required this.onToggle,
   });
 
@@ -287,7 +294,7 @@ class _ReminderStatusCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  isEnabled ? 'Reminders Active' : 'Reminders Disabled',
+                  isEnabled ? l10n.reminders_active : l10n.reminders_title,
                   style: GoogleFonts.poppins(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
@@ -297,8 +304,8 @@ class _ReminderStatusCard extends StatelessWidget {
                 const SizedBox(height: 4),
                 Text(
                   isEnabled
-                      ? 'You will receive water reminders'
-                      : 'Enable to start receiving reminders',
+                      ? l10n.notification_reminder_body
+                      : l10n.settings_enable_notifications,
                   style: GoogleFonts.poppins(
                     fontSize: 13,
                     color: isDark ? Colors.white70 : Colors.black54,
@@ -321,10 +328,12 @@ class _ReminderStatusCard extends StatelessWidget {
 class _PendingCountCard extends StatelessWidget {
   final int count;
   final bool isDark;
+  final AppLocalizations l10n;
 
   const _PendingCountCard({
     required this.count,
     required this.isDark,
+    required this.l10n,
   });
 
   @override
@@ -358,7 +367,7 @@ class _PendingCountCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Pending Reminders',
+                  l10n.reminders_pending,
                   style: GoogleFonts.poppins(
                     fontSize: 14,
                     fontWeight: FontWeight.w600,
@@ -367,11 +376,7 @@ class _PendingCountCard extends StatelessWidget {
                 ),
                 const SizedBox(height: 2),
                 Text(
-                  count == 0
-                      ? 'No reminders scheduled'
-                      : count == 1
-                          ? '1 reminder scheduled'
-                          : '$count reminders scheduled',
+                  '$count ${l10n.reminders_pending}',
                   style: GoogleFonts.poppins(
                     fontSize: 12,
                     color: isDark ? Colors.white60 : Colors.black54,
@@ -404,10 +409,12 @@ class _PendingCountCard extends StatelessWidget {
 class _ScheduleInfoCard extends StatelessWidget {
   final ReminderService reminderService;
   final bool isDark;
+  final AppLocalizations l10n;
 
   const _ScheduleInfoCard({
     required this.reminderService,
     required this.isDark,
+    required this.l10n,
   });
 
   @override
@@ -433,7 +440,7 @@ class _ScheduleInfoCard extends StatelessWidget {
               const Icon(Icons.schedule, color: Color(0xFF00BCD4), size: 24),
               const SizedBox(width: 12),
               Text(
-                'Current Schedule',
+                l10n.settings_reminders,
                 style: GoogleFonts.poppins(
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
@@ -444,22 +451,22 @@ class _ScheduleInfoCard extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           _InfoRow(
-            label: 'Start Time',
+            label: l10n.settings_reminder_start_time,
             value:
                 '${startTime.hour.toString().padLeft(2, '0')}:${startTime.minute.toString().padLeft(2, '0')}',
             isDark: isDark,
           ),
           const SizedBox(height: 8),
           _InfoRow(
-            label: 'End Time',
+            label: l10n.settings_reminder_end_time,
             value:
                 '${endTime.hour.toString().padLeft(2, '0')}:${endTime.minute.toString().padLeft(2, '0')}',
             isDark: isDark,
           ),
           const SizedBox(height: 8),
           _InfoRow(
-            label: 'Interval',
-            value: '$interval minutes',
+            label: l10n.settings_reminder_interval,
+            value: '$interval',
             isDark: isDark,
           ),
         ],
@@ -583,8 +590,9 @@ class _ActionCard extends StatelessWidget {
 
 class _InfoCard extends StatelessWidget {
   final bool isDark;
+  final AppLocalizations l10n;
 
-  const _InfoCard({required this.isDark});
+  const _InfoCard({required this.isDark, required this.l10n});
 
   @override
   Widget build(BuildContext context) {
@@ -607,7 +615,7 @@ class _InfoCard extends StatelessWidget {
           const SizedBox(width: 12),
           Expanded(
             child: Text(
-              'Reminders help you stay hydrated throughout the day. You can customize the schedule in Settings.',
+              l10n.notification_reminder_body,
               style: GoogleFonts.poppins(
                 fontSize: 12,
                 color: isDark ? Colors.blue[200] : Colors.blue[900],

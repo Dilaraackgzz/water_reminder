@@ -12,24 +12,28 @@ import '../../../../core/providers/language_provider.dart';
 import '../../../../core/providers/unit_provider.dart';
 import '../../../../core/services/unit_service.dart';
 import '../../../../shared/providers/data_export_provider.dart';
+import '../../../../l10n/app_localizations.dart';
 
 class SettingsScreen extends ConsumerWidget {
   const SettingsScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context)!;
     final reminderService = ref.watch(reminderServiceProvider);
     final isReminderEnabled = reminderService.isReminderEnabled();
     final themeMode = ref.watch(themeModeProvider);
     final waterUnit = ref.watch(waterUnitProvider);
+    final locale = ref.watch(localeProvider);
+    final currentLanguageName = ref.read(localeProvider.notifier).currentLanguageName;
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final colorScheme = Theme.of(context).colorScheme;
 
     return Scaffold(
       backgroundColor: isDark ? colorScheme.surface : Colors.grey[50],
-      appBar: const ModernAppBar(
-        title: 'Settings',
-        subtitle: 'Customize your experience',
+      appBar: ModernAppBar(
+        title: l10n.settings_title,
+        subtitle: l10n.settings_subtitle,
       ),
       drawer: const AppDrawer(),
       body: SafeArea(
@@ -37,14 +41,14 @@ class SettingsScreen extends ConsumerWidget {
           padding: const EdgeInsets.all(20),
           children: [
             // Notifications Section
-            _SectionHeader(title: 'Notifications', isDark: isDark),
+            _SectionHeader(title: l10n.settings_notifications, isDark: isDark),
             const SizedBox(height: 12),
             _SettingCard(
               icon: Icons.notifications_active,
-              title: 'Enable Reminders',
+              title: l10n.settings_enable_notifications,
               subtitle: isReminderEnabled
-                  ? 'Water reminders are active'
-                  : 'Turn on to get reminders',
+                  ? l10n.settings_reminders_active
+                  : l10n.settings_reminders_inactive,
               isDark: isDark,
               trailing: Switch(
                 value: isReminderEnabled,
@@ -59,15 +63,15 @@ class SettingsScreen extends ConsumerWidget {
             const SizedBox(height: 12),
             _SettingCard(
               icon: Icons.schedule,
-              title: 'Reminder Interval',
-              subtitle: '${reminderService.getReminderInterval()} minutes',
+              title: l10n.settings_reminder_interval,
+              subtitle: '${reminderService.getReminderInterval()} ${l10n.settings_minutes}',
               isDark: isDark,
               onTap: () => _showIntervalDialog(context, ref, reminderService),
             ),
             const SizedBox(height: 12),
             _SettingCard(
               icon: Icons.access_time,
-              title: 'Start Time',
+              title: l10n.settings_reminder_start_time,
               subtitle: _formatTime(reminderService.getReminderStartTime()),
               isDark: isDark,
               onTap: () => _showTimePickerDialog(
@@ -80,7 +84,7 @@ class SettingsScreen extends ConsumerWidget {
             const SizedBox(height: 12),
             _SettingCard(
               icon: Icons.bedtime,
-              title: 'End Time',
+              title: l10n.settings_reminder_end_time,
               subtitle: _formatTime(reminderService.getReminderEndTime()),
               isDark: isDark,
               onTap: () => _showTimePickerDialog(
@@ -94,12 +98,12 @@ class SettingsScreen extends ConsumerWidget {
             const SizedBox(height: 32),
 
             // App Settings Section
-            _SectionHeader(title: 'App Settings', isDark: isDark),
+            _SectionHeader(title: l10n.settings_theme, isDark: isDark),
             const SizedBox(height: 12),
             _SettingCard(
               icon: Icons.palette,
-              title: 'Theme',
-              subtitle: _getThemeModeLabel(themeMode),
+              title: l10n.settings_theme,
+              subtitle: _getThemeModeLabel(themeMode, l10n),
               isDark: isDark,
               trailing: Icon(
                 Icons.chevron_right,
@@ -110,76 +114,66 @@ class SettingsScreen extends ConsumerWidget {
             const SizedBox(height: 12),
             _SettingCard(
               icon: Icons.straighten,
-              title: 'Water Unit',
+              title: l10n.settings_units,
               subtitle: waterUnit.displayName,
               isDark: isDark,
               trailing: Icon(
                 Icons.chevron_right,
                 color: isDark ? Colors.grey[600] : Colors.grey,
               ),
-              onTap: () => _showUnitDialog(context, ref, waterUnit),
+              onTap: () => _showUnitDialog(context, ref, waterUnit, l10n),
             ),
             const SizedBox(height: 12),
             _SettingCard(
               icon: Icons.language,
-              title: 'Language',
-              subtitle: 'English',
+              title: l10n.settings_language,
+              subtitle: currentLanguageName,
               isDark: isDark,
               trailing: Icon(
                 Icons.chevron_right,
                 color: isDark ? Colors.grey[600] : Colors.grey,
               ),
-              onTap: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text(
-                      'Language settings - Coming Soon!',
-                      style: GoogleFonts.poppins(),
-                    ),
-                    backgroundColor: const Color(0xFF00BCD4),
-                  ),
-                );
-              },
+              onTap: () => _showLanguageDialog(context, ref, locale),
             ),
 
             const SizedBox(height: 32),
 
             // Data Management Section
-            _SectionHeader(title: 'Data Management', isDark: isDark),
+            _SectionHeader(title: l10n.settings_data, isDark: isDark),
             const SizedBox(height: 12),
             _SettingCard(
               icon: Icons.file_upload,
-              title: 'Export Data',
-              subtitle: 'Backup your water tracking data',
+              title: l10n.settings_export_data,
+              subtitle: l10n.settings_export_subtitle,
               isDark: isDark,
               trailing: Icon(
                 Icons.chevron_right,
                 color: isDark ? Colors.grey[600] : Colors.grey,
               ),
-              onTap: () => _handleExportData(context, ref),
+              onTap: () => _handleExportData(context, ref, l10n),
             ),
             const SizedBox(height: 12),
             _SettingCard(
               icon: Icons.file_download,
-              title: 'Import Data',
-              subtitle: 'Restore from backup file',
+              title: l10n.settings_import_data,
+              subtitle: l10n.settings_import_subtitle,
               isDark: isDark,
               trailing: Icon(
                 Icons.chevron_right,
                 color: isDark ? Colors.grey[600] : Colors.grey,
               ),
-              onTap: () => _handleImportData(context, ref),
+              onTap: () => _handleImportData(context, ref, l10n),
             ),
 
             const SizedBox(height: 32),
 
             // Account Section
-            _SectionHeader(title: 'Account', isDark: isDark),
+            _SectionHeader(title: l10n.settings_profile, isDark: isDark),
             const SizedBox(height: 12),
             _SettingCard(
               icon: Icons.person,
-              title: 'Edit Profile',
-              subtitle: 'Update your information',
+              title: l10n.settings_profile,
+              subtitle: l10n.settings_profile_subtitle,
               isDark: isDark,
               trailing: Icon(
                 Icons.chevron_right,
@@ -192,8 +186,8 @@ class SettingsScreen extends ConsumerWidget {
             const SizedBox(height: 12),
             _SettingCard(
               icon: Icons.water_drop,
-              title: 'Daily Goal',
-              subtitle: 'Manage your hydration goal',
+              title: l10n.settings_daily_goal,
+              subtitle: l10n.settings_daily_goal_subtitle,
               isDark: isDark,
               trailing: Icon(
                 Icons.chevron_right,
@@ -215,14 +209,14 @@ class SettingsScreen extends ConsumerWidget {
     return '$hour:$minute';
   }
 
-  String _getThemeModeLabel(ThemeMode mode) {
+  String _getThemeModeLabel(ThemeMode mode, AppLocalizations l10n) {
     switch (mode) {
       case ThemeMode.light:
-        return 'Light Mode';
+        return l10n.settings_theme_light;
       case ThemeMode.dark:
-        return 'Dark Mode';
+        return l10n.settings_theme_dark;
       case ThemeMode.system:
-        return 'System Default';
+        return l10n.settings_theme_system;
     }
   }
 
@@ -230,6 +224,7 @@ class SettingsScreen extends ConsumerWidget {
     BuildContext context,
     WidgetRef ref,
     WaterUnit currentUnit,
+    AppLocalizations l10n,
   ) async {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
@@ -238,7 +233,7 @@ class SettingsScreen extends ConsumerWidget {
       builder: (dialogContext) => AlertDialog(
         backgroundColor: isDark ? Colors.grey[900] : Colors.white,
         title: Text(
-          'Water Unit',
+          l10n.settings_units,
           style: GoogleFonts.poppins(
             fontWeight: FontWeight.w600,
             color: isDark ? Colors.white : Colors.black87,
@@ -249,13 +244,13 @@ class SettingsScreen extends ConsumerWidget {
           children: [
             RadioListTile<WaterUnit>(
               title: Text(
-                'Milliliters (ml)',
+                l10n.settings_unit_ml,
                 style: GoogleFonts.poppins(
                   color: isDark ? Colors.white : Colors.black87,
                 ),
               ),
               subtitle: Text(
-                'Metric system',
+                l10n.settings_unit_metric,
                 style: GoogleFonts.poppins(
                   fontSize: 12,
                   color: isDark ? Colors.grey[400] : Colors.grey,
@@ -273,13 +268,13 @@ class SettingsScreen extends ConsumerWidget {
             ),
             RadioListTile<WaterUnit>(
               title: Text(
-                'Fluid Ounces (fl oz)',
+                l10n.settings_unit_floz,
                 style: GoogleFonts.poppins(
                   color: isDark ? Colors.white : Colors.black87,
                 ),
               ),
               subtitle: Text(
-                'Imperial system',
+                l10n.settings_unit_imperial,
                 style: GoogleFonts.poppins(
                   fontSize: 12,
                   color: isDark ? Colors.grey[400] : Colors.grey,
@@ -307,6 +302,7 @@ class SettingsScreen extends ConsumerWidget {
     WidgetRef ref,
     ThemeMode currentMode,
   ) async {
+    final l10n = AppLocalizations.of(context)!;
     await showDialog(
       context: context,
       builder: (dialogContext) => Consumer(
@@ -317,7 +313,7 @@ class SettingsScreen extends ConsumerWidget {
           return AlertDialog(
             backgroundColor: isDark ? Colors.grey[900] : Colors.white,
             title: Text(
-              'Theme',
+              l10n.settings_theme_dialog_title,
               style: GoogleFonts.poppins(
                 fontWeight: FontWeight.w600,
                 color: isDark ? Colors.white : Colors.black87,
@@ -328,13 +324,13 @@ class SettingsScreen extends ConsumerWidget {
               children: [
                 RadioListTile<ThemeMode>(
                   title: Text(
-                    'Light Mode',
+                    l10n.settings_theme_light_mode,
                     style: GoogleFonts.poppins(
                       color: isDark ? Colors.white : Colors.black87,
                     ),
                   ),
                   subtitle: Text(
-                    'Use light theme',
+                    l10n.settings_theme_light_subtitle,
                     style: GoogleFonts.poppins(
                       fontSize: 12,
                       color: isDark ? Colors.grey[400] : Colors.grey,
@@ -352,13 +348,13 @@ class SettingsScreen extends ConsumerWidget {
                 ),
                 RadioListTile<ThemeMode>(
                   title: Text(
-                    'Dark Mode',
+                    l10n.settings_theme_dark_mode,
                     style: GoogleFonts.poppins(
                       color: isDark ? Colors.white : Colors.black87,
                     ),
                   ),
                   subtitle: Text(
-                    'Use dark theme',
+                    l10n.settings_theme_dark_subtitle,
                     style: GoogleFonts.poppins(
                       fontSize: 12,
                       color: isDark ? Colors.grey[400] : Colors.grey,
@@ -376,13 +372,13 @@ class SettingsScreen extends ConsumerWidget {
                 ),
                 RadioListTile<ThemeMode>(
                   title: Text(
-                    'System Default',
+                    l10n.settings_theme_system_mode,
                     style: GoogleFonts.poppins(
                       color: isDark ? Colors.white : Colors.black87,
                     ),
                   ),
                   subtitle: Text(
-                    'Follow system theme',
+                    l10n.settings_theme_system_subtitle,
                     style: GoogleFonts.poppins(
                       fontSize: 12,
                       color: isDark ? Colors.grey[400] : Colors.grey,
@@ -407,7 +403,89 @@ class SettingsScreen extends ConsumerWidget {
     );
   }
 
-  Future<void> _handleExportData(BuildContext context, WidgetRef ref) async {
+  Future<void> _showLanguageDialog(
+    BuildContext context,
+    WidgetRef ref,
+    Locale currentLocale,
+  ) async {
+    final l10n = AppLocalizations.of(context)!;
+    await showDialog(
+      context: context,
+      builder: (dialogContext) => Consumer(
+        builder: (_, ref, __) {
+          final selectedLocale = ref.watch(localeProvider);
+          final isDark = Theme.of(dialogContext).brightness == Brightness.dark;
+
+          return AlertDialog(
+            backgroundColor: isDark ? Colors.grey[900] : Colors.white,
+            title: Text(
+              l10n.settings_language_dialog_title,
+              style: GoogleFonts.poppins(
+                fontWeight: FontWeight.w600,
+                color: isDark ? Colors.white : Colors.black87,
+              ),
+            ),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                RadioListTile<Locale>(
+                  title: Text(
+                    'English',
+                    style: GoogleFonts.poppins(
+                      color: isDark ? Colors.white : Colors.black87,
+                    ),
+                  ),
+                  subtitle: Text(
+                    'English',
+                    style: GoogleFonts.poppins(
+                      fontSize: 12,
+                      color: isDark ? Colors.grey[400] : Colors.grey,
+                    ),
+                  ),
+                  value: const Locale('en'),
+                  groupValue: selectedLocale,
+                  onChanged: (value) async {
+                    if (value != null) {
+                      await ref.read(localeProvider.notifier).changeLocale(value);
+                      if (dialogContext.mounted) Navigator.pop(dialogContext);
+                    }
+                  },
+                  activeColor: const Color(0xFF00BCD4),
+                ),
+                RadioListTile<Locale>(
+                  title: Text(
+                    'Türkçe',
+                    style: GoogleFonts.poppins(
+                      color: isDark ? Colors.white : Colors.black87,
+                    ),
+                  ),
+                  subtitle: Text(
+                    'Turkish',
+                    style: GoogleFonts.poppins(
+                      fontSize: 12,
+                      color: isDark ? Colors.grey[400] : Colors.grey,
+                    ),
+                  ),
+                  value: const Locale('tr'),
+                  groupValue: selectedLocale,
+                  onChanged: (value) async {
+                    if (value != null) {
+                      await ref.read(localeProvider.notifier).changeLocale(value);
+                      if (dialogContext.mounted) Navigator.pop(dialogContext);
+                    }
+                  },
+                  activeColor: const Color(0xFF00BCD4),
+                ),
+              ],
+            ),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          );
+        },
+      ),
+    );
+  }
+
+  Future<void> _handleExportData(BuildContext context, WidgetRef ref, AppLocalizations l10n) async {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     try {
@@ -428,7 +506,7 @@ class SettingsScreen extends ConsumerWidget {
                 const CircularProgressIndicator(color: Color(0xFF00BCD4)),
                 const SizedBox(height: 16),
                 Text(
-                  'Exporting data...',
+                  l10n.settings_export_loading,
                   style: GoogleFonts.poppins(
                     color: isDark ? Colors.white : Colors.black87,
                   ),
@@ -447,7 +525,7 @@ class SettingsScreen extends ConsumerWidget {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(
-              'Data exported successfully!',
+              l10n.settings_export_success_message,
               style: GoogleFonts.poppins(),
             ),
             backgroundColor: Colors.green,
@@ -460,7 +538,7 @@ class SettingsScreen extends ConsumerWidget {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(
-              'Export failed: $e',
+              '${l10n.settings_export_failed}: $e',
               style: GoogleFonts.poppins(),
             ),
             backgroundColor: Colors.red,
@@ -470,7 +548,7 @@ class SettingsScreen extends ConsumerWidget {
     }
   }
 
-  Future<void> _handleImportData(BuildContext context, WidgetRef ref) async {
+  Future<void> _handleImportData(BuildContext context, WidgetRef ref, AppLocalizations l10n) async {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     try {
@@ -502,7 +580,7 @@ class SettingsScreen extends ConsumerWidget {
                   const CircularProgressIndicator(color: Color(0xFF00BCD4)),
                   const SizedBox(height: 16),
                   Text(
-                    'Importing data...',
+                    l10n.settings_import_loading,
                     style: GoogleFonts.poppins(
                       color: isDark ? Colors.white : Colors.black87,
                     ),
@@ -526,7 +604,7 @@ class SettingsScreen extends ConsumerWidget {
           builder: (dialogContext) => AlertDialog(
             backgroundColor: isDark ? Colors.grey[900] : Colors.white,
             title: Text(
-              'Import Complete',
+              l10n.settings_import_complete,
               style: GoogleFonts.poppins(
                 fontWeight: FontWeight.w600,
                 color: isDark ? Colors.white : Colors.black87,
@@ -537,7 +615,7 @@ class SettingsScreen extends ConsumerWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Imported successfully:',
+                  l10n.settings_import_success_subtitle,
                   style: GoogleFonts.poppins(
                     fontWeight: FontWeight.w500,
                     color: isDark ? Colors.white : Colors.black87,
@@ -545,13 +623,13 @@ class SettingsScreen extends ConsumerWidget {
                 ),
                 const SizedBox(height: 12),
                 Text(
-                  '• ${stats['importedRecords']} water records',
+                  '• ${stats['importedRecords']} ${l10n.settings_import_water_records}',
                   style: GoogleFonts.poppins(
                     color: isDark ? Colors.white70 : Colors.black87,
                   ),
                 ),
                 Text(
-                  '• ${stats['importedGoals']} daily goals',
+                  '• ${stats['importedGoals']} ${l10n.settings_import_daily_goals}',
                   style: GoogleFonts.poppins(
                     color: isDark ? Colors.white70 : Colors.black87,
                   ),
@@ -559,7 +637,7 @@ class SettingsScreen extends ConsumerWidget {
                 if (stats['skippedRecords']! > 0) ...[
                   const SizedBox(height: 8),
                   Text(
-                    '• ${stats['skippedRecords']} duplicate records skipped',
+                    '• ${stats['skippedRecords']} ${l10n.settings_import_duplicate_skipped}',
                     style: GoogleFonts.poppins(
                       fontSize: 12,
                       color: Colors.orange,
@@ -588,7 +666,7 @@ class SettingsScreen extends ConsumerWidget {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(
-              'Import failed: $e',
+              '${l10n.settings_import_failed}: $e',
               style: GoogleFonts.poppins(),
             ),
             backgroundColor: Colors.red,
@@ -603,6 +681,7 @@ class SettingsScreen extends ConsumerWidget {
     WidgetRef ref,
     ReminderService service,
   ) async {
+    final l10n = AppLocalizations.of(context)!;
     final intervals = [30, 45, 60, 90, 120, 180];
     final current = service.getReminderInterval();
     final isDark = Theme.of(context).brightness == Brightness.dark;
@@ -612,7 +691,7 @@ class SettingsScreen extends ConsumerWidget {
       builder: (dialogContext) => AlertDialog(
         backgroundColor: isDark ? Colors.grey[900] : Colors.white,
         title: Text(
-          'Reminder Interval',
+          l10n.settings_reminder_interval_title,
           style: GoogleFonts.poppins(
             fontWeight: FontWeight.w600,
             color: isDark ? Colors.white : Colors.black87,
@@ -623,7 +702,7 @@ class SettingsScreen extends ConsumerWidget {
           children: intervals.map((interval) {
             return RadioListTile<int>(
               title: Text(
-                '$interval minutes',
+                '$interval ${l10n.settings_minutes}',
                 style: GoogleFonts.poppins(
                   color: isDark ? Colors.white : Colors.black87,
                 ),

@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:go_router/go_router.dart';
+import 'package:water_reminder/l10n/app_localizations.dart';
 import '../../features/auth/presentation/providers/auth_controller.dart';
 
 class AppDrawer extends ConsumerWidget {
@@ -10,6 +11,7 @@ class AppDrawer extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context)!;
     final user = FirebaseAuth.instance.currentUser;
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
@@ -100,7 +102,7 @@ class AppDrawer extends ConsumerWidget {
                 children: [
                   _DrawerMenuItem(
                     icon: Icons.home,
-                    title: 'Home',
+                    title: l10n.drawer_home,
                     isDark: isDark,
                     onTap: () {
                       Navigator.pop(context);
@@ -109,7 +111,7 @@ class AppDrawer extends ConsumerWidget {
                   ),
                   _DrawerMenuItem(
                     icon: Icons.bar_chart,
-                    title: 'Statistics',
+                    title: l10n.drawer_statistics,
                     isDark: isDark,
                     onTap: () {
                       Navigator.pop(context);
@@ -118,7 +120,7 @@ class AppDrawer extends ConsumerWidget {
                   ),
                   _DrawerMenuItem(
                     icon: Icons.notifications,
-                    title: 'Reminders',
+                    title: l10n.drawer_reminders,
                     isDark: isDark,
                     onTap: () {
                       Navigator.pop(context);
@@ -127,7 +129,7 @@ class AppDrawer extends ConsumerWidget {
                   ),
                   _DrawerMenuItem(
                     icon: Icons.emoji_events,
-                    title: 'Achievements',
+                    title: l10n.drawer_achievements,
                     isDark: isDark,
                     onTap: () {
                       Navigator.pop(context);
@@ -136,7 +138,7 @@ class AppDrawer extends ConsumerWidget {
                   ),
                   _DrawerMenuItem(
                     icon: Icons.person,
-                    title: 'Profile',
+                    title: l10n.drawer_profile,
                     isDark: isDark,
                     onTap: () {
                       Navigator.pop(context);
@@ -145,7 +147,7 @@ class AppDrawer extends ConsumerWidget {
                   ),
                   _DrawerMenuItem(
                     icon: Icons.settings,
-                    title: 'Settings',
+                    title: l10n.drawer_settings,
                     isDark: isDark,
                     onTap: () {
                       Navigator.pop(context);
@@ -159,29 +161,20 @@ class AppDrawer extends ConsumerWidget {
                   ),
                   _DrawerMenuItem(
                     icon: Icons.help_outline,
-                    title: 'Help & Support',
+                    title: l10n.drawer_help,
                     isDark: isDark,
                     onTap: () {
                       Navigator.pop(context);
-                      // TODO: Navigate to help
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text(
-                            'Help & Support - Coming Soon!',
-                            style: GoogleFonts.poppins(),
-                          ),
-                          backgroundColor: const Color(0xFF00BCD4),
-                        ),
-                      );
+                      context.push('/help');
                     },
                   ),
                   _DrawerMenuItem(
                     icon: Icons.info_outline,
-                    title: 'About',
+                    title: l10n.drawer_about,
                     isDark: isDark,
                     onTap: () {
                       Navigator.pop(context);
-                      _showAboutDialog(context);
+                      _showAboutDialog(context, l10n);
                     },
                   ),
                 ],
@@ -215,7 +208,7 @@ class AppDrawer extends ConsumerWidget {
                         const Icon(Icons.logout, color: Colors.red, size: 22),
                         const SizedBox(width: 12),
                         Text(
-                          'Logout',
+                          l10n.drawer_logout,
                           style: GoogleFonts.poppins(
                             fontSize: 16,
                             fontWeight: FontWeight.w600,
@@ -234,7 +227,7 @@ class AppDrawer extends ConsumerWidget {
     );
   }
 
-  void _showAboutDialog(BuildContext context) {
+  void _showAboutDialog(BuildContext context, AppLocalizations l10n) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     showDialog(
@@ -246,7 +239,7 @@ class AppDrawer extends ConsumerWidget {
             const Icon(Icons.water_drop, color: Color(0xFF00BCD4), size: 28),
             const SizedBox(width: 12),
             Text(
-              'Aqualert',
+              l10n.about_title,
               style: GoogleFonts.poppins(
                 fontWeight: FontWeight.bold,
                 color: isDark ? Colors.white : Colors.black87,
@@ -259,7 +252,7 @@ class AppDrawer extends ConsumerWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Version 1.0.0',
+              l10n.about_version,
               style: GoogleFonts.poppins(
                 fontSize: 14,
                 color: isDark ? Colors.grey[400] : Colors.grey[600],
@@ -267,7 +260,7 @@ class AppDrawer extends ConsumerWidget {
             ),
             const SizedBox(height: 16),
             Text(
-              'Stay hydrated and healthy with Aqualert. Track your daily water intake and achieve your hydration goals!',
+              l10n.about_description,
               style: GoogleFonts.poppins(
                 fontSize: 14,
                 color: isDark ? Colors.white70 : Colors.black87,
@@ -275,7 +268,7 @@ class AppDrawer extends ConsumerWidget {
             ),
             const SizedBox(height: 16),
             Text(
-              '© 2024 Aqualert. All rights reserved.',
+              l10n.about_copyright,
               style: GoogleFonts.poppins(
                 fontSize: 12,
                 color: isDark ? Colors.grey[500] : Colors.grey[500],
@@ -287,7 +280,7 @@ class AppDrawer extends ConsumerWidget {
           TextButton(
             onPressed: () => Navigator.pop(dialogContext),
             child: Text(
-              'Close',
+              l10n.about_close,
               style: GoogleFonts.poppins(
                 color: const Color(0xFF00BCD4),
                 fontWeight: FontWeight.w600,

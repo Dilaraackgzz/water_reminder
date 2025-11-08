@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:water_reminder/l10n/app_localizations.dart';
 import '../../domain/models/user_streak.dart';
 import '../providers/streak_providers.dart';
 
@@ -12,27 +13,29 @@ class StreakCard extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context)!;
     final streakAsync = ref.watch(userStreakProvider);
 
     return streakAsync.when(
       data: (streak) {
         if (streak == null) {
-          return isCompact ? _CompactEmptyStreakCard() : _EmptyStreakCard();
+          return isCompact ? _CompactEmptyStreakCard(l10n: l10n) : _EmptyStreakCard(l10n: l10n);
         }
         return isCompact
-            ? _CompactStreakContent(streak: streak)
-            : _StreakContent(streak: streak);
+            ? _CompactStreakContent(streak: streak, l10n: l10n)
+            : _StreakContent(streak: streak, l10n: l10n);
       },
       loading: () => _LoadingStreakCard(isCompact: isCompact),
-      error: (error, stack) => _ErrorStreakCard(isCompact: isCompact),
+      error: (error, stack) => _ErrorStreakCard(isCompact: isCompact, l10n: l10n),
     );
   }
 }
 
 class _StreakContent extends StatelessWidget {
   final UserStreak streak;
+  final AppLocalizations l10n;
 
-  const _StreakContent({required this.streak});
+  const _StreakContent({required this.streak, required this.l10n});
 
   @override
   Widget build(BuildContext context) {
@@ -73,7 +76,7 @@ class _StreakContent extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Current Streak',
+                        l10n.streak_current,
                         style: GoogleFonts.poppins(
                           fontSize: 12,
                           fontWeight: FontWeight.w500,
@@ -93,7 +96,7 @@ class _StreakContent extends StatelessWidget {
                           ),
                           const SizedBox(width: 4),
                           Text(
-                            'days',
+                            streak.currentStreak == 1 ? l10n.streak_day_singular : l10n.streak_day_plural,
                             style: GoogleFonts.poppins(
                               fontSize: 14,
                               fontWeight: FontWeight.w500,
@@ -123,7 +126,7 @@ class _StreakContent extends StatelessWidget {
                       ),
                       const SizedBox(width: 4),
                       Text(
-                        'Personal Best',
+                        l10n.streak_personal_best,
                         style: GoogleFonts.poppins(
                           fontSize: 10,
                           fontWeight: FontWeight.w600,
@@ -156,16 +159,16 @@ class _StreakContent extends StatelessWidget {
               Expanded(
                 child: _StatItem(
                   icon: Icons.military_tech,
-                  label: 'Longest',
-                  value: '${streak.longestStreak} days',
+                  label: l10n.streak_longest,
+                  value: '${streak.longestStreak} ${streak.longestStreak == 1 ? l10n.streak_day_singular : l10n.streak_day_plural}',
                 ),
               ),
               const SizedBox(width: 12),
               Expanded(
                 child: _StatItem(
                   icon: Icons.trending_up,
-                  label: 'Next Milestone',
-                  value: '${streak.daysToNextMilestone} days',
+                  label: l10n.streak_next_milestone,
+                  value: '${streak.daysToNextMilestone} ${streak.daysToNextMilestone == 1 ? l10n.streak_day_singular : l10n.streak_day_plural}',
                 ),
               ),
             ],
@@ -222,6 +225,10 @@ class _StatItem extends StatelessWidget {
 }
 
 class _EmptyStreakCard extends StatelessWidget {
+  final AppLocalizations l10n;
+
+  const _EmptyStreakCard({required this.l10n});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -249,7 +256,7 @@ class _EmptyStreakCard extends StatelessWidget {
           ),
           const SizedBox(height: 12),
           Text(
-            'Start Your Streak Today!',
+            l10n.streak_start_today,
             style: GoogleFonts.poppins(
               fontSize: 16,
               fontWeight: FontWeight.bold,
@@ -258,7 +265,7 @@ class _EmptyStreakCard extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           Text(
-            'Complete your daily goal to build a streak',
+            l10n.streak_complete_goal,
             textAlign: TextAlign.center,
             style: GoogleFonts.poppins(
               fontSize: 12,
@@ -273,8 +280,9 @@ class _EmptyStreakCard extends StatelessWidget {
 
 class _CompactStreakContent extends StatelessWidget {
   final UserStreak streak;
+  final AppLocalizations l10n;
 
-  const _CompactStreakContent({required this.streak});
+  const _CompactStreakContent({required this.streak, required this.l10n});
 
   @override
   Widget build(BuildContext context) {
@@ -323,7 +331,7 @@ class _CompactStreakContent extends StatelessWidget {
                     ),
                     const SizedBox(width: 6),
                     Text(
-                      'day${streak.currentStreak == 1 ? '' : 's'}',
+                      streak.currentStreak == 1 ? l10n.streak_day_singular : l10n.streak_day_plural,
                       style: GoogleFonts.poppins(
                         fontSize: 14,
                         fontWeight: FontWeight.w600,
@@ -339,7 +347,7 @@ class _CompactStreakContent extends StatelessWidget {
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: Text(
-                          'Best!',
+                          l10n.streak_best,
                           style: GoogleFonts.poppins(
                             fontSize: 10,
                             fontWeight: FontWeight.w700,
@@ -352,7 +360,7 @@ class _CompactStreakContent extends StatelessWidget {
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  'Current Streak',
+                  l10n.streak_current,
                   style: GoogleFonts.poppins(
                     fontSize: 12,
                     fontWeight: FontWeight.w500,
@@ -369,6 +377,10 @@ class _CompactStreakContent extends StatelessWidget {
 }
 
 class _CompactEmptyStreakCard extends StatelessWidget {
+  final AppLocalizations l10n;
+
+  const _CompactEmptyStreakCard({required this.l10n});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -414,7 +426,7 @@ class _CompactEmptyStreakCard extends StatelessWidget {
                     ),
                     const SizedBox(width: 6),
                     Text(
-                      'days',
+                      l10n.streak_day_plural,
                       style: GoogleFonts.poppins(
                         fontSize: 14,
                         fontWeight: FontWeight.w600,
@@ -425,7 +437,7 @@ class _CompactEmptyStreakCard extends StatelessWidget {
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  'Start your streak!',
+                  l10n.streak_start,
                   style: GoogleFonts.poppins(
                     fontSize: 12,
                     fontWeight: FontWeight.w500,
@@ -466,8 +478,9 @@ class _LoadingStreakCard extends StatelessWidget {
 
 class _ErrorStreakCard extends StatelessWidget {
   final bool isCompact;
+  final AppLocalizations l10n;
 
-  const _ErrorStreakCard({this.isCompact = false});
+  const _ErrorStreakCard({this.isCompact = false, required this.l10n});
 
   @override
   Widget build(BuildContext context) {
@@ -484,7 +497,7 @@ class _ErrorStreakCard extends StatelessWidget {
                 Icon(Icons.error_outline, color: Colors.red[700], size: 20),
                 const SizedBox(height: 4),
                 Text(
-                  'Error',
+                  l10n.common_error,
                   textAlign: TextAlign.center,
                   style: GoogleFonts.poppins(
                     fontSize: 10,
@@ -499,7 +512,7 @@ class _ErrorStreakCard extends StatelessWidget {
                 const SizedBox(width: 12),
                 Expanded(
                   child: Text(
-                    'Failed to load streak data',
+                    l10n.streak_error,
                     style: GoogleFonts.poppins(
                       fontSize: 12,
                       color: Colors.red[900],

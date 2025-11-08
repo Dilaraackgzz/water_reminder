@@ -21,7 +21,6 @@ class OnboardingPage extends StatelessWidget {
     final iconContainerSize = isVerySmallScreen ? size.width * 0.3 : (isSmallScreen ? size.width * 0.35 : size.width * 0.4);
     final iconSize = iconContainerSize * 0.5;
     final titleFontSize = isVerySmallScreen ? 22.0 : (isSmallScreen ? 26.0 : 32.0);
-    final subtitleFontSize = isVerySmallScreen ? 12.0 : (isSmallScreen ? 13.0 : 16.0);
     final descriptionFontSize = isVerySmallScreen ? 12.0 : (isSmallScreen ? 13.0 : 16.0);
 
     return Padding(
@@ -55,25 +54,6 @@ class OnboardingPage extends StatelessWidget {
           ),
 
           SizedBox(height: isVerySmallScreen ? 16 : (isSmallScreen ? 24 : 32)),
-
-          // Subtitle
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: Text(
-              data.subtitle,
-              textAlign: TextAlign.center,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              style: GoogleFonts.poppins(
-                fontSize: subtitleFontSize,
-                fontWeight: FontWeight.w500,
-                color: AppTheme.primaryBlue,
-                letterSpacing: 1.2,
-              ),
-            ),
-          ),
-
-          SizedBox(height: isVerySmallScreen ? 6 : (isSmallScreen ? 8 : 12)),
 
           // Title
           Padding(

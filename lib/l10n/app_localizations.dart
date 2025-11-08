@@ -548,6 +548,156 @@ abstract class AppLocalizations {
   /// **'Stay hydrated throughout the day!'**
   String get motivational_stay_hydrated;
 
+  /// No description provided for @motivational_100_1.
+  ///
+  /// In en, this message translates to:
+  /// **'Congratulations! You\'ve reached your goal!'**
+  String get motivational_100_1;
+
+  /// No description provided for @motivational_100_2.
+  ///
+  /// In en, this message translates to:
+  /// **'Amazing work! Stay hydrated tomorrow too!'**
+  String get motivational_100_2;
+
+  /// No description provided for @motivational_100_3.
+  ///
+  /// In en, this message translates to:
+  /// **'You\'re a hydration champion!'**
+  String get motivational_100_3;
+
+  /// No description provided for @motivational_100_4.
+  ///
+  /// In en, this message translates to:
+  /// **'Perfect! Keep up the great habits!'**
+  String get motivational_100_4;
+
+  /// No description provided for @motivational_100_short.
+  ///
+  /// In en, this message translates to:
+  /// **'Goal Reached!'**
+  String get motivational_100_short;
+
+  /// No description provided for @motivational_75_1.
+  ///
+  /// In en, this message translates to:
+  /// **'Almost there! Just a bit more to go!'**
+  String get motivational_75_1;
+
+  /// No description provided for @motivational_75_2.
+  ///
+  /// In en, this message translates to:
+  /// **'You\'re doing great! Keep it up!'**
+  String get motivational_75_2;
+
+  /// No description provided for @motivational_75_3.
+  ///
+  /// In en, this message translates to:
+  /// **'So close to your goal!'**
+  String get motivational_75_3;
+
+  /// No description provided for @motivational_75_4.
+  ///
+  /// In en, this message translates to:
+  /// **'Fantastic progress! Don\'t stop now!'**
+  String get motivational_75_4;
+
+  /// No description provided for @motivational_75_short.
+  ///
+  /// In en, this message translates to:
+  /// **'Almost there!'**
+  String get motivational_75_short;
+
+  /// No description provided for @motivational_50_1.
+  ///
+  /// In en, this message translates to:
+  /// **'Halfway there! You\'re doing awesome!'**
+  String get motivational_50_1;
+
+  /// No description provided for @motivational_50_2.
+  ///
+  /// In en, this message translates to:
+  /// **'Great job! Keep going!'**
+  String get motivational_50_2;
+
+  /// No description provided for @motivational_50_3.
+  ///
+  /// In en, this message translates to:
+  /// **'You\'re on the right track!'**
+  String get motivational_50_3;
+
+  /// No description provided for @motivational_50_4.
+  ///
+  /// In en, this message translates to:
+  /// **'Nice progress! Stay consistent!'**
+  String get motivational_50_4;
+
+  /// No description provided for @motivational_50_short.
+  ///
+  /// In en, this message translates to:
+  /// **'Halfway!'**
+  String get motivational_50_short;
+
+  /// No description provided for @motivational_25_1.
+  ///
+  /// In en, this message translates to:
+  /// **'Good start! Keep drinking water!'**
+  String get motivational_25_1;
+
+  /// No description provided for @motivational_25_2.
+  ///
+  /// In en, this message translates to:
+  /// **'You\'re off to a great start!'**
+  String get motivational_25_2;
+
+  /// No description provided for @motivational_25_3.
+  ///
+  /// In en, this message translates to:
+  /// **'Nice beginning! Stay hydrated!'**
+  String get motivational_25_3;
+
+  /// No description provided for @motivational_25_4.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep going! Every sip counts!'**
+  String get motivational_25_4;
+
+  /// No description provided for @motivational_25_short.
+  ///
+  /// In en, this message translates to:
+  /// **'Good start!'**
+  String get motivational_25_short;
+
+  /// No description provided for @motivational_0_1.
+  ///
+  /// In en, this message translates to:
+  /// **'Time to start hydrating! Your body will thank you!'**
+  String get motivational_0_1;
+
+  /// No description provided for @motivational_0_2.
+  ///
+  /// In en, this message translates to:
+  /// **'Let\'s begin your hydration journey!'**
+  String get motivational_0_2;
+
+  /// No description provided for @motivational_0_3.
+  ///
+  /// In en, this message translates to:
+  /// **'Start your day with some water!'**
+  String get motivational_0_3;
+
+  /// No description provided for @motivational_0_4.
+  ///
+  /// In en, this message translates to:
+  /// **'Your health matters! Start drinking!'**
+  String get motivational_0_4;
+
+  /// No description provided for @motivational_0_short.
+  ///
+  /// In en, this message translates to:
+  /// **'Let\'s begin!'**
+  String get motivational_0_short;
+
   /// No description provided for @profile_title.
   ///
   /// In en, this message translates to:
@@ -655,6 +805,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Failed to update profile'**
   String get profile_save_failed;
+
+  /// No description provided for @profile_user_default.
+  ///
+  /// In en, this message translates to:
+  /// **'User'**
+  String get profile_user_default;
 
   /// No description provided for @gender_male.
   ///
@@ -865,6 +1021,180 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Fluid Ounces (fl oz)'**
   String get settings_unit_floz;
+
+  /// No description provided for @settings_unit_metric.
+  ///
+  /// In en, this message translates to:
+  /// **'Metric system'**
+  String get settings_unit_metric;
+
+  /// No description provided for @settings_unit_imperial.
+  ///
+  /// In en, this message translates to:
+  /// **'Imperial system'**
+  String get settings_unit_imperial;
+
+  /// No description provided for @settings_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Customize your experience'**
+  String get settings_subtitle;
+
+  /// No description provided for @settings_reminders_active.
+  ///
+  /// In en, this message translates to:
+  /// **'Water reminders are active'**
+  String get settings_reminders_active;
+
+  /// No description provided for @settings_reminders_inactive.
+  ///
+  /// In en, this message translates to:
+  /// **'Turn on to get reminders'**
+  String get settings_reminders_inactive;
+
+  /// No description provided for @settings_minutes.
+  ///
+  /// In en, this message translates to:
+  /// **'minutes'**
+  String get settings_minutes;
+
+  /// No description provided for @settings_export_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Backup your water tracking data'**
+  String get settings_export_subtitle;
+
+  /// No description provided for @settings_import_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Restore from backup file'**
+  String get settings_import_subtitle;
+
+  /// No description provided for @settings_profile_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Update your information'**
+  String get settings_profile_subtitle;
+
+  /// No description provided for @settings_daily_goal_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Manage your hydration goal'**
+  String get settings_daily_goal_subtitle;
+
+  /// No description provided for @settings_theme_dialog_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Theme'**
+  String get settings_theme_dialog_title;
+
+  /// No description provided for @settings_theme_light_mode.
+  ///
+  /// In en, this message translates to:
+  /// **'Light Mode'**
+  String get settings_theme_light_mode;
+
+  /// No description provided for @settings_theme_dark_mode.
+  ///
+  /// In en, this message translates to:
+  /// **'Dark Mode'**
+  String get settings_theme_dark_mode;
+
+  /// No description provided for @settings_theme_system_mode.
+  ///
+  /// In en, this message translates to:
+  /// **'System Default'**
+  String get settings_theme_system_mode;
+
+  /// No description provided for @settings_theme_light_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Use light theme'**
+  String get settings_theme_light_subtitle;
+
+  /// No description provided for @settings_theme_dark_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Use dark theme'**
+  String get settings_theme_dark_subtitle;
+
+  /// No description provided for @settings_theme_system_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Follow system theme'**
+  String get settings_theme_system_subtitle;
+
+  /// No description provided for @settings_language_dialog_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Language'**
+  String get settings_language_dialog_title;
+
+  /// No description provided for @settings_export_loading.
+  ///
+  /// In en, this message translates to:
+  /// **'Exporting data...'**
+  String get settings_export_loading;
+
+  /// No description provided for @settings_export_success_message.
+  ///
+  /// In en, this message translates to:
+  /// **'Data exported successfully!'**
+  String get settings_export_success_message;
+
+  /// No description provided for @settings_export_failed_message.
+  ///
+  /// In en, this message translates to:
+  /// **'Export failed: {error}'**
+  String settings_export_failed_message(String error);
+
+  /// No description provided for @settings_import_loading.
+  ///
+  /// In en, this message translates to:
+  /// **'Importing data...'**
+  String get settings_import_loading;
+
+  /// No description provided for @settings_import_complete.
+  ///
+  /// In en, this message translates to:
+  /// **'Import Complete'**
+  String get settings_import_complete;
+
+  /// No description provided for @settings_import_success_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Imported successfully:'**
+  String get settings_import_success_subtitle;
+
+  /// No description provided for @settings_import_water_records.
+  ///
+  /// In en, this message translates to:
+  /// **'water records'**
+  String get settings_import_water_records;
+
+  /// No description provided for @settings_import_daily_goals.
+  ///
+  /// In en, this message translates to:
+  /// **'daily goals'**
+  String get settings_import_daily_goals;
+
+  /// No description provided for @settings_import_duplicate_skipped.
+  ///
+  /// In en, this message translates to:
+  /// **'duplicate records skipped'**
+  String get settings_import_duplicate_skipped;
+
+  /// No description provided for @settings_import_failed_message.
+  ///
+  /// In en, this message translates to:
+  /// **'Import failed: {error}'**
+  String settings_import_failed_message(String error);
+
+  /// No description provided for @settings_reminder_interval_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Reminder Interval'**
+  String get settings_reminder_interval_title;
 
   /// No description provided for @settings_language_coming_soon.
   ///
@@ -1178,6 +1508,66 @@ abstract class AppLocalizations {
   /// **'Keep the streak going!'**
   String get streak_keep_going;
 
+  /// No description provided for @streak_personal_best.
+  ///
+  /// In en, this message translates to:
+  /// **'Personal Best'**
+  String get streak_personal_best;
+
+  /// No description provided for @streak_best.
+  ///
+  /// In en, this message translates to:
+  /// **'Best!'**
+  String get streak_best;
+
+  /// No description provided for @streak_longest.
+  ///
+  /// In en, this message translates to:
+  /// **'Longest'**
+  String get streak_longest;
+
+  /// No description provided for @streak_next_milestone.
+  ///
+  /// In en, this message translates to:
+  /// **'Next Milestone'**
+  String get streak_next_milestone;
+
+  /// No description provided for @streak_start_today.
+  ///
+  /// In en, this message translates to:
+  /// **'Start Your Streak Today!'**
+  String get streak_start_today;
+
+  /// No description provided for @streak_complete_goal.
+  ///
+  /// In en, this message translates to:
+  /// **'Complete your daily goal to build a streak'**
+  String get streak_complete_goal;
+
+  /// No description provided for @streak_start.
+  ///
+  /// In en, this message translates to:
+  /// **'Start your streak!'**
+  String get streak_start;
+
+  /// No description provided for @streak_error.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to load streak data'**
+  String get streak_error;
+
+  /// No description provided for @streak_day_singular.
+  ///
+  /// In en, this message translates to:
+  /// **'day'**
+  String get streak_day_singular;
+
+  /// No description provided for @streak_day_plural.
+  ///
+  /// In en, this message translates to:
+  /// **'days'**
+  String get streak_day_plural;
+
   /// No description provided for @onboarding_title_1.
   ///
   /// In en, this message translates to:
@@ -1274,11 +1664,59 @@ abstract class AppLocalizations {
   /// **'Help & Support'**
   String get drawer_help;
 
+  /// No description provided for @drawer_about.
+  ///
+  /// In en, this message translates to:
+  /// **'About'**
+  String get drawer_about;
+
+  /// No description provided for @drawer_logout.
+  ///
+  /// In en, this message translates to:
+  /// **'Logout'**
+  String get drawer_logout;
+
+  /// No description provided for @about_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Aqualert'**
+  String get about_title;
+
+  /// No description provided for @about_version.
+  ///
+  /// In en, this message translates to:
+  /// **'Version 1.0.0'**
+  String get about_version;
+
+  /// No description provided for @about_description.
+  ///
+  /// In en, this message translates to:
+  /// **'Stay hydrated and healthy with Aqualert. Track your daily water intake and achieve your hydration goals!'**
+  String get about_description;
+
+  /// No description provided for @about_copyright.
+  ///
+  /// In en, this message translates to:
+  /// **'© 2024 Aqualert. All rights reserved.'**
+  String get about_copyright;
+
+  /// No description provided for @about_close.
+  ///
+  /// In en, this message translates to:
+  /// **'Close'**
+  String get about_close;
+
   /// No description provided for @help_title.
   ///
   /// In en, this message translates to:
   /// **'Help & Support'**
   String get help_title;
+
+  /// No description provided for @help_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Get help and learn more'**
+  String get help_subtitle;
 
   /// No description provided for @help_faq.
   ///
@@ -1297,6 +1735,210 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Version'**
   String get help_version;
+
+  /// No description provided for @help_app_info.
+  ///
+  /// In en, this message translates to:
+  /// **'App Information'**
+  String get help_app_info;
+
+  /// No description provided for @help_coming_soon.
+  ///
+  /// In en, this message translates to:
+  /// **'Help & Support - Coming Soon!'**
+  String get help_coming_soon;
+
+  /// No description provided for @help_faq_section.
+  ///
+  /// In en, this message translates to:
+  /// **'FAQs'**
+  String get help_faq_section;
+
+  /// No description provided for @help_features_section.
+  ///
+  /// In en, this message translates to:
+  /// **'Features Guide'**
+  String get help_features_section;
+
+  /// No description provided for @help_about_section.
+  ///
+  /// In en, this message translates to:
+  /// **'About'**
+  String get help_about_section;
+
+  /// No description provided for @faq_1_q.
+  ///
+  /// In en, this message translates to:
+  /// **'How is my daily water goal calculated?'**
+  String get faq_1_q;
+
+  /// No description provided for @faq_1_a.
+  ///
+  /// In en, this message translates to:
+  /// **'Your daily water goal is calculated based on your weight, height, age, gender, and activity level using scientific formulas. You can also set a custom goal in Profile settings.'**
+  String get faq_1_a;
+
+  /// No description provided for @faq_2_q.
+  ///
+  /// In en, this message translates to:
+  /// **'How do water reminders work?'**
+  String get faq_2_q;
+
+  /// No description provided for @faq_2_a.
+  ///
+  /// In en, this message translates to:
+  /// **'You can set reminder intervals (30-180 minutes) and choose start/end times. The app will send you notifications during this period to help you stay hydrated.'**
+  String get faq_2_a;
+
+  /// No description provided for @faq_3_q.
+  ///
+  /// In en, this message translates to:
+  /// **'What are streaks and how do they work?'**
+  String get faq_3_q;
+
+  /// No description provided for @faq_3_a.
+  ///
+  /// In en, this message translates to:
+  /// **'Streaks track consecutive days you\'ve reached your daily water goal. Keep drinking water daily to maintain and increase your streak!'**
+  String get faq_3_a;
+
+  /// No description provided for @faq_4_q.
+  ///
+  /// In en, this message translates to:
+  /// **'How can I change the measurement units?'**
+  String get faq_4_q;
+
+  /// No description provided for @faq_4_a.
+  ///
+  /// In en, this message translates to:
+  /// **'Go to Settings → Units and switch between milliliters (ml) and fluid ounces (fl oz). All measurements will update automatically.'**
+  String get faq_4_a;
+
+  /// No description provided for @faq_5_q.
+  ///
+  /// In en, this message translates to:
+  /// **'Can I export my water tracking data?'**
+  String get faq_5_q;
+
+  /// No description provided for @faq_5_a.
+  ///
+  /// In en, this message translates to:
+  /// **'Yes! Go to Settings → Data Management → Export Data. You can share or save your data as a JSON file and import it later.'**
+  String get faq_5_a;
+
+  /// No description provided for @faq_6_q.
+  ///
+  /// In en, this message translates to:
+  /// **'How do achievements work?'**
+  String get faq_6_q;
+
+  /// No description provided for @faq_6_a.
+  ///
+  /// In en, this message translates to:
+  /// **'Complete water tracking milestones to unlock achievements and earn reward points. Track your progress in the Achievements screen.'**
+  String get faq_6_a;
+
+  /// No description provided for @feature_tracking_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Water Tracking'**
+  String get feature_tracking_title;
+
+  /// No description provided for @feature_tracking_desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Easily log your daily water intake with quick-add buttons (250ml, 350ml, 500ml, 750ml) or enter a custom amount.'**
+  String get feature_tracking_desc;
+
+  /// No description provided for @feature_reminders_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Smart Reminders'**
+  String get feature_reminders_title;
+
+  /// No description provided for @feature_reminders_desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Set customizable reminder intervals and choose active hours. Never forget to drink water throughout the day.'**
+  String get feature_reminders_desc;
+
+  /// No description provided for @feature_statistics_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Statistics & Insights'**
+  String get feature_statistics_title;
+
+  /// No description provided for @feature_statistics_desc.
+  ///
+  /// In en, this message translates to:
+  /// **'View your water consumption trends with weekly, monthly, and yearly charts. Track your progress over time.'**
+  String get feature_statistics_desc;
+
+  /// No description provided for @feature_achievements_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Achievements & Streaks'**
+  String get feature_achievements_title;
+
+  /// No description provided for @feature_achievements_desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Earn achievements and maintain daily streaks by reaching your water goals. Stay motivated with gamification!'**
+  String get feature_achievements_desc;
+
+  /// No description provided for @feature_profile_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile & Goals'**
+  String get feature_profile_title;
+
+  /// No description provided for @feature_profile_desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Set your personal information and let the app calculate your optimal daily water goal based on your body metrics.'**
+  String get feature_profile_desc;
+
+  /// No description provided for @help_contact_email.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact via Email'**
+  String get help_contact_email;
+
+  /// No description provided for @help_contact_email_address.
+  ///
+  /// In en, this message translates to:
+  /// **'support@aqualert.app'**
+  String get help_contact_email_address;
+
+  /// No description provided for @help_rate_app.
+  ///
+  /// In en, this message translates to:
+  /// **'Rate Our App'**
+  String get help_rate_app;
+
+  /// No description provided for @help_rate_desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Enjoying Aqualert? Leave us a review!'**
+  String get help_rate_desc;
+
+  /// No description provided for @help_build_number.
+  ///
+  /// In en, this message translates to:
+  /// **'Build'**
+  String get help_build_number;
+
+  /// No description provided for @help_copyright.
+  ///
+  /// In en, this message translates to:
+  /// **'© 2024 Aqualert. All rights reserved.'**
+  String get help_copyright;
+
+  /// No description provided for @help_made_with.
+  ///
+  /// In en, this message translates to:
+  /// **'Made with ❤️ for your health'**
+  String get help_made_with;
 
   /// No description provided for @error_generic.
   ///

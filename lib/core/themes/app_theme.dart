@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'theme.dart';
 
+/// AppTheme - Wrapper around MaterialTheme for backward compatibility
+///
+/// This class provides easy access to Material Theme Builder generated themes
+/// with custom water-themed accent colors and Google Fonts Poppins integration.
 class AppTheme {
+  // Legacy color constants for backward compatibility
   static const Color primaryBlue = Color(0xFF2196F3);
   static const Color lightBlue = Color(0xFF64B5F6);
   static const Color darkBlue = Color(0xFF1976D2);
@@ -14,207 +20,113 @@ class AppTheme {
   static const Color surfaceLight = Color(0xFFFFFFFF);
   static const Color surfaceDark = Color(0xFF1E1E1E);
 
+  // Water-themed custom accent color (cyan)
+  static const Color waterAccent = Color(0xFF00BCD4);
+
+  // Create MaterialTheme instance with Google Fonts
+  static final MaterialTheme _materialTheme = MaterialTheme(
+    GoogleFonts.poppinsTextTheme(),
+  );
+
+  /// Light theme with Material Theme Builder color scheme
   static ThemeData get lightTheme {
-    const ColorScheme colorScheme = ColorScheme.light(
-      primary: primaryBlue,
-      secondary: accentBlue,
-      surface: surfaceLight,
-      error: errorRed,
-      onPrimary: Colors.white,
-      onSecondary: Colors.black,
-      onSurface: Colors.black87,
-      onError: Colors.white,
-    );
+    final theme = _materialTheme.light();
 
-    return ThemeData(
-      useMaterial3: true,
-      colorScheme: colorScheme,
-      textTheme: _buildTextTheme(colorScheme),
-      appBarTheme: _buildAppBarTheme(colorScheme),
-      elevatedButtonTheme: _buildElevatedButtonTheme(colorScheme),
-      floatingActionButtonTheme: _buildFloatingActionButtonTheme(colorScheme),
-      cardTheme: _buildCardTheme(colorScheme),
-      inputDecorationTheme: _buildInputDecorationTheme(colorScheme),
+    // Override with water accent color for specific use cases
+    return theme.copyWith(
+      // Keep the Material Theme Builder primary colors
+      // but add water accent as a fallback for custom widgets
+      extensions: [
+        _WaterThemeExtension(accentColor: waterAccent),
+      ],
     );
   }
 
+  /// Dark theme with Material Theme Builder color scheme
   static ThemeData get darkTheme {
-    const ColorScheme colorScheme = ColorScheme.dark(
-      primary: lightBlue,
-      secondary: accentBlue,
-      surface: surfaceDark,
-      error: errorRed,
-      onPrimary: Colors.black,
-      onSecondary: Colors.black,
-      onSurface: Colors.white,
-      onError: Colors.white,
-    );
+    final theme = _materialTheme.dark();
 
-    return ThemeData(
-      useMaterial3: true,
-      colorScheme: colorScheme,
-      scaffoldBackgroundColor: const Color(0xFF121212),
-      textTheme: _buildTextTheme(colorScheme),
-      appBarTheme: _buildAppBarTheme(colorScheme),
-      elevatedButtonTheme: _buildElevatedButtonTheme(colorScheme),
-      floatingActionButtonTheme: _buildFloatingActionButtonTheme(colorScheme),
-      cardTheme: _buildCardTheme(colorScheme),
-      inputDecorationTheme: _buildInputDecorationTheme(colorScheme),
+    return theme.copyWith(
+      extensions: [
+        _WaterThemeExtension(accentColor: waterAccent),
+      ],
     );
   }
 
-  static TextTheme _buildTextTheme(ColorScheme colorScheme) {
-    return GoogleFonts.poppinsTextTheme(
-      TextTheme(
-        displayLarge: GoogleFonts.poppins(
-          fontSize: 32,
-          fontWeight: FontWeight.bold,
-          color: colorScheme.onSurface,
-        ),
-        displayMedium: GoogleFonts.poppins(
-          fontSize: 28,
-          fontWeight: FontWeight.bold,
-          color: colorScheme.onSurface,
-        ),
-        displaySmall: GoogleFonts.poppins(
-          fontSize: 24,
-          fontWeight: FontWeight.w600,
-          color: colorScheme.onSurface,
-        ),
-        headlineLarge: GoogleFonts.poppins(
-          fontSize: 22,
-          fontWeight: FontWeight.w600,
-          color: colorScheme.onSurface,
-        ),
-        headlineMedium: GoogleFonts.poppins(
-          fontSize: 20,
-          fontWeight: FontWeight.w500,
-          color: colorScheme.onSurface,
-        ),
-        headlineSmall: GoogleFonts.poppins(
-          fontSize: 18,
-          fontWeight: FontWeight.w500,
-          color: colorScheme.onSurface,
-        ),
-        titleLarge: GoogleFonts.poppins(
-          fontSize: 16,
-          fontWeight: FontWeight.w500,
-          color: colorScheme.onSurface,
-        ),
-        titleMedium: GoogleFonts.poppins(
-          fontSize: 14,
-          fontWeight: FontWeight.w500,
-          color: colorScheme.onSurface,
-        ),
-        titleSmall: GoogleFonts.poppins(
-          fontSize: 12,
-          fontWeight: FontWeight.w500,
-          color: colorScheme.onSurface,
-        ),
-        bodyLarge: GoogleFonts.poppins(
-          fontSize: 16,
-          fontWeight: FontWeight.normal,
-          color: colorScheme.onSurface,
-        ),
-        bodyMedium: GoogleFonts.poppins(
-          fontSize: 14,
-          fontWeight: FontWeight.normal,
-          color: colorScheme.onSurface,
-        ),
-        bodySmall: GoogleFonts.poppins(
-          fontSize: 12,
-          fontWeight: FontWeight.normal,
-          color: colorScheme.onSurface.withValues(alpha: 0.7),
-        ),
-      ),
+  /// Light High Contrast theme for accessibility
+  static ThemeData get lightHighContrastTheme {
+    final theme = _materialTheme.lightHighContrast();
+
+    return theme.copyWith(
+      extensions: [
+        _WaterThemeExtension(accentColor: waterAccent),
+      ],
     );
   }
 
-  static AppBarTheme _buildAppBarTheme(ColorScheme colorScheme) {
-    return AppBarTheme(
-      backgroundColor: colorScheme.surface,
-      foregroundColor: colorScheme.onSurface,
-      elevation: 0,
-      centerTitle: true,
-      titleTextStyle: GoogleFonts.poppins(
-        fontSize: 20,
-        fontWeight: FontWeight.w600,
-        color: colorScheme.onSurface,
-      ),
+  /// Dark High Contrast theme for accessibility
+  static ThemeData get darkHighContrastTheme {
+    final theme = _materialTheme.darkHighContrast();
+
+    return theme.copyWith(
+      extensions: [
+        _WaterThemeExtension(accentColor: waterAccent),
+      ],
     );
   }
 
-  static ElevatedButtonThemeData _buildElevatedButtonTheme(ColorScheme colorScheme) {
-    return ElevatedButtonThemeData(
-      style: ElevatedButton.styleFrom(
-        backgroundColor: colorScheme.primary,
-        foregroundColor: colorScheme.onPrimary,
-        elevation: 2,
-        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
-        ),
-        textStyle: GoogleFonts.poppins(
-          fontSize: 16,
-          fontWeight: FontWeight.w500,
-        ),
-      ),
+  /// Light Medium Contrast theme
+  static ThemeData get lightMediumContrastTheme {
+    final theme = _materialTheme.lightMediumContrast();
+
+    return theme.copyWith(
+      extensions: [
+        _WaterThemeExtension(accentColor: waterAccent),
+      ],
     );
   }
 
-  static FloatingActionButtonThemeData _buildFloatingActionButtonTheme(ColorScheme colorScheme) {
-    return FloatingActionButtonThemeData(
-      backgroundColor: colorScheme.primary,
-      foregroundColor: colorScheme.onPrimary,
-      elevation: 4,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
-      ),
+  /// Dark Medium Contrast theme
+  static ThemeData get darkMediumContrastTheme {
+    final theme = _materialTheme.darkMediumContrast();
+
+    return theme.copyWith(
+      extensions: [
+        _WaterThemeExtension(accentColor: waterAccent),
+      ],
+    );
+  }
+}
+
+/// Theme extension for water-specific accent color
+class _WaterThemeExtension extends ThemeExtension<_WaterThemeExtension> {
+  final Color accentColor;
+
+  const _WaterThemeExtension({required this.accentColor});
+
+  @override
+  ThemeExtension<_WaterThemeExtension> copyWith({Color? accentColor}) {
+    return _WaterThemeExtension(
+      accentColor: accentColor ?? this.accentColor,
     );
   }
 
-  static CardThemeData _buildCardTheme(ColorScheme colorScheme) {
-    return CardThemeData(
-      color: colorScheme.surface,
-      shadowColor: colorScheme.shadow,
-      elevation: 2,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
-      ),
+  @override
+  ThemeExtension<_WaterThemeExtension> lerp(
+    covariant ThemeExtension<_WaterThemeExtension>? other,
+    double t,
+  ) {
+    if (other is! _WaterThemeExtension) return this;
+    return _WaterThemeExtension(
+      accentColor: Color.lerp(accentColor, other.accentColor, t)!,
     );
   }
+}
 
-  static InputDecorationTheme _buildInputDecorationTheme(ColorScheme colorScheme) {
-    return InputDecorationTheme(
-      filled: true,
-      fillColor: colorScheme.surface,
-      border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(12),
-        borderSide: BorderSide(color: colorScheme.outline),
-      ),
-      enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(12),
-        borderSide: BorderSide(color: colorScheme.outline),
-      ),
-      focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(12),
-        borderSide: BorderSide(color: colorScheme.primary, width: 2),
-      ),
-      errorBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(12),
-        borderSide: BorderSide(color: colorScheme.error),
-      ),
-      focusedErrorBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(12),
-        borderSide: BorderSide(color: colorScheme.error, width: 2),
-      ),
-      contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-      labelStyle: GoogleFonts.poppins(
-        color: colorScheme.onSurface.withValues(alpha: 0.7),
-      ),
-      hintStyle: GoogleFonts.poppins(
-        color: colorScheme.onSurface.withValues(alpha: 0.5),
-      ),
-    );
+/// Extension to easily access water accent color from BuildContext
+extension WaterThemeExtensions on BuildContext {
+  Color get waterAccent {
+    final extension = Theme.of(this).extension<_WaterThemeExtension>();
+    return extension?.accentColor ?? AppTheme.waterAccent;
   }
 }

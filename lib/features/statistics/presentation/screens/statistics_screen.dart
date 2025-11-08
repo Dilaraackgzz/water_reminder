@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:water_reminder/l10n/app_localizations.dart';
 import '../../domain/models/water_statistics.dart';
 import '../providers/statistics_providers.dart';
 import '../widgets/statistics_chart.dart';
@@ -15,6 +16,7 @@ class StatisticsScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context)!;
     final selectedPeriod = ref.watch(selectedPeriodProvider);
     final statisticsAsync = ref.watch(currentStatisticsProvider);
     final isDark = Theme.of(context).brightness == Brightness.dark;
@@ -23,8 +25,8 @@ class StatisticsScreen extends ConsumerWidget {
     return Scaffold(
       backgroundColor: isDark ? colorScheme.surface : Colors.grey[50],
       appBar: ModernAppBar(
-        title: 'Statistics',
-        subtitle: _getSubtitle(selectedPeriod),
+        title: l10n.statistics_title,
+        subtitle: _getSubtitle(selectedPeriod, l10n),
       ),
       drawer: const AppDrawer(),
       body: SafeArea(
@@ -39,7 +41,7 @@ class StatisticsScreen extends ConsumerWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 // Period Selector
-                _PeriodSelector(isDark: isDark),
+                _PeriodSelector(isDark: isDark, l10n: l10n),
 
                 const SizedBox(height: 24),
 
@@ -63,13 +65,13 @@ class StatisticsScreen extends ConsumerWidget {
                       const SizedBox(height: 24),
 
                       // Achievement Info
-                      _AchievementCard(statistics: statistics, isDark: isDark),
+                      _AchievementCard(statistics: statistics, isDark: isDark, l10n: l10n),
                     ],
                   ),
-                  loading: () => const Center(
+                  loading: () => Center(
                     child: Padding(
-                      padding: EdgeInsets.all(40),
-                      child: CircularProgressIndicator(),
+                      padding: const EdgeInsets.all(40),
+                      child: Text(l10n.common_loading),
                     ),
                   ),
                   error: (error, stack) => Center(
@@ -84,7 +86,7 @@ class StatisticsScreen extends ConsumerWidget {
                           ),
                           const SizedBox(height: 16),
                           Text(
-                            'Failed to load statistics',
+                            l10n.common_error,
                             style: GoogleFonts.poppins(
                               fontSize: 16,
                               color: Colors.red,
@@ -112,22 +114,23 @@ class StatisticsScreen extends ConsumerWidget {
     );
   }
 
-  String _getSubtitle(StatisticsPeriod period) {
+  String _getSubtitle(StatisticsPeriod period, AppLocalizations l10n) {
     switch (period) {
       case StatisticsPeriod.week:
-        return 'Weekly Overview';
+        return l10n.statistics_weekly;
       case StatisticsPeriod.month:
-        return 'Monthly Overview';
+        return l10n.statistics_monthly;
       case StatisticsPeriod.year:
-        return 'Yearly Overview';
+        return l10n.statistics_yearly;
     }
   }
 }
 
 class _PeriodSelector extends ConsumerWidget {
   final bool isDark;
+  final AppLocalizations l10n;
 
-  const _PeriodSelector({required this.isDark});
+  const _PeriodSelector({required this.isDark, required this.l10n});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -143,7 +146,7 @@ class _PeriodSelector extends ConsumerWidget {
         children: [
           Expanded(
             child: _PeriodButton(
-              label: 'Week',
+              label: l10n.statistics_weekly,
               isSelected: selectedPeriod == StatisticsPeriod.week,
               isDark: isDark,
               onTap: () {
@@ -154,7 +157,7 @@ class _PeriodSelector extends ConsumerWidget {
           ),
           Expanded(
             child: _PeriodButton(
-              label: 'Month',
+              label: l10n.statistics_monthly,
               isSelected: selectedPeriod == StatisticsPeriod.month,
               isDark: isDark,
               onTap: () {
@@ -165,7 +168,7 @@ class _PeriodSelector extends ConsumerWidget {
           ),
           Expanded(
             child: _PeriodButton(
-              label: 'Year',
+              label: l10n.statistics_yearly,
               isSelected: selectedPeriod == StatisticsPeriod.year,
               isDark: isDark,
               onTap: () {
@@ -223,10 +226,12 @@ class _PeriodButton extends StatelessWidget {
 class _AchievementCard extends StatelessWidget {
   final WaterStatistics statistics;
   final bool isDark;
+  final AppLocalizations l10n;
 
   const _AchievementCard({
     required this.statistics,
     required this.isDark,
+    required this.l10n,
   });
 
   @override
@@ -286,7 +291,7 @@ class _AchievementCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Achievement Rate',
+                      l10n.statistics_goal_achievement,
                       style: GoogleFonts.poppins(
                         fontSize: 14,
                         fontWeight: FontWeight.w500,
@@ -315,7 +320,7 @@ class _AchievementCard extends StatelessWidget {
                 const Icon(Icons.star, color: Colors.amber, size: 20),
                 const SizedBox(width: 8),
                 Text(
-                  'Best Day: ',
+                  '${l10n.statistics_best_day}: ',
                   style: GoogleFonts.poppins(
                     fontSize: 13,
                     color: isDark ? Colors.white60 : Colors.black54,
@@ -331,7 +336,7 @@ class _AchievementCard extends StatelessWidget {
                 ),
                 const Spacer(),
                 Text(
-                  '${bestDay.totalIntake}ml',
+                  '${bestDay.totalIntake}${l10n.unit_ml}',
                   style: GoogleFonts.poppins(
                     fontSize: 15,
                     fontWeight: FontWeight.bold,

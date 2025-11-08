@@ -4,6 +4,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../../core/themes/app_theme.dart';
+import '../../../../l10n/app_localizations.dart';
 import '../providers/auth_controller.dart';
 import '../widgets/auth_text_field.dart';
 import '../widgets/social_auth_button.dart';
@@ -37,10 +38,11 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
   Future<void> _handleRegister() async {
     if (!_formKey.currentState!.validate()) return;
 
+    final l10n = AppLocalizations.of(context)!;
     if (_passwordController.text != _confirmPasswordController.text) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Şifreler eşleşmiyor'),
+        SnackBar(
+          content: Text(l10n.auth_validation_password_min_length),
           backgroundColor: Colors.red,
           behavior: SnackBarBehavior.floating,
         ),
@@ -106,6 +108,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
@@ -129,7 +132,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                     ),
                     const SizedBox(width: 8),
                     Text(
-                      'Kayıt Ol',
+                      l10n.auth_register_title,
                       style: GoogleFonts.poppins(
                         fontSize: 28,
                         fontWeight: FontWeight.bold,
@@ -142,7 +145,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                 const SizedBox(height: 8),
 
                 Text(
-                  'Hemen hesap oluştur ve su içme takibine başla',
+                  l10n.appTagline,
                   style: GoogleFonts.poppins(
                     fontSize: 14,
                     color: Colors.grey[600],
@@ -158,16 +161,16 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                     children: [
                       AuthTextField(
                         controller: _nameController,
-                        label: 'Ad Soyad',
-                        hint: 'Adınız ve soyadınız',
+                        label: l10n.auth_name_label,
+                        hint: l10n.auth_name_hint,
                         prefixIcon: Icons.person_outline,
                         keyboardType: TextInputType.name,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
-                            return 'Ad soyad gerekli';
+                            return l10n.auth_validation_name_required;
                           }
                           if (value.length < 3) {
-                            return 'En az 3 karakter olmalı';
+                            return l10n.auth_validation_name_min_length;
                           }
                           return null;
                         },
@@ -178,16 +181,16 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                       const SizedBox(height: 16),
                       AuthTextField(
                         controller: _emailController,
-                        label: 'E-posta',
-                        hint: 'ornek@email.com',
+                        label: l10n.auth_email_label,
+                        hint: l10n.auth_email_hint,
                         prefixIcon: Icons.email_outlined,
                         keyboardType: TextInputType.emailAddress,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
-                            return 'E-posta adresi gerekli';
+                            return l10n.auth_validation_email_required;
                           }
                           if (!value.contains('@')) {
-                            return 'Geçerli bir e-posta adresi girin';
+                            return l10n.auth_validation_email_invalid;
                           }
                           return null;
                         },
@@ -198,8 +201,8 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                       const SizedBox(height: 16),
                       AuthTextField(
                         controller: _passwordController,
-                        label: 'Şifre',
-                        hint: '••••••••',
+                        label: l10n.auth_password_label,
+                        hint: l10n.auth_password_hint,
                         prefixIcon: Icons.lock_outline,
                         obscureText: _obscurePassword,
                         suffixIcon: IconButton(
@@ -216,10 +219,10 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                         ),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
-                            return 'Şifre gerekli';
+                            return l10n.auth_validation_password_required;
                           }
                           if (value.length < 6) {
-                            return 'Şifre en az 6 karakter olmalı';
+                            return l10n.auth_validation_password_min_length;
                           }
                           return null;
                         },
@@ -230,8 +233,8 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                       const SizedBox(height: 16),
                       AuthTextField(
                         controller: _confirmPasswordController,
-                        label: 'Şifre Tekrar',
-                        hint: '••••••••',
+                        label: l10n.auth_password_label,
+                        hint: l10n.auth_password_hint,
                         prefixIcon: Icons.lock_outline,
                         obscureText: _obscureConfirmPassword,
                         suffixIcon: IconButton(
@@ -248,10 +251,10 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                         ),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
-                            return 'Şifre tekrar gerekli';
+                            return l10n.auth_validation_password_required;
                           }
                           if (value != _passwordController.text) {
-                            return 'Şifreler eşleşmiyor';
+                            return l10n.auth_validation_password_min_length;
                           }
                           return null;
                         },
@@ -283,7 +286,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                                   ),
                                 )
                               : Text(
-                                  'Hesap Oluştur',
+                                  l10n.auth_sign_up_button,
                                   style: GoogleFonts.poppins(
                                     fontSize: 16,
                                     fontWeight: FontWeight.w600,
@@ -307,7 +310,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16),
                       child: Text(
-                        'veya',
+                        l10n.common_or,
                         style: GoogleFonts.poppins(
                           color: Colors.grey[600],
                           fontSize: 14,
@@ -324,7 +327,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                 SocialAuthButton(
                   onPressed: _isLoading ? null : _handleGoogleSignIn,
                   icon: 'assets/icons/google.png',
-                  label: 'Google ile Kayıt Ol',
+                  label: l10n.auth_sign_up_google,
                 ).animate().fadeIn(delay: 900.ms).slideY(
                       begin: 0.2,
                       duration: 400.ms,
@@ -337,7 +340,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'Zaten hesabın var mı? ',
+                      l10n.auth_already_have_account,
                       style: GoogleFonts.poppins(
                         color: Colors.grey[600],
                         fontSize: 14,
@@ -348,7 +351,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                         context.pop();
                       },
                       child: Text(
-                        'Giriş Yap',
+                        l10n.auth_sign_in_button,
                         style: GoogleFonts.poppins(
                           color: AppTheme.primaryBlue,
                           fontSize: 14,

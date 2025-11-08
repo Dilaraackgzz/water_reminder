@@ -245,6 +245,83 @@ class AppLocalizationsEn extends AppLocalizations {
   String get motivational_stay_hydrated => 'Stay hydrated throughout the day!';
 
   @override
+  String get motivational_100_1 =>
+      'Congratulations! You\'ve reached your goal!';
+
+  @override
+  String get motivational_100_2 => 'Amazing work! Stay hydrated tomorrow too!';
+
+  @override
+  String get motivational_100_3 => 'You\'re a hydration champion!';
+
+  @override
+  String get motivational_100_4 => 'Perfect! Keep up the great habits!';
+
+  @override
+  String get motivational_100_short => 'Goal Reached!';
+
+  @override
+  String get motivational_75_1 => 'Almost there! Just a bit more to go!';
+
+  @override
+  String get motivational_75_2 => 'You\'re doing great! Keep it up!';
+
+  @override
+  String get motivational_75_3 => 'So close to your goal!';
+
+  @override
+  String get motivational_75_4 => 'Fantastic progress! Don\'t stop now!';
+
+  @override
+  String get motivational_75_short => 'Almost there!';
+
+  @override
+  String get motivational_50_1 => 'Halfway there! You\'re doing awesome!';
+
+  @override
+  String get motivational_50_2 => 'Great job! Keep going!';
+
+  @override
+  String get motivational_50_3 => 'You\'re on the right track!';
+
+  @override
+  String get motivational_50_4 => 'Nice progress! Stay consistent!';
+
+  @override
+  String get motivational_50_short => 'Halfway!';
+
+  @override
+  String get motivational_25_1 => 'Good start! Keep drinking water!';
+
+  @override
+  String get motivational_25_2 => 'You\'re off to a great start!';
+
+  @override
+  String get motivational_25_3 => 'Nice beginning! Stay hydrated!';
+
+  @override
+  String get motivational_25_4 => 'Keep going! Every sip counts!';
+
+  @override
+  String get motivational_25_short => 'Good start!';
+
+  @override
+  String get motivational_0_1 =>
+      'Time to start hydrating! Your body will thank you!';
+
+  @override
+  String get motivational_0_2 => 'Let\'s begin your hydration journey!';
+
+  @override
+  String get motivational_0_3 => 'Start your day with some water!';
+
+  @override
+  String get motivational_0_4 => 'Your health matters! Start drinking!';
+
+  @override
+  String get motivational_0_short => 'Let\'s begin!';
+
+  @override
   String get profile_title => 'Profile';
 
   @override
@@ -297,6 +374,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get profile_save_failed => 'Failed to update profile';
+
+  @override
+  String get profile_user_default => 'User';
 
   @override
   String get gender_male => 'Male';
@@ -402,6 +482,97 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get settings_unit_floz => 'Fluid Ounces (fl oz)';
+
+  @override
+  String get settings_unit_metric => 'Metric system';
+
+  @override
+  String get settings_unit_imperial => 'Imperial system';
+
+  @override
+  String get settings_subtitle => 'Customize your experience';
+
+  @override
+  String get settings_reminders_active => 'Water reminders are active';
+
+  @override
+  String get settings_reminders_inactive => 'Turn on to get reminders';
+
+  @override
+  String get settings_minutes => 'minutes';
+
+  @override
+  String get settings_export_subtitle => 'Backup your water tracking data';
+
+  @override
+  String get settings_import_subtitle => 'Restore from backup file';
+
+  @override
+  String get settings_profile_subtitle => 'Update your information';
+
+  @override
+  String get settings_daily_goal_subtitle => 'Manage your hydration goal';
+
+  @override
+  String get settings_theme_dialog_title => 'Theme';
+
+  @override
+  String get settings_theme_light_mode => 'Light Mode';
+
+  @override
+  String get settings_theme_dark_mode => 'Dark Mode';
+
+  @override
+  String get settings_theme_system_mode => 'System Default';
+
+  @override
+  String get settings_theme_light_subtitle => 'Use light theme';
+
+  @override
+  String get settings_theme_dark_subtitle => 'Use dark theme';
+
+  @override
+  String get settings_theme_system_subtitle => 'Follow system theme';
+
+  @override
+  String get settings_language_dialog_title => 'Language';
+
+  @override
+  String get settings_export_loading => 'Exporting data...';
+
+  @override
+  String get settings_export_success_message => 'Data exported successfully!';
+
+  @override
+  String settings_export_failed_message(String error) {
+    return 'Export failed: $error';
+  }
+
+  @override
+  String get settings_import_loading => 'Importing data...';
+
+  @override
+  String get settings_import_complete => 'Import Complete';
+
+  @override
+  String get settings_import_success_subtitle => 'Imported successfully:';
+
+  @override
+  String get settings_import_water_records => 'water records';
+
+  @override
+  String get settings_import_daily_goals => 'daily goals';
+
+  @override
+  String get settings_import_duplicate_skipped => 'duplicate records skipped';
+
+  @override
+  String settings_import_failed_message(String error) {
+    return 'Import failed: $error';
+  }
+
+  @override
+  String get settings_reminder_interval_title => 'Reminder Interval';
 
   @override
   String get settings_language_coming_soon => 'Coming Soon';
@@ -567,6 +738,37 @@ class AppLocalizationsEn extends AppLocalizations {
   String get streak_keep_going => 'Keep the streak going!';
 
   @override
+  String get streak_personal_best => 'Personal Best';
+
+  @override
+  String get streak_best => 'Best!';
+
+  @override
+  String get streak_longest => 'Longest';
+
+  @override
+  String get streak_next_milestone => 'Next Milestone';
+
+  @override
+  String get streak_start_today => 'Start Your Streak Today!';
+
+  @override
+  String get streak_complete_goal =>
+      'Complete your daily goal to build a streak';
+
+  @override
+  String get streak_start => 'Start your streak!';
+
+  @override
+  String get streak_error => 'Failed to load streak data';
+
+  @override
+  String get streak_day_singular => 'day';
+
+  @override
+  String get streak_day_plural => 'days';
+
+  @override
   String get onboarding_title_1 => 'Track Your Water';
 
   @override
@@ -619,7 +821,32 @@ class AppLocalizationsEn extends AppLocalizations {
   String get drawer_help => 'Help & Support';
 
   @override
+  String get drawer_about => 'About';
+
+  @override
+  String get drawer_logout => 'Logout';
+
+  @override
+  String get about_title => 'Aqualert';
+
+  @override
+  String get about_version => 'Version 1.0.0';
+
+  @override
+  String get about_description =>
+      'Stay hydrated and healthy with Aqualert. Track your daily water intake and achieve your hydration goals!';
+
+  @override
+  String get about_copyright => '© 2024 Aqualert. All rights reserved.';
+
+  @override
+  String get about_close => 'Close';
+
+  @override
   String get help_title => 'Help & Support';
+
+  @override
+  String get help_subtitle => 'Get help and learn more';
 
   @override
   String get help_faq => 'Frequently Asked Questions';
@@ -629,6 +856,119 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get help_version => 'Version';
+
+  @override
+  String get help_app_info => 'App Information';
+
+  @override
+  String get help_coming_soon => 'Help & Support - Coming Soon!';
+
+  @override
+  String get help_faq_section => 'FAQs';
+
+  @override
+  String get help_features_section => 'Features Guide';
+
+  @override
+  String get help_about_section => 'About';
+
+  @override
+  String get faq_1_q => 'How is my daily water goal calculated?';
+
+  @override
+  String get faq_1_a =>
+      'Your daily water goal is calculated based on your weight, height, age, gender, and activity level using scientific formulas. You can also set a custom goal in Profile settings.';
+
+  @override
+  String get faq_2_q => 'How do water reminders work?';
+
+  @override
+  String get faq_2_a =>
+      'You can set reminder intervals (30-180 minutes) and choose start/end times. The app will send you notifications during this period to help you stay hydrated.';
+
+  @override
+  String get faq_3_q => 'What are streaks and how do they work?';
+
+  @override
+  String get faq_3_a =>
+      'Streaks track consecutive days you\'ve reached your daily water goal. Keep drinking water daily to maintain and increase your streak!';
+
+  @override
+  String get faq_4_q => 'How can I change the measurement units?';
+
+  @override
+  String get faq_4_a =>
+      'Go to Settings → Units and switch between milliliters (ml) and fluid ounces (fl oz). All measurements will update automatically.';
+
+  @override
+  String get faq_5_q => 'Can I export my water tracking data?';
+
+  @override
+  String get faq_5_a =>
+      'Yes! Go to Settings → Data Management → Export Data. You can share or save your data as a JSON file and import it later.';
+
+  @override
+  String get faq_6_q => 'How do achievements work?';
+
+  @override
+  String get faq_6_a =>
+      'Complete water tracking milestones to unlock achievements and earn reward points. Track your progress in the Achievements screen.';
+
+  @override
+  String get feature_tracking_title => 'Water Tracking';
+
+  @override
+  String get feature_tracking_desc =>
+      'Easily log your daily water intake with quick-add buttons (250ml, 350ml, 500ml, 750ml) or enter a custom amount.';
+
+  @override
+  String get feature_reminders_title => 'Smart Reminders';
+
+  @override
+  String get feature_reminders_desc =>
+      'Set customizable reminder intervals and choose active hours. Never forget to drink water throughout the day.';
+
+  @override
+  String get feature_statistics_title => 'Statistics & Insights';
+
+  @override
+  String get feature_statistics_desc =>
+      'View your water consumption trends with weekly, monthly, and yearly charts. Track your progress over time.';
+
+  @override
+  String get feature_achievements_title => 'Achievements & Streaks';
+
+  @override
+  String get feature_achievements_desc =>
+      'Earn achievements and maintain daily streaks by reaching your water goals. Stay motivated with gamification!';
+
+  @override
+  String get feature_profile_title => 'Profile & Goals';
+
+  @override
+  String get feature_profile_desc =>
+      'Set your personal information and let the app calculate your optimal daily water goal based on your body metrics.';
+
+  @override
+  String get help_contact_email => 'Contact via Email';
+
+  @override
+  String get help_contact_email_address => 'support@aqualert.app';
+
+  @override
+  String get help_rate_app => 'Rate Our App';
+
+  @override
+  String get help_rate_desc => 'Enjoying Aqualert? Leave us a review!';
+
+  @override
+  String get help_build_number => 'Build';
+
+  @override
+  String get help_copyright => '© 2024 Aqualert. All rights reserved.';
+
+  @override
+  String get help_made_with => 'Made with ❤️ for your health';
 
   @override
   String get error_generic => 'Something went wrong. Please try again.';

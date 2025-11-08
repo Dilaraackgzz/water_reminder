@@ -243,6 +243,82 @@ class AppLocalizationsTr extends AppLocalizations {
   String get motivational_stay_hydrated => 'Gün boyunca bol su iç!';
 
   @override
+  String get motivational_100_1 => 'Tebrikler! Hedefe ulaştın!';
+
+  @override
+  String get motivational_100_2 => 'Harika iş! Yarın da susuz kalma!';
+
+  @override
+  String get motivational_100_3 => 'Hidrasyon şampiyonusun!';
+
+  @override
+  String get motivational_100_4 => 'Mükemmel! Bu harika alışkanlığını sürdür!';
+
+  @override
+  String get motivational_100_short => 'Hedefe Ulaşıldı!';
+
+  @override
+  String get motivational_75_1 => 'Neredeyse bitti! Biraz daha!';
+
+  @override
+  String get motivational_75_2 => 'Harika gidiyorsun! Devam et!';
+
+  @override
+  String get motivational_75_3 => 'Hedefe çok yakınsın!';
+
+  @override
+  String get motivational_75_4 => 'Fantastik ilerleme! Şimdi durma!';
+
+  @override
+  String get motivational_75_short => 'Neredeyse bitti!';
+
+  @override
+  String get motivational_50_1 => 'Yarıladın! Harika gidiyorsun!';
+
+  @override
+  String get motivational_50_2 => 'Harika iş! Devam et!';
+
+  @override
+  String get motivational_50_3 => 'Doğru yoldasın!';
+
+  @override
+  String get motivational_50_4 => 'Güzel ilerleme! Tutarlı ol!';
+
+  @override
+  String get motivational_50_short => 'Yarıda!';
+
+  @override
+  String get motivational_25_1 => 'İyi bir başlangıç! Su içmeye devam et!';
+
+  @override
+  String get motivational_25_2 => 'Harika bir başlangıç yaptın!';
+
+  @override
+  String get motivational_25_3 => 'Güzel başlangıç! Susuz kalma!';
+
+  @override
+  String get motivational_25_4 => 'Devam et! Her yudum önemli!';
+
+  @override
+  String get motivational_25_short => 'İyi başlangıç!';
+
+  @override
+  String get motivational_0_1 =>
+      'Hidrasyon zamanı! Vücudun sana teşekkür edecek!';
+
+  @override
+  String get motivational_0_2 => 'Hadi hidrasyon yolculuğuna başlayalım!';
+
+  @override
+  String get motivational_0_3 => 'Güne biraz suyla başla!';
+
+  @override
+  String get motivational_0_4 => 'Sağlığın önemli! İçmeye başla!';
+
+  @override
+  String get motivational_0_short => 'Hadi başlayalım!';
+
+  @override
   String get profile_title => 'Profil';
 
   @override
@@ -295,6 +371,9 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get profile_save_failed => 'Profil güncellenemedi';
+
+  @override
+  String get profile_user_default => 'Kullanıcı';
 
   @override
   String get gender_male => 'Erkek';
@@ -400,6 +479,99 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get settings_unit_floz => 'Sıvı Ons (fl oz)';
+
+  @override
+  String get settings_unit_metric => 'Metrik sistem';
+
+  @override
+  String get settings_unit_imperial => 'İngiliz sistemi';
+
+  @override
+  String get settings_subtitle => 'Deneyimini özelleştir';
+
+  @override
+  String get settings_reminders_active => 'Su hatırlatıcıları aktif';
+
+  @override
+  String get settings_reminders_inactive =>
+      'Hatırlatıcıları açmak için etkinleştir';
+
+  @override
+  String get settings_minutes => 'dakika';
+
+  @override
+  String get settings_export_subtitle => 'Su takip verilerini yedekle';
+
+  @override
+  String get settings_import_subtitle => 'Yedek dosyadan geri yükle';
+
+  @override
+  String get settings_profile_subtitle => 'Bilgilerini güncelle';
+
+  @override
+  String get settings_daily_goal_subtitle => 'Su hedefini yönet';
+
+  @override
+  String get settings_theme_dialog_title => 'Tema';
+
+  @override
+  String get settings_theme_light_mode => 'Açık Mod';
+
+  @override
+  String get settings_theme_dark_mode => 'Koyu Mod';
+
+  @override
+  String get settings_theme_system_mode => 'Sistem Varsayılanı';
+
+  @override
+  String get settings_theme_light_subtitle => 'Açık tema kullan';
+
+  @override
+  String get settings_theme_dark_subtitle => 'Koyu tema kullan';
+
+  @override
+  String get settings_theme_system_subtitle => 'Sistem temasını takip et';
+
+  @override
+  String get settings_language_dialog_title => 'Dil';
+
+  @override
+  String get settings_export_loading => 'Veriler dışa aktarılıyor...';
+
+  @override
+  String get settings_export_success_message =>
+      'Veriler başarıyla dışa aktarıldı!';
+
+  @override
+  String settings_export_failed_message(String error) {
+    return 'Dışa aktarma başarısız: $error';
+  }
+
+  @override
+  String get settings_import_loading => 'Veriler içe aktarılıyor...';
+
+  @override
+  String get settings_import_complete => 'İçe Aktarma Tamamlandı';
+
+  @override
+  String get settings_import_success_subtitle => 'Başarıyla içe aktarıldı:';
+
+  @override
+  String get settings_import_water_records => 'su kaydı';
+
+  @override
+  String get settings_import_daily_goals => 'günlük hedef';
+
+  @override
+  String get settings_import_duplicate_skipped => 'tekrarlanan kayıt atlandı';
+
+  @override
+  String settings_import_failed_message(String error) {
+    return 'İçe aktarma başarısız: $error';
+  }
+
+  @override
+  String get settings_reminder_interval_title => 'Hatırlatma Aralığı';
 
   @override
   String get settings_language_coming_soon => 'Yakında Gelecek';
@@ -564,6 +736,37 @@ class AppLocalizationsTr extends AppLocalizations {
   String get streak_keep_going => 'Serini sürdür!';
 
   @override
+  String get streak_personal_best => 'Kişisel Rekor';
+
+  @override
+  String get streak_best => 'Rekor!';
+
+  @override
+  String get streak_longest => 'En Uzun';
+
+  @override
+  String get streak_next_milestone => 'Sonraki Kilometre Taşı';
+
+  @override
+  String get streak_start_today => 'Bugün Serini Başlat!';
+
+  @override
+  String get streak_complete_goal =>
+      'Seri oluşturmak için günlük hedefinize ulaşın';
+
+  @override
+  String get streak_start => 'Serini başlat!';
+
+  @override
+  String get streak_error => 'Seri verileri yüklenemedi';
+
+  @override
+  String get streak_day_singular => 'gün';
+
+  @override
+  String get streak_day_plural => 'gün';
+
+  @override
   String get onboarding_title_1 => 'Suyunu Takip Et';
 
   @override
@@ -616,7 +819,32 @@ class AppLocalizationsTr extends AppLocalizations {
   String get drawer_help => 'Yardım ve Destek';
 
   @override
+  String get drawer_about => 'Hakkında';
+
+  @override
+  String get drawer_logout => 'Çıkış Yap';
+
+  @override
+  String get about_title => 'Aqualert';
+
+  @override
+  String get about_version => 'Sürüm 1.0.0';
+
+  @override
+  String get about_description =>
+      'Aqualert ile sağlıklı kal ve susuz kalma. Günlük su tüketimini takip et ve hidrasyon hedeflerine ulaş!';
+
+  @override
+  String get about_copyright => '© 2024 Aqualert. Tüm hakları saklıdır.';
+
+  @override
+  String get about_close => 'Kapat';
+
+  @override
   String get help_title => 'Yardım ve Destek';
+
+  @override
+  String get help_subtitle => 'Yardım alın ve daha fazlasını öğrenin';
 
   @override
   String get help_faq => 'Sık Sorulan Sorular';
@@ -626,6 +854,119 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get help_version => 'Sürüm';
+
+  @override
+  String get help_app_info => 'Uygulama Bilgileri';
+
+  @override
+  String get help_coming_soon => 'Yardım ve Destek - Yakında Gelecek!';
+
+  @override
+  String get help_faq_section => 'Sık Sorulan Sorular';
+
+  @override
+  String get help_features_section => 'Özellikler Rehberi';
+
+  @override
+  String get help_about_section => 'Hakkında';
+
+  @override
+  String get faq_1_q => 'Günlük su hedefim nasıl hesaplanıyor?';
+
+  @override
+  String get faq_1_a =>
+      'Günlük su hedefiniz kilo, boy, yaş, cinsiyet ve aktivite seviyenize göre bilimsel formüller kullanılarak hesaplanır. Profil ayarlarından özel hedef de belirleyebilirsiniz.';
+
+  @override
+  String get faq_2_q => 'Su hatırlatıcıları nasıl çalışır?';
+
+  @override
+  String get faq_2_a =>
+      'Hatırlatma aralıkları (30-180 dakika) belirleyip başlangıç/bitiş saatleri seçebilirsiniz. Uygulama bu dönemde susuz kalmamanız için bildirim gönderir.';
+
+  @override
+  String get faq_3_q => 'Seriler nedir ve nasıl çalışır?';
+
+  @override
+  String get faq_3_a =>
+      'Seriler, günlük su hedefinize ulaştığınız ardışık günleri takip eder. Serinizi sürdürmek ve artırmak için her gün su içmeye devam edin!';
+
+  @override
+  String get faq_4_q => 'Ölçü birimlerini nasıl değiştirebilirim?';
+
+  @override
+  String get faq_4_a =>
+      'Ayarlar → Birimler bölümünden mililitre (ml) ve sıvı ons (fl oz) arasında geçiş yapabilirsiniz. Tüm ölçümler otomatik güncellenir.';
+
+  @override
+  String get faq_5_q => 'Su takip verilerimi dışa aktarabilir miyim?';
+
+  @override
+  String get faq_5_a =>
+      'Evet! Ayarlar → Veri Yönetimi → Verileri Dışa Aktar\'a gidin. Verilerinizi JSON dosyası olarak paylaşabilir veya kaydedip sonra içe aktarabilirsiniz.';
+
+  @override
+  String get faq_6_q => 'Başarımlar nasıl çalışır?';
+
+  @override
+  String get faq_6_a =>
+      'Su takip kilometre taşlarını tamamlayarak başarımların kilidini açın ve ödül puanları kazanın. İlerlemelerinizi Başarımlar ekranından takip edin.';
+
+  @override
+  String get feature_tracking_title => 'Su Takibi';
+
+  @override
+  String get feature_tracking_desc =>
+      'Hızlı ekleme butonları (250ml, 350ml, 500ml, 750ml) veya özel miktar girerek günlük su tüketiminizi kolayca kaydedin.';
+
+  @override
+  String get feature_reminders_title => 'Akıllı Hatırlatıcılar';
+
+  @override
+  String get feature_reminders_desc =>
+      'Özelleştirilebilir hatırlatma aralıkları belirleyin ve aktif saatleri seçin. Gün boyunca su içmeyi asla unutmayın.';
+
+  @override
+  String get feature_statistics_title => 'İstatistikler ve İçgörüler';
+
+  @override
+  String get feature_statistics_desc =>
+      'Haftalık, aylık ve yıllık grafiklerle su tüketim trendlerinizi görüntüleyin. Zaman içindeki ilerlemenizi takip edin.';
+
+  @override
+  String get feature_achievements_title => 'Başarımlar ve Seriler';
+
+  @override
+  String get feature_achievements_desc =>
+      'Su hedeflerinize ulaşarak başarımlar kazanın ve günlük serilerinizi sürdürün. Oyunlaştırma ile motive kalın!';
+
+  @override
+  String get feature_profile_title => 'Profil ve Hedefler';
+
+  @override
+  String get feature_profile_desc =>
+      'Kişisel bilgilerinizi girin ve uygulamanın vücut ölçülerinize göre optimal günlük su hedefinizi hesaplamasını sağlayın.';
+
+  @override
+  String get help_contact_email => 'E-posta ile İletişim';
+
+  @override
+  String get help_contact_email_address => 'destek@aqualert.app';
+
+  @override
+  String get help_rate_app => 'Uygulamayı Değerlendir';
+
+  @override
+  String get help_rate_desc => 'Aqualert\'i beğendiniz mi? Bize yorum bırakın!';
+
+  @override
+  String get help_build_number => 'Yapı';
+
+  @override
+  String get help_copyright => '© 2024 Aqualert. Tüm hakları saklıdır.';
+
+  @override
+  String get help_made_with => 'Sağlığınız için ❤️ ile yapıldı';
 
   @override
   String get error_generic => 'Bir şeyler ters gitti. Lütfen tekrar dene.';

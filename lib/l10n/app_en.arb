@@ -99,6 +99,36 @@
   "motivational_good_start": "Great start! Keep it up!",
   "motivational_stay_hydrated": "Stay hydrated throughout the day!",
 
+  "motivational_100_1": "Congratulations! You've reached your goal!",
+  "motivational_100_2": "Amazing work! Stay hydrated tomorrow too!",
+  "motivational_100_3": "You're a hydration champion!",
+  "motivational_100_4": "Perfect! Keep up the great habits!",
+  "motivational_100_short": "Goal Reached!",
+
+  "motivational_75_1": "Almost there! Just a bit more to go!",
+  "motivational_75_2": "You're doing great! Keep it up!",
+  "motivational_75_3": "So close to your goal!",
+  "motivational_75_4": "Fantastic progress! Don't stop now!",
+  "motivational_75_short": "Almost there!",
+
+  "motivational_50_1": "Halfway there! You're doing awesome!",
+  "motivational_50_2": "Great job! Keep going!",
+  "motivational_50_3": "You're on the right track!",
+  "motivational_50_4": "Nice progress! Stay consistent!",
+  "motivational_50_short": "Halfway!",
+
+  "motivational_25_1": "Good start! Keep drinking water!",
+  "motivational_25_2": "You're off to a great start!",
+  "motivational_25_3": "Nice beginning! Stay hydrated!",
+  "motivational_25_4": "Keep going! Every sip counts!",
+  "motivational_25_short": "Good start!",
+
+  "motivational_0_1": "Time to start hydrating! Your body will thank you!",
+  "motivational_0_2": "Let's begin your hydration journey!",
+  "motivational_0_3": "Start your day with some water!",
+  "motivational_0_4": "Your health matters! Start drinking!",
+  "motivational_0_short": "Let's begin!",
+
   "profile_title": "Profile",
   "profile_edit": "Edit Profile",
   "profile_personal_info": "Personal Information",
@@ -117,6 +147,7 @@
   "profile_custom_goal": "Custom Goal",
   "profile_save_success": "Profile updated successfully",
   "profile_save_failed": "Failed to update profile",
+  "profile_user_default": "User",
 
   "gender_male": "Male",
   "gender_female": "Female",
@@ -159,6 +190,50 @@
 
   "settings_unit_ml": "Milliliters (ml)",
   "settings_unit_floz": "Fluid Ounces (fl oz)",
+  "settings_unit_metric": "Metric system",
+  "settings_unit_imperial": "Imperial system",
+
+  "settings_subtitle": "Customize your experience",
+  "settings_reminders_active": "Water reminders are active",
+  "settings_reminders_inactive": "Turn on to get reminders",
+  "settings_minutes": "minutes",
+  "settings_export_subtitle": "Backup your water tracking data",
+  "settings_import_subtitle": "Restore from backup file",
+  "settings_profile_subtitle": "Update your information",
+  "settings_daily_goal_subtitle": "Manage your hydration goal",
+  "settings_theme_dialog_title": "Theme",
+  "settings_theme_light_mode": "Light Mode",
+  "settings_theme_dark_mode": "Dark Mode",
+  "settings_theme_system_mode": "System Default",
+  "settings_theme_light_subtitle": "Use light theme",
+  "settings_theme_dark_subtitle": "Use dark theme",
+  "settings_theme_system_subtitle": "Follow system theme",
+  "settings_language_dialog_title": "Language",
+  "settings_export_loading": "Exporting data...",
+  "settings_export_success_message": "Data exported successfully!",
+  "settings_export_failed_message": "Export failed: {error}",
+  "@settings_export_failed_message": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "settings_import_loading": "Importing data...",
+  "settings_import_complete": "Import Complete",
+  "settings_import_success_subtitle": "Imported successfully:",
+  "settings_import_water_records": "water records",
+  "settings_import_daily_goals": "daily goals",
+  "settings_import_duplicate_skipped": "duplicate records skipped",
+  "settings_import_failed_message": "Import failed: {error}",
+  "@settings_import_failed_message": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "settings_reminder_interval_title": "Reminder Interval",
 
   "settings_language_coming_soon": "Coming Soon",
   "settings_export_success": "Data exported successfully",
@@ -242,6 +317,16 @@
     }
   },
   "streak_keep_going": "Keep the streak going!",
+  "streak_personal_best": "Personal Best",
+  "streak_best": "Best!",
+  "streak_longest": "Longest",
+  "streak_next_milestone": "Next Milestone",
+  "streak_start_today": "Start Your Streak Today!",
+  "streak_complete_goal": "Complete your daily goal to build a streak",
+  "streak_start": "Start your streak!",
+  "streak_error": "Failed to load streak data",
+  "streak_day_singular": "day",
+  "streak_day_plural": "days",
 
   "onboarding_title_1": "Track Your Water",
   "onboarding_desc_1": "Easily log your daily water intake with just a tap",
@@ -260,11 +345,68 @@
   "drawer_reminders": "Reminders",
   "drawer_settings": "Settings",
   "drawer_help": "Help & Support",
+  "drawer_about": "About",
+  "drawer_logout": "Logout",
+
+  "about_title": "Aqualert",
+  "about_version": "Version 1.0.0",
+  "about_description": "Stay hydrated and healthy with Aqualert. Track your daily water intake and achieve your hydration goals!",
+  "about_copyright": "© 2024 Aqualert. All rights reserved.",
+  "about_close": "Close",
 
   "help_title": "Help & Support",
+  "help_subtitle": "Get help and learn more",
   "help_faq": "Frequently Asked Questions",
   "help_contact": "Contact Us",
   "help_version": "Version",
+  "help_app_info": "App Information",
+  "help_coming_soon": "Help & Support - Coming Soon!",
+
+  "help_faq_section": "FAQs",
+  "help_features_section": "Features Guide",
+  "help_about_section": "About",
+
+  "faq_1_q": "How is my daily water goal calculated?",
+  "faq_1_a": "Your daily water goal is calculated based on your weight, height, age, gender, and activity level using scientific formulas. You can also set a custom goal in Profile settings.",
+
+  "faq_2_q": "How do water reminders work?",
+  "faq_2_a": "You can set reminder intervals (30-180 minutes) and choose start/end times. The app will send you notifications during this period to help you stay hydrated.",
+
+  "faq_3_q": "What are streaks and how do they work?",
+  "faq_3_a": "Streaks track consecutive days you've reached your daily water goal. Keep drinking water daily to maintain and increase your streak!",
+
+  "faq_4_q": "How can I change the measurement units?",
+  "faq_4_a": "Go to Settings → Units and switch between milliliters (ml) and fluid ounces (fl oz). All measurements will update automatically.",
+
+  "faq_5_q": "Can I export my water tracking data?",
+  "faq_5_a": "Yes! Go to Settings → Data Management → Export Data. You can share or save your data as a JSON file and import it later.",
+
+  "faq_6_q": "How do achievements work?",
+  "faq_6_a": "Complete water tracking milestones to unlock achievements and earn reward points. Track your progress in the Achievements screen.",
+
+  "feature_tracking_title": "Water Tracking",
+  "feature_tracking_desc": "Easily log your daily water intake with quick-add buttons (250ml, 350ml, 500ml, 750ml) or enter a custom amount.",
+
+  "feature_reminders_title": "Smart Reminders",
+  "feature_reminders_desc": "Set customizable reminder intervals and choose active hours. Never forget to drink water throughout the day.",
+
+  "feature_statistics_title": "Statistics & Insights",
+  "feature_statistics_desc": "View your water consumption trends with weekly, monthly, and yearly charts. Track your progress over time.",
+
+  "feature_achievements_title": "Achievements & Streaks",
+  "feature_achievements_desc": "Earn achievements and maintain daily streaks by reaching your water goals. Stay motivated with gamification!",
+
+  "feature_profile_title": "Profile & Goals",
+  "feature_profile_desc": "Set your personal information and let the app calculate your optimal daily water goal based on your body metrics.",
+
+  "help_contact_email": "Contact via Email",
+  "help_contact_email_address": "support@aqualert.app",
+  "help_rate_app": "Rate Our App",
+  "help_rate_desc": "Enjoying Aqualert? Leave us a review!",
+
+  "help_build_number": "Build",
+  "help_copyright": "© 2024 Aqualert. All rights reserved.",
+  "help_made_with": "Made with ❤️ for your health",
 
   "error_generic": "Something went wrong. Please try again.",
   "error_network": "Network error. Please check your connection.",

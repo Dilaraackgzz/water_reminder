@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:water_reminder/l10n/app_localizations.dart';
 import 'dart:math' as math;
 
 class MotivationalMessage extends StatelessWidget {
@@ -12,45 +13,46 @@ class MotivationalMessage extends StatelessWidget {
     this.isCompact = false,
   });
 
-  String _getMessage() {
+  String _getMessage(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     if (progressPercentage >= 100) {
       final messages = [
-        'Congratulations! You\'ve reached your goal!',
-        'Amazing work! Stay hydrated tomorrow too!',
-        'You\'re a hydration champion!',
-        'Perfect! Keep up the great habits!',
+        l10n.motivational_100_1,
+        l10n.motivational_100_2,
+        l10n.motivational_100_3,
+        l10n.motivational_100_4,
       ];
       return messages[math.Random().nextInt(messages.length)];
     } else if (progressPercentage >= 75) {
       final messages = [
-        'Almost there! Just a bit more to go!',
-        'You\'re doing great! Keep it up!',
-        'So close to your goal!',
-        'Fantastic progress! Don\'t stop now!',
+        l10n.motivational_75_1,
+        l10n.motivational_75_2,
+        l10n.motivational_75_3,
+        l10n.motivational_75_4,
       ];
       return messages[math.Random().nextInt(messages.length)];
     } else if (progressPercentage >= 50) {
       final messages = [
-        'Halfway there! You\'re doing awesome!',
-        'Great job! Keep going!',
-        'You\'re on the right track!',
-        'Nice progress! Stay consistent!',
+        l10n.motivational_50_1,
+        l10n.motivational_50_2,
+        l10n.motivational_50_3,
+        l10n.motivational_50_4,
       ];
       return messages[math.Random().nextInt(messages.length)];
     } else if (progressPercentage >= 25) {
       final messages = [
-        'Good start! Keep drinking water!',
-        'You\'re off to a great start!',
-        'Nice beginning! Stay hydrated!',
-        'Keep going! Every sip counts!',
+        l10n.motivational_25_1,
+        l10n.motivational_25_2,
+        l10n.motivational_25_3,
+        l10n.motivational_25_4,
       ];
       return messages[math.Random().nextInt(messages.length)];
     } else {
       final messages = [
-        'Time to start hydrating! Your body will thank you!',
-        'Let\'s begin your hydration journey!',
-        'Start your day with some water!',
-        'Your health matters! Start drinking!',
+        l10n.motivational_0_1,
+        l10n.motivational_0_2,
+        l10n.motivational_0_3,
+        l10n.motivational_0_4,
       ];
       return messages[math.Random().nextInt(messages.length)];
     }
@@ -82,23 +84,24 @@ class MotivationalMessage extends StatelessWidget {
     }
   }
 
-  String _getShortMessage() {
+  String _getShortMessage(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     if (progressPercentage >= 100) {
-      return 'Goal Reached!';
+      return l10n.motivational_100_short;
     } else if (progressPercentage >= 75) {
-      return 'Almost there!';
+      return l10n.motivational_75_short;
     } else if (progressPercentage >= 50) {
-      return 'Halfway!';
+      return l10n.motivational_50_short;
     } else if (progressPercentage >= 25) {
-      return 'Good start!';
+      return l10n.motivational_25_short;
     } else {
-      return 'Let\'s begin!';
+      return l10n.motivational_0_short;
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    final message = _getMessage();
+    final message = _getMessage(context);
     final icon = _getIcon();
     final color = _getColor();
 
@@ -123,7 +126,7 @@ class MotivationalMessage extends StatelessWidget {
           ? _CompactCard(
               key: ValueKey(progressPercentage ~/ 25),
               icon: icon,
-              text: _getShortMessage(),
+              text: _getShortMessage(context),
               color: color,
             )
           : _FullCard(

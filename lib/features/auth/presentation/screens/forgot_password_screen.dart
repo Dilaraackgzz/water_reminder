@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:water_reminder/l10n/app_localizations.dart';
 import '../../../../core/themes/app_theme.dart';
 import '../providers/auth_controller.dart';
 import '../widgets/auth_text_field.dart';
@@ -59,6 +60,7 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
@@ -82,7 +84,7 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
                     ),
                     const SizedBox(width: 8),
                     Text(
-                      'Şifremi Unuttum',
+                      l10n.auth_forgot_password_title,
                       style: GoogleFonts.poppins(
                         fontSize: 28,
                         fontWeight: FontWeight.bold,
@@ -96,7 +98,7 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
 
                 if (!_emailSent) ...[
                   Text(
-                    'E-posta adresinizi girin, size şifre sıfırlama bağlantısı gönderelim.',
+                    l10n.auth_forgot_password_instruction,
                     style: GoogleFonts.poppins(
                       fontSize: 14,
                       color: Colors.grey[600],
@@ -118,16 +120,16 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
                       children: [
                         AuthTextField(
                           controller: _emailController,
-                          label: 'E-posta',
-                          hint: 'ornek@email.com',
+                          label: l10n.auth_email_label,
+                          hint: l10n.auth_email_hint,
                           prefixIcon: Icons.email_outlined,
                           keyboardType: TextInputType.emailAddress,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return 'E-posta adresi gerekli';
+                              return l10n.auth_validation_email_required;
                             }
                             if (!value.contains('@')) {
-                              return 'Geçerli bir e-posta adresi girin';
+                              return l10n.auth_validation_email_invalid;
                             }
                             return null;
                           },
@@ -159,7 +161,7 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
                                     ),
                                   )
                                 : Text(
-                                    'Sıfırlama Bağlantısı Gönder',
+                                    l10n.auth_forgot_password_button,
                                     style: GoogleFonts.poppins(
                                       fontSize: 16,
                                       fontWeight: FontWeight.w600,
@@ -185,7 +187,7 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
                       .fadeIn(),
                   const SizedBox(height: 24),
                   Text(
-                    'E-posta Gönderildi!',
+                    l10n.auth_forgot_password_success,
                     style: GoogleFonts.poppins(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
@@ -195,8 +197,7 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
                   ).animate().fadeIn(delay: 200.ms),
                   const SizedBox(height: 16),
                   Text(
-                    'Şifre sıfırlama bağlantısı ${_emailController.text} adresine gönderildi. '
-                    'Lütfen e-postanızı kontrol edin.',
+                    l10n.auth_email_verification_instruction,
                     style: GoogleFonts.poppins(
                       fontSize: 14,
                       color: Colors.grey[600],
@@ -218,7 +219,7 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
                         elevation: 0,
                       ),
                       child: Text(
-                        'Giriş Sayfasına Dön',
+                        l10n.auth_back_to_login,
                         style: GoogleFonts.poppins(
                           fontSize: 16,
                           fontWeight: FontWeight.w600,

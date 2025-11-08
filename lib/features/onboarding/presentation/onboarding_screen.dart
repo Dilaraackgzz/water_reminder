@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:go_router/go_router.dart';
+import 'package:water_reminder/l10n/app_localizations.dart';
 import '../../../core/themes/app_theme.dart';
 import '../../../core/services/onboarding_service.dart';
 import '../widgets/onboarding_page.dart';
@@ -17,52 +18,47 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
   final PageController _pageController = PageController();
   int _currentPage = 0;
 
-  final List<OnboardingPageData> _pages = [
-    OnboardingPageData(
-      title: 'Stay Hydrated',
-      subtitle: 'Your Health Matters',
-      description:
-          'Water is essential for your body. Drinking enough water helps maintain energy levels, improves skin health, and supports vital organ functions.',
-      icon: Icons.water_drop,
-      gradient: [
-        AppTheme.primaryBlue,
-        AppTheme.primaryBlue,
-      ],
-    ),
-    OnboardingPageData(
-      title: 'Smart Reminders',
-      subtitle: 'Never Forget to Drink',
-      description:
-          'Set personalized reminders based on your daily routine. Get gentle notifications throughout the day to keep you on track with your hydration goals.',
-      icon: Icons.notifications_active,
-      gradient: [
-        AppTheme.primaryBlue,
-        AppTheme.primaryBlue,
-      ],
-    ),
-    OnboardingPageData(
-      title: 'Track Your Progress',
-      subtitle: 'Visualize Your Journey',
-      description:
-          'Monitor your daily water intake with beautiful charts and statistics. Celebrate your achievements and build healthy hydration habits.',
-      icon: Icons.insights,
-      gradient: [
-        AppTheme.primaryBlue,
-        AppTheme.primaryBlue,
-      ],
-    ),
-    OnboardingPageData(
-      title: 'Ready to Start?',
-      subtitle: 'Begin Your Hydration Journey',
-      description:
-          'Join thousands of users who improved their health through better hydration. Start tracking your water intake today!',
-      icon: Icons.emoji_events,
-      gradient: [
-        AppTheme.primaryBlue,
-        AppTheme.primaryBlue,
-      ],
-    ),
-  ];
+  List<OnboardingPageData> _getPages(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    return [
+      OnboardingPageData(
+        title: l10n.onboarding_title_1,
+        description: l10n.onboarding_desc_1,
+        icon: Icons.water_drop,
+        gradient: [
+          AppTheme.primaryBlue,
+          AppTheme.primaryBlue,
+        ],
+      ),
+      OnboardingPageData(
+        title: l10n.onboarding_title_2,
+        description: l10n.onboarding_desc_2,
+        icon: Icons.notifications_active,
+        gradient: [
+          AppTheme.primaryBlue,
+          AppTheme.primaryBlue,
+        ],
+      ),
+      OnboardingPageData(
+        title: l10n.onboarding_title_3,
+        description: l10n.onboarding_desc_3,
+        icon: Icons.insights,
+        gradient: [
+          AppTheme.primaryBlue,
+          AppTheme.primaryBlue,
+        ],
+      ),
+      OnboardingPageData(
+        title: l10n.onboarding_title_4,
+        description: l10n.onboarding_desc_4,
+        icon: Icons.emoji_events,
+        gradient: [
+          AppTheme.primaryBlue,
+          AppTheme.primaryBlue,
+        ],
+      ),
+    ];
+  }
 
   void _onPageChanged(int page) {
     setState(() {
@@ -71,7 +67,8 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
   }
 
   Future<void> _nextPage() async {
-    if (_currentPage < _pages.length - 1) {
+    final pages = _getPages(context);
+    if (_currentPage < pages.length - 1) {
       _pageController.animateToPage(
         _currentPage + 1,
         duration: const Duration(milliseconds: 400),
@@ -108,6 +105,9 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    final pages = _getPages(context);
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -121,7 +121,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                 child: TextButton(
                   onPressed: _skip,
                   child: Text(
-                    'Skip',
+                    l10n.common_skip,
                     style: GoogleFonts.poppins(
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
@@ -137,9 +137,9 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
               child: PageView.builder(
                 controller: _pageController,
                 onPageChanged: _onPageChanged,
-                itemCount: _pages.length,
+                itemCount: pages.length,
                 itemBuilder: (context, index) {
-                  return OnboardingPage(data: _pages[index]);
+                  return OnboardingPage(data: pages[index]);
                 },
               ),
             ),
@@ -150,7 +150,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: List.generate(
-                  _pages.length,
+                  pages.length,
                   (index) => _buildDot(index),
                 ),
               ),
@@ -176,9 +176,9 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                     ),
                   ),
                   child: Text(
-                    _currentPage == _pages.length - 1
-                        ? 'Get Started'
-                        : 'Next',
+                    _currentPage == pages.length - 1
+                        ? l10n.onboarding_get_started
+                        : l10n.common_next,
                     style: GoogleFonts.poppins(
                       fontSize: 18,
                       fontWeight: FontWeight.w600,
@@ -210,14 +210,12 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
 
 class OnboardingPageData {
   final String title;
-  final String subtitle;
   final String description;
   final IconData icon;
   final List<Color> gradient;
 
   OnboardingPageData({
     required this.title,
-    required this.subtitle,
     required this.description,
     required this.icon,
     required this.gradient,

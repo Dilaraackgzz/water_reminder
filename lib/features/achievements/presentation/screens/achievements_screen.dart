@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:water_reminder/l10n/app_localizations.dart';
 import '../../../../shared/widgets/modern_app_bar.dart';
 import '../../../../shared/widgets/app_drawer.dart';
 import '../../../../shared/providers/achievement_provider.dart';
@@ -11,6 +12,7 @@ class AchievementsScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context)!;
     final achievementsAsync = ref.watch(achievementsProvider);
     final totalPoints = ref.watch(totalPointsProvider);
     final isDark = Theme.of(context).brightness == Brightness.dark;
@@ -18,9 +20,9 @@ class AchievementsScreen extends ConsumerWidget {
 
     return Scaffold(
       backgroundColor: isDark ? colorScheme.surface : Colors.grey[50],
-      appBar: const ModernAppBar(
-        title: 'Achievements',
-        subtitle: 'Your progress and rewards',
+      appBar: ModernAppBar(
+        title: l10n.achievements_title,
+        subtitle: l10n.achievements_progress,
       ),
       drawer: const AppDrawer(),
       body: achievementsAsync.when(
@@ -45,13 +47,13 @@ class AchievementsScreen extends ConsumerWidget {
                   children: [
                     _StatItem(
                       icon: Icons.emoji_events,
-                      label: 'Unlocked',
+                      label: l10n.achievements_unlocked,
                       value: '${unlocked.length}/${achievements.length}',
                     ),
                     Container(width: 1, height: 40, color: Colors.white38),
                     _StatItem(
                       icon: Icons.star,
-                      label: 'Points',
+                      label: l10n.achievements_reward_points,
                       value: totalPoints.maybeWhen(
                         data: (points) => points.toString(),
                         orElse: () => '0',
@@ -64,7 +66,7 @@ class AchievementsScreen extends ConsumerWidget {
               if (unlocked.isNotEmpty) ...[
                 const SizedBox(height: 32),
                 Text(
-                  'Unlocked',
+                  l10n.achievements_unlocked,
                   style: GoogleFonts.poppins(
                     fontSize: 18,
                     fontWeight: FontWeight.w600,
@@ -76,13 +78,14 @@ class AchievementsScreen extends ConsumerWidget {
                       achievement: achievement,
                       isUnlocked: true,
                       isDark: isDark,
+                      l10n: l10n,
                     )),
               ],
 
               if (locked.isNotEmpty) ...[
                 const SizedBox(height: 32),
                 Text(
-                  'Locked',
+                  l10n.achievements_locked,
                   style: GoogleFonts.poppins(
                     fontSize: 18,
                     fontWeight: FontWeight.w600,
@@ -94,14 +97,15 @@ class AchievementsScreen extends ConsumerWidget {
                       achievement: achievement,
                       isUnlocked: false,
                       isDark: isDark,
+                      l10n: l10n,
                     )),
               ],
             ],
           );
         },
-        loading: () => const Center(child: CircularProgressIndicator()),
+        loading: () => Center(child: Text(l10n.common_loading)),
         error: (error, stack) => Center(
-          child: Text('Error: $error', style: GoogleFonts.poppins()),
+          child: Text('${l10n.common_error}: $error', style: GoogleFonts.poppins()),
         ),
       ),
     );
@@ -149,11 +153,13 @@ class _AchievementCard extends StatelessWidget {
   final Achievement achievement;
   final bool isUnlocked;
   final bool isDark;
+  final AppLocalizations l10n;
 
   const _AchievementCard({
     required this.achievement,
     required this.isUnlocked,
     required this.isDark,
+    required this.l10n,
   });
 
   IconData _getIcon(String iconName) {
