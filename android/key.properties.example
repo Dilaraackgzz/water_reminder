@@ -1,0 +1,11 @@
+# Android Release Signing Configuration
+#
+# IMPORTANT: This is a template file. Copy this to key.properties and fill in your values.
+# DO NOT commit key.properties to git - it contains sensitive information!
+#
+# To create your keystore, follow the instructions in .android_keystore_setup.md
+
+storePassword=YOUR_STORE_PASSWORD_HERE
+keyPassword=YOUR_KEY_PASSWORD_HERE
+keyAlias=aqualert-release
+storeFile=../release-keystore.jks
