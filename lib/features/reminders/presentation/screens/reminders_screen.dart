@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:permission_handler/permission_handler.dart';
 import 'package:water_reminder/l10n/app_localizations.dart';
 import '../../../../shared/widgets/modern_app_bar.dart';
 import '../../../../shared/widgets/app_drawer.dart';
@@ -40,7 +39,6 @@ class _RemindersScreenState extends ConsumerState<RemindersScreen> {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final reminderService = ref.watch(reminderServiceProvider);
-    final notificationService = ref.watch(notificationServiceProvider);
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final colorScheme = Theme.of(context).colorScheme;
 
@@ -56,7 +54,7 @@ class _RemindersScreenState extends ConsumerState<RemindersScreen> {
           onRefresh: () async {
             await _loadPendingCount();
           },
-          color: const Color(0xFF00BCD4),
+          color: Theme.of(context).colorScheme.primary,
           child: ListView(
             padding: const EdgeInsets.all(20),
             children: [
@@ -106,75 +104,6 @@ class _RemindersScreenState extends ConsumerState<RemindersScreen> {
               const SizedBox(height: 12),
 
               _ActionCard(
-                icon: Icons.notifications_active,
-                title: l10n.settings_test_notification,
-                subtitle: l10n.notification_reminder_body,
-                isDark: isDark,
-                onTap: () async {
-                  try {
-                    // Request permissions first
-                    final hasPermission = await notificationService.requestPermissions();
-
-                    if (!hasPermission) {
-                      if (context.mounted) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text(
-                              l10n.settings_enable_notifications,
-                              style: GoogleFonts.poppins(),
-                            ),
-                            backgroundColor: Colors.orange,
-                            action: SnackBarAction(
-                              label: l10n.settings_title,
-                              textColor: Colors.white,
-                              onPressed: () async {
-                                await openAppSettings();
-                              },
-                            ),
-                          ),
-                        );
-                      }
-                      return;
-                    }
-
-                    // Send test notification
-                    await notificationService.showNotification(
-                      id: 9999,
-                      title: l10n.notification_reminder_title,
-                      body: l10n.notification_reminder_body,
-                    );
-
-                    if (context.mounted) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text(
-                            l10n.settings_test_notification,
-                            style: GoogleFonts.poppins(),
-                          ),
-                          backgroundColor: Colors.green,
-                          duration: const Duration(seconds: 3),
-                        ),
-                      );
-                    }
-                  } catch (e) {
-                    if (context.mounted) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text(
-                            '${l10n.common_error}: ${e.toString()}',
-                            style: GoogleFonts.poppins(),
-                          ),
-                          backgroundColor: Colors.red,
-                        ),
-                      );
-                    }
-                  }
-                },
-              ),
-
-              const SizedBox(height: 12),
-
-              _ActionCard(
                 icon: Icons.refresh,
                 title: l10n.settings_reminders,
                 subtitle: l10n.reminders_active,
@@ -182,17 +111,6 @@ class _RemindersScreenState extends ConsumerState<RemindersScreen> {
                 onTap: () async {
                   await reminderService.scheduleReminders();
                   await _loadPendingCount();
-                  if (context.mounted) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text(
-                          l10n.common_success,
-                          style: GoogleFonts.poppins(),
-                        ),
-                        backgroundColor: Colors.green,
-                      ),
-                    );
-                  }
                 },
               ),
 
@@ -206,17 +124,6 @@ class _RemindersScreenState extends ConsumerState<RemindersScreen> {
                 onTap: () async {
                   await reminderService.cancelAllReminders();
                   await _loadPendingCount();
-                  if (context.mounted) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text(
-                          l10n.common_success,
-                          style: GoogleFonts.poppins(),
-                        ),
-                        backgroundColor: Colors.orange,
-                      ),
-                    );
-                  }
                 },
               ),
 
@@ -247,12 +154,13 @@ class _ReminderStatusCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     final gradientColors = isDark
         ? (isEnabled
-            ? [const Color(0xFF004D5F), const Color(0xFF006978)]
+            ? [colorScheme.primaryContainer.withAlpha(100), colorScheme.primaryContainer.withAlpha(80)]
             : [Colors.grey[800]!, Colors.grey[850]!])
         : (isEnabled
-            ? [const Color(0xFFE0F7FA), const Color(0xFFB2EBF2)]
+            ? [colorScheme.primaryContainer.withAlpha(180), colorScheme.primaryContainer.withAlpha(140)]
             : [Colors.grey[100]!, Colors.grey[200]!]);
 
     return Container(
@@ -278,13 +186,13 @@ class _ReminderStatusCard extends StatelessWidget {
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
               color: isEnabled
-                  ? const Color(0xFF00BCD4).withAlpha(51)
+                  ? Theme.of(context).colorScheme.primary.withAlpha(51)
                   : Colors.grey.withAlpha(51),
               shape: BoxShape.circle,
             ),
             child: Icon(
               isEnabled ? Icons.notifications_active : Icons.notifications_off,
-              color: isEnabled ? const Color(0xFF00BCD4) : Colors.grey,
+              color: isEnabled ? Theme.of(context).colorScheme.primary : Colors.grey,
               size: 32,
             ),
           ),
@@ -317,7 +225,7 @@ class _ReminderStatusCard extends StatelessWidget {
           Switch(
             value: isEnabled,
             onChanged: onToggle,
-            activeColor: const Color(0xFF00BCD4),
+            activeColor: Theme.of(context).colorScheme.primary,
           ),
         ],
       ),
@@ -352,12 +260,12 @@ class _PendingCountCard extends StatelessWidget {
           Container(
             padding: const EdgeInsets.all(10),
             decoration: BoxDecoration(
-              color: const Color(0xFF00BCD4).withAlpha(26),
+              color: Theme.of(context).colorScheme.primary.withAlpha(26),
               borderRadius: BorderRadius.circular(12),
             ),
-            child: const Icon(
+            child: Icon(
               Icons.schedule,
-              color: Color(0xFF00BCD4),
+              color: Theme.of(context).colorScheme.primary,
               size: 22,
             ),
           ),
@@ -388,7 +296,7 @@ class _PendingCountCard extends StatelessWidget {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
             decoration: BoxDecoration(
-              color: const Color(0xFF00BCD4),
+              color: Theme.of(context).colorScheme.primary,
               borderRadius: BorderRadius.circular(20),
             ),
             child: Text(
@@ -437,7 +345,7 @@ class _ScheduleInfoCard extends StatelessWidget {
         children: [
           Row(
             children: [
-              const Icon(Icons.schedule, color: Color(0xFF00BCD4), size: 24),
+              Icon(Icons.schedule, color: Theme.of(context).colorScheme.primary, size: 24),
               const SizedBox(width: 12),
               Text(
                 l10n.settings_reminders,
@@ -503,7 +411,7 @@ class _InfoRow extends StatelessWidget {
           style: GoogleFonts.poppins(
             fontSize: 14,
             fontWeight: FontWeight.w600,
-            color: const Color(0xFF00BCD4),
+            color: Theme.of(context).colorScheme.primary,
           ),
         ),
       ],
@@ -547,10 +455,10 @@ class _ActionCard extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                  color: const Color(0xFF00BCD4).withAlpha(26),
+                  color: Theme.of(context).colorScheme.primary.withAlpha(26),
                   borderRadius: BorderRadius.circular(12),
                 ),
-                child: Icon(icon, color: const Color(0xFF00BCD4), size: 22),
+                child: Icon(icon, color: Theme.of(context).colorScheme.primary, size: 22),
               ),
               const SizedBox(width: 16),
               Expanded(

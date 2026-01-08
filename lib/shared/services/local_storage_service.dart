@@ -1,17 +1,11 @@
 import 'package:hive_flutter/hive_flutter.dart';
 
-// TODO: Import when models are generated
-// import '../models/water_record.dart';
-// import '../models/user_profile.dart';
-// import '../models/achievement.dart';
-
+/// Local storage service using Hive
+/// Note: This service is minimal as feature-specific storage is implemented
+/// in respective data sources (WaterLocalDataSource, etc.)
 class LocalStorageService {
-  // Removed unused box names - we're using feature-specific storage now
   static const String _settingsBoxName = 'settings';
 
-  // late Box<WaterRecord> _waterRecordsBox;
-  // late Box<UserProfile> _userProfileBox;
-  // late Box<Achievement> _achievementsBox;
   late Box<dynamic> _settingsBox;
 
   Future<void> initialize() async {
@@ -20,44 +14,18 @@ class LocalStorageService {
   }
 
   Future<void> _registerAdapters() async {
-    // TODO: Register adapters when models are generated
-    // if (!Hive.isAdapterRegistered(0)) {
-    //   Hive.registerAdapter(WaterRecordAdapter());
-    // }
-    // if (!Hive.isAdapterRegistered(1)) {
-    //   Hive.registerAdapter(UserProfileAdapter());
-    // }
-    // if (!Hive.isAdapterRegistered(2)) {
-    //   Hive.registerAdapter(ActivityLevelAdapter());
-    // }
-    // if (!Hive.isAdapterRegistered(3)) {
-    //   Hive.registerAdapter(GenderAdapter());
-    // }
-    // if (!Hive.isAdapterRegistered(4)) {
-    //   Hive.registerAdapter(AchievementAdapter());
-    // }
-    // if (!Hive.isAdapterRegistered(5)) {
-    //   Hive.registerAdapter(AchievementTypeAdapter());
-    // }
+    // No custom adapters needed - using JSON serialization
+    // Feature-specific data sources handle their own storage
   }
 
   Future<void> _openBoxes() async {
-    // TODO: Open typed boxes when models are generated
-    // _waterRecordsBox = await Hive.openBox<WaterRecord>(_waterRecordsBoxName);
-    // _userProfileBox = await Hive.openBox<UserProfile>(_userProfileBoxName);
-    // _achievementsBox = await Hive.openBox<Achievement>(_achievementsBoxName);
     _settingsBox = await Hive.openBox<dynamic>(_settingsBoxName);
   }
 
-  // TODO: Implement when models are ready
-  // Water Records
-  // Future<void> saveWaterRecord(WaterRecord record) async {
-  //   await _waterRecordsBox.put(record.id, record);
-  // }
-
-  // List<WaterRecord> getWaterRecordsForDate(DateTime date) {
-  //   final startOfDay = DateTime(date.year, date.month, date.day);
-  //   final endOfDay = startOfDay.add(const Duration(days: 1));
+  // Feature-specific methods moved to respective data sources:
+  // - WaterLocalDataSource for water records
+  // - StreakDataSource for streak data
+  // - SettingsLocalDataSource for user settings
 
   //   return _waterRecordsBox.values
   //       .where((record) =>

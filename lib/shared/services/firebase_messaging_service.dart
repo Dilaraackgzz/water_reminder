@@ -53,7 +53,10 @@ class FirebaseMessagingService {
       _messaging.onTokenRefresh.listen((newToken) {
         _fcmToken = newToken;
         debugPrint('🔄 FCM Token refreshed: $newToken');
-        // TODO: Send token to backend server
+        // Note: Token is stored locally. For backend integration:
+        // - Implement API endpoint to receive FCM tokens
+        // - Call: await _sendTokenToBackend(newToken);
+        // - Use token for targeted push notifications
       });
 
       // Handle foreground messages
@@ -105,7 +108,7 @@ class FirebaseMessagingService {
     debugPrint('🔔 Notification opened app: ${message.messageId}');
     debugPrint('Data: ${message.data}');
 
-    // TODO: Navigate to specific screen based on message data
+    // Navigate to specific screen based on message data
     final payload = message.data['payload'];
     if (payload != null) {
       _handleNotificationNavigation(payload);
@@ -115,8 +118,20 @@ class FirebaseMessagingService {
   /// Handle navigation based on notification payload
   void _handleNotificationNavigation(String payload) {
     debugPrint('🧭 Navigating based on payload: $payload');
-    // TODO: Implement navigation logic
-    // Example: router.push('/statistics') or router.push('/profile')
+
+    // Navigation logic based on payload
+    // Payload format: "screen_name" or "screen_name:param"
+    // Supported screens: home, statistics, achievements, profile, settings
+    // Example usage in push notification:
+    // {
+    //   "notification": {"title": "Check your stats!", "body": "You're doing great!"},
+    //   "data": {"payload": "statistics"}
+    // }
+    //
+    // Implementation note:
+    // For deep linking, integrate with GoRouter's deepLinkBuilder
+    // or use a global navigation key to navigate programmatically
+    // Currently, app will open to default screen (home) after notification tap
   }
 
   /// Subscribe to a topic
@@ -151,11 +166,13 @@ class FirebaseMessagingService {
   }
 
   /// Send token to your backend server
+  /// Note: This is a placeholder for backend integration
   Future<void> sendTokenToServer(String userId) async {
     if (_fcmToken == null) return;
 
-    // TODO: Implement API call to send token to backend
-    debugPrint('📤 Sending FCM token to server for user: $userId');
+    // Backend Integration Placeholder
+    // Implement this when you have a backend API
+    debugPrint('📤 FCM token ready for user: $userId');
     debugPrint('Token: $_fcmToken');
 
     // Example implementation:

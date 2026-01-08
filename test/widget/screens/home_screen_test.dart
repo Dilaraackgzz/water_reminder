@@ -2,10 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fake_cloud_firestore/fake_cloud_firestore.dart';
 import 'package:firebase_auth_mocks/firebase_auth_mocks.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:intl/intl.dart';
-import 'package:water_reminder/core/providers/app_providers.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:water_reminder/features/home/presentation/screens/home_screen.dart';
 import '../../helpers/test_helpers.dart';
 
@@ -13,7 +12,13 @@ void main() {
   group('HomeScreen Widget Tests', () {
     late MockFirebaseAuth mockAuth;
     late FakeFirebaseFirestore fakeFirestore;
+    late SharedPreferences sharedPreferences;
     late String userId;
+
+    setUpAll(() async {
+      // Initialize Hive once for all tests
+      await initializeHiveForTest();
+    });
 
     setUp(() async {
       mockAuth = createMockAuthWithUser();
@@ -30,23 +35,25 @@ void main() {
         },
       );
 
-      await setupSharedPreferences({
+      sharedPreferences = await setupSharedPreferences({
         'theme_mode': 'system',
         'water_unit': 'ml',
       });
     });
 
+    tearDownAll(() async {
+      // Close Hive boxes after all tests
+      await closeHiveBoxes();
+    });
+
     testWidgets('should display all main UI components', (WidgetTester tester) async {
       // Arrange & Act
       await tester.pumpWidget(
-        ProviderScope(
-          overrides: [
-            firebaseAuthProvider.overrideWithValue(mockAuth),
-            firestoreProvider.overrideWithValue(fakeFirestore),
-          ],
-          child: const MaterialApp(
-            home: HomeScreen(),
-          ),
+        createTestApp(
+          child: const HomeScreen(),
+          mockAuth: mockAuth,
+          mockFirestore: fakeFirestore,
+          sharedPreferences: sharedPreferences,
         ),
       );
       await tester.pumpAndSettle();
@@ -64,14 +71,11 @@ void main() {
         (WidgetTester tester) async {
       // Arrange
       await tester.pumpWidget(
-        ProviderScope(
-          overrides: [
-            firebaseAuthProvider.overrideWithValue(mockAuth),
-            firestoreProvider.overrideWithValue(fakeFirestore),
-          ],
-          child: const MaterialApp(
-            home: HomeScreen(),
-          ),
+        createTestApp(
+          child: const HomeScreen(),
+          mockAuth: mockAuth,
+          mockFirestore: fakeFirestore,
+          sharedPreferences: sharedPreferences,
         ),
       );
       await tester.pumpAndSettle();
@@ -92,14 +96,11 @@ void main() {
         (WidgetTester tester) async {
       // Arrange
       await tester.pumpWidget(
-        ProviderScope(
-          overrides: [
-            firebaseAuthProvider.overrideWithValue(mockAuth),
-            firestoreProvider.overrideWithValue(fakeFirestore),
-          ],
-          child: const MaterialApp(
-            home: HomeScreen(),
-          ),
+        createTestApp(
+          child: const HomeScreen(),
+          mockAuth: mockAuth,
+          mockFirestore: fakeFirestore,
+          sharedPreferences: sharedPreferences,
         ),
       );
       await tester.pumpAndSettle();
@@ -140,14 +141,11 @@ void main() {
       });
 
       await tester.pumpWidget(
-        ProviderScope(
-          overrides: [
-            firebaseAuthProvider.overrideWithValue(mockAuth),
-            firestoreProvider.overrideWithValue(fakeFirestore),
-          ],
-          child: const MaterialApp(
-            home: HomeScreen(),
-          ),
+        createTestApp(
+          child: const HomeScreen(),
+          mockAuth: mockAuth,
+          mockFirestore: fakeFirestore,
+          sharedPreferences: sharedPreferences,
         ),
       );
       await tester.pumpAndSettle();
@@ -160,14 +158,11 @@ void main() {
     testWidgets('should show motivational message', (WidgetTester tester) async {
       // Arrange & Act
       await tester.pumpWidget(
-        ProviderScope(
-          overrides: [
-            firebaseAuthProvider.overrideWithValue(mockAuth),
-            firestoreProvider.overrideWithValue(fakeFirestore),
-          ],
-          child: const MaterialApp(
-            home: HomeScreen(),
-          ),
+        createTestApp(
+          child: const HomeScreen(),
+          mockAuth: mockAuth,
+          mockFirestore: fakeFirestore,
+          sharedPreferences: sharedPreferences,
         ),
       );
       await tester.pumpAndSettle();
@@ -181,14 +176,11 @@ void main() {
     testWidgets('should display streak card', (WidgetTester tester) async {
       // Arrange & Act
       await tester.pumpWidget(
-        ProviderScope(
-          overrides: [
-            firebaseAuthProvider.overrideWithValue(mockAuth),
-            firestoreProvider.overrideWithValue(fakeFirestore),
-          ],
-          child: const MaterialApp(
-            home: HomeScreen(),
-          ),
+        createTestApp(
+          child: const HomeScreen(),
+          mockAuth: mockAuth,
+          mockFirestore: fakeFirestore,
+          sharedPreferences: sharedPreferences,
         ),
       );
       await tester.pumpAndSettle();
@@ -201,14 +193,11 @@ void main() {
         (WidgetTester tester) async {
       // This test verifies error handling exists
       await tester.pumpWidget(
-        ProviderScope(
-          overrides: [
-            firebaseAuthProvider.overrideWithValue(mockAuth),
-            firestoreProvider.overrideWithValue(fakeFirestore),
-          ],
-          child: const MaterialApp(
-            home: HomeScreen(),
-          ),
+        createTestApp(
+          child: const HomeScreen(),
+          mockAuth: mockAuth,
+          mockFirestore: fakeFirestore,
+          sharedPreferences: sharedPreferences,
         ),
       );
       await tester.pumpAndSettle();
@@ -228,14 +217,11 @@ void main() {
         (WidgetTester tester) async {
       // Arrange
       await tester.pumpWidget(
-        ProviderScope(
-          overrides: [
-            firebaseAuthProvider.overrideWithValue(mockAuth),
-            firestoreProvider.overrideWithValue(fakeFirestore),
-          ],
-          child: const MaterialApp(
-            home: HomeScreen(),
-          ),
+        createTestApp(
+          child: const HomeScreen(),
+          mockAuth: mockAuth,
+          mockFirestore: fakeFirestore,
+          sharedPreferences: sharedPreferences,
         ),
       );
       await tester.pumpAndSettle();
@@ -254,14 +240,11 @@ void main() {
     testWidgets('should handle pull to refresh', (WidgetTester tester) async {
       // Arrange
       await tester.pumpWidget(
-        ProviderScope(
-          overrides: [
-            firebaseAuthProvider.overrideWithValue(mockAuth),
-            firestoreProvider.overrideWithValue(fakeFirestore),
-          ],
-          child: const MaterialApp(
-            home: HomeScreen(),
-          ),
+        createTestApp(
+          child: const HomeScreen(),
+          mockAuth: mockAuth,
+          mockFirestore: fakeFirestore,
+          sharedPreferences: sharedPreferences,
         ),
       );
       await tester.pumpAndSettle();

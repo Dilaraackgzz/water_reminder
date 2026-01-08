@@ -18,6 +18,7 @@ class QuickAddButtons extends ConsumerWidget {
     final unitNotifier = ref.watch(waterUnitProvider.notifier);
     final amounts = unitNotifier.getQuickAddAmounts();
     final labels = unitNotifier.getQuickAddLabels();
+    final isDark = Theme.of(context).brightness == Brightness.dark;
 
     final icons = [
       Icons.local_drink,
@@ -34,7 +35,7 @@ class QuickAddButtons extends ConsumerWidget {
           style: GoogleFonts.poppins(
             fontSize: 16,
             fontWeight: FontWeight.w600,
-            color: Colors.black87,
+            color: isDark ? Colors.white : Colors.black87,
           ),
         ),
         const SizedBox(height: 12),
@@ -166,17 +167,20 @@ class _QuickAddButtonState extends State<_QuickAddButton>
                   horizontal: horizontalPadding,
                 ),
                 decoration: BoxDecoration(
-                  gradient: const LinearGradient(
-                    colors: [Color(0xFF00BCD4), Color(0xFF00ACC1)],
+                  gradient: LinearGradient(
+                    colors: [
+                      Theme.of(context).colorScheme.primary,
+                      Theme.of(context).colorScheme.primary.withAlpha(220),
+                    ],
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                   ),
                   borderRadius: BorderRadius.circular(16),
                   boxShadow: [
                     BoxShadow(
-                      color: const Color(0xFF00BCD4).withAlpha(77),
-                      blurRadius: 8,
-                      offset: const Offset(0, 4),
+                      color: Theme.of(context).colorScheme.primary.withAlpha(60),
+                      blurRadius: 6,
+                      offset: const Offset(0, 3),
                     ),
                   ],
                 ),

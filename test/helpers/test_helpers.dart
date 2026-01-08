@@ -1,12 +1,25 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fake_cloud_firestore/fake_cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_auth_mocks/firebase_auth_mocks.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:water_reminder/core/providers/app_providers.dart';
+import 'package:water_reminder/shared/services/local_storage_service.dart';
+import 'package:water_reminder/l10n/app_localizations.dart';
+
+/// Initialize Hive for testing
+Future<void> initializeHiveForTest() async {
+  // Use in-memory Hive for tests (no path needed)
+  // This avoids the need for path_provider plugin in tests
+  Hive.init(null);
+}
+
+/// Close all Hive boxes after tests
+Future<void> closeHiveBoxes() async {
+  await Hive.close();
+}
 
 /// Creates a test ProviderScope with all necessary overrides
 Widget createTestApp({
@@ -14,17 +27,34 @@ Widget createTestApp({
   List<Override> overrides = const [],
   MockFirebaseAuth? mockAuth,
   FakeFirebaseFirestore? mockFirestore,
+  SharedPreferences? sharedPreferences,
 }) {
   final auth = mockAuth ?? MockFirebaseAuth();
   final firestore = mockFirestore ?? FakeFirebaseFirestore();
+  final prefs = sharedPreferences;
+
+  // Create a mock LocalStorageService
+  final localStorageService = LocalStorageService();
+
+  final defaultOverrides = <Override>[
+    firebaseAuthProvider.overrideWithValue(auth),
+    firestoreProvider.overrideWithValue(firestore),
+    localStorageServiceProvider.overrideWithValue(localStorageService),
+  ];
+
+  // Add SharedPreferences override if provided
+  if (prefs != null) {
+    defaultOverrides.add(sharedPreferencesProvider.overrideWithValue(prefs));
+  }
 
   return ProviderScope(
     overrides: [
-      firebaseAuthProvider.overrideWithValue(auth),
-      firestoreProvider.overrideWithValue(firestore),
+      ...defaultOverrides,
       ...overrides,
     ],
     child: MaterialApp(
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
       home: child,
     ),
   );
@@ -97,8 +127,9 @@ Future<FakeFirebaseFirestore> setupFakeFirestore({
 }
 
 /// Initialize SharedPreferences for testing
-Future<void> setupSharedPreferences([Map<String, Object>? values]) async {
+Future<SharedPreferences> setupSharedPreferences([Map<String, Object>? values]) async {
   SharedPreferences.setMockInitialValues(values ?? {});
+  return await SharedPreferences.getInstance();
 }
 
 /// Pump and settle with a timeout

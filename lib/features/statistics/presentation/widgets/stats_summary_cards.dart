@@ -16,7 +16,7 @@ class StatsSummaryCards extends StatelessWidget {
             Expanded(
               child: _StatCard(
                 icon: Icons.water_drop,
-                iconColor: const Color(0xFF00BCD4),
+                iconColor: Theme.of(context).colorScheme.primary,
                 title: 'Total Intake',
                 value: '${statistics.totalIntake}ml',
                 subtitle: 'Total consumed',

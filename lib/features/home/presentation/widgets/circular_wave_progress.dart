@@ -5,14 +5,14 @@ import 'dart:math' as math;
 class CircularWaveProgress extends StatefulWidget {
   final double progress; // 0.0 to 1.0
   final double size;
-  final Color waveColor;
+  final Color? waveColor;
   final Color backgroundColor;
 
   const CircularWaveProgress({
     super.key,
     required this.progress,
     this.size = 140,
-    this.waveColor = const Color(0xFF00BCD4),
+    this.waveColor,
     this.backgroundColor = Colors.white,
   });
 
@@ -41,6 +41,8 @@ class _CircularWaveProgressState extends State<CircularWaveProgress>
 
   @override
   Widget build(BuildContext context) {
+    final effectiveWaveColor = widget.waveColor ?? Theme.of(context).colorScheme.primary;
+
     return TweenAnimationBuilder<double>(
       tween: Tween<double>(begin: 0.0, end: widget.progress.clamp(0.0, 1.0)),
       duration: const Duration(milliseconds: 1200),
@@ -70,7 +72,7 @@ class _CircularWaveProgressState extends State<CircularWaveProgress>
                     painter: _CircularWavePainter(
                       progress: animatedProgress,
                       wavePhase: _waveController.value,
-                      waveColor: widget.waveColor,
+                      waveColor: effectiveWaveColor,
                     ),
                   );
                 },
@@ -86,7 +88,7 @@ class _CircularWaveProgressState extends State<CircularWaveProgress>
                       fontWeight: FontWeight.bold,
                       color: animatedProgress > 0.5
                           ? Colors.white
-                          : widget.waveColor,
+                          : effectiveWaveColor,
                     ),
                   ),
                   const SizedBox(height: 4),
@@ -95,7 +97,7 @@ class _CircularWaveProgressState extends State<CircularWaveProgress>
                     size: widget.size * 0.15,
                     color: animatedProgress > 0.5
                         ? Colors.white.withAlpha(204) // 0.8 * 255
-                        : widget.waveColor.withAlpha(153), // 0.6 * 255
+                        : effectiveWaveColor.withAlpha(153), // 0.6 * 255
                   ),
                 ],
               ),

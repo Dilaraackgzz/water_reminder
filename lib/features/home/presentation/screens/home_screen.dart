@@ -84,7 +84,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
-              borderSide: const BorderSide(color: Color(0xFF00BCD4), width: 2),
+              borderSide: BorderSide(color: Theme.of(context).colorScheme.primary, width: 2),
             ),
           ),
           style: GoogleFonts.poppins(
@@ -110,7 +110,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               }
             },
             style: ElevatedButton.styleFrom(
-              backgroundColor: const Color(0xFF00BCD4),
+              backgroundColor: Theme.of(context).colorScheme.primary,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12),
               ),
@@ -172,7 +172,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 // Custom Amount Button (Compact)
                 OutlinedButton.icon(
                   onPressed: _showCustomAmountDialog,
-                  icon: const Icon(Icons.add_circle_outline, size: 20),
+                  icon: Icon(Icons.add_circle_outline, size: 20),
                   label: Text(
                     l10n.home_custom_amount,
                     style: GoogleFonts.poppins(
@@ -181,8 +181,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     ),
                   ),
                   style: OutlinedButton.styleFrom(
-                    foregroundColor: const Color(0xFF00BCD4),
-                    side: const BorderSide(color: Color(0xFF00BCD4), width: 2),
+                    foregroundColor: Theme.of(context).colorScheme.primary,
+                    side: BorderSide(color: Theme.of(context).colorScheme.primary, width: 2),
                     padding: const EdgeInsets.symmetric(vertical: 12),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(16),
@@ -266,11 +266,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                           padding: const EdgeInsets.all(16),
                           decoration: BoxDecoration(
                             color: isDark
-                                ? const Color(0xFF00BCD4).withAlpha(26)
+                                ? Theme.of(context).colorScheme.primary.withAlpha(26)
                                 : const Color(0xFFE0F7FA).withAlpha(128),
                             borderRadius: BorderRadius.circular(12),
                             border: Border.all(
-                              color: const Color(0xFF00BCD4).withAlpha(51),
+                              color: Theme.of(context).colorScheme.primary.withAlpha(51),
                             ),
                           ),
                           child: Row(
@@ -278,12 +278,12 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                               Container(
                                 padding: const EdgeInsets.all(12),
                                 decoration: BoxDecoration(
-                                  color: const Color(0xFF00BCD4).withAlpha(51),
+                                  color: Theme.of(context).colorScheme.primary.withAlpha(51),
                                   borderRadius: BorderRadius.circular(12),
                                 ),
-                                child: const Icon(
+                                child: Icon(
                                   Icons.water_drop,
-                                  color: Color(0xFF00BCD4),
+                                  color: Theme.of(context).colorScheme.primary,
                                   size: 24,
                                 ),
                               ),
@@ -311,7 +311,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                 ),
                               ),
                               IconButton(
-                                icon: const Icon(Icons.delete_outline, color: Colors.red),
+                                icon: Icon(Icons.delete_outline, color: Colors.red),
                                 onPressed: () async {
                                   final controller = ref.read(waterControllerProvider);
                                   await controller.deleteWater(intake.id);

@@ -5,7 +5,7 @@ class AnimatedWaterGlass extends StatelessWidget {
   final double fillPercentage; // 0.0 to 1.0
   final double width;
   final double height;
-  final Color waterColor;
+  final Color? waterColor;
   final Color glassColor;
   final Duration duration;
 
@@ -14,13 +14,15 @@ class AnimatedWaterGlass extends StatelessWidget {
     required this.fillPercentage,
     this.width = 120,
     this.height = 180,
-    this.waterColor = const Color(0xFF00BCD4),
+    this.waterColor,
     this.glassColor = const Color(0xFFE0F7FA),
     this.duration = const Duration(milliseconds: 800),
   });
 
   @override
   Widget build(BuildContext context) {
+    final effectiveWaterColor = waterColor ?? Theme.of(context).colorScheme.primary;
+
     return TweenAnimationBuilder<double>(
       tween: Tween<double>(begin: 0.0, end: fillPercentage.clamp(0.0, 1.0)),
       duration: duration,
@@ -34,7 +36,7 @@ class AnimatedWaterGlass extends StatelessWidget {
               CustomPaint(
                 painter: _WaterGlassPainter(
                   fillPercentage: animatedFill,
-                  waterColor: waterColor,
+                  waterColor: effectiveWaterColor,
                   glassColor: glassColor,
                 ),
               ),
@@ -43,7 +45,7 @@ class AnimatedWaterGlass extends StatelessWidget {
                 Positioned.fill(
                   child: _WaveAnimation(
                     fillPercentage: animatedFill,
-                    waterColor: waterColor,
+                    waterColor: effectiveWaterColor,
                   ),
                 ),
             ],

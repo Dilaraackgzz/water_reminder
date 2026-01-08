@@ -12,6 +12,11 @@ void main() {
     late MockFirebaseAuth mockAuth;
     late FakeFirebaseFirestore fakeFirestore;
 
+    setUpAll(() async {
+      // Initialize Hive once for all tests
+      await initializeHiveForTest();
+    });
+
     setUp(() async {
       mockAuth = createMockAuthWithUser();
       fakeFirestore = FakeFirebaseFirestore();
@@ -27,6 +32,11 @@ void main() {
         'reminder_end_hour': 22,
         'reminder_end_minute': 0,
       });
+    });
+
+    tearDownAll(() async {
+      // Close Hive boxes after all tests
+      await closeHiveBoxes();
     });
 
     testWidgets('should display all settings sections', (WidgetTester tester) async {

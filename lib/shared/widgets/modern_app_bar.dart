@@ -22,18 +22,23 @@ class ModernAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Container(
       decoration: BoxDecoration(
-        gradient: const LinearGradient(
-          colors: [Color(0xFF00BCD4), Color(0xFF00ACC1)],
+        gradient: LinearGradient(
+          colors: isDark
+            ? [colorScheme.surface, colorScheme.surfaceContainerHigh]
+            : [colorScheme.primaryContainer.withAlpha(180), colorScheme.primaryContainer.withAlpha(150)],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
         boxShadow: [
           BoxShadow(
-            color: const Color(0xFF00BCD4).withAlpha(77), // 0.3 * 255
-            blurRadius: 8,
-            offset: const Offset(0, 2),
+            color: colorScheme.shadow.withAlpha(20),
+            blurRadius: 4,
+            offset: const Offset(0, 1),
           ),
         ],
       ),
@@ -42,7 +47,7 @@ class ModernAppBar extends StatelessWidget implements PreferredSizeWidget {
         elevation: 0,
         leading: showDrawerButton
             ? IconButton(
-                icon: const Icon(Icons.menu, color: Colors.white, size: 28),
+                icon: Icon(Icons.menu, color: colorScheme.onPrimaryContainer, size: 28),
                 onPressed: onDrawerTap ?? () => Scaffold.of(context).openDrawer(),
               )
             : null,
@@ -55,7 +60,7 @@ class ModernAppBar extends StatelessWidget implements PreferredSizeWidget {
               style: GoogleFonts.poppins(
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
-                color: Colors.white,
+                color: colorScheme.onPrimaryContainer,
                 letterSpacing: 0.5,
               ),
             ),
@@ -66,7 +71,7 @@ class ModernAppBar extends StatelessWidget implements PreferredSizeWidget {
                 style: GoogleFonts.poppins(
                   fontSize: 12,
                   fontWeight: FontWeight.w400,
-                  color: Colors.white.withAlpha(230), // 0.9 * 255
+                  color: colorScheme.onPrimaryContainer.withAlpha(200),
                 ),
               ),
             ],

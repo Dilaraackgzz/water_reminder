@@ -198,13 +198,15 @@ class _PeriodButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return GestureDetector(
       onTap: onTap,
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 200),
         padding: const EdgeInsets.symmetric(vertical: 12),
         decoration: BoxDecoration(
-          color: isSelected ? const Color(0xFF00BCD4) : Colors.transparent,
+          color: isSelected ? colorScheme.primary : Colors.transparent,
           borderRadius: BorderRadius.circular(10),
         ),
         child: Text(
@@ -214,7 +216,7 @@ class _PeriodButton extends StatelessWidget {
             fontSize: 14,
             fontWeight: FontWeight.w600,
             color: isSelected
-                ? Colors.white
+                ? colorScheme.onPrimary
                 : (isDark ? Colors.white60 : Colors.black54),
           ),
         ),
@@ -236,6 +238,7 @@ class _AchievementCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     final bestDay = statistics.bestDay;
     final achievementPercent = statistics.achievementPercentage;
 
@@ -281,7 +284,7 @@ class _AchievementCard extends StatelessWidget {
                 color: achievementPercent >= 80
                     ? Colors.amber
                     : achievementPercent >= 50
-                        ? const Color(0xFF00BCD4)
+                        ? colorScheme.primary
                         : Colors.orange,
                 size: 32,
               ),
@@ -340,7 +343,7 @@ class _AchievementCard extends StatelessWidget {
                   style: GoogleFonts.poppins(
                     fontSize: 15,
                     fontWeight: FontWeight.bold,
-                    color: const Color(0xFF00BCD4),
+                    color: colorScheme.primary,
                   ),
                 ),
               ],

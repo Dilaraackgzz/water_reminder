@@ -11,12 +11,15 @@ class StatisticsChart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: isDark ? Colors.grey[850] : Colors.white,
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: Colors.grey[200]!),
+        border: Border.all(color: isDark ? Colors.grey[700]! : Colors.grey[200]!),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withAlpha(13),
@@ -32,7 +35,7 @@ class StatisticsChart extends StatelessWidget {
             children: [
               Icon(
                 Icons.bar_chart,
-                color: const Color(0xFF00BCD4),
+                color: colorScheme.primary,
                 size: 24,
               ),
               const SizedBox(width: 8),
@@ -41,7 +44,7 @@ class StatisticsChart extends StatelessWidget {
                 style: GoogleFonts.poppins(
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
-                  color: Colors.black87,
+                  color: isDark ? Colors.white : Colors.black87,
                 ),
               ),
             ],
@@ -91,7 +94,7 @@ class StatisticsChart extends StatelessWidget {
                           '${value.toInt()}',
                           style: GoogleFonts.poppins(
                             fontSize: 10,
-                            color: Colors.black54,
+                            color: isDark ? Colors.white60 : Colors.black54,
                           ),
                         );
                       },
@@ -112,7 +115,7 @@ class StatisticsChart extends StatelessWidget {
                             DateFormat('E').format(date).substring(0, 1),
                             style: GoogleFonts.poppins(
                               fontSize: 10,
-                              color: Colors.black54,
+                              color: isDark ? Colors.white60 : Colors.black54,
                             ),
                           ),
                         );
@@ -126,18 +129,18 @@ class StatisticsChart extends StatelessWidget {
                   horizontalInterval: _calculateMaxY() / 4,
                   getDrawingHorizontalLine: (value) {
                     return FlLine(
-                      color: Colors.grey[200]!,
+                      color: isDark ? Colors.grey[700]! : Colors.grey[200]!,
                       strokeWidth: 1,
                     );
                   },
                 ),
                 borderData: FlBorderData(show: false),
-                barGroups: _createBarGroups(),
+                barGroups: _createBarGroups(context),
               ),
             ),
           ),
           const SizedBox(height: 16),
-          _buildLegend(),
+          _buildLegend(context),
         ],
       ),
     );
@@ -152,7 +155,9 @@ class StatisticsChart extends StatelessWidget {
     return (max * 1.2).ceilToDouble();
   }
 
-  List<BarChartGroupData> _createBarGroups() {
+  List<BarChartGroupData> _createBarGroups(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return statistics.dailySummaries.asMap().entries.map((entry) {
       final index = entry.key;
       final summary = entry.value;
@@ -163,7 +168,7 @@ class StatisticsChart extends StatelessWidget {
         barRods: [
           BarChartRodData(
             toY: summary.totalIntake.toDouble(),
-            color: isGoalMet ? Colors.green : const Color(0xFF00BCD4),
+            color: isGoalMet ? Colors.green : colorScheme.primary,
             width: 16,
             borderRadius: const BorderRadius.vertical(
               top: Radius.circular(4),
@@ -174,12 +179,14 @@ class StatisticsChart extends StatelessWidget {
     }).toList();
   }
 
-  Widget _buildLegend() {
+  Widget _buildLegend(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         _LegendItem(
-          color: const Color(0xFF00BCD4),
+          color: colorScheme.primary,
           label: 'Below Goal',
         ),
         const SizedBox(width: 16),

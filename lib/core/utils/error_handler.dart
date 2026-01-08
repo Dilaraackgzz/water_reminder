@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/foundation.dart';
 
 /// Global error handler for the app
 class ErrorHandler {
@@ -81,9 +81,9 @@ class ErrorHandler {
   /// Log error for debugging (can be extended with crash reporting)
   static void logError(dynamic error, StackTrace? stackTrace) {
     // In production, send to crash reporting service (e.g., Firebase Crashlytics)
-    print('Error: $error');
+    debugPrint('Error: $error');
     if (stackTrace != null) {
-      print('Stack trace: $stackTrace');
+      debugPrint('Stack trace: $stackTrace');
     }
   }
 }

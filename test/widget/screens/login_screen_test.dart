@@ -1,18 +1,28 @@
 import 'package:firebase_auth_mocks/firebase_auth_mocks.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:water_reminder/core/providers/app_providers.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:water_reminder/features/auth/presentation/screens/login_screen.dart';
 import '../../helpers/test_helpers.dart';
 
 void main() {
   group('LoginScreen Widget Tests', () {
     late MockFirebaseAuth mockAuth;
+    late SharedPreferences sharedPreferences;
 
-    setUp(() {
+    setUpAll(() async {
+      // Initialize Hive once for all tests
+      await initializeHiveForTest();
+    });
+
+    setUp(() async {
       mockAuth = MockFirebaseAuth(signedIn: false);
-      setupSharedPreferences();
+      sharedPreferences = await setupSharedPreferences();
+    });
+
+    tearDownAll(() async {
+      // Close Hive boxes after all tests
+      await closeHiveBoxes();
     });
 
     testWidgets('should display all UI elements', (WidgetTester tester) async {
@@ -21,6 +31,7 @@ void main() {
         createTestApp(
           child: const LoginScreen(),
           mockAuth: mockAuth,
+          sharedPreferences: sharedPreferences,
         ),
       );
       await tester.pumpAndSettle();
@@ -40,6 +51,7 @@ void main() {
         createTestApp(
           child: const LoginScreen(),
           mockAuth: mockAuth,
+          sharedPreferences: sharedPreferences,
         ),
       );
       await tester.pumpAndSettle();
@@ -61,6 +73,7 @@ void main() {
         createTestApp(
           child: const LoginScreen(),
           mockAuth: mockAuth,
+          sharedPreferences: sharedPreferences,
         ),
       );
       await tester.pumpAndSettle();
@@ -87,6 +100,7 @@ void main() {
         createTestApp(
           child: const LoginScreen(),
           mockAuth: mockAuth,
+          sharedPreferences: sharedPreferences,
         ),
       );
       await tester.pumpAndSettle();
@@ -108,6 +122,7 @@ void main() {
         createTestApp(
           child: const LoginScreen(),
           mockAuth: mockAuth,
+          sharedPreferences: sharedPreferences,
         ),
       );
       await tester.pumpAndSettle();
@@ -127,6 +142,7 @@ void main() {
         createTestApp(
           child: const LoginScreen(),
           mockAuth: mockAuth,
+          sharedPreferences: sharedPreferences,
         ),
       );
       await tester.pumpAndSettle();
@@ -149,6 +165,7 @@ void main() {
         createTestApp(
           child: const LoginScreen(),
           mockAuth: mockAuth,
+          sharedPreferences: sharedPreferences,
         ),
       );
       await tester.pumpAndSettle();
@@ -172,6 +189,7 @@ void main() {
         createTestApp(
           child: const LoginScreen(),
           mockAuth: mockAuth,
+          sharedPreferences: sharedPreferences,
         ),
       );
       await tester.pumpAndSettle();

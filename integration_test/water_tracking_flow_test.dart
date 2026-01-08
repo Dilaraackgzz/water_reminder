@@ -154,7 +154,7 @@ void main() {
 
       final totalIntake = allRecords.docs.fold<int>(
         0,
-        (sum, doc) => sum + (doc.data()['amount'] as int),
+        (total, doc) => total + (doc.data()['amount'] as int),
       );
 
       // Verify total is correct (should be at least 250 + 500 if both buttons worked)
@@ -210,7 +210,7 @@ void main() {
       // Calculate total
       final totalIntake = waterRecords.docs.fold<int>(
         0,
-        (sum, doc) => sum + (doc.data()['amount'] as int),
+        (total, doc) => total + (doc.data()['amount'] as int),
       );
 
       expect(totalIntake, greaterThan(0));
@@ -261,7 +261,7 @@ void main() {
 
       final totalIntake = waterRecords.docs.fold<int>(
         0,
-        (sum, doc) => sum + (doc.data()['amount'] as int),
+        (total, doc) => total + (doc.data()['amount'] as int),
       );
 
       // Should have reached or exceeded the goal

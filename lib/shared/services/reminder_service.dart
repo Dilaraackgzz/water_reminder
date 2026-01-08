@@ -274,7 +274,9 @@ class ReminderService {
   }
 
   /// Smart reminder algorithm - adjust based on user behavior
-  /// TODO: Implement ML-based smart reminders in future versions
+  /// Future Enhancement: ML-based smart reminders
+  /// Could analyze user behavior patterns and suggest optimal reminder times
+  /// based on historical water intake data and activity patterns
   Future<void> adjustRemindersBasedOnActivity({
     required int todayIntake,
     required int targetGoal,

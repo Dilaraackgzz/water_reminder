@@ -37,8 +37,11 @@ class AchievementsScreen extends ConsumerWidget {
               Container(
                 padding: const EdgeInsets.all(20),
                 decoration: BoxDecoration(
-                  gradient: const LinearGradient(
-                    colors: [Color(0xFF00BCD4), Color(0xFF00ACC1)],
+                  gradient: LinearGradient(
+                    colors: [
+                      colorScheme.primary,
+                      colorScheme.primary.withAlpha(220),
+                    ],
                   ),
                   borderRadius: BorderRadius.circular(16),
                 ),
@@ -181,13 +184,14 @@ class _AchievementCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     final backgroundColor = isDark
-        ? (isUnlocked ? const Color(0xFF004D5F) : Colors.grey[850]!)
-        : (isUnlocked ? const Color(0xFFE0F7FA) : Colors.grey[100]!);
+        ? (isUnlocked ? colorScheme.primaryContainer.withAlpha(60) : Colors.grey[850]!)
+        : (isUnlocked ? colorScheme.primaryContainer.withAlpha(100) : Colors.grey[100]!);
 
     final borderColor = isDark
-        ? (isUnlocked ? const Color(0xFF00BCD4) : Colors.grey[700]!)
-        : (isUnlocked ? const Color(0xFF00BCD4) : Colors.grey[300]!);
+        ? (isUnlocked ? colorScheme.primary : Colors.grey[700]!)
+        : (isUnlocked ? colorScheme.primary : Colors.grey[300]!);
 
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
@@ -205,7 +209,7 @@ class _AchievementCard extends StatelessWidget {
             padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
               color: isUnlocked
-                  ? const Color(0xFF00BCD4)
+                  ? colorScheme.primary
                   : (isDark ? Colors.grey[700] : Colors.grey[400]),
               borderRadius: BorderRadius.circular(12),
             ),
@@ -245,7 +249,7 @@ class _AchievementCard extends StatelessWidget {
                   LinearProgressIndicator(
                     value: achievement.progress,
                     backgroundColor: isDark ? Colors.grey[700] : Colors.grey[300],
-                    valueColor: const AlwaysStoppedAnimation(Color(0xFF00BCD4)),
+                    valueColor: AlwaysStoppedAnimation(colorScheme.primary),
                   ),
                   const SizedBox(height: 4),
                   Text(

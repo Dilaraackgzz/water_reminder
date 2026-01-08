@@ -222,12 +222,17 @@ class ProfileScreen extends ConsumerWidget {
   }
 
   Widget _buildProfileHeader(BuildContext context, User? user, UserProfile profile, AppLocalizations l10n) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(24),
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: [Color(0xFF00BCD4), Color(0xFF00ACC1)],
+          colors: [
+            colorScheme.primaryContainer,
+            colorScheme.primaryContainer.withAlpha(200),
+          ],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
@@ -257,7 +262,7 @@ class ProfileScreen extends ConsumerWidget {
                 style: GoogleFonts.poppins(
                   fontSize: 48,
                   fontWeight: FontWeight.bold,
-                  color: const Color(0xFF00BCD4),
+                  color: colorScheme.primary,
                 ),
               ),
             ),
@@ -269,7 +274,7 @@ class ProfileScreen extends ConsumerWidget {
             style: GoogleFonts.poppins(
               fontSize: 24,
               fontWeight: FontWeight.bold,
-              color: Colors.white,
+              color: colorScheme.onPrimaryContainer,
             ),
           ),
           const SizedBox(height: 4),
@@ -278,7 +283,7 @@ class ProfileScreen extends ConsumerWidget {
             user?.email ?? '',
             style: GoogleFonts.poppins(
               fontSize: 14,
-              color: Colors.white.withAlpha(230),
+              color: colorScheme.onPrimaryContainer.withAlpha(200),
             ),
           ),
         ],
@@ -287,6 +292,8 @@ class ProfileScreen extends ConsumerWidget {
   }
 
   Widget _buildActionButtons(BuildContext context, WidgetRef ref, UserProfile profile, AppLocalizations l10n) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Column(
       children: [
         // Calculate Goal Button
@@ -303,8 +310,8 @@ class ProfileScreen extends ConsumerWidget {
               ),
             ),
             style: ElevatedButton.styleFrom(
-              backgroundColor: const Color(0xFF00BCD4),
-              foregroundColor: Colors.white,
+              backgroundColor: colorScheme.primary,
+              foregroundColor: colorScheme.onPrimary,
               padding: const EdgeInsets.symmetric(vertical: 16),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12),
@@ -651,18 +658,6 @@ class ProfileScreen extends ConsumerWidget {
 
   void _applyCalculatedGoal(BuildContext context, WidgetRef ref, UserProfile profile, AppLocalizations l10n) async {
     await ref.read(profileControllerProvider).applyCalculatedGoal(profile);
-
-    if (context.mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(
-            '${l10n.profile_daily_goal}: ${profile.calculatedDailyGoal} ${l10n.unit_ml}',
-            style: GoogleFonts.poppins(),
-          ),
-          backgroundColor: const Color(0xFF00BCD4),
-        ),
-      );
-    }
   }
 }
 
@@ -711,6 +706,8 @@ class _InfoCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Material(
       color: Colors.transparent,
       child: InkWell(
@@ -731,10 +728,10 @@ class _InfoCard extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                  color: const Color(0xFF00BCD4).withAlpha(26),
+                  color: colorScheme.primary.withAlpha(26),
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: Icon(icon, color: const Color(0xFF00BCD4), size: 24),
+                child: Icon(icon, color: colorScheme.primary, size: 24),
               ),
               const SizedBox(width: 16),
               Expanded(

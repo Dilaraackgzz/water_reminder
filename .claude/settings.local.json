@@ -15,7 +15,17 @@
       "Bash(firebase --version:*)",
       "Bash(firebase projects:list:*)",
       "Bash(firebase deploy:*)",
-      "Bash(tee:*)"
+      "Bash(tee:*)",
+      "Bash(python3:*)",
+      "Bash(git -C /Users/dilaraacikgoz/AndroidStudioProjects/water_reminder check-ignore:*)",
+      "Bash(ls:*)",
+      "Bash(grep:*)",
+      "Bash(cat:*)",
+      "Bash(git -C /Users/dilaraacikgoz/AndroidStudioProjects/water_reminder ls-files:*)",
+      "Bash(git rm:*)",
+      "Bash(curl:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
     ],
     "deny": [],
     "ask": []

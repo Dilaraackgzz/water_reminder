@@ -8,20 +8,20 @@ import 'theme.dart';
 /// with custom water-themed accent colors and Google Fonts Poppins integration.
 class AppTheme {
   // Legacy color constants for backward compatibility
-  static const Color primaryBlue = Color(0xFF2196F3);
-  static const Color lightBlue = Color(0xFF64B5F6);
-  static const Color darkBlue = Color(0xFF1976D2);
-  static const Color accentBlue = Color(0xFF03DAC6);
+  static const Color primaryBlue = Color(0xFF7EBFBA);
+  static const Color lightBlue = Color(0xffA3D5D0);
+  static const Color darkBlue = Color(0xFF5FA8A3);
+  static const Color accentBlue = Color(0xFF8FC9C4);
 
-  static const Color successGreen = Color(0xFF4CAF50);
-  static const Color warningOrange = Color(0xFFFF9800);
-  static const Color errorRed = Color(0xFFF44336);
+  static const Color successGreen = Color(0xFF81C784);
+  static const Color warningOrange = Color(0xFFFFB74D);
+  static const Color errorRed = Color(0xffD67B79);
 
-  static const Color surfaceLight = Color(0xFFFFFFFF);
-  static const Color surfaceDark = Color(0xFF1E1E1E);
+  static const Color surfaceLight = Color(0xffF8FAFA);
+  static const Color surfaceDark = Color(0xff1A2224);
 
-  // Water-themed custom accent color (cyan)
-  static const Color waterAccent = Color(0xFF00BCD4);
+  // Water-themed custom accent color (soft teal)
+  static const Color waterAccent = Color(0xFF7EBFBA);
 
   // Create MaterialTheme instance with Google Fonts
   static final MaterialTheme _materialTheme = MaterialTheme(

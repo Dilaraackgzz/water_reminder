@@ -5,7 +5,7 @@ class WaterProgressRing extends StatelessWidget {
   final double progress; // 0.0 to 1.0
   final double size;
   final double strokeWidth;
-  final Color progressColor;
+  final Color? progressColor;
   final Color backgroundColor;
   final Widget? child;
   final Duration duration;
@@ -15,7 +15,7 @@ class WaterProgressRing extends StatelessWidget {
     required this.progress,
     this.size = 200,
     this.strokeWidth = 16,
-    this.progressColor = const Color(0xFF00BCD4),
+    this.progressColor,
     this.backgroundColor = const Color(0xFFE0F7FA),
     this.child,
     this.duration = const Duration(milliseconds: 800),
@@ -23,6 +23,8 @@ class WaterProgressRing extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final effectiveProgressColor = progressColor ?? Theme.of(context).colorScheme.primary;
+
     return TweenAnimationBuilder<double>(
       tween: Tween<double>(begin: 0.0, end: progress.clamp(0.0, 1.0)),
       duration: duration,
@@ -50,7 +52,7 @@ class WaterProgressRing extends StatelessWidget {
                   size: Size(size, size),
                   painter: _CirclePainter(
                     progress: animatedProgress,
-                    color: progressColor.withAlpha(77), // 0.3 * 255
+                    color: effectiveProgressColor.withAlpha(77), // 0.3 * 255
                     strokeWidth: strokeWidth + 4,
                   ),
                 ),
@@ -59,7 +61,7 @@ class WaterProgressRing extends StatelessWidget {
                   size: Size(size, size),
                   painter: _CirclePainter(
                     progress: animatedProgress,
-                    color: progressColor,
+                    color: effectiveProgressColor,
                     strokeWidth: strokeWidth,
                   ),
                 ),

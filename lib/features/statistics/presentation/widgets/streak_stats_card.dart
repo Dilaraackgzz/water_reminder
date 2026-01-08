@@ -32,13 +32,18 @@ class _StreakStatsContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: streak.currentStreak >= 7
-              ? [const Color(0xFFFFE0B2), const Color(0xFFFFCC80)]
-              : [const Color(0xFFE0F7FA), const Color(0xFFB2EBF2)],
+              ? [Colors.amber.shade100, Colors.amber.shade200]
+              : [
+                  colorScheme.primaryContainer.withAlpha(180),
+                  colorScheme.primaryContainer.withAlpha(140),
+                ],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
@@ -198,7 +203,7 @@ class _StatBox extends StatelessWidget {
           Icon(
             icon,
             size: 24,
-            color: isHighlighted ? Colors.amber[700] : const Color(0xFF00BCD4),
+            color: isHighlighted ? Colors.amber[700] : Theme.of(context).colorScheme.primary,
           ),
           const SizedBox(height: 8),
           Text(

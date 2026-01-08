@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:intl/intl.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
@@ -20,27 +21,27 @@ class DataExportService {
   /// Export all user data to JSON format
   Future<Map<String, dynamic>> exportUserData() async {
     final userId = _auth.currentUser?.uid;
-    print('🔍 DataExport: Starting export for user: $userId');
+    debugPrint('🔍 DataExport: Starting export for user: $userId');
 
     if (userId == null) {
-      print('❌ DataExport: User not authenticated');
+      debugPrint('❌ DataExport: User not authenticated');
       throw Exception('User not authenticated');
     }
 
     try {
       // Fetch user profile
-      print('📊 DataExport: Fetching user profile...');
+      debugPrint('📊 DataExport: Fetching user profile...');
       final profileDoc = await _firestore.collection('users').doc(userId).get();
       final profileData = profileDoc.data();
-      print('✅ DataExport: Profile fetched: ${profileData != null}');
+      debugPrint('✅ DataExport: Profile fetched: ${profileData != null}');
 
     // Fetch water records (without orderBy to avoid index requirement)
-    print('💧 DataExport: Fetching water records...');
+    debugPrint('💧 DataExport: Fetching water records...');
     final waterRecordsSnapshot = await _firestore
         .collection('water_records')
         .where('userId', isEqualTo: userId)
         .get();
-    print('✅ DataExport: Water records fetched: ${waterRecordsSnapshot.docs.length} records');
+    debugPrint('✅ DataExport: Water records fetched: ${waterRecordsSnapshot.docs.length} records');
 
     // Sort in memory
     final waterRecords = waterRecordsSnapshot.docs.map((doc) {
@@ -56,12 +57,12 @@ class DataExportService {
           .compareTo(DateTime.parse(a['timestamp'] as String)));
 
     // Fetch daily goals (without orderBy to avoid index requirement)
-    print('🎯 DataExport: Fetching daily goals...');
+    debugPrint('🎯 DataExport: Fetching daily goals...');
     final dailyGoalsSnapshot = await _firestore
         .collection('daily_goals')
         .where('userId', isEqualTo: userId)
         .get();
-    print('✅ DataExport: Daily goals fetched: ${dailyGoalsSnapshot.docs.length} goals');
+    debugPrint('✅ DataExport: Daily goals fetched: ${dailyGoalsSnapshot.docs.length} goals');
 
     // Sort in memory
     final dailyGoals = dailyGoalsSnapshot.docs.map((doc) {
@@ -75,7 +76,7 @@ class DataExportService {
       ..sort((a, b) => (b['date'] as String).compareTo(a['date'] as String));
 
       // Create export data
-      print('📦 DataExport: Creating export data structure...');
+      debugPrint('📦 DataExport: Creating export data structure...');
       final exportData = {
         'version': '1.0',
         'exportDate': DateTime.now().toIso8601String(),
@@ -86,10 +87,10 @@ class DataExportService {
         'totalRecords': waterRecords.length,
       };
 
-      print('✅ DataExport: Export data created successfully');
+      debugPrint('✅ DataExport: Export data created successfully');
       return exportData;
     } catch (e) {
-      print('❌ DataExport: Failed to export data: $e');
+      debugPrint('❌ DataExport: Failed to export data: $e');
       throw Exception('Failed to export data: ${e.toString()}');
     }
   }
@@ -97,29 +98,29 @@ class DataExportService {
   /// Export data and save to file
   Future<String> exportToFile() async {
     try {
-      print('📂 DataExport: Starting file export...');
+      debugPrint('📂 DataExport: Starting file export...');
       final exportData = await exportUserData();
 
-      print('📝 DataExport: Converting to JSON...');
+      debugPrint('📝 DataExport: Converting to JSON...');
       final jsonString = const JsonEncoder.withIndent('  ').convert(exportData);
 
       // Get temporary directory
-      print('📁 DataExport: Getting temporary directory...');
+      debugPrint('📁 DataExport: Getting temporary directory...');
       final directory = await getTemporaryDirectory();
       final timestamp = DateFormat('yyyyMMdd_HHmmss').format(DateTime.now());
       final fileName = 'aqualert_backup_$timestamp.json';
       final filePath = '${directory.path}/$fileName';
-      print('📁 DataExport: File path: $filePath');
+      debugPrint('📁 DataExport: File path: $filePath');
 
       // Write to file
-      print('💾 DataExport: Writing to file...');
+      debugPrint('💾 DataExport: Writing to file...');
       final file = File(filePath);
       await file.writeAsString(jsonString);
-      print('✅ DataExport: File written successfully');
+      debugPrint('✅ DataExport: File written successfully');
 
       return filePath;
     } catch (e) {
-      print('❌ DataExport: Failed to create export file: $e');
+      debugPrint('❌ DataExport: Failed to create export file: $e');
       throw Exception('Failed to create export file: ${e.toString()}');
     }
   }
@@ -127,26 +128,26 @@ class DataExportService {
   /// Share exported data
   Future<void> shareExportedData() async {
     try {
-      print('🚀 DataExport: Starting share process...');
+      debugPrint('🚀 DataExport: Starting share process...');
       final filePath = await exportToFile();
       final file = File(filePath);
 
-      print('🔍 DataExport: Checking if file exists...');
+      debugPrint('🔍 DataExport: Checking if file exists...');
       if (!await file.exists()) {
-        print('❌ DataExport: Export file not found at: $filePath');
+        debugPrint('❌ DataExport: Export file not found at: $filePath');
         throw Exception('Export file not found');
       }
-      print('✅ DataExport: File exists, preparing to share...');
+      debugPrint('✅ DataExport: File exists, preparing to share...');
 
-      print('📤 DataExport: Sharing file...');
+      debugPrint('📤 DataExport: Sharing file...');
       await Share.shareXFiles(
         [XFile(file.path)],
         subject: 'Aqualert Data Backup',
         text: 'My Aqualert water tracking data backup',
       );
-      print('✅ DataExport: Share completed successfully');
+      debugPrint('✅ DataExport: Share completed successfully');
     } catch (e) {
-      print('❌ DataExport: Failed to share export: $e');
+      debugPrint('❌ DataExport: Failed to share export: $e');
       throw Exception('Failed to share export: ${e.toString()}');
     }
   }

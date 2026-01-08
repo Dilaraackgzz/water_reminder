@@ -180,12 +180,12 @@ class _HelpScreenState extends State<HelpScreen> {
           Container(
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
-              color: const Color(0xFF00BCD4).withAlpha(26),
+              color: Theme.of(context).colorScheme.primary.withAlpha(26),
               borderRadius: BorderRadius.circular(20),
             ),
-            child: const Icon(
+            child: Icon(
               Icons.water_drop,
-              color: Color(0xFF00BCD4),
+              color: Theme.of(context).colorScheme.primary,
               size: 48,
             ),
           ),
@@ -220,9 +220,9 @@ class _HelpScreenState extends State<HelpScreen> {
               ),
             ),
           ] else
-            const CircularProgressIndicator(
+             CircularProgressIndicator(
               strokeWidth: 2,
-              valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF00BCD4)),
+              valueColor: AlwaysStoppedAnimation<Color>(Theme.of(context).colorScheme.primary),
             ),
 
           const SizedBox(height: 16),
@@ -305,19 +305,20 @@ class _HelpScreenState extends State<HelpScreen> {
           ElevatedButton(
             onPressed: () {
               Navigator.pop(context);
-              // TODO: Add store URL when published
+              // Store URL Placeholder - Update after publication
+              // Format: https://play.google.com/store/apps/details?id=com.yourcompany.aqualert
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
                   content: Text(
                     'App Store link will be available after publication',
                     style: GoogleFonts.poppins(),
                   ),
-                  backgroundColor: const Color(0xFF00BCD4),
+                  backgroundColor: Theme.of(context).colorScheme.primary,
                 ),
               );
             },
             style: ElevatedButton.styleFrom(
-              backgroundColor: const Color(0xFF00BCD4),
+              backgroundColor: Theme.of(context).colorScheme.primary,
             ),
             child: Text(
               l10n.common_ok,
@@ -410,7 +411,7 @@ class _FAQItemState extends State<_FAQItem> {
                     ),
                     Icon(
                       _isExpanded ? Icons.expand_less : Icons.expand_more,
-                      color: const Color(0xFF00BCD4),
+                      color: Theme.of(context).colorScheme.primary,
                     ),
                   ],
                 ),
@@ -465,12 +466,12 @@ class _FeatureItem extends StatelessWidget {
           Container(
             padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
-              color: const Color(0xFF00BCD4).withAlpha(26),
+              color: Theme.of(context).colorScheme.primary.withAlpha(26),
               borderRadius: BorderRadius.circular(12),
             ),
             child: Icon(
               icon,
-              color: const Color(0xFF00BCD4),
+              color: Theme.of(context).colorScheme.primary,
               size: 24,
             ),
           ),
@@ -542,12 +543,12 @@ class _ContactCard extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  color: const Color(0xFF00BCD4).withAlpha(26),
+                  color: Theme.of(context).colorScheme.primary.withAlpha(26),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Icon(
                   icon,
-                  color: const Color(0xFF00BCD4),
+                  color: Theme.of(context).colorScheme.primary,
                   size: 24,
                 ),
               ),

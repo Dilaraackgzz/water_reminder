@@ -72,13 +72,13 @@ class MotivationalMessage extends StatelessWidget {
     }
   }
 
-  Color _getColor() {
+  Color _getColor(BuildContext context) {
     if (progressPercentage >= 100) {
       return Colors.amber;
     } else if (progressPercentage >= 75) {
       return Colors.green;
     } else if (progressPercentage >= 50) {
-      return const Color(0xFF00BCD4);
+      return Theme.of(context).colorScheme.primary;
     } else {
       return Colors.blue;
     }
@@ -103,7 +103,7 @@ class MotivationalMessage extends StatelessWidget {
   Widget build(BuildContext context) {
     final message = _getMessage(context);
     final icon = _getIcon();
-    final color = _getColor();
+    final color = _getColor(context);
 
     return AnimatedSwitcher(
       duration: const Duration(milliseconds: 500),

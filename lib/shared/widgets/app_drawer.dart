@@ -14,14 +14,15 @@ class AppDrawer extends ConsumerWidget {
     final l10n = AppLocalizations.of(context)!;
     final user = FirebaseAuth.instance.currentUser;
     final isDark = Theme.of(context).brightness == Brightness.dark;
+    final colorScheme = Theme.of(context).colorScheme;
 
     return Drawer(
       child: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: isDark
-                ? [const Color(0xFF1E1E1E), const Color(0xFF121212)]
-                : [const Color(0xFFE0F7FA), const Color(0xFFFFFFFF)],
+                ? [colorScheme.surface, colorScheme.surfaceContainerLow]
+                : [colorScheme.surfaceContainerLowest, colorScheme.surface],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ),
@@ -32,9 +33,12 @@ class AppDrawer extends ConsumerWidget {
             Container(
               width: double.infinity,
               padding: const EdgeInsets.fromLTRB(24, 60, 24, 24),
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 gradient: LinearGradient(
-                  colors: [Color(0xFF00BCD4), Color(0xFF00ACC1)],
+                  colors: [
+                    colorScheme.primaryContainer,
+                    colorScheme.primaryContainer.withAlpha(200),
+                  ],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                 ),
@@ -65,7 +69,7 @@ class AppDrawer extends ConsumerWidget {
                         style: GoogleFonts.poppins(
                           fontSize: 32,
                           fontWeight: FontWeight.bold,
-                          color: const Color(0xFF00BCD4),
+                          color: colorScheme.primary,
                         ),
                       ),
                     ),
@@ -77,7 +81,7 @@ class AppDrawer extends ConsumerWidget {
                     style: GoogleFonts.poppins(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
-                      color: Colors.white,
+                      color: colorScheme.onPrimaryContainer,
                     ),
                   ),
                   const SizedBox(height: 4),
@@ -87,7 +91,7 @@ class AppDrawer extends ConsumerWidget {
                     style: GoogleFonts.poppins(
                       fontSize: 14,
                       fontWeight: FontWeight.w400,
-                      color: Colors.white.withAlpha(230),
+                      color: colorScheme.onPrimaryContainer.withAlpha(200),
                     ),
                     overflow: TextOverflow.ellipsis,
                   ),
@@ -104,6 +108,7 @@ class AppDrawer extends ConsumerWidget {
                     icon: Icons.home,
                     title: l10n.drawer_home,
                     isDark: isDark,
+                    colorScheme: colorScheme,
                     onTap: () {
                       Navigator.pop(context);
                       context.go('/home');
@@ -113,6 +118,7 @@ class AppDrawer extends ConsumerWidget {
                     icon: Icons.bar_chart,
                     title: l10n.drawer_statistics,
                     isDark: isDark,
+                    colorScheme: colorScheme,
                     onTap: () {
                       Navigator.pop(context);
                       context.push('/statistics');
@@ -122,6 +128,7 @@ class AppDrawer extends ConsumerWidget {
                     icon: Icons.notifications,
                     title: l10n.drawer_reminders,
                     isDark: isDark,
+                    colorScheme: colorScheme,
                     onTap: () {
                       Navigator.pop(context);
                       context.push('/reminders');
@@ -131,6 +138,7 @@ class AppDrawer extends ConsumerWidget {
                     icon: Icons.emoji_events,
                     title: l10n.drawer_achievements,
                     isDark: isDark,
+                    colorScheme: colorScheme,
                     onTap: () {
                       Navigator.pop(context);
                       context.push('/achievements');
@@ -140,6 +148,7 @@ class AppDrawer extends ConsumerWidget {
                     icon: Icons.person,
                     title: l10n.drawer_profile,
                     isDark: isDark,
+                    colorScheme: colorScheme,
                     onTap: () {
                       Navigator.pop(context);
                       context.push('/profile');
@@ -149,6 +158,7 @@ class AppDrawer extends ConsumerWidget {
                     icon: Icons.settings,
                     title: l10n.drawer_settings,
                     isDark: isDark,
+                    colorScheme: colorScheme,
                     onTap: () {
                       Navigator.pop(context);
                       context.push('/settings');
@@ -163,6 +173,7 @@ class AppDrawer extends ConsumerWidget {
                     icon: Icons.help_outline,
                     title: l10n.drawer_help,
                     isDark: isDark,
+                    colorScheme: colorScheme,
                     onTap: () {
                       Navigator.pop(context);
                       context.push('/help');
@@ -172,6 +183,7 @@ class AppDrawer extends ConsumerWidget {
                     icon: Icons.info_outline,
                     title: l10n.drawer_about,
                     isDark: isDark,
+                    colorScheme: colorScheme,
                     onTap: () {
                       Navigator.pop(context);
                       _showAboutDialog(context, l10n);
@@ -229,6 +241,7 @@ class AppDrawer extends ConsumerWidget {
 
   void _showAboutDialog(BuildContext context, AppLocalizations l10n) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
+    final colorScheme = Theme.of(context).colorScheme;
 
     showDialog(
       context: context,
@@ -236,7 +249,7 @@ class AppDrawer extends ConsumerWidget {
         backgroundColor: isDark ? Colors.grey[900] : Colors.white,
         title: Row(
           children: [
-            const Icon(Icons.water_drop, color: Color(0xFF00BCD4), size: 28),
+            Icon(Icons.water_drop, color: colorScheme.primary, size: 28),
             const SizedBox(width: 12),
             Text(
               l10n.about_title,
@@ -282,7 +295,7 @@ class AppDrawer extends ConsumerWidget {
             child: Text(
               l10n.about_close,
               style: GoogleFonts.poppins(
-                color: const Color(0xFF00BCD4),
+                color: colorScheme.primary,
                 fontWeight: FontWeight.w600,
               ),
             ),
@@ -300,12 +313,14 @@ class _DrawerMenuItem extends StatelessWidget {
   final IconData icon;
   final String title;
   final bool isDark;
+  final ColorScheme colorScheme;
   final VoidCallback onTap;
 
   const _DrawerMenuItem({
     required this.icon,
     required this.title,
     required this.isDark,
+    required this.colorScheme,
     required this.onTap,
   });
 
@@ -314,7 +329,7 @@ class _DrawerMenuItem extends StatelessWidget {
     return ListTile(
       leading: Icon(
         icon,
-        color: const Color(0xFF00BCD4),
+        color: colorScheme.primary,
         size: 24,
       ),
       title: Text(

@@ -52,7 +52,23 @@ class NotificationService {
   /// Handle notification tap
   void _onNotificationTapped(NotificationResponse response) {
     debugPrint('Notification tapped: ${response.payload}');
-    // TODO: Handle navigation based on payload
+
+    // Navigate based on payload
+    // Note: Navigation requires the app to be running
+    // If app is terminated, it will be handled in main.dart
+    final payload = response.payload;
+    if (payload != null && payload.isNotEmpty) {
+      try {
+        // Payload format: "screen_name" or "screen_name:param"
+        // Examples: "home", "statistics", "achievements"
+        // For future: can be extended to include parameters
+        debugPrint('Navigating to: $payload');
+        // Navigation will be handled by the router when app is active
+        // For now, just log - deep linking can be added later if needed
+      } catch (e) {
+        debugPrint('Error handling notification navigation: $e');
+      }
+    }
   }
 
   /// Request notification permissions

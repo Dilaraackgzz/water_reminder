@@ -15,6 +15,7 @@ class DailyProgressCard extends ConsumerWidget {
     final dailyGoalAsync = ref.watch(todaysDailyGoalProvider);
     final totalIntake = ref.watch(todaysTotalIntakeProvider);
     final unitNotifier = ref.watch(waterUnitProvider.notifier);
+    final colorScheme = Theme.of(context).colorScheme;
 
     // Show default goal while loading
     final goal = dailyGoalAsync.maybeWhen(
@@ -49,8 +50,11 @@ class DailyProgressCard extends ConsumerWidget {
         return Container(
           padding: EdgeInsets.all(padding),
           decoration: BoxDecoration(
-            gradient: const LinearGradient(
-              colors: [Color(0xFFE0F7FA), Color(0xFFB2EBF2)],
+            gradient: LinearGradient(
+              colors: [
+                colorScheme.primaryContainer.withAlpha(180),
+                colorScheme.primaryContainer.withAlpha(140),
+              ],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),
@@ -73,7 +77,7 @@ class DailyProgressCard extends ConsumerWidget {
                 child: CircularWaveProgress(
                   progress: progress,
                   size: waveSize,
-                  waveColor: const Color(0xFF00BCD4),
+                  waveColor: Theme.of(context).colorScheme.primary,
                   backgroundColor: Colors.white,
                 ),
               ),
@@ -100,7 +104,7 @@ class DailyProgressCard extends ConsumerWidget {
                         style: GoogleFonts.poppins(
                           fontSize: amountFontSize,
                           fontWeight: FontWeight.bold,
-                          color: const Color(0xFF00BCD4),
+                          color: Theme.of(context).colorScheme.primary,
                           height: 1.0,
                         ),
                       ),
@@ -121,7 +125,7 @@ class DailyProgressCard extends ConsumerWidget {
                           vertical: spacing * 0.25,
                         ),
                         decoration: BoxDecoration(
-                          color: const Color(0xFF00BCD4).withAlpha(51),
+                          color: Theme.of(context).colorScheme.primary.withAlpha(51),
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: FittedBox(
@@ -131,7 +135,7 @@ class DailyProgressCard extends ConsumerWidget {
                             style: GoogleFonts.poppins(
                               fontSize: badgeFontSize,
                               fontWeight: FontWeight.w600,
-                              color: const Color(0xFF00BCD4),
+                              color: Theme.of(context).colorScheme.primary,
                             ),
                           ),
                         ),

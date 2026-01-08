@@ -57,7 +57,7 @@ class SettingsScreen extends ConsumerWidget {
                   // Force rebuild
                   ref.invalidate(reminderServiceProvider);
                 },
-                activeColor: const Color(0xFF00BCD4),
+                activeColor: Theme.of(context).colorScheme.primary,
               ),
             ),
             const SizedBox(height: 12),
@@ -264,7 +264,7 @@ class SettingsScreen extends ConsumerWidget {
                   if (dialogContext.mounted) Navigator.pop(dialogContext);
                 }
               },
-              activeColor: const Color(0xFF00BCD4),
+              activeColor: Theme.of(context).colorScheme.primary,
             ),
             RadioListTile<WaterUnit>(
               title: Text(
@@ -288,7 +288,7 @@ class SettingsScreen extends ConsumerWidget {
                   if (dialogContext.mounted) Navigator.pop(dialogContext);
                 }
               },
-              activeColor: const Color(0xFF00BCD4),
+              activeColor: Theme.of(context).colorScheme.primary,
             ),
           ],
         ),
@@ -344,7 +344,7 @@ class SettingsScreen extends ConsumerWidget {
                       if (dialogContext.mounted) Navigator.pop(dialogContext);
                     }
                   },
-                  activeColor: const Color(0xFF00BCD4),
+                  activeColor: Theme.of(context).colorScheme.primary,
                 ),
                 RadioListTile<ThemeMode>(
                   title: Text(
@@ -368,7 +368,7 @@ class SettingsScreen extends ConsumerWidget {
                       if (dialogContext.mounted) Navigator.pop(dialogContext);
                     }
                   },
-                  activeColor: const Color(0xFF00BCD4),
+                  activeColor: Theme.of(context).colorScheme.primary,
                 ),
                 RadioListTile<ThemeMode>(
                   title: Text(
@@ -392,7 +392,7 @@ class SettingsScreen extends ConsumerWidget {
                       if (dialogContext.mounted) Navigator.pop(dialogContext);
                     }
                   },
-                  activeColor: const Color(0xFF00BCD4),
+                  activeColor: Theme.of(context).colorScheme.primary,
                 ),
               ],
             ),
@@ -450,7 +450,7 @@ class SettingsScreen extends ConsumerWidget {
                       if (dialogContext.mounted) Navigator.pop(dialogContext);
                     }
                   },
-                  activeColor: const Color(0xFF00BCD4),
+                  activeColor: Theme.of(context).colorScheme.primary,
                 ),
                 RadioListTile<Locale>(
                   title: Text(
@@ -474,7 +474,7 @@ class SettingsScreen extends ConsumerWidget {
                       if (dialogContext.mounted) Navigator.pop(dialogContext);
                     }
                   },
-                  activeColor: const Color(0xFF00BCD4),
+                  activeColor: Theme.of(context).colorScheme.primary,
                 ),
               ],
             ),
@@ -653,7 +653,7 @@ class SettingsScreen extends ConsumerWidget {
                   // Refresh data
                   ref.invalidate(exportStatisticsProvider);
                 },
-                child: Text('OK', style: GoogleFonts.poppins(color: const Color(0xFF00BCD4))),
+                child: Text('OK', style: GoogleFonts.poppins(color: Theme.of(context).colorScheme.primary)),
               ),
             ],
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
@@ -716,7 +716,7 @@ class SettingsScreen extends ConsumerWidget {
                   if (dialogContext.mounted) Navigator.pop(dialogContext);
                 }
               },
-              activeColor: const Color(0xFF00BCD4),
+              activeColor: Theme.of(context).colorScheme.primary,
             );
           }).toList(),
         ),
@@ -809,10 +809,10 @@ class _SettingCard extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                  color: const Color(0xFF00BCD4).withAlpha(26),
+                  color: Theme.of(context).colorScheme.primary.withAlpha(26),
                   borderRadius: BorderRadius.circular(12),
                 ),
-                child: Icon(icon, color: const Color(0xFF00BCD4), size: 22),
+                child: Icon(icon, color: Theme.of(context).colorScheme.primary, size: 22),
               ),
               const SizedBox(width: 16),
               Expanded(
