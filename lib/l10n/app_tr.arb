@@ -348,7 +348,7 @@
   "feature_profile_desc": "Kişisel bilgilerinizi girin ve uygulamanın vücut ölçülerinize göre optimal günlük su hedefinizi hesaplamasını sağlayın.",
 
   "help_contact_email": "E-posta ile İletişim",
-  "help_contact_email_address": "destek@aqualert.app",
+  "help_contact_email_address": "dilaraacikgoz.dev@gmail.com",
   "help_rate_app": "Uygulamayı Değerlendir",
   "help_rate_desc": "Aqualert'i beğendiniz mi? Bize yorum bırakın!",
 
@@ -372,5 +372,9 @@
   "time_morning": "Sabah",
   "time_afternoon": "Öğleden Sonra",
   "time_evening": "Akşam",
-  "time_night": "Gece"
+  "time_night": "Gece",
+
+  "help_privacy_policy": "Gizlilik Politikası",
+  "help_privacy_policy_desc": "Gizlilik politikamızı görüntüle",
+  "help_privacy_policy_error": "Gizlilik Politikası açılamadı"
 }

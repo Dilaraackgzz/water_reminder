@@ -400,7 +400,7 @@
   "feature_profile_desc": "Set your personal information and let the app calculate your optimal daily water goal based on your body metrics.",
 
   "help_contact_email": "Contact via Email",
-  "help_contact_email_address": "support@aqualert.app",
+  "help_contact_email_address": "dilaraacikgoz.dev@gmail.com",
   "help_rate_app": "Rate Our App",
   "help_rate_desc": "Enjoying Aqualert? Leave us a review!",
 
@@ -424,5 +424,9 @@
   "time_morning": "Morning",
   "time_afternoon": "Afternoon",
   "time_evening": "Evening",
-  "time_night": "Night"
+  "time_night": "Night",
+
+  "help_privacy_policy": "Privacy Policy",
+  "help_privacy_policy_desc": "View our privacy policy",
+  "help_privacy_policy_error": "Could not open Privacy Policy"
 }

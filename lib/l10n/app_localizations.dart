@@ -1907,7 +1907,7 @@ abstract class AppLocalizations {
   /// No description provided for @help_contact_email_address.
   ///
   /// In en, this message translates to:
-  /// **'support@aqualert.app'**
+  /// **'dilaraacikgoz.dev@gmail.com'**
   String get help_contact_email_address;
 
   /// No description provided for @help_rate_app.
@@ -2029,6 +2029,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Night'**
   String get time_night;
+
+  /// No description provided for @help_privacy_policy.
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy Policy'**
+  String get help_privacy_policy;
+
+  /// No description provided for @help_privacy_policy_desc.
+  ///
+  /// In en, this message translates to:
+  /// **'View our privacy policy'**
+  String get help_privacy_policy_desc;
+
+  /// No description provided for @help_privacy_policy_error.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not open Privacy Policy'**
+  String get help_privacy_policy_error;
 }
 
 class _AppLocalizationsDelegate

@@ -953,7 +953,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get help_contact_email => 'Contact via Email';
 
   @override
-  String get help_contact_email_address => 'support@aqualert.app';
+  String get help_contact_email_address => 'dilaraacikgoz.dev@gmail.com';
 
   @override
   String get help_rate_app => 'Rate Our App';
@@ -1014,4 +1014,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get time_night => 'Night';
+
+  @override
+  String get help_privacy_policy => 'Privacy Policy';
+
+  @override
+  String get help_privacy_policy_desc => 'View our privacy policy';
+
+  @override
+  String get help_privacy_policy_error => 'Could not open Privacy Policy';
 }

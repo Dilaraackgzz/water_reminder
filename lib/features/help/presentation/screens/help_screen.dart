@@ -154,6 +154,14 @@ class _HelpScreenState extends State<HelpScreen> {
         ),
         const SizedBox(height: 12),
         _ContactCard(
+          icon: Icons.privacy_tip,
+          title: l10n.help_privacy_policy,
+          subtitle: l10n.help_privacy_policy_desc,
+          isDark: isDark,
+          onTap: () => _launchPrivacyPolicy(l10n),
+        ),
+        const SizedBox(height: 12),
+        _ContactCard(
           icon: Icons.star,
           title: l10n.help_rate_app,
           subtitle: l10n.help_rate_desc,
@@ -267,6 +275,46 @@ class _HelpScreenState extends State<HelpScreen> {
           SnackBar(
             content: Text(
               'Could not open email app',
+              style: GoogleFonts.poppins(),
+            ),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
+    }
+  }
+
+  Future<void> _launchPrivacyPolicy(AppLocalizations l10n) async {
+    // Privacy Policy URL - GitHub repository
+    final Uri privacyPolicyUri = Uri.parse(
+      'https://github.com/dilaraacikgoz/water_reminder/blob/main/PRIVACY_POLICY.md',
+    );
+
+    try {
+      if (await canLaunchUrl(privacyPolicyUri)) {
+        await launchUrl(
+          privacyPolicyUri,
+          mode: LaunchMode.externalApplication,
+        );
+      } else {
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                l10n.help_privacy_policy_error,
+                style: GoogleFonts.poppins(),
+              ),
+              backgroundColor: Colors.red,
+            ),
+          );
+        }
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              l10n.help_privacy_policy_error,
               style: GoogleFonts.poppins(),
             ),
             backgroundColor: Colors.red,

@@ -951,7 +951,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get help_contact_email => 'E-posta ile İletişim';
 
   @override
-  String get help_contact_email_address => 'destek@aqualert.app';
+  String get help_contact_email_address => 'dilaraacikgoz.dev@gmail.com';
 
   @override
   String get help_rate_app => 'Uygulamayı Değerlendir';
@@ -1013,4 +1013,13 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get time_night => 'Gece';
+
+  @override
+  String get help_privacy_policy => 'Gizlilik Politikası';
+
+  @override
+  String get help_privacy_policy_desc => 'Gizlilik politikamızı görüntüle';
+
+  @override
+  String get help_privacy_policy_error => 'Gizlilik Politikası açılamadı';
 }
