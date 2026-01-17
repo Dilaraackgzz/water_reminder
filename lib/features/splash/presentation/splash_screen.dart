@@ -25,7 +25,10 @@ class _SplashScreenState extends ConsumerState<SplashScreen>
       vsync: this,
     );
 
-    _startAnimation();
+    // Schedule navigation after the first frame to avoid setState during build
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _startAnimation();
+    });
   }
 
   Future<void> _startAnimation() async {

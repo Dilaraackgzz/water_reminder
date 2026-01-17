@@ -42,6 +42,7 @@ class AuthController extends StateNotifier<AsyncValue<UserModel?>> {
       state = AsyncValue.data(user);
     } catch (e, st) {
       state = AsyncValue.error(e, st);
+      rethrow;
     }
   }
 

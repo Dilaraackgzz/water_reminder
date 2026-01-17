@@ -53,7 +53,9 @@ class AuthRepositoryImpl implements AuthRepository {
 
       return _userToUserModel(userCredential.user!);
     } on FirebaseAuthException catch (e) {
-      throw _handleAuthException(e);
+      throw Exception(_handleAuthException(e));
+    } catch (e) {
+      throw Exception('Giriş yapılırken bir hata oluştu: $e');
     }
   }
 
@@ -74,7 +76,9 @@ class AuthRepositoryImpl implements AuthRepository {
 
       return _userToUserModel(userCredential.user!);
     } on FirebaseAuthException catch (e) {
-      throw _handleAuthException(e);
+      throw Exception(_handleAuthException(e));
+    } catch (e) {
+      throw Exception('Kayıt olurken bir hata oluştu: $e');
     }
   }
 
@@ -91,7 +95,9 @@ class AuthRepositoryImpl implements AuthRepository {
     try {
       await _firebaseAuth.sendPasswordResetEmail(email: email);
     } on FirebaseAuthException catch (e) {
-      throw _handleAuthException(e);
+      throw Exception(_handleAuthException(e));
+    } catch (e) {
+      throw Exception('Şifre sıfırlama e-postası gönderilirken bir hata oluştu: $e');
     }
   }
 
@@ -124,12 +130,16 @@ class AuthRepositoryImpl implements AuthRepository {
         return 'Bu e-posta ile kayıtlı kullanıcı bulunamadı.';
       case 'wrong-password':
         return 'Hatalı şifre girdiniz.';
+      case 'invalid-credential':
+        return 'E-posta veya şifre hatalı.';
       case 'email-already-in-use':
         return 'Bu e-posta adresi zaten kullanılıyor.';
       case 'weak-password':
         return 'Şifreniz çok zayıf. Daha güçlü bir şifre seçin.';
       case 'invalid-email':
         return 'Geçersiz e-posta adresi.';
+      case 'user-disabled':
+        return 'Bu hesap devre dışı bırakılmış.';
       case 'operation-not-allowed':
         return 'Bu işlem şu anda kullanılamıyor.';
       case 'too-many-requests':
