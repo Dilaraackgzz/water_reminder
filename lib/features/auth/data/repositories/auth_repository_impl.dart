@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart' show FirebaseException;
 import 'package:google_sign_in/google_sign_in.dart';
 import '../../domain/models/user_model.dart';
 import '../../domain/repositories/auth_repository.dart';
@@ -46,15 +47,21 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   Future<UserModel> signInWithEmail(String email, String password) async {
     try {
+      print('DEBUG: Attempting sign in with email: $email');
       final userCredential = await _firebaseAuth.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
-
+      print('DEBUG: Sign in successful');
       return _userToUserModel(userCredential.user!);
     } on FirebaseAuthException catch (e) {
+      print('DEBUG: FirebaseAuthException - code: ${e.code}, message: ${e.message}');
       throw Exception(_handleAuthException(e));
+    } on FirebaseException catch (e) {
+      print('DEBUG: FirebaseException - code: ${e.code}, message: ${e.message}');
+      throw Exception(_handleFirebaseException(e));
     } catch (e) {
+      print('DEBUG: General exception - type: ${e.runtimeType}, error: $e');
       throw Exception('Giriş yapılırken bir hata oluştu: $e');
     }
   }
@@ -66,18 +73,26 @@ class AuthRepositoryImpl implements AuthRepository {
     String displayName,
   ) async {
     try {
+      print('DEBUG: Attempting register with email: $email, password length: ${password.length}');
       final userCredential = await _firebaseAuth.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
+      print('DEBUG: Register successful, user: ${userCredential.user?.uid}');
+      print('DEBUG: Current user after register: ${_firebaseAuth.currentUser?.email}');
 
       await userCredential.user!.updateDisplayName(displayName);
       await userCredential.user!.sendEmailVerification();
 
       return _userToUserModel(userCredential.user!);
     } on FirebaseAuthException catch (e) {
+      print('DEBUG: Register FirebaseAuthException - code: ${e.code}, message: ${e.message}');
       throw Exception(_handleAuthException(e));
+    } on FirebaseException catch (e) {
+      print('DEBUG: Register FirebaseException - code: ${e.code}, message: ${e.message}');
+      throw Exception(_handleFirebaseException(e));
     } catch (e) {
+      print('DEBUG: Register general exception - type: ${e.runtimeType}, error: $e');
       throw Exception('Kayıt olurken bir hata oluştu: $e');
     }
   }
@@ -125,7 +140,15 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   String _handleAuthException(FirebaseAuthException e) {
-    switch (e.code) {
+    return _getErrorMessage(e.code, e.message);
+  }
+
+  String _handleFirebaseException(FirebaseException e) {
+    return _getErrorMessage(e.code, e.message);
+  }
+
+  String _getErrorMessage(String code, String? message) {
+    switch (code) {
       case 'user-not-found':
         return 'Bu e-posta ile kayıtlı kullanıcı bulunamadı.';
       case 'wrong-password':
@@ -144,8 +167,10 @@ class AuthRepositoryImpl implements AuthRepository {
         return 'Bu işlem şu anda kullanılamıyor.';
       case 'too-many-requests':
         return 'Çok fazla deneme yaptınız. Lütfen daha sonra tekrar deneyin.';
+      case 'INVALID_LOGIN_CREDENTIALS':
+        return 'E-posta veya şifre hatalı.';
       default:
-        return 'Bir hata oluştu: ${e.message}';
+        return 'Bir hata oluştu: $message';
     }
   }
 }

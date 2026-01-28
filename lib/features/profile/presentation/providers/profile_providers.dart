@@ -4,6 +4,7 @@ import '../../data/repositories/profile_repository_impl.dart';
 import '../../domain/models/user_profile.dart';
 import '../../domain/repositories/profile_repository.dart';
 import '../../../auth/presentation/providers/auth_providers.dart';
+import '../../../home/presentation/providers/home_providers.dart';
 
 /// Provider for profile repository
 final profileRepositoryProvider = Provider<ProfileRepository>((ref) {
@@ -57,6 +58,9 @@ class ProfileController {
     final repository = _ref.read(profileRepositoryProvider);
     await repository.saveProfile(profile);
 
+    // Update today's daily goal with the new target
+    await _updateTodaysDailyGoal(profile.dailyGoal);
+
     // Sync displayName with Firebase Auth if name changed
     final firebaseUser = FirebaseAuth.instance.currentUser;
     if (firebaseUser != null && profile.name.isNotEmpty) {
@@ -74,8 +78,26 @@ class ProfileController {
     final repository = _ref.read(profileRepositoryProvider);
     await repository.updateDailyGoal(userId, newGoal, isCustom: isCustom);
 
+    // Update today's daily goal in the water repository
+    await _updateTodaysDailyGoal(newGoal);
+
     // Refresh the user profile provider
     _ref.invalidate(userProfileProvider);
+  }
+
+  /// Update today's daily goal target amount
+  Future<void> _updateTodaysDailyGoal(int newGoal) async {
+    try {
+      final waterRepository = _ref.read(waterRepositoryProvider);
+      final todaysGoal = await waterRepository.getTodaysDailyGoal();
+      final updatedGoal = todaysGoal.copyWith(targetAmount: newGoal);
+      await waterRepository.updateDailyGoal(updatedGoal);
+
+      // Refresh the today's daily goal provider
+      _ref.invalidate(todaysDailyGoalProvider);
+    } catch (e) {
+      // Silent fail - profile update succeeded, don't fail the whole operation
+    }
   }
 
   /// Calculate recommended daily goal
