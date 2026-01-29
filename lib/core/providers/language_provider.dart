@@ -23,23 +23,31 @@ class LocaleNotifier extends StateNotifier<Locale> {
     }
   }
 
+  /// Use system locale
+  Future<void> useSystemLocale() async {
+    await _languageService.useSystemLocale();
+    state = _languageService.getSystemLocale();
+  }
+
   /// Reset to system default
   Future<void> resetToSystemDefault() async {
     await _languageService.clearLocale();
-    state = const Locale('tr'); // Default
+    state = _languageService.getSystemLocale();
   }
 
-  /// Get current language name
+  /// Check if using system locale
+  bool get isUsingSystemLocale => _languageService.isUsingSystemLocale();
+
+  /// Get current language name (shows "System" if using system locale)
   String get currentLanguageName {
-    switch (state.languageCode) {
-      case 'en':
-        return 'English';
-      case 'tr':
-        return 'Türkçe';
-      default:
-        return 'Türkçe';
+    if (_languageService.isUsingSystemLocale()) {
+      return 'System (${LanguageService.getLanguageName(state.languageCode)})';
     }
+    return LanguageService.getLanguageName(state.languageCode);
   }
+
+  /// Get all supported locales
+  List<Locale> get supportedLocales => _languageService.supportedLocales;
 }
 
 /// Provider for app locale

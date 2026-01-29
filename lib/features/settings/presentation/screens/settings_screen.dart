@@ -414,7 +414,20 @@ class SettingsScreen extends ConsumerWidget {
       builder: (dialogContext) => Consumer(
         builder: (_, ref, __) {
           final selectedLocale = ref.watch(localeProvider);
+          final localeNotifier = ref.read(localeProvider.notifier);
+          final isUsingSystemLocale = localeNotifier.isUsingSystemLocale;
           final isDark = Theme.of(dialogContext).brightness == Brightness.dark;
+
+          // Available languages with native names
+          final languages = [
+            {'code': 'en', 'name': 'English', 'native': 'English'},
+            {'code': 'tr', 'name': 'Türkçe', 'native': 'Turkish'},
+            {'code': 'es', 'name': 'Español', 'native': 'Spanish'},
+            {'code': 'fr', 'name': 'Français', 'native': 'French'},
+            {'code': 'de', 'name': 'Deutsch', 'native': 'German'},
+            {'code': 'it', 'name': 'Italiano', 'native': 'Italian'},
+            {'code': 'pt', 'name': 'Português', 'native': 'Portuguese'},
+          ];
 
           return AlertDialog(
             backgroundColor: isDark ? Colors.grey[900] : Colors.white,
@@ -425,58 +438,69 @@ class SettingsScreen extends ConsumerWidget {
                 color: isDark ? Colors.white : Colors.black87,
               ),
             ),
-            content: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                RadioListTile<Locale>(
-                  title: Text(
-                    'English',
-                    style: GoogleFonts.poppins(
-                      color: isDark ? Colors.white : Colors.black87,
+            content: SizedBox(
+              width: double.maxFinite,
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    // System Language Option
+                    RadioListTile<bool>(
+                      title: Text(
+                        'System Language',
+                        style: GoogleFonts.poppins(
+                          fontWeight: FontWeight.w500,
+                          color: isDark ? Colors.white : Colors.black87,
+                        ),
+                      ),
+                      subtitle: Text(
+                        'Use device language',
+                        style: GoogleFonts.poppins(
+                          fontSize: 12,
+                          color: isDark ? Colors.grey[400] : Colors.grey,
+                        ),
+                      ),
+                      value: true,
+                      groupValue: isUsingSystemLocale,
+                      onChanged: (value) async {
+                        if (value == true) {
+                          await ref.read(localeProvider.notifier).useSystemLocale();
+                          if (dialogContext.mounted) Navigator.pop(dialogContext);
+                        }
+                      },
+                      activeColor: Theme.of(context).colorScheme.primary,
                     ),
-                  ),
-                  subtitle: Text(
-                    'English',
-                    style: GoogleFonts.poppins(
-                      fontSize: 12,
-                      color: isDark ? Colors.grey[400] : Colors.grey,
+                    Divider(
+                      color: isDark ? Colors.grey[700] : Colors.grey[300],
                     ),
-                  ),
-                  value: const Locale('en'),
-                  groupValue: selectedLocale,
-                  onChanged: (value) async {
-                    if (value != null) {
-                      await ref.read(localeProvider.notifier).changeLocale(value);
-                      if (dialogContext.mounted) Navigator.pop(dialogContext);
-                    }
-                  },
-                  activeColor: Theme.of(context).colorScheme.primary,
+                    // Language list
+                    ...languages.map((lang) => RadioListTile<String>(
+                      title: Text(
+                        lang['name']!,
+                        style: GoogleFonts.poppins(
+                          color: isDark ? Colors.white : Colors.black87,
+                        ),
+                      ),
+                      subtitle: Text(
+                        lang['native']!,
+                        style: GoogleFonts.poppins(
+                          fontSize: 12,
+                          color: isDark ? Colors.grey[400] : Colors.grey,
+                        ),
+                      ),
+                      value: lang['code']!,
+                      groupValue: isUsingSystemLocale ? null : selectedLocale.languageCode,
+                      onChanged: (value) async {
+                        if (value != null) {
+                          await ref.read(localeProvider.notifier).changeLocale(Locale(value));
+                          if (dialogContext.mounted) Navigator.pop(dialogContext);
+                        }
+                      },
+                      activeColor: Theme.of(context).colorScheme.primary,
+                    )),
+                  ],
                 ),
-                RadioListTile<Locale>(
-                  title: Text(
-                    'Türkçe',
-                    style: GoogleFonts.poppins(
-                      color: isDark ? Colors.white : Colors.black87,
-                    ),
-                  ),
-                  subtitle: Text(
-                    'Turkish',
-                    style: GoogleFonts.poppins(
-                      fontSize: 12,
-                      color: isDark ? Colors.grey[400] : Colors.grey,
-                    ),
-                  ),
-                  value: const Locale('tr'),
-                  groupValue: selectedLocale,
-                  onChanged: (value) async {
-                    if (value != null) {
-                      await ref.read(localeProvider.notifier).changeLocale(value);
-                      if (dialogContext.mounted) Navigator.pop(dialogContext);
-                    }
-                  },
-                  activeColor: Theme.of(context).colorScheme.primary,
-                ),
-              ],
+              ),
             ),
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
           );
