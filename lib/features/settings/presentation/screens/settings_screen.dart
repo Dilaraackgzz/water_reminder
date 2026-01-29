@@ -553,11 +553,34 @@ class SettingsScreen extends ConsumerWidget {
     try {
       // Pick file
       final result = await FilePicker.platform.pickFiles(
-        type: FileType.custom,
-        allowedExtensions: ['json'],
+        type: FileType.any,
+        allowMultiple: false,
+        withData: true,
       );
 
-      if (result == null || result.files.single.path == null) {
+      if (result == null || result.files.isEmpty) {
+        return;
+      }
+
+      final file = result.files.single;
+
+      // Check file extension
+      if (file.extension?.toLowerCase() != 'json') {
+        if (context.mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                l10n.settings_import_failed,
+                style: GoogleFonts.poppins(),
+              ),
+              backgroundColor: Colors.red,
+            ),
+          );
+        }
+        return;
+      }
+
+      if (file.path == null) {
         return;
       }
 
@@ -592,7 +615,7 @@ class SettingsScreen extends ConsumerWidget {
       }
 
       final exportService = ref.read(dataExportServiceProvider);
-      final stats = await exportService.importFromFile(result.files.single.path!);
+      final stats = await exportService.importFromFile(file.path!);
 
       if (context.mounted) {
         Navigator.pop(context); // Close loading dialog
@@ -745,6 +768,7 @@ class SettingsScreen extends ConsumerWidget {
       ref.invalidate(reminderServiceProvider);
     }
   }
+
 }
 
 class _SectionHeader extends StatelessWidget {
