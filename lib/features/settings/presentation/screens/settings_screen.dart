@@ -57,7 +57,13 @@ class SettingsScreen extends ConsumerWidget {
                   // Force rebuild
                   ref.invalidate(reminderServiceProvider);
                 },
-                activeColor: Theme.of(context).colorScheme.primary,
+                activeTrackColor: Theme.of(context).colorScheme.primary.withAlpha(128),
+                thumbColor: WidgetStateProperty.resolveWith((states) {
+                  if (states.contains(WidgetState.selected)) {
+                    return Theme.of(context).colorScheme.primary;
+                  }
+                  return null;
+                }),
               ),
             ),
             const SizedBox(height: 12),
@@ -227,73 +233,104 @@ class SettingsScreen extends ConsumerWidget {
     AppLocalizations l10n,
   ) async {
     final isDark = Theme.of(context).brightness == Brightness.dark;
+    final primaryColor = Theme.of(context).colorScheme.primary;
 
     await showDialog(
       context: context,
-      builder: (dialogContext) => AlertDialog(
-        backgroundColor: isDark ? Colors.grey[900] : Colors.white,
-        title: Text(
-          l10n.settings_units,
-          style: GoogleFonts.poppins(
-            fontWeight: FontWeight.w600,
-            color: isDark ? Colors.white : Colors.black87,
+      builder: (dialogContext) => StatefulBuilder(
+        builder: (dialogContext, setState) {
+          var selectedUnit = currentUnit;
+
+          return AlertDialog(
+            backgroundColor: isDark ? Colors.grey[900] : Colors.white,
+            title: Text(
+              l10n.settings_units,
+              style: GoogleFonts.poppins(
+                fontWeight: FontWeight.w600,
+                color: isDark ? Colors.white : Colors.black87,
+              ),
+            ),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                _buildOptionTile(
+                  title: l10n.settings_unit_ml,
+                  subtitle: l10n.settings_unit_metric,
+                  isSelected: selectedUnit == WaterUnit.milliliters,
+                  isDark: isDark,
+                  primaryColor: primaryColor,
+                  onTap: () async {
+                    await ref.read(waterUnitProvider.notifier).setWaterUnit(WaterUnit.milliliters);
+                    if (dialogContext.mounted) Navigator.pop(dialogContext);
+                  },
+                ),
+                _buildOptionTile(
+                  title: l10n.settings_unit_floz,
+                  subtitle: l10n.settings_unit_imperial,
+                  isSelected: selectedUnit == WaterUnit.fluidOunces,
+                  isDark: isDark,
+                  primaryColor: primaryColor,
+                  onTap: () async {
+                    await ref.read(waterUnitProvider.notifier).setWaterUnit(WaterUnit.fluidOunces);
+                    if (dialogContext.mounted) Navigator.pop(dialogContext);
+                  },
+                ),
+              ],
+            ),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          );
+        },
+      ),
+    );
+  }
+
+  Widget _buildOptionTile({
+    required String title,
+    required String subtitle,
+    required bool isSelected,
+    required bool isDark,
+    required Color primaryColor,
+    required VoidCallback onTap,
+  }) {
+    return ListTile(
+      contentPadding: EdgeInsets.zero,
+      leading: Container(
+        width: 24,
+        height: 24,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          border: Border.all(
+            color: isSelected ? primaryColor : (isDark ? Colors.grey[600]! : Colors.grey[400]!),
+            width: 2,
           ),
         ),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            RadioListTile<WaterUnit>(
-              title: Text(
-                l10n.settings_unit_ml,
-                style: GoogleFonts.poppins(
-                  color: isDark ? Colors.white : Colors.black87,
+        child: isSelected
+            ? Center(
+                child: Container(
+                  width: 12,
+                  height: 12,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: primaryColor,
+                  ),
                 ),
-              ),
-              subtitle: Text(
-                l10n.settings_unit_metric,
-                style: GoogleFonts.poppins(
-                  fontSize: 12,
-                  color: isDark ? Colors.grey[400] : Colors.grey,
-                ),
-              ),
-              value: WaterUnit.milliliters,
-              groupValue: currentUnit,
-              onChanged: (value) async {
-                if (value != null) {
-                  await ref.read(waterUnitProvider.notifier).setWaterUnit(value);
-                  if (dialogContext.mounted) Navigator.pop(dialogContext);
-                }
-              },
-              activeColor: Theme.of(context).colorScheme.primary,
-            ),
-            RadioListTile<WaterUnit>(
-              title: Text(
-                l10n.settings_unit_floz,
-                style: GoogleFonts.poppins(
-                  color: isDark ? Colors.white : Colors.black87,
-                ),
-              ),
-              subtitle: Text(
-                l10n.settings_unit_imperial,
-                style: GoogleFonts.poppins(
-                  fontSize: 12,
-                  color: isDark ? Colors.grey[400] : Colors.grey,
-                ),
-              ),
-              value: WaterUnit.fluidOunces,
-              groupValue: currentUnit,
-              onChanged: (value) async {
-                if (value != null) {
-                  await ref.read(waterUnitProvider.notifier).setWaterUnit(value);
-                  if (dialogContext.mounted) Navigator.pop(dialogContext);
-                }
-              },
-              activeColor: Theme.of(context).colorScheme.primary,
-            ),
-          ],
-        ),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+              )
+            : null,
       ),
+      title: Text(
+        title,
+        style: GoogleFonts.poppins(
+          color: isDark ? Colors.white : Colors.black87,
+        ),
+      ),
+      subtitle: Text(
+        subtitle,
+        style: GoogleFonts.poppins(
+          fontSize: 12,
+          color: isDark ? Colors.grey[400] : Colors.grey,
+        ),
+      ),
+      onTap: onTap,
     );
   }
 
@@ -303,6 +340,8 @@ class SettingsScreen extends ConsumerWidget {
     ThemeMode currentMode,
   ) async {
     final l10n = AppLocalizations.of(context)!;
+    final primaryColor = Theme.of(context).colorScheme.primary;
+
     await showDialog(
       context: context,
       builder: (dialogContext) => Consumer(
@@ -322,77 +361,38 @@ class SettingsScreen extends ConsumerWidget {
             content: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                RadioListTile<ThemeMode>(
-                  title: Text(
-                    l10n.settings_theme_light_mode,
-                    style: GoogleFonts.poppins(
-                      color: isDark ? Colors.white : Colors.black87,
-                    ),
-                  ),
-                  subtitle: Text(
-                    l10n.settings_theme_light_subtitle,
-                    style: GoogleFonts.poppins(
-                      fontSize: 12,
-                      color: isDark ? Colors.grey[400] : Colors.grey,
-                    ),
-                  ),
-                  value: ThemeMode.light,
-                  groupValue: selectedMode,
-                  onChanged: (value) async {
-                    if (value != null) {
-                      await ref.read(themeModeProvider.notifier).setThemeMode(value);
-                      if (dialogContext.mounted) Navigator.pop(dialogContext);
-                    }
+                _buildOptionTile(
+                  title: l10n.settings_theme_light_mode,
+                  subtitle: l10n.settings_theme_light_subtitle,
+                  isSelected: selectedMode == ThemeMode.light,
+                  isDark: isDark,
+                  primaryColor: primaryColor,
+                  onTap: () async {
+                    await ref.read(themeModeProvider.notifier).setThemeMode(ThemeMode.light);
+                    if (dialogContext.mounted) Navigator.pop(dialogContext);
                   },
-                  activeColor: Theme.of(context).colorScheme.primary,
                 ),
-                RadioListTile<ThemeMode>(
-                  title: Text(
-                    l10n.settings_theme_dark_mode,
-                    style: GoogleFonts.poppins(
-                      color: isDark ? Colors.white : Colors.black87,
-                    ),
-                  ),
-                  subtitle: Text(
-                    l10n.settings_theme_dark_subtitle,
-                    style: GoogleFonts.poppins(
-                      fontSize: 12,
-                      color: isDark ? Colors.grey[400] : Colors.grey,
-                    ),
-                  ),
-                  value: ThemeMode.dark,
-                  groupValue: selectedMode,
-                  onChanged: (value) async {
-                    if (value != null) {
-                      await ref.read(themeModeProvider.notifier).setThemeMode(value);
-                      if (dialogContext.mounted) Navigator.pop(dialogContext);
-                    }
+                _buildOptionTile(
+                  title: l10n.settings_theme_dark_mode,
+                  subtitle: l10n.settings_theme_dark_subtitle,
+                  isSelected: selectedMode == ThemeMode.dark,
+                  isDark: isDark,
+                  primaryColor: primaryColor,
+                  onTap: () async {
+                    await ref.read(themeModeProvider.notifier).setThemeMode(ThemeMode.dark);
+                    if (dialogContext.mounted) Navigator.pop(dialogContext);
                   },
-                  activeColor: Theme.of(context).colorScheme.primary,
                 ),
-                RadioListTile<ThemeMode>(
-                  title: Text(
-                    l10n.settings_theme_system_mode,
-                    style: GoogleFonts.poppins(
-                      color: isDark ? Colors.white : Colors.black87,
-                    ),
-                  ),
-                  subtitle: Text(
-                    l10n.settings_theme_system_subtitle,
-                    style: GoogleFonts.poppins(
-                      fontSize: 12,
-                      color: isDark ? Colors.grey[400] : Colors.grey,
-                    ),
-                  ),
-                  value: ThemeMode.system,
-                  groupValue: selectedMode,
-                  onChanged: (value) async {
-                    if (value != null) {
-                      await ref.read(themeModeProvider.notifier).setThemeMode(value);
-                      if (dialogContext.mounted) Navigator.pop(dialogContext);
-                    }
+                _buildOptionTile(
+                  title: l10n.settings_theme_system_mode,
+                  subtitle: l10n.settings_theme_system_subtitle,
+                  isSelected: selectedMode == ThemeMode.system,
+                  isDark: isDark,
+                  primaryColor: primaryColor,
+                  onTap: () async {
+                    await ref.read(themeModeProvider.notifier).setThemeMode(ThemeMode.system);
+                    if (dialogContext.mounted) Navigator.pop(dialogContext);
                   },
-                  activeColor: Theme.of(context).colorScheme.primary,
                 ),
               ],
             ),
@@ -409,6 +409,8 @@ class SettingsScreen extends ConsumerWidget {
     Locale currentLocale,
   ) async {
     final l10n = AppLocalizations.of(context)!;
+    final primaryColor = Theme.of(context).colorScheme.primary;
+
     await showDialog(
       context: context,
       builder: (dialogContext) => Consumer(
@@ -445,58 +447,31 @@ class SettingsScreen extends ConsumerWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     // System Language Option
-                    RadioListTile<bool>(
-                      title: Text(
-                        'System Language',
-                        style: GoogleFonts.poppins(
-                          fontWeight: FontWeight.w500,
-                          color: isDark ? Colors.white : Colors.black87,
-                        ),
-                      ),
-                      subtitle: Text(
-                        'Use device language',
-                        style: GoogleFonts.poppins(
-                          fontSize: 12,
-                          color: isDark ? Colors.grey[400] : Colors.grey,
-                        ),
-                      ),
-                      value: true,
-                      groupValue: isUsingSystemLocale,
-                      onChanged: (value) async {
-                        if (value == true) {
-                          await ref.read(localeProvider.notifier).useSystemLocale();
-                          if (dialogContext.mounted) Navigator.pop(dialogContext);
-                        }
+                    _buildOptionTile(
+                      title: 'System Language',
+                      subtitle: 'Use device language',
+                      isSelected: isUsingSystemLocale,
+                      isDark: isDark,
+                      primaryColor: primaryColor,
+                      onTap: () async {
+                        await ref.read(localeProvider.notifier).useSystemLocale();
+                        if (dialogContext.mounted) Navigator.pop(dialogContext);
                       },
-                      activeColor: Theme.of(context).colorScheme.primary,
                     ),
                     Divider(
                       color: isDark ? Colors.grey[700] : Colors.grey[300],
                     ),
                     // Language list
-                    ...languages.map((lang) => RadioListTile<String>(
-                      title: Text(
-                        lang['name']!,
-                        style: GoogleFonts.poppins(
-                          color: isDark ? Colors.white : Colors.black87,
-                        ),
-                      ),
-                      subtitle: Text(
-                        lang['native']!,
-                        style: GoogleFonts.poppins(
-                          fontSize: 12,
-                          color: isDark ? Colors.grey[400] : Colors.grey,
-                        ),
-                      ),
-                      value: lang['code']!,
-                      groupValue: isUsingSystemLocale ? null : selectedLocale.languageCode,
-                      onChanged: (value) async {
-                        if (value != null) {
-                          await ref.read(localeProvider.notifier).changeLocale(Locale(value));
-                          if (dialogContext.mounted) Navigator.pop(dialogContext);
-                        }
+                    ...languages.map((lang) => _buildOptionTile(
+                      title: lang['name']!,
+                      subtitle: lang['native']!,
+                      isSelected: !isUsingSystemLocale && selectedLocale.languageCode == lang['code'],
+                      isDark: isDark,
+                      primaryColor: primaryColor,
+                      onTap: () async {
+                        await ref.read(localeProvider.notifier).changeLocale(Locale(lang['code']!));
+                        if (dialogContext.mounted) Navigator.pop(dialogContext);
                       },
-                      activeColor: Theme.of(context).colorScheme.primary,
                     )),
                   ],
                 ),
@@ -709,6 +684,7 @@ class SettingsScreen extends ConsumerWidget {
     final intervals = [30, 45, 60, 90, 120, 180];
     final current = service.getReminderInterval();
     final isDark = Theme.of(context).brightness == Brightness.dark;
+    final primaryColor = Theme.of(context).colorScheme.primary;
 
     await showDialog(
       context: context,
@@ -721,28 +697,24 @@ class SettingsScreen extends ConsumerWidget {
             color: isDark ? Colors.white : Colors.black87,
           ),
         ),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: intervals.map((interval) {
-            return RadioListTile<int>(
-              title: Text(
-                '$interval ${l10n.settings_minutes}',
-                style: GoogleFonts.poppins(
-                  color: isDark ? Colors.white : Colors.black87,
-                ),
-              ),
-              value: interval,
-              groupValue: current,
-              onChanged: (value) async {
-                if (value != null) {
-                  await service.setReminderInterval(value);
+        content: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: intervals.map((interval) {
+              return _buildOptionTile(
+                title: '$interval ${l10n.settings_minutes}',
+                subtitle: '',
+                isSelected: current == interval,
+                isDark: isDark,
+                primaryColor: primaryColor,
+                onTap: () async {
+                  await service.setReminderInterval(interval);
                   ref.invalidate(reminderServiceProvider);
                   if (dialogContext.mounted) Navigator.pop(dialogContext);
-                }
-              },
-              activeColor: Theme.of(context).colorScheme.primary,
-            );
-          }).toList(),
+                },
+              );
+            }).toList(),
+          ),
         ),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       ),
