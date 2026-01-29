@@ -1,0 +1,425 @@
+{
+  "@@locale": "nl",
+
+  "appName": "Aqualert",
+  "appTagline": "Blijf gehydrateerd voor een gezond leven",
+
+  "common_cancel": "Annuleren",
+  "common_save": "Opslaan",
+  "common_delete": "Verwijderen",
+  "common_edit": "Bewerken",
+  "common_add": "Toevoegen",
+  "common_ok": "OK",
+  "common_yes": "Ja",
+  "common_no": "Nee",
+  "common_or": "of",
+  "common_done": "Klaar",
+  "common_skip": "Overslaan",
+  "common_next": "Volgende",
+  "common_back": "Terug",
+  "common_continue": "Doorgaan",
+  "common_loading": "Laden...",
+  "common_error": "Fout",
+  "common_success": "Succes",
+
+  "auth_login_title": "Inloggen",
+  "auth_register_title": "Registreren",
+  "auth_email_label": "E-mail",
+  "auth_email_hint": "voorbeeld@email.com",
+  "auth_password_label": "Wachtwoord",
+  "auth_password_hint": "••••••••",
+  "auth_name_label": "Volledige naam",
+  "auth_name_hint": "Jan Jansen",
+  "auth_forgot_password": "Wachtwoord vergeten?",
+  "auth_dont_have_account": "Geen account? ",
+  "auth_already_have_account": "Heb je al een account? ",
+  "auth_sign_in_button": "Inloggen",
+  "auth_sign_up_button": "Registreren",
+  "auth_sign_in_google": "Inloggen met Google",
+  "auth_sign_up_google": "Registreren met Google",
+  "auth_logout": "Uitloggen",
+
+  "auth_validation_email_required": "E-mail is verplicht",
+  "auth_validation_email_invalid": "Voer een geldig e-mailadres in",
+  "auth_validation_password_required": "Wachtwoord is verplicht",
+  "auth_validation_password_min_length": "Wachtwoord moet minimaal 6 tekens bevatten",
+  "auth_validation_name_required": "Naam is verplicht",
+  "auth_validation_name_min_length": "Naam moet minimaal 2 tekens bevatten",
+
+  "auth_email_verification_title": "Verifieer je e-mail",
+  "auth_email_verification_sent": "We hebben een verificatielink gestuurd naar:",
+  "auth_email_verification_instruction": "Controleer je e-mail en klik op de verificatielink.",
+  "auth_email_verification_not_received": "E-mail niet ontvangen?",
+  "auth_email_verification_resend": "Verificatie-e-mail opnieuw verzenden",
+  "auth_email_verification_check": "Ik heb mijn e-mail geverifieerd",
+  "auth_email_verification_success": "E-mail succesvol geverifieerd!",
+  "auth_email_verification_failed": "E-mail nog niet geverifieerd. Controleer je inbox.",
+
+  "auth_forgot_password_title": "Wachtwoord resetten",
+  "auth_forgot_password_instruction": "Voer je e-mailadres in en we sturen je een link om je wachtwoord te resetten.",
+  "auth_forgot_password_button": "Resetlink verzenden",
+  "auth_forgot_password_success": "Wachtwoord reset e-mail verzonden!",
+  "auth_back_to_login": "Terug naar inloggen",
+
+  "home_title": "Home",
+  "home_daily_goal": "Dagelijks doel",
+  "home_today": "Vandaag",
+  "home_custom_amount": "Aangepaste hoeveelheid",
+  "home_amount_label": "Hoeveelheid",
+  "home_add_water_success": "Water toegevoegd!",
+  "home_add_water_failed": "Kon water niet toevoegen",
+  "home_delete_water_confirm": "Dit record verwijderen?",
+  "home_delete_water_success": "Record verwijderd",
+  "home_no_records_today": "Geen records vandaag",
+  "home_start_drinking": "Begin met water drinken!",
+
+  "progress_current": "Huidig",
+  "progress_goal": "Doel",
+  "progress_remaining": "Resterend",
+  "progress_completed": "Doel behaald!",
+  "progress_percentage": "{percent}% van dagelijks doel",
+  "@progress_percentage": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+
+  "motivational_keep_going": "Ga zo door! Je doet het geweldig!",
+  "motivational_almost_there": "Bijna daar! Nog even!",
+  "motivational_goal_reached": "Gefeliciteerd! Je hebt je doel bereikt!",
+  "motivational_good_start": "Goede start! Ga zo door!",
+  "motivational_stay_hydrated": "Blijf de hele dag gehydrateerd!",
+
+  "motivational_100_1": "Gefeliciteerd! Je hebt je doel bereikt!",
+  "motivational_100_2": "Geweldig! Blijf morgen ook gehydrateerd!",
+  "motivational_100_3": "Je bent een hydratatie-kampioen!",
+  "motivational_100_4": "Perfect! Houd de goede gewoonten vol!",
+  "motivational_100_short": "Doel bereikt!",
+
+  "motivational_75_1": "Bijna daar! Nog even!",
+  "motivational_75_2": "Je doet het geweldig! Ga zo door!",
+  "motivational_75_3": "Zo dicht bij je doel!",
+  "motivational_75_4": "Fantastische vooruitgang! Stop niet nu!",
+  "motivational_75_short": "Bijna daar!",
+
+  "motivational_50_1": "Halverwege! Geweldig!",
+  "motivational_50_2": "Goed bezig! Ga zo door!",
+  "motivational_50_3": "Je bent op de goede weg!",
+  "motivational_50_4": "Goede vooruitgang! Blijf consistent!",
+  "motivational_50_short": "Halverwege!",
+
+  "motivational_25_1": "Goede start! Blijf water drinken!",
+  "motivational_25_2": "Geweldige start!",
+  "motivational_25_3": "Goed begin! Blijf gehydrateerd!",
+  "motivational_25_4": "Ga zo door! Elke slok telt!",
+  "motivational_25_short": "Goede start!",
+
+  "motivational_0_1": "Tijd om te hydrateren! Je lichaam zal je dankbaar zijn!",
+  "motivational_0_2": "Begin je hydratatie-reis!",
+  "motivational_0_3": "Begin je dag met water!",
+  "motivational_0_4": "Je gezondheid is belangrijk! Begin met drinken!",
+  "motivational_0_short": "Laten we beginnen!",
+
+  "profile_title": "Profiel",
+  "profile_edit": "Bewerken",
+  "profile_personal_info": "Persoonlijke informatie",
+  "profile_body_metrics": "Lichaamsgegevens",
+  "profile_activity_level": "Activiteitsniveau",
+  "profile_name": "Naam",
+  "profile_email": "E-mail",
+  "profile_age": "Leeftijd",
+  "profile_gender": "Geslacht",
+  "profile_weight": "Gewicht",
+  "profile_height": "Lengte",
+  "profile_bmi": "BMI",
+  "profile_bmi_category": "BMI-categorie",
+  "profile_daily_goal": "Dagelijks waterdoel",
+  "profile_use_calculated_goal": "Berekend doel gebruiken",
+  "profile_custom_goal": "Aangepast doel",
+  "profile_save_success": "Profiel bijgewerkt",
+  "profile_save_failed": "Kon profiel niet bijwerken",
+  "profile_user_default": "Gebruiker",
+
+  "gender_male": "Man",
+  "gender_female": "Vrouw",
+  "gender_other": "Anders",
+
+  "activity_sedentary": "Zittend",
+  "activity_light": "Licht actief",
+  "activity_moderate": "Matig actief",
+  "activity_very_active": "Zeer actief",
+  "activity_extra_active": "Extra actief",
+
+  "bmi_underweight": "Ondergewicht",
+  "bmi_normal": "Normaal gewicht",
+  "bmi_overweight": "Overgewicht",
+  "bmi_obese": "Obesitas",
+
+  "settings_title": "Instellingen",
+  "settings_notifications": "Meldingen",
+  "settings_reminders": "Herinneringen",
+  "settings_theme": "Thema",
+  "settings_units": "Eenheden",
+  "settings_language": "Taal",
+  "settings_profile": "Profielinstellingen",
+  "settings_daily_goal": "Doelinstellingen",
+  "settings_data": "Gegevensbeheer",
+  "settings_export_data": "Gegevens exporteren",
+  "settings_import_data": "Gegevens importeren",
+  "settings_help": "Help",
+  "settings_about": "Over",
+
+  "settings_enable_notifications": "Meldingen inschakelen",
+  "settings_reminder_interval": "Herinneringsinterval",
+  "settings_reminder_start_time": "Starttijd",
+  "settings_reminder_end_time": "Eindtijd",
+  "settings_test_notification": "Testmelding",
+
+  "settings_theme_light": "Licht",
+  "settings_theme_dark": "Donker",
+  "settings_theme_system": "Systeemstandaard",
+
+  "settings_unit_ml": "Milliliter (ml)",
+  "settings_unit_floz": "Fluid ounces (fl oz)",
+  "settings_unit_metric": "Metrisch systeem",
+  "settings_unit_imperial": "Imperiaal systeem",
+
+  "settings_subtitle": "Pas je ervaring aan",
+  "settings_reminders_active": "Herinneringen zijn actief",
+  "settings_reminders_inactive": "Schakel in voor herinneringen",
+  "settings_minutes": "minuten",
+  "settings_export_subtitle": "Maak een back-up van je gegevens",
+  "settings_import_subtitle": "Herstel vanuit back-upbestand",
+  "settings_profile_subtitle": "Werk je informatie bij",
+  "settings_daily_goal_subtitle": "Beheer je hydratiedoel",
+  "settings_theme_dialog_title": "Thema",
+  "settings_theme_light_mode": "Lichte modus",
+  "settings_theme_dark_mode": "Donkere modus",
+  "settings_theme_system_mode": "Systeemstandaard",
+  "settings_theme_light_subtitle": "Gebruik licht thema",
+  "settings_theme_dark_subtitle": "Gebruik donker thema",
+  "settings_theme_system_subtitle": "Volg systeemthema",
+  "settings_language_dialog_title": "Taal",
+  "settings_export_loading": "Gegevens exporteren...",
+  "settings_export_success_message": "Gegevens succesvol geëxporteerd!",
+  "settings_export_failed_message": "Export mislukt: {error}",
+  "@settings_export_failed_message": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "settings_import_loading": "Gegevens importeren...",
+  "settings_import_complete": "Import voltooid",
+  "settings_import_success_subtitle": "Succesvol geïmporteerd:",
+  "settings_import_water_records": "waterrecords",
+  "settings_import_daily_goals": "dagelijkse doelen",
+  "settings_import_duplicate_skipped": "duplicaten overgeslagen",
+  "settings_import_failed_message": "Import mislukt: {error}",
+  "@settings_import_failed_message": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "settings_reminder_interval_title": "Herinneringsinterval",
+
+  "settings_language_coming_soon": "Binnenkort beschikbaar",
+  "settings_export_success": "Gegevens geëxporteerd",
+  "settings_export_failed": "Export mislukt",
+  "settings_import_success": "Gegevens geïmporteerd",
+  "settings_import_failed": "Import mislukt",
+  "settings_import_stats": "{imported} records geïmporteerd, {skipped} duplicaten overgeslagen",
+  "@settings_import_stats": {
+    "placeholders": {
+      "imported": {
+        "type": "int"
+      },
+      "skipped": {
+        "type": "int"
+      }
+    }
+  },
+
+  "statistics_title": "Statistieken",
+  "statistics_weekly": "Wekelijks",
+  "statistics_monthly": "Maandelijks",
+  "statistics_yearly": "Jaarlijks",
+  "statistics_average": "Gemiddeld",
+  "statistics_total": "Totaal",
+  "statistics_best_day": "Beste dag",
+  "statistics_goal_achievement": "Doelbereik",
+  "statistics_no_data": "Geen gegevens voor deze periode",
+  "statistics_chart_label": "Waterinname",
+
+  "achievements_title": "Prestaties",
+  "achievements_unlocked": "Ontgrendeld",
+  "achievements_locked": "Vergrendeld",
+  "achievements_progress": "Voortgang",
+  "achievements_reward_points": "Beloningspunten",
+  "achievements_total_points": "Totaal punten: {points}",
+  "@achievements_total_points": {
+    "placeholders": {
+      "points": {
+        "type": "int"
+      }
+    }
+  },
+
+  "achievement_first_drop": "Eerste druppel",
+  "achievement_first_drop_desc": "Log je eerste waterinname",
+  "achievement_daily_goal_1": "Doelbereiker",
+  "achievement_daily_goal_1_desc": "Bereik je dagelijkse doel één keer",
+  "achievement_streak_3": "3-daagse reeks",
+  "achievement_streak_3_desc": "Houd een 3-daagse reeks vol",
+  "achievement_streak_7": "Week-krijger",
+  "achievement_streak_7_desc": "Houd een 7-daagse reeks vol",
+  "achievement_streak_30": "Maand-meester",
+  "achievement_streak_30_desc": "Houd een 30-daagse reeks vol",
+  "achievement_total_10l": "10 liter",
+  "achievement_total_10l_desc": "Drink in totaal 10 liter",
+  "achievement_total_100l": "100 liter",
+  "achievement_total_100l_desc": "Drink in totaal 100 liter",
+  "achievement_consistency": "Consistentie-week",
+  "achievement_consistency_desc": "Bereik je doel 7 dagen op rij",
+
+  "reminders_title": "Herinneringen",
+  "reminders_active": "Actieve herinneringen",
+  "reminders_pending": "Wachtende meldingen",
+  "reminders_interval_30": "Elke 30 minuten",
+  "reminders_interval_45": "Elke 45 minuten",
+  "reminders_interval_60": "Elk uur",
+  "reminders_interval_90": "Elke 1,5 uur",
+  "reminders_interval_120": "Elke 2 uur",
+  "reminders_interval_180": "Elke 3 uur",
+
+  "notification_reminder_title": "Tijd om water te drinken!",
+  "notification_reminder_body": "Blijf gehydrateerd! Drink nu wat water.",
+
+  "streak_current": "Huidige reeks",
+  "streak_days": "{days} dagen",
+  "@streak_days": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "streak_keep_going": "Houd de reeks vol!",
+  "streak_personal_best": "Persoonlijk record",
+  "streak_best": "Beste!",
+  "streak_longest": "Langste",
+  "streak_next_milestone": "Volgende mijlpaal",
+  "streak_start_today": "Begin vandaag je reeks!",
+  "streak_complete_goal": "Voltooi je dagelijkse doel om een reeks op te bouwen",
+  "streak_start": "Begin je reeks!",
+  "streak_error": "Kon reeksgegevens niet laden",
+  "streak_day_singular": "dag",
+  "streak_day_plural": "dagen",
+
+  "onboarding_title_1": "Volg je water",
+  "onboarding_desc_1": "Log eenvoudig je dagelijkse waterinname met één tik",
+  "onboarding_title_2": "Slimme herinneringen",
+  "onboarding_desc_2": "Krijg tijdige herinneringen om de hele dag gehydrateerd te blijven",
+  "onboarding_title_3": "Volg voortgang",
+  "onboarding_desc_3": "Bekijk je hydratiestatistieken en bereik je doelen",
+  "onboarding_title_4": "Blijf gezond",
+  "onboarding_desc_4": "Bouw gezonde gewoonten op en verbeter je algehele welzijn",
+  "onboarding_get_started": "Aan de slag",
+
+  "drawer_home": "Home",
+  "drawer_statistics": "Statistieken",
+  "drawer_achievements": "Prestaties",
+  "drawer_profile": "Profiel",
+  "drawer_reminders": "Herinneringen",
+  "drawer_settings": "Instellingen",
+  "drawer_help": "Help",
+  "drawer_about": "Over",
+  "drawer_logout": "Uitloggen",
+
+  "about_title": "Aqualert",
+  "about_version": "Versie 1.0.0",
+  "about_description": "Blijf gehydrateerd en gezond met Aqualert. Volg je dagelijkse waterinname en bereik je hydratiedoelen!",
+  "about_copyright": "© 2024 Aqualert. Alle rechten voorbehouden.",
+  "about_close": "Sluiten",
+
+  "help_title": "Help",
+  "help_subtitle": "Krijg hulp",
+  "help_faq": "Veelgestelde vragen",
+  "help_contact": "Neem contact op",
+  "help_version": "Versie",
+  "help_app_info": "App-informatie",
+  "help_coming_soon": "Help - Binnenkort beschikbaar!",
+
+  "help_faq_section": "FAQ",
+  "help_features_section": "Functies gids",
+  "help_about_section": "Over",
+
+  "faq_1_q": "Hoe wordt mijn dagelijkse waterdoel berekend?",
+  "faq_1_a": "Je dagelijkse waterdoel wordt berekend op basis van je gewicht, lengte, leeftijd, geslacht en activiteitsniveau met wetenschappelijke formules. Je kunt ook een aangepast doel instellen in Profielinstellingen.",
+
+  "faq_2_q": "Hoe werken herinneringen?",
+  "faq_2_a": "Je kunt herinneringsintervallen (30-180 minuten) en start/eindtijden instellen. De app stuurt je meldingen gedurende deze periode.",
+
+  "faq_3_q": "Wat zijn reeksen en hoe werken ze?",
+  "faq_3_a": "Reeksen volgen opeenvolgende dagen waarop je je dagelijkse waterdoel hebt bereikt. Blijf elke dag water drinken om je reeks te behouden en te vergroten!",
+
+  "faq_4_q": "Hoe kan ik de meeteenheden wijzigen?",
+  "faq_4_a": "Ga naar Instellingen → Eenheden en schakel tussen milliliter (ml) en fluid ounces (fl oz). Alle metingen worden automatisch bijgewerkt.",
+
+  "faq_5_q": "Kan ik mijn watertrackinggegevens exporteren?",
+  "faq_5_a": "Ja! Ga naar Instellingen → Gegevensbeheer → Gegevens exporteren. Je kunt je gegevens delen of opslaan als JSON-bestand en later importeren.",
+
+  "faq_6_q": "Hoe werken prestaties?",
+  "faq_6_a": "Voltooi watertracking-mijlpalen om prestaties te ontgrendelen en beloningspunten te verdienen. Volg je voortgang in het Prestaties-scherm.",
+
+  "feature_tracking_title": "Water tracking",
+  "feature_tracking_desc": "Log eenvoudig je dagelijkse waterinname met snelle toevoegknoppen (250ml, 350ml, 500ml, 750ml) of voer een aangepaste hoeveelheid in.",
+
+  "feature_reminders_title": "Slimme herinneringen",
+  "feature_reminders_desc": "Stel aanpasbare herinneringsintervallen en actieve uren in. Vergeet nooit om de hele dag water te drinken.",
+
+  "feature_statistics_title": "Statistieken en inzichten",
+  "feature_statistics_desc": "Bekijk je waterconsumptietrends met wekelijkse, maandelijkse en jaarlijkse grafieken. Volg je voortgang in de tijd.",
+
+  "feature_achievements_title": "Prestaties en reeksen",
+  "feature_achievements_desc": "Verdien prestaties en behoud dagelijkse reeksen door je waterdoelen te bereiken. Blijf gemotiveerd met gamification!",
+
+  "feature_profile_title": "Profiel en doelen",
+  "feature_profile_desc": "Stel je persoonlijke informatie in en laat de app je optimale dagelijkse waterdoel berekenen op basis van je lichaamsgegevens.",
+
+  "help_contact_email": "Contact via e-mail",
+  "help_contact_email_address": "dilaraacikgoz.dev@gmail.com",
+  "help_rate_app": "Beoordeel onze app",
+  "help_rate_desc": "Geniet je van Aqualert? Laat een recensie achter!",
+
+  "help_build_number": "Build",
+  "help_copyright": "© 2024 Aqualert. Alle rechten voorbehouden.",
+  "help_made_with": "Gemaakt met ❤️ voor je gezondheid",
+
+  "error_generic": "Er is iets misgegaan. Probeer het opnieuw.",
+  "error_network": "Netwerkfout. Controleer je verbinding.",
+  "error_auth_failed": "Authenticatie mislukt. Probeer het opnieuw.",
+  "error_permission_denied": "Toestemming geweigerd.",
+
+  "unit_ml": "ml",
+  "unit_floz": "fl oz",
+  "unit_kg": "kg",
+  "unit_lb": "lb",
+  "unit_cm": "cm",
+  "unit_ft": "ft",
+  "unit_liter": "L",
+
+  "time_morning": "Ochtend",
+  "time_afternoon": "Middag",
+  "time_evening": "Avond",
+  "time_night": "Nacht",
+
+  "help_privacy_policy": "Privacybeleid",
+  "help_privacy_policy_desc": "Bekijk ons privacybeleid",
+  "help_privacy_policy_error": "Kon privacybeleid niet openen"
+}

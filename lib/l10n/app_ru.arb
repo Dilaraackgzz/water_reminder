@@ -1,0 +1,425 @@
+{
+  "@@locale": "ru",
+
+  "appName": "Aqualert",
+  "appTagline": "Оставайтесь гидратированными для здоровой жизни",
+
+  "common_cancel": "Отмена",
+  "common_save": "Сохранить",
+  "common_delete": "Удалить",
+  "common_edit": "Редактировать",
+  "common_add": "Добавить",
+  "common_ok": "ОК",
+  "common_yes": "Да",
+  "common_no": "Нет",
+  "common_or": "или",
+  "common_done": "Готово",
+  "common_skip": "Пропустить",
+  "common_next": "Далее",
+  "common_back": "Назад",
+  "common_continue": "Продолжить",
+  "common_loading": "Загрузка...",
+  "common_error": "Ошибка",
+  "common_success": "Успешно",
+
+  "auth_login_title": "Вход",
+  "auth_register_title": "Регистрация",
+  "auth_email_label": "Email",
+  "auth_email_hint": "example@email.com",
+  "auth_password_label": "Пароль",
+  "auth_password_hint": "••••••••",
+  "auth_name_label": "Полное имя",
+  "auth_name_hint": "Иван Иванов",
+  "auth_forgot_password": "Забыли пароль?",
+  "auth_dont_have_account": "Нет аккаунта? ",
+  "auth_already_have_account": "Уже есть аккаунт? ",
+  "auth_sign_in_button": "Войти",
+  "auth_sign_up_button": "Зарегистрироваться",
+  "auth_sign_in_google": "Войти через Google",
+  "auth_sign_up_google": "Регистрация через Google",
+  "auth_logout": "Выйти",
+
+  "auth_validation_email_required": "Требуется email",
+  "auth_validation_email_invalid": "Введите корректный email",
+  "auth_validation_password_required": "Требуется пароль",
+  "auth_validation_password_min_length": "Пароль должен быть не менее 6 символов",
+  "auth_validation_name_required": "Требуется имя",
+  "auth_validation_name_min_length": "Имя должно быть не менее 2 символов",
+
+  "auth_email_verification_title": "Подтвердите Email",
+  "auth_email_verification_sent": "Мы отправили ссылку для подтверждения на:",
+  "auth_email_verification_instruction": "Проверьте почту и нажмите на ссылку для подтверждения.",
+  "auth_email_verification_not_received": "Не получили письмо?",
+  "auth_email_verification_resend": "Отправить повторно",
+  "auth_email_verification_check": "Я подтвердил email",
+  "auth_email_verification_success": "Email успешно подтвержден!",
+  "auth_email_verification_failed": "Email еще не подтвержден. Проверьте почту.",
+
+  "auth_forgot_password_title": "Сброс пароля",
+  "auth_forgot_password_instruction": "Введите email, и мы отправим ссылку для сброса пароля.",
+  "auth_forgot_password_button": "Отправить ссылку",
+  "auth_forgot_password_success": "Письмо для сброса пароля отправлено!",
+  "auth_back_to_login": "Вернуться к входу",
+
+  "home_title": "Главная",
+  "home_daily_goal": "Дневная цель",
+  "home_today": "Сегодня",
+  "home_custom_amount": "Другое количество",
+  "home_amount_label": "Количество",
+  "home_add_water_success": "Вода добавлена!",
+  "home_add_water_failed": "Не удалось добавить воду",
+  "home_delete_water_confirm": "Удалить эту запись?",
+  "home_delete_water_success": "Запись удалена",
+  "home_no_records_today": "Сегодня нет записей",
+  "home_start_drinking": "Начните пить воду!",
+
+  "progress_current": "Текущий",
+  "progress_goal": "Цель",
+  "progress_remaining": "Осталось",
+  "progress_completed": "Цель достигнута!",
+  "progress_percentage": "{percent}% от дневной цели",
+  "@progress_percentage": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+
+  "motivational_keep_going": "Продолжайте! Вы молодец!",
+  "motivational_almost_there": "Почти готово! Еще немного!",
+  "motivational_goal_reached": "Поздравляем! Вы достигли цели!",
+  "motivational_good_start": "Отличное начало! Продолжайте!",
+  "motivational_stay_hydrated": "Поддерживайте гидратацию весь день!",
+
+  "motivational_100_1": "Поздравляем! Вы достигли цели!",
+  "motivational_100_2": "Отличная работа! Продолжайте завтра!",
+  "motivational_100_3": "Вы чемпион по гидратации!",
+  "motivational_100_4": "Идеально! Сохраняйте привычку!",
+  "motivational_100_short": "Цель достигнута!",
+
+  "motivational_75_1": "Почти готово! Еще немного!",
+  "motivational_75_2": "Отлично! Продолжайте!",
+  "motivational_75_3": "Так близко к цели!",
+  "motivational_75_4": "Фантастический прогресс!",
+  "motivational_75_short": "Почти готово!",
+
+  "motivational_50_1": "Половина пути! Вы молодец!",
+  "motivational_50_2": "Отличная работа! Продолжайте!",
+  "motivational_50_3": "Вы на правильном пути!",
+  "motivational_50_4": "Хороший прогресс!",
+  "motivational_50_short": "Половина!",
+
+  "motivational_25_1": "Хорошее начало! Пейте воду!",
+  "motivational_25_2": "Отличный старт!",
+  "motivational_25_3": "Хорошее начало! Пейте больше!",
+  "motivational_25_4": "Продолжайте! Каждый глоток важен!",
+  "motivational_25_short": "Хорошее начало!",
+
+  "motivational_0_1": "Время пить воду! Ваше тело скажет спасибо!",
+  "motivational_0_2": "Начните путь к гидратации!",
+  "motivational_0_3": "Начните день со стакана воды!",
+  "motivational_0_4": "Ваше здоровье важно! Начните пить!",
+  "motivational_0_short": "Начнем!",
+
+  "profile_title": "Профиль",
+  "profile_edit": "Редактировать",
+  "profile_personal_info": "Личная информация",
+  "profile_body_metrics": "Параметры тела",
+  "profile_activity_level": "Уровень активности",
+  "profile_name": "Имя",
+  "profile_email": "Email",
+  "profile_age": "Возраст",
+  "profile_gender": "Пол",
+  "profile_weight": "Вес",
+  "profile_height": "Рост",
+  "profile_bmi": "ИМТ",
+  "profile_bmi_category": "Категория ИМТ",
+  "profile_daily_goal": "Дневная норма воды",
+  "profile_use_calculated_goal": "Использовать расчетную цель",
+  "profile_custom_goal": "Своя цель",
+  "profile_save_success": "Профиль обновлен",
+  "profile_save_failed": "Не удалось обновить профиль",
+  "profile_user_default": "Пользователь",
+
+  "gender_male": "Мужской",
+  "gender_female": "Женский",
+  "gender_other": "Другой",
+
+  "activity_sedentary": "Сидячий",
+  "activity_light": "Легкая активность",
+  "activity_moderate": "Умеренная активность",
+  "activity_very_active": "Высокая активность",
+  "activity_extra_active": "Очень высокая активность",
+
+  "bmi_underweight": "Недостаточный вес",
+  "bmi_normal": "Нормальный вес",
+  "bmi_overweight": "Избыточный вес",
+  "bmi_obese": "Ожирение",
+
+  "settings_title": "Настройки",
+  "settings_notifications": "Уведомления",
+  "settings_reminders": "Напоминания",
+  "settings_theme": "Тема",
+  "settings_units": "Единицы",
+  "settings_language": "Язык",
+  "settings_profile": "Настройки профиля",
+  "settings_daily_goal": "Настройки цели",
+  "settings_data": "Управление данными",
+  "settings_export_data": "Экспорт данных",
+  "settings_import_data": "Импорт данных",
+  "settings_help": "Помощь",
+  "settings_about": "О приложении",
+
+  "settings_enable_notifications": "Включить уведомления",
+  "settings_reminder_interval": "Интервал напоминаний",
+  "settings_reminder_start_time": "Время начала",
+  "settings_reminder_end_time": "Время окончания",
+  "settings_test_notification": "Тест уведомления",
+
+  "settings_theme_light": "Светлая",
+  "settings_theme_dark": "Темная",
+  "settings_theme_system": "Системная",
+
+  "settings_unit_ml": "Миллилитры (мл)",
+  "settings_unit_floz": "Жидкие унции (fl oz)",
+  "settings_unit_metric": "Метрическая система",
+  "settings_unit_imperial": "Имперская система",
+
+  "settings_subtitle": "Настройте приложение",
+  "settings_reminders_active": "Напоминания активны",
+  "settings_reminders_inactive": "Включите напоминания",
+  "settings_minutes": "минут",
+  "settings_export_subtitle": "Резервная копия данных",
+  "settings_import_subtitle": "Восстановить из файла",
+  "settings_profile_subtitle": "Обновите информацию",
+  "settings_daily_goal_subtitle": "Управление целью",
+  "settings_theme_dialog_title": "Тема",
+  "settings_theme_light_mode": "Светлая тема",
+  "settings_theme_dark_mode": "Темная тема",
+  "settings_theme_system_mode": "Системная тема",
+  "settings_theme_light_subtitle": "Светлая тема",
+  "settings_theme_dark_subtitle": "Темная тема",
+  "settings_theme_system_subtitle": "Следовать системе",
+  "settings_language_dialog_title": "Язык",
+  "settings_export_loading": "Экспорт данных...",
+  "settings_export_success_message": "Данные экспортированы!",
+  "settings_export_failed_message": "Ошибка экспорта: {error}",
+  "@settings_export_failed_message": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "settings_import_loading": "Импорт данных...",
+  "settings_import_complete": "Импорт завершен",
+  "settings_import_success_subtitle": "Успешно импортировано:",
+  "settings_import_water_records": "записей воды",
+  "settings_import_daily_goals": "дневных целей",
+  "settings_import_duplicate_skipped": "дубликатов пропущено",
+  "settings_import_failed_message": "Ошибка импорта: {error}",
+  "@settings_import_failed_message": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "settings_reminder_interval_title": "Интервал напоминаний",
+
+  "settings_language_coming_soon": "Скоро",
+  "settings_export_success": "Данные экспортированы",
+  "settings_export_failed": "Ошибка экспорта",
+  "settings_import_success": "Данные импортированы",
+  "settings_import_failed": "Ошибка импорта",
+  "settings_import_stats": "Импортировано {imported} записей, пропущено {skipped} дубликатов",
+  "@settings_import_stats": {
+    "placeholders": {
+      "imported": {
+        "type": "int"
+      },
+      "skipped": {
+        "type": "int"
+      }
+    }
+  },
+
+  "statistics_title": "Статистика",
+  "statistics_weekly": "Неделя",
+  "statistics_monthly": "Месяц",
+  "statistics_yearly": "Год",
+  "statistics_average": "Среднее",
+  "statistics_total": "Всего",
+  "statistics_best_day": "Лучший день",
+  "statistics_goal_achievement": "Достижение цели",
+  "statistics_no_data": "Нет данных за этот период",
+  "statistics_chart_label": "Потребление воды",
+
+  "achievements_title": "Достижения",
+  "achievements_unlocked": "Разблокировано",
+  "achievements_locked": "Заблокировано",
+  "achievements_progress": "Прогресс",
+  "achievements_reward_points": "Очки наград",
+  "achievements_total_points": "Всего очков: {points}",
+  "@achievements_total_points": {
+    "placeholders": {
+      "points": {
+        "type": "int"
+      }
+    }
+  },
+
+  "achievement_first_drop": "Первая капля",
+  "achievement_first_drop_desc": "Запишите первое потребление воды",
+  "achievement_daily_goal_1": "Достиженец",
+  "achievement_daily_goal_1_desc": "Достигните дневной цели",
+  "achievement_streak_3": "3-дневная серия",
+  "achievement_streak_3_desc": "Поддерживайте серию 3 дня",
+  "achievement_streak_7": "Недельный воин",
+  "achievement_streak_7_desc": "Поддерживайте серию 7 дней",
+  "achievement_streak_30": "Мастер месяца",
+  "achievement_streak_30_desc": "Поддерживайте серию 30 дней",
+  "achievement_total_10l": "10 литров",
+  "achievement_total_10l_desc": "Выпейте 10 литров всего",
+  "achievement_total_100l": "100 литров",
+  "achievement_total_100l_desc": "Выпейте 100 литров всего",
+  "achievement_consistency": "Стабильная неделя",
+  "achievement_consistency_desc": "Достигайте цели 7 дней подряд",
+
+  "reminders_title": "Напоминания",
+  "reminders_active": "Активные напоминания",
+  "reminders_pending": "Ожидающие уведомления",
+  "reminders_interval_30": "Каждые 30 минут",
+  "reminders_interval_45": "Каждые 45 минут",
+  "reminders_interval_60": "Каждый час",
+  "reminders_interval_90": "Каждые 1.5 часа",
+  "reminders_interval_120": "Каждые 2 часа",
+  "reminders_interval_180": "Каждые 3 часа",
+
+  "notification_reminder_title": "Время пить воду!",
+  "notification_reminder_body": "Пейте воду! Поддерживайте гидратацию.",
+
+  "streak_current": "Текущая серия",
+  "streak_days": "{days} дней",
+  "@streak_days": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "streak_keep_going": "Продолжайте серию!",
+  "streak_personal_best": "Личный рекорд",
+  "streak_best": "Лучший!",
+  "streak_longest": "Самая длинная",
+  "streak_next_milestone": "Следующая цель",
+  "streak_start_today": "Начните серию сегодня!",
+  "streak_complete_goal": "Достигните дневной цели для серии",
+  "streak_start": "Начните серию!",
+  "streak_error": "Ошибка загрузки данных",
+  "streak_day_singular": "день",
+  "streak_day_plural": "дней",
+
+  "onboarding_title_1": "Отслеживайте воду",
+  "onboarding_desc_1": "Легко записывайте потребление воды одним нажатием",
+  "onboarding_title_2": "Умные напоминания",
+  "onboarding_desc_2": "Получайте напоминания пить воду в течение дня",
+  "onboarding_title_3": "Следите за прогрессом",
+  "onboarding_desc_3": "Просматривайте статистику и достигайте целей",
+  "onboarding_title_4": "Будьте здоровы",
+  "onboarding_desc_4": "Формируйте здоровые привычки",
+  "onboarding_get_started": "Начать",
+
+  "drawer_home": "Главная",
+  "drawer_statistics": "Статистика",
+  "drawer_achievements": "Достижения",
+  "drawer_profile": "Профиль",
+  "drawer_reminders": "Напоминания",
+  "drawer_settings": "Настройки",
+  "drawer_help": "Помощь",
+  "drawer_about": "О приложении",
+  "drawer_logout": "Выйти",
+
+  "about_title": "Aqualert",
+  "about_version": "Версия 1.0.0",
+  "about_description": "Следите за гидратацией с Aqualert. Отслеживайте потребление воды и достигайте целей!",
+  "about_copyright": "© 2024 Aqualert. Все права защищены.",
+  "about_close": "Закрыть",
+
+  "help_title": "Помощь",
+  "help_subtitle": "Получите помощь",
+  "help_faq": "Часто задаваемые вопросы",
+  "help_contact": "Связаться с нами",
+  "help_version": "Версия",
+  "help_app_info": "Информация о приложении",
+  "help_coming_soon": "Помощь - Скоро!",
+
+  "help_faq_section": "ЧЗВ",
+  "help_features_section": "Функции",
+  "help_about_section": "О приложении",
+
+  "faq_1_q": "Как рассчитывается дневная норма воды?",
+  "faq_1_a": "Дневная норма рассчитывается на основе веса, роста, возраста, пола и уровня активности. Вы также можете установить свою цель в настройках профиля.",
+
+  "faq_2_q": "Как работают напоминания?",
+  "faq_2_a": "Вы можете установить интервал (30-180 минут) и время начала/окончания. Приложение будет отправлять уведомления в этот период.",
+
+  "faq_3_q": "Что такое серии и как они работают?",
+  "faq_3_a": "Серии отслеживают дни подряд, когда вы достигали дневной цели. Пейте воду каждый день, чтобы увеличивать серию!",
+
+  "faq_4_q": "Как изменить единицы измерения?",
+  "faq_4_a": "Перейдите в Настройки → Единицы и выберите миллилитры (мл) или жидкие унции (fl oz). Все измерения обновятся автоматически.",
+
+  "faq_5_q": "Можно ли экспортировать данные?",
+  "faq_5_a": "Да! Перейдите в Настройки → Управление данными → Экспорт данных. Вы можете сохранить данные в JSON файл и импортировать позже.",
+
+  "faq_6_q": "Как работают достижения?",
+  "faq_6_a": "Выполняйте цели отслеживания воды, чтобы разблокировать достижения и получать очки. Следите за прогрессом на экране достижений.",
+
+  "feature_tracking_title": "Отслеживание воды",
+  "feature_tracking_desc": "Легко записывайте потребление воды кнопками быстрого добавления (250мл, 350мл, 500мл, 750мл) или введите свое количество.",
+
+  "feature_reminders_title": "Умные напоминания",
+  "feature_reminders_desc": "Настройте интервал напоминаний и активные часы. Никогда не забывайте пить воду.",
+
+  "feature_statistics_title": "Статистика",
+  "feature_statistics_desc": "Просматривайте тренды потребления воды с недельными, месячными и годовыми графиками.",
+
+  "feature_achievements_title": "Достижения и серии",
+  "feature_achievements_desc": "Зарабатывайте достижения и поддерживайте серии, достигая целей. Мотивация через геймификацию!",
+
+  "feature_profile_title": "Профиль и цели",
+  "feature_profile_desc": "Установите личную информацию, и приложение рассчитает оптимальную дневную норму воды.",
+
+  "help_contact_email": "Связаться по Email",
+  "help_contact_email_address": "dilaraacikgoz.dev@gmail.com",
+  "help_rate_app": "Оценить приложение",
+  "help_rate_desc": "Нравится Aqualert? Оставьте отзыв!",
+
+  "help_build_number": "Сборка",
+  "help_copyright": "© 2024 Aqualert. Все права защищены.",
+  "help_made_with": "Сделано с ❤️ для вашего здоровья",
+
+  "error_generic": "Что-то пошло не так. Попробуйте снова.",
+  "error_network": "Ошибка сети. Проверьте подключение.",
+  "error_auth_failed": "Ошибка авторизации. Попробуйте снова.",
+  "error_permission_denied": "Доступ запрещен.",
+
+  "unit_ml": "мл",
+  "unit_floz": "fl oz",
+  "unit_kg": "кг",
+  "unit_lb": "lb",
+  "unit_cm": "см",
+  "unit_ft": "ft",
+  "unit_liter": "л",
+
+  "time_morning": "Утро",
+  "time_afternoon": "День",
+  "time_evening": "Вечер",
+  "time_night": "Ночь",
+
+  "help_privacy_policy": "Политика конфиденциальности",
+  "help_privacy_policy_desc": "Просмотреть политику конфиденциальности",
+  "help_privacy_policy_error": "Не удалось открыть политику конфиденциальности"
+}

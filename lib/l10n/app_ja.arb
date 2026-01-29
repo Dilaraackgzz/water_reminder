@@ -1,0 +1,425 @@
+{
+  "@@locale": "ja",
+
+  "appName": "Aqualert",
+  "appTagline": "健康的な生活のために水分補給を",
+
+  "common_cancel": "キャンセル",
+  "common_save": "保存",
+  "common_delete": "削除",
+  "common_edit": "編集",
+  "common_add": "追加",
+  "common_ok": "OK",
+  "common_yes": "はい",
+  "common_no": "いいえ",
+  "common_or": "または",
+  "common_done": "完了",
+  "common_skip": "スキップ",
+  "common_next": "次へ",
+  "common_back": "戻る",
+  "common_continue": "続ける",
+  "common_loading": "読み込み中...",
+  "common_error": "エラー",
+  "common_success": "成功",
+
+  "auth_login_title": "サインイン",
+  "auth_register_title": "サインアップ",
+  "auth_email_label": "メールアドレス",
+  "auth_email_hint": "example@email.com",
+  "auth_password_label": "パスワード",
+  "auth_password_hint": "••••••••",
+  "auth_name_label": "氏名",
+  "auth_name_hint": "山田太郎",
+  "auth_forgot_password": "パスワードをお忘れですか？",
+  "auth_dont_have_account": "アカウントをお持ちでないですか？",
+  "auth_already_have_account": "すでにアカウントをお持ちですか？",
+  "auth_sign_in_button": "サインイン",
+  "auth_sign_up_button": "サインアップ",
+  "auth_sign_in_google": "Googleでサインイン",
+  "auth_sign_up_google": "Googleでサインアップ",
+  "auth_logout": "ログアウト",
+
+  "auth_validation_email_required": "メールアドレスを入力してください",
+  "auth_validation_email_invalid": "有効なメールアドレスを入力してください",
+  "auth_validation_password_required": "パスワードを入力してください",
+  "auth_validation_password_min_length": "パスワードは6文字以上必要です",
+  "auth_validation_name_required": "名前を入力してください",
+  "auth_validation_name_min_length": "名前は2文字以上必要です",
+
+  "auth_email_verification_title": "メール確認",
+  "auth_email_verification_sent": "確認リンクを送信しました：",
+  "auth_email_verification_instruction": "メールを確認し、確認リンクをクリックしてください。",
+  "auth_email_verification_not_received": "メールが届きませんでしたか？",
+  "auth_email_verification_resend": "確認メールを再送信",
+  "auth_email_verification_check": "メールを確認しました",
+  "auth_email_verification_success": "メールが確認されました！",
+  "auth_email_verification_failed": "メールはまだ確認されていません。受信箱を確認してください。",
+
+  "auth_forgot_password_title": "パスワードリセット",
+  "auth_forgot_password_instruction": "メールアドレスを入力すると、パスワードリセットリンクを送信します。",
+  "auth_forgot_password_button": "リセットリンクを送信",
+  "auth_forgot_password_success": "パスワードリセットメールを送信しました！",
+  "auth_back_to_login": "サインインに戻る",
+
+  "home_title": "ホーム",
+  "home_daily_goal": "1日の目標",
+  "home_today": "今日",
+  "home_custom_amount": "カスタム量",
+  "home_amount_label": "量",
+  "home_add_water_success": "水を追加しました！",
+  "home_add_water_failed": "水の追加に失敗しました",
+  "home_delete_water_confirm": "この記録を削除しますか？",
+  "home_delete_water_success": "記録を削除しました",
+  "home_no_records_today": "今日の記録はありません",
+  "home_start_drinking": "水を飲み始めましょう！",
+
+  "progress_current": "現在",
+  "progress_goal": "目標",
+  "progress_remaining": "残り",
+  "progress_completed": "目標達成！",
+  "progress_percentage": "1日の目標の{percent}%",
+  "@progress_percentage": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+
+  "motivational_keep_going": "頑張って！素晴らしいです！",
+  "motivational_almost_there": "もう少し！頑張って！",
+  "motivational_goal_reached": "おめでとうございます！目標達成！",
+  "motivational_good_start": "良いスタート！続けましょう！",
+  "motivational_stay_hydrated": "一日中水分補給を！",
+
+  "motivational_100_1": "おめでとうございます！目標達成！",
+  "motivational_100_2": "素晴らしい！明日も頑張りましょう！",
+  "motivational_100_3": "水分補給のチャンピオンです！",
+  "motivational_100_4": "完璧！良い習慣を続けましょう！",
+  "motivational_100_short": "目標達成！",
+
+  "motivational_75_1": "もう少し！頑張って！",
+  "motivational_75_2": "素晴らしい！続けましょう！",
+  "motivational_75_3": "目標まであと少し！",
+  "motivational_75_4": "素晴らしい進捗！止まらないで！",
+  "motivational_75_short": "もう少し！",
+
+  "motivational_50_1": "半分達成！素晴らしい！",
+  "motivational_50_2": "良い調子！続けましょう！",
+  "motivational_50_3": "順調です！",
+  "motivational_50_4": "良い進捗！一貫性を保ちましょう！",
+  "motivational_50_short": "半分！",
+
+  "motivational_25_1": "良いスタート！水を飲み続けましょう！",
+  "motivational_25_2": "素晴らしいスタート！",
+  "motivational_25_3": "良い始まり！水分補給を！",
+  "motivational_25_4": "続けましょう！一口一口が大切！",
+  "motivational_25_short": "良いスタート！",
+
+  "motivational_0_1": "水分補給の時間！体が喜びます！",
+  "motivational_0_2": "水分補給の旅を始めましょう！",
+  "motivational_0_3": "水で一日を始めましょう！",
+  "motivational_0_4": "健康が大切！飲み始めましょう！",
+  "motivational_0_short": "始めましょう！",
+
+  "profile_title": "プロフィール",
+  "profile_edit": "編集",
+  "profile_personal_info": "個人情報",
+  "profile_body_metrics": "身体データ",
+  "profile_activity_level": "活動レベル",
+  "profile_name": "名前",
+  "profile_email": "メール",
+  "profile_age": "年齢",
+  "profile_gender": "性別",
+  "profile_weight": "体重",
+  "profile_height": "身長",
+  "profile_bmi": "BMI",
+  "profile_bmi_category": "BMIカテゴリー",
+  "profile_daily_goal": "1日の水分目標",
+  "profile_use_calculated_goal": "計算された目標を使用",
+  "profile_custom_goal": "カスタム目標",
+  "profile_save_success": "プロフィールを更新しました",
+  "profile_save_failed": "プロフィールの更新に失敗しました",
+  "profile_user_default": "ユーザー",
+
+  "gender_male": "男性",
+  "gender_female": "女性",
+  "gender_other": "その他",
+
+  "activity_sedentary": "座りがち",
+  "activity_light": "軽い運動",
+  "activity_moderate": "適度な運動",
+  "activity_very_active": "活発",
+  "activity_extra_active": "非常に活発",
+
+  "bmi_underweight": "低体重",
+  "bmi_normal": "標準体重",
+  "bmi_overweight": "過体重",
+  "bmi_obese": "肥満",
+
+  "settings_title": "設定",
+  "settings_notifications": "通知",
+  "settings_reminders": "リマインダー",
+  "settings_theme": "テーマ",
+  "settings_units": "単位",
+  "settings_language": "言語",
+  "settings_profile": "プロフィール設定",
+  "settings_daily_goal": "目標設定",
+  "settings_data": "データ管理",
+  "settings_export_data": "データをエクスポート",
+  "settings_import_data": "データをインポート",
+  "settings_help": "ヘルプ",
+  "settings_about": "アプリについて",
+
+  "settings_enable_notifications": "通知を有効にする",
+  "settings_reminder_interval": "リマインダー間隔",
+  "settings_reminder_start_time": "開始時間",
+  "settings_reminder_end_time": "終了時間",
+  "settings_test_notification": "通知テスト",
+
+  "settings_theme_light": "ライト",
+  "settings_theme_dark": "ダーク",
+  "settings_theme_system": "システム設定",
+
+  "settings_unit_ml": "ミリリットル (ml)",
+  "settings_unit_floz": "液量オンス (fl oz)",
+  "settings_unit_metric": "メートル法",
+  "settings_unit_imperial": "ヤード・ポンド法",
+
+  "settings_subtitle": "アプリをカスタマイズ",
+  "settings_reminders_active": "リマインダーが有効です",
+  "settings_reminders_inactive": "リマインダーを有効にする",
+  "settings_minutes": "分",
+  "settings_export_subtitle": "データをバックアップ",
+  "settings_import_subtitle": "バックアップから復元",
+  "settings_profile_subtitle": "情報を更新",
+  "settings_daily_goal_subtitle": "目標を管理",
+  "settings_theme_dialog_title": "テーマ",
+  "settings_theme_light_mode": "ライトモード",
+  "settings_theme_dark_mode": "ダークモード",
+  "settings_theme_system_mode": "システム設定",
+  "settings_theme_light_subtitle": "ライトテーマを使用",
+  "settings_theme_dark_subtitle": "ダークテーマを使用",
+  "settings_theme_system_subtitle": "システム設定に従う",
+  "settings_language_dialog_title": "言語",
+  "settings_export_loading": "エクスポート中...",
+  "settings_export_success_message": "データをエクスポートしました！",
+  "settings_export_failed_message": "エクスポート失敗: {error}",
+  "@settings_export_failed_message": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "settings_import_loading": "インポート中...",
+  "settings_import_complete": "インポート完了",
+  "settings_import_success_subtitle": "インポート成功:",
+  "settings_import_water_records": "件の水記録",
+  "settings_import_daily_goals": "件の目標",
+  "settings_import_duplicate_skipped": "件の重複をスキップ",
+  "settings_import_failed_message": "インポート失敗: {error}",
+  "@settings_import_failed_message": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "settings_reminder_interval_title": "リマインダー間隔",
+
+  "settings_language_coming_soon": "近日公開",
+  "settings_export_success": "データをエクスポートしました",
+  "settings_export_failed": "エクスポートに失敗しました",
+  "settings_import_success": "データをインポートしました",
+  "settings_import_failed": "インポートに失敗しました",
+  "settings_import_stats": "{imported}件をインポート、{skipped}件の重複をスキップ",
+  "@settings_import_stats": {
+    "placeholders": {
+      "imported": {
+        "type": "int"
+      },
+      "skipped": {
+        "type": "int"
+      }
+    }
+  },
+
+  "statistics_title": "統計",
+  "statistics_weekly": "週間",
+  "statistics_monthly": "月間",
+  "statistics_yearly": "年間",
+  "statistics_average": "平均",
+  "statistics_total": "合計",
+  "statistics_best_day": "最高記録日",
+  "statistics_goal_achievement": "目標達成率",
+  "statistics_no_data": "この期間のデータはありません",
+  "statistics_chart_label": "水分摂取量",
+
+  "achievements_title": "実績",
+  "achievements_unlocked": "解除済み",
+  "achievements_locked": "未解除",
+  "achievements_progress": "進捗",
+  "achievements_reward_points": "報酬ポイント",
+  "achievements_total_points": "合計ポイント: {points}",
+  "@achievements_total_points": {
+    "placeholders": {
+      "points": {
+        "type": "int"
+      }
+    }
+  },
+
+  "achievement_first_drop": "最初の一滴",
+  "achievement_first_drop_desc": "初めての水分記録",
+  "achievement_daily_goal_1": "目標達成者",
+  "achievement_daily_goal_1_desc": "1日の目標を達成",
+  "achievement_streak_3": "3日連続",
+  "achievement_streak_3_desc": "3日間の連続達成",
+  "achievement_streak_7": "週間戦士",
+  "achievement_streak_7_desc": "7日間の連続達成",
+  "achievement_streak_30": "月間マスター",
+  "achievement_streak_30_desc": "30日間の連続達成",
+  "achievement_total_10l": "10リットル",
+  "achievement_total_10l_desc": "合計10リットル達成",
+  "achievement_total_100l": "100リットル",
+  "achievement_total_100l_desc": "合計100リットル達成",
+  "achievement_consistency": "一貫性の週",
+  "achievement_consistency_desc": "7日連続で目標達成",
+
+  "reminders_title": "リマインダー",
+  "reminders_active": "有効なリマインダー",
+  "reminders_pending": "保留中の通知",
+  "reminders_interval_30": "30分ごと",
+  "reminders_interval_45": "45分ごと",
+  "reminders_interval_60": "1時間ごと",
+  "reminders_interval_90": "1.5時間ごと",
+  "reminders_interval_120": "2時間ごと",
+  "reminders_interval_180": "3時間ごと",
+
+  "notification_reminder_title": "水を飲む時間です！",
+  "notification_reminder_body": "水分補給を忘れずに！",
+
+  "streak_current": "現在の連続",
+  "streak_days": "{days}日",
+  "@streak_days": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "streak_keep_going": "連続を続けましょう！",
+  "streak_personal_best": "自己ベスト",
+  "streak_best": "最高！",
+  "streak_longest": "最長",
+  "streak_next_milestone": "次のマイルストーン",
+  "streak_start_today": "今日から連続を始めよう！",
+  "streak_complete_goal": "目標達成で連続を作ろう",
+  "streak_start": "連続を始めよう！",
+  "streak_error": "データの読み込みに失敗しました",
+  "streak_day_singular": "日",
+  "streak_day_plural": "日",
+
+  "onboarding_title_1": "水分を記録",
+  "onboarding_desc_1": "タップするだけで簡単に水分摂取を記録",
+  "onboarding_title_2": "スマートリマインダー",
+  "onboarding_desc_2": "一日中水分補給を忘れないようにリマインド",
+  "onboarding_title_3": "進捗を確認",
+  "onboarding_desc_3": "水分補給の統計を見て目標を達成",
+  "onboarding_title_4": "健康を維持",
+  "onboarding_desc_4": "健康的な習慣を身につけよう",
+  "onboarding_get_started": "始める",
+
+  "drawer_home": "ホーム",
+  "drawer_statistics": "統計",
+  "drawer_achievements": "実績",
+  "drawer_profile": "プロフィール",
+  "drawer_reminders": "リマインダー",
+  "drawer_settings": "設定",
+  "drawer_help": "ヘルプ",
+  "drawer_about": "アプリについて",
+  "drawer_logout": "ログアウト",
+
+  "about_title": "Aqualert",
+  "about_version": "バージョン 1.0.0",
+  "about_description": "Aqualertで水分補給を管理。毎日の水分摂取を記録して目標を達成しましょう！",
+  "about_copyright": "© 2024 Aqualert. All rights reserved.",
+  "about_close": "閉じる",
+
+  "help_title": "ヘルプ",
+  "help_subtitle": "サポートを受ける",
+  "help_faq": "よくある質問",
+  "help_contact": "お問い合わせ",
+  "help_version": "バージョン",
+  "help_app_info": "アプリ情報",
+  "help_coming_soon": "ヘルプ - 近日公開！",
+
+  "help_faq_section": "FAQ",
+  "help_features_section": "機能ガイド",
+  "help_about_section": "アプリについて",
+
+  "faq_1_q": "1日の水分目標はどのように計算されますか？",
+  "faq_1_a": "体重、身長、年齢、性別、活動レベルに基づいて科学的な計算式で算出されます。プロフィール設定でカスタム目標も設定できます。",
+
+  "faq_2_q": "リマインダーはどのように機能しますか？",
+  "faq_2_a": "リマインダー間隔（30〜180分）と開始/終了時間を設定できます。この期間中にアプリが通知を送信します。",
+
+  "faq_3_q": "連続とは何ですか？",
+  "faq_3_a": "連続は、毎日の目標を達成した連続日数を追跡します。毎日水を飲んで連続を増やしましょう！",
+
+  "faq_4_q": "単位を変更するには？",
+  "faq_4_a": "設定→単位でミリリットル（ml）と液量オンス（fl oz）を切り替えられます。すべての測定値が自動的に更新されます。",
+
+  "faq_5_q": "データをエクスポートできますか？",
+  "faq_5_a": "はい！設定→データ管理→データをエクスポートでJSONファイルとして保存し、後でインポートできます。",
+
+  "faq_6_q": "実績はどのように機能しますか？",
+  "faq_6_a": "水分記録のマイルストーンを達成すると実績が解除され、報酬ポイントを獲得できます。実績画面で進捗を確認できます。",
+
+  "feature_tracking_title": "水分記録",
+  "feature_tracking_desc": "クイック追加ボタン（250ml、350ml、500ml、750ml）またはカスタム量で簡単に水分摂取を記録できます。",
+
+  "feature_reminders_title": "スマートリマインダー",
+  "feature_reminders_desc": "リマインダー間隔と有効時間を設定。一日中水分補給を忘れません。",
+
+  "feature_statistics_title": "統計と分析",
+  "feature_statistics_desc": "週間、月間、年間のチャートで水分摂取のトレンドを確認できます。",
+
+  "feature_achievements_title": "実績と連続",
+  "feature_achievements_desc": "目標を達成して実績を獲得し、連続を維持しましょう。ゲーミフィケーションでモチベーションアップ！",
+
+  "feature_profile_title": "プロフィールと目標",
+  "feature_profile_desc": "個人情報を設定すると、アプリが最適な1日の水分目標を計算します。",
+
+  "help_contact_email": "メールで連絡",
+  "help_contact_email_address": "dilaraacikgoz.dev@gmail.com",
+  "help_rate_app": "アプリを評価",
+  "help_rate_desc": "Aqualertを気に入りましたか？レビューをお願いします！",
+
+  "help_build_number": "ビルド",
+  "help_copyright": "© 2024 Aqualert. All rights reserved.",
+  "help_made_with": "あなたの健康のために❤️で作られました",
+
+  "error_generic": "エラーが発生しました。もう一度お試しください。",
+  "error_network": "ネットワークエラー。接続を確認してください。",
+  "error_auth_failed": "認証に失敗しました。もう一度お試しください。",
+  "error_permission_denied": "権限が拒否されました。",
+
+  "unit_ml": "ml",
+  "unit_floz": "fl oz",
+  "unit_kg": "kg",
+  "unit_lb": "lb",
+  "unit_cm": "cm",
+  "unit_ft": "ft",
+  "unit_liter": "L",
+
+  "time_morning": "朝",
+  "time_afternoon": "午後",
+  "time_evening": "夕方",
+  "time_night": "夜",
+
+  "help_privacy_policy": "プライバシーポリシー",
+  "help_privacy_policy_desc": "プライバシーポリシーを表示",
+  "help_privacy_policy_error": "プライバシーポリシーを開けませんでした"
+}

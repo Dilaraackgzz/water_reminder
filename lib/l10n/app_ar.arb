@@ -1,0 +1,425 @@
+{
+  "@@locale": "ar",
+
+  "appName": "Aqualert",
+  "appTagline": "حافظ على ترطيبك لحياة صحية",
+
+  "common_cancel": "إلغاء",
+  "common_save": "حفظ",
+  "common_delete": "حذف",
+  "common_edit": "تعديل",
+  "common_add": "إضافة",
+  "common_ok": "موافق",
+  "common_yes": "نعم",
+  "common_no": "لا",
+  "common_or": "أو",
+  "common_done": "تم",
+  "common_skip": "تخطي",
+  "common_next": "التالي",
+  "common_back": "رجوع",
+  "common_continue": "متابعة",
+  "common_loading": "جارٍ التحميل...",
+  "common_error": "خطأ",
+  "common_success": "نجاح",
+
+  "auth_login_title": "تسجيل الدخول",
+  "auth_register_title": "إنشاء حساب",
+  "auth_email_label": "البريد الإلكتروني",
+  "auth_email_hint": "example@email.com",
+  "auth_password_label": "كلمة المرور",
+  "auth_password_hint": "••••••••",
+  "auth_name_label": "الاسم الكامل",
+  "auth_name_hint": "أحمد محمد",
+  "auth_forgot_password": "نسيت كلمة المرور؟",
+  "auth_dont_have_account": "ليس لديك حساب؟ ",
+  "auth_already_have_account": "لديك حساب بالفعل؟ ",
+  "auth_sign_in_button": "تسجيل الدخول",
+  "auth_sign_up_button": "إنشاء حساب",
+  "auth_sign_in_google": "تسجيل الدخول بـ Google",
+  "auth_sign_up_google": "التسجيل بـ Google",
+  "auth_logout": "تسجيل الخروج",
+
+  "auth_validation_email_required": "البريد الإلكتروني مطلوب",
+  "auth_validation_email_invalid": "أدخل بريداً إلكترونياً صحيحاً",
+  "auth_validation_password_required": "كلمة المرور مطلوبة",
+  "auth_validation_password_min_length": "يجب أن تكون كلمة المرور 6 أحرف على الأقل",
+  "auth_validation_name_required": "الاسم مطلوب",
+  "auth_validation_name_min_length": "يجب أن يكون الاسم حرفين على الأقل",
+
+  "auth_email_verification_title": "تأكيد البريد الإلكتروني",
+  "auth_email_verification_sent": "أرسلنا رابط التأكيد إلى:",
+  "auth_email_verification_instruction": "يرجى التحقق من بريدك الإلكتروني والنقر على رابط التأكيد.",
+  "auth_email_verification_not_received": "لم تستلم البريد؟",
+  "auth_email_verification_resend": "إعادة إرسال رابط التأكيد",
+  "auth_email_verification_check": "لقد أكدت بريدي الإلكتروني",
+  "auth_email_verification_success": "تم تأكيد البريد الإلكتروني!",
+  "auth_email_verification_failed": "لم يتم تأكيد البريد بعد. تحقق من صندوق الوارد.",
+
+  "auth_forgot_password_title": "إعادة تعيين كلمة المرور",
+  "auth_forgot_password_instruction": "أدخل بريدك الإلكتروني وسنرسل لك رابط إعادة التعيين.",
+  "auth_forgot_password_button": "إرسال رابط إعادة التعيين",
+  "auth_forgot_password_success": "تم إرسال بريد إعادة تعيين كلمة المرور!",
+  "auth_back_to_login": "العودة لتسجيل الدخول",
+
+  "home_title": "الرئيسية",
+  "home_daily_goal": "الهدف اليومي",
+  "home_today": "اليوم",
+  "home_custom_amount": "كمية مخصصة",
+  "home_amount_label": "الكمية",
+  "home_add_water_success": "تمت إضافة الماء!",
+  "home_add_water_failed": "فشل في إضافة الماء",
+  "home_delete_water_confirm": "حذف هذا السجل؟",
+  "home_delete_water_success": "تم حذف السجل",
+  "home_no_records_today": "لا توجد سجلات اليوم",
+  "home_start_drinking": "ابدأ بشرب الماء!",
+
+  "progress_current": "الحالي",
+  "progress_goal": "الهدف",
+  "progress_remaining": "المتبقي",
+  "progress_completed": "تم تحقيق الهدف!",
+  "progress_percentage": "{percent}% من الهدف اليومي",
+  "@progress_percentage": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+
+  "motivational_keep_going": "استمر! أنت تقوم بعمل رائع!",
+  "motivational_almost_there": "اقتربت! المزيد قليلاً!",
+  "motivational_goal_reached": "تهانينا! لقد حققت هدفك!",
+  "motivational_good_start": "بداية رائعة! استمر!",
+  "motivational_stay_hydrated": "حافظ على ترطيبك طوال اليوم!",
+
+  "motivational_100_1": "تهانينا! لقد حققت هدفك!",
+  "motivational_100_2": "عمل مذهل! ابق مرطباً غداً أيضاً!",
+  "motivational_100_3": "أنت بطل الترطيب!",
+  "motivational_100_4": "ممتاز! حافظ على العادات الجيدة!",
+  "motivational_100_short": "تم الهدف!",
+
+  "motivational_75_1": "اقتربت! المزيد قليلاً!",
+  "motivational_75_2": "أنت تقوم بعمل رائع! استمر!",
+  "motivational_75_3": "قريب جداً من هدفك!",
+  "motivational_75_4": "تقدم رائع! لا تتوقف!",
+  "motivational_75_short": "اقتربت!",
+
+  "motivational_50_1": "منتصف الطريق! رائع!",
+  "motivational_50_2": "عمل جيد! استمر!",
+  "motivational_50_3": "أنت على الطريق الصحيح!",
+  "motivational_50_4": "تقدم جيد! كن مستمراً!",
+  "motivational_50_short": "النصف!",
+
+  "motivational_25_1": "بداية جيدة! استمر بشرب الماء!",
+  "motivational_25_2": "انطلاقة رائعة!",
+  "motivational_25_3": "بداية جيدة! ابق مرطباً!",
+  "motivational_25_4": "استمر! كل رشفة مهمة!",
+  "motivational_25_short": "بداية جيدة!",
+
+  "motivational_0_1": "وقت الترطيب! جسمك سيشكرك!",
+  "motivational_0_2": "ابدأ رحلة الترطيب!",
+  "motivational_0_3": "ابدأ يومك بالماء!",
+  "motivational_0_4": "صحتك مهمة! ابدأ بالشرب!",
+  "motivational_0_short": "لنبدأ!",
+
+  "profile_title": "الملف الشخصي",
+  "profile_edit": "تعديل",
+  "profile_personal_info": "المعلومات الشخصية",
+  "profile_body_metrics": "قياسات الجسم",
+  "profile_activity_level": "مستوى النشاط",
+  "profile_name": "الاسم",
+  "profile_email": "البريد الإلكتروني",
+  "profile_age": "العمر",
+  "profile_gender": "الجنس",
+  "profile_weight": "الوزن",
+  "profile_height": "الطول",
+  "profile_bmi": "مؤشر كتلة الجسم",
+  "profile_bmi_category": "فئة مؤشر كتلة الجسم",
+  "profile_daily_goal": "هدف الماء اليومي",
+  "profile_use_calculated_goal": "استخدام الهدف المحسوب",
+  "profile_custom_goal": "هدف مخصص",
+  "profile_save_success": "تم تحديث الملف الشخصي",
+  "profile_save_failed": "فشل في تحديث الملف الشخصي",
+  "profile_user_default": "مستخدم",
+
+  "gender_male": "ذكر",
+  "gender_female": "أنثى",
+  "gender_other": "آخر",
+
+  "activity_sedentary": "خامل",
+  "activity_light": "نشاط خفيف",
+  "activity_moderate": "نشاط معتدل",
+  "activity_very_active": "نشط جداً",
+  "activity_extra_active": "نشاط مكثف",
+
+  "bmi_underweight": "نقص الوزن",
+  "bmi_normal": "وزن طبيعي",
+  "bmi_overweight": "زيادة الوزن",
+  "bmi_obese": "سمنة",
+
+  "settings_title": "الإعدادات",
+  "settings_notifications": "الإشعارات",
+  "settings_reminders": "التذكيرات",
+  "settings_theme": "المظهر",
+  "settings_units": "الوحدات",
+  "settings_language": "اللغة",
+  "settings_profile": "إعدادات الملف الشخصي",
+  "settings_daily_goal": "إعدادات الهدف",
+  "settings_data": "إدارة البيانات",
+  "settings_export_data": "تصدير البيانات",
+  "settings_import_data": "استيراد البيانات",
+  "settings_help": "المساعدة",
+  "settings_about": "حول التطبيق",
+
+  "settings_enable_notifications": "تفعيل الإشعارات",
+  "settings_reminder_interval": "فترة التذكير",
+  "settings_reminder_start_time": "وقت البداية",
+  "settings_reminder_end_time": "وقت النهاية",
+  "settings_test_notification": "اختبار الإشعار",
+
+  "settings_theme_light": "فاتح",
+  "settings_theme_dark": "داكن",
+  "settings_theme_system": "النظام",
+
+  "settings_unit_ml": "ملليلتر (ml)",
+  "settings_unit_floz": "أونصة سائلة (fl oz)",
+  "settings_unit_metric": "النظام المتري",
+  "settings_unit_imperial": "النظام الإمبراطوري",
+
+  "settings_subtitle": "تخصيص تجربتك",
+  "settings_reminders_active": "التذكيرات نشطة",
+  "settings_reminders_inactive": "فعّل للحصول على تذكيرات",
+  "settings_minutes": "دقائق",
+  "settings_export_subtitle": "نسخ احتياطي للبيانات",
+  "settings_import_subtitle": "استعادة من ملف النسخ الاحتياطي",
+  "settings_profile_subtitle": "تحديث معلوماتك",
+  "settings_daily_goal_subtitle": "إدارة هدف الترطيب",
+  "settings_theme_dialog_title": "المظهر",
+  "settings_theme_light_mode": "الوضع الفاتح",
+  "settings_theme_dark_mode": "الوضع الداكن",
+  "settings_theme_system_mode": "وضع النظام",
+  "settings_theme_light_subtitle": "استخدام المظهر الفاتح",
+  "settings_theme_dark_subtitle": "استخدام المظهر الداكن",
+  "settings_theme_system_subtitle": "اتباع إعدادات النظام",
+  "settings_language_dialog_title": "اللغة",
+  "settings_export_loading": "جارٍ التصدير...",
+  "settings_export_success_message": "تم تصدير البيانات بنجاح!",
+  "settings_export_failed_message": "فشل التصدير: {error}",
+  "@settings_export_failed_message": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "settings_import_loading": "جارٍ الاستيراد...",
+  "settings_import_complete": "اكتمل الاستيراد",
+  "settings_import_success_subtitle": "تم الاستيراد بنجاح:",
+  "settings_import_water_records": "سجلات مياه",
+  "settings_import_daily_goals": "أهداف يومية",
+  "settings_import_duplicate_skipped": "سجلات مكررة تم تخطيها",
+  "settings_import_failed_message": "فشل الاستيراد: {error}",
+  "@settings_import_failed_message": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "settings_reminder_interval_title": "فترة التذكير",
+
+  "settings_language_coming_soon": "قريباً",
+  "settings_export_success": "تم تصدير البيانات",
+  "settings_export_failed": "فشل التصدير",
+  "settings_import_success": "تم استيراد البيانات",
+  "settings_import_failed": "فشل الاستيراد",
+  "settings_import_stats": "تم استيراد {imported} سجلات، تم تخطي {skipped} مكررات",
+  "@settings_import_stats": {
+    "placeholders": {
+      "imported": {
+        "type": "int"
+      },
+      "skipped": {
+        "type": "int"
+      }
+    }
+  },
+
+  "statistics_title": "الإحصائيات",
+  "statistics_weekly": "أسبوعي",
+  "statistics_monthly": "شهري",
+  "statistics_yearly": "سنوي",
+  "statistics_average": "المتوسط",
+  "statistics_total": "المجموع",
+  "statistics_best_day": "أفضل يوم",
+  "statistics_goal_achievement": "تحقيق الهدف",
+  "statistics_no_data": "لا توجد بيانات لهذه الفترة",
+  "statistics_chart_label": "استهلاك الماء",
+
+  "achievements_title": "الإنجازات",
+  "achievements_unlocked": "مفتوح",
+  "achievements_locked": "مقفل",
+  "achievements_progress": "التقدم",
+  "achievements_reward_points": "نقاط المكافأة",
+  "achievements_total_points": "مجموع النقاط: {points}",
+  "@achievements_total_points": {
+    "placeholders": {
+      "points": {
+        "type": "int"
+      }
+    }
+  },
+
+  "achievement_first_drop": "القطرة الأولى",
+  "achievement_first_drop_desc": "سجل أول استهلاك للماء",
+  "achievement_daily_goal_1": "محقق الأهداف",
+  "achievement_daily_goal_1_desc": "حقق هدفك اليومي مرة",
+  "achievement_streak_3": "سلسلة 3 أيام",
+  "achievement_streak_3_desc": "حافظ على سلسلة 3 أيام",
+  "achievement_streak_7": "محارب الأسبوع",
+  "achievement_streak_7_desc": "حافظ على سلسلة 7 أيام",
+  "achievement_streak_30": "سيد الشهر",
+  "achievement_streak_30_desc": "حافظ على سلسلة 30 يوم",
+  "achievement_total_10l": "10 لترات",
+  "achievement_total_10l_desc": "اشرب 10 لترات إجمالاً",
+  "achievement_total_100l": "100 لتر",
+  "achievement_total_100l_desc": "اشرب 100 لتر إجمالاً",
+  "achievement_consistency": "أسبوع الاستمرارية",
+  "achievement_consistency_desc": "حقق هدفك 7 أيام متتالية",
+
+  "reminders_title": "التذكيرات",
+  "reminders_active": "التذكيرات النشطة",
+  "reminders_pending": "الإشعارات المعلقة",
+  "reminders_interval_30": "كل 30 دقيقة",
+  "reminders_interval_45": "كل 45 دقيقة",
+  "reminders_interval_60": "كل ساعة",
+  "reminders_interval_90": "كل 1.5 ساعة",
+  "reminders_interval_120": "كل ساعتين",
+  "reminders_interval_180": "كل 3 ساعات",
+
+  "notification_reminder_title": "وقت شرب الماء!",
+  "notification_reminder_body": "ابق مرطباً! اشرب بعض الماء الآن.",
+
+  "streak_current": "السلسلة الحالية",
+  "streak_days": "{days} أيام",
+  "@streak_days": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "streak_keep_going": "استمر في السلسلة!",
+  "streak_personal_best": "أفضل شخصي",
+  "streak_best": "الأفضل!",
+  "streak_longest": "الأطول",
+  "streak_next_milestone": "المعلم التالي",
+  "streak_start_today": "ابدأ سلسلتك اليوم!",
+  "streak_complete_goal": "أكمل هدفك اليومي لبناء سلسلة",
+  "streak_start": "ابدأ سلسلتك!",
+  "streak_error": "فشل في تحميل بيانات السلسلة",
+  "streak_day_singular": "يوم",
+  "streak_day_plural": "أيام",
+
+  "onboarding_title_1": "تتبع الماء",
+  "onboarding_desc_1": "سجل استهلاكك اليومي من الماء بسهولة بنقرة واحدة",
+  "onboarding_title_2": "تذكيرات ذكية",
+  "onboarding_desc_2": "احصل على تذكيرات في الوقت المناسب للبقاء مرطباً طوال اليوم",
+  "onboarding_title_3": "تتبع التقدم",
+  "onboarding_desc_3": "شاهد إحصائيات الترطيب وحقق أهدافك",
+  "onboarding_title_4": "ابق صحياً",
+  "onboarding_desc_4": "ابن عادات صحية وحسّن صحتك العامة",
+  "onboarding_get_started": "ابدأ",
+
+  "drawer_home": "الرئيسية",
+  "drawer_statistics": "الإحصائيات",
+  "drawer_achievements": "الإنجازات",
+  "drawer_profile": "الملف الشخصي",
+  "drawer_reminders": "التذكيرات",
+  "drawer_settings": "الإعدادات",
+  "drawer_help": "المساعدة",
+  "drawer_about": "حول",
+  "drawer_logout": "تسجيل الخروج",
+
+  "about_title": "Aqualert",
+  "about_version": "الإصدار 1.0.0",
+  "about_description": "ابق مرطباً وصحياً مع Aqualert. تتبع استهلاكك اليومي من الماء وحقق أهداف الترطيب!",
+  "about_copyright": "© 2024 Aqualert. جميع الحقوق محفوظة.",
+  "about_close": "إغلاق",
+
+  "help_title": "المساعدة",
+  "help_subtitle": "احصل على المساعدة",
+  "help_faq": "الأسئلة الشائعة",
+  "help_contact": "اتصل بنا",
+  "help_version": "الإصدار",
+  "help_app_info": "معلومات التطبيق",
+  "help_coming_soon": "المساعدة - قريباً!",
+
+  "help_faq_section": "الأسئلة الشائعة",
+  "help_features_section": "دليل الميزات",
+  "help_about_section": "حول",
+
+  "faq_1_q": "كيف يتم حساب هدف الماء اليومي؟",
+  "faq_1_a": "يتم حساب هدف الماء اليومي بناءً على وزنك وطولك وعمرك وجنسك ومستوى نشاطك باستخدام صيغ علمية. يمكنك أيضاً تعيين هدف مخصص في إعدادات الملف الشخصي.",
+
+  "faq_2_q": "كيف تعمل التذكيرات؟",
+  "faq_2_a": "يمكنك تعيين فترات التذكير (30-180 دقيقة) واختيار أوقات البداية/النهاية. سيرسل التطبيق إشعارات خلال هذه الفترة لمساعدتك على البقاء مرطباً.",
+
+  "faq_3_q": "ما هي السلاسل وكيف تعمل؟",
+  "faq_3_a": "تتتبع السلاسل الأيام المتتالية التي حققت فيها هدفك اليومي من الماء. استمر بشرب الماء يومياً للحفاظ على سلسلتك وزيادتها!",
+
+  "faq_4_q": "كيف يمكنني تغيير وحدات القياس؟",
+  "faq_4_a": "اذهب إلى الإعدادات ← الوحدات وبدّل بين الملليلتر (ml) والأونصة السائلة (fl oz). ستتحدث جميع القياسات تلقائياً.",
+
+  "faq_5_q": "هل يمكنني تصدير بيانات تتبع الماء؟",
+  "faq_5_a": "نعم! اذهب إلى الإعدادات ← إدارة البيانات ← تصدير البيانات. يمكنك مشاركة أو حفظ بياناتك كملف JSON واستيرادها لاحقاً.",
+
+  "faq_6_q": "كيف تعمل الإنجازات؟",
+  "faq_6_a": "أكمل معالم تتبع الماء لفتح الإنجازات وكسب نقاط المكافأة. تتبع تقدمك في شاشة الإنجازات.",
+
+  "feature_tracking_title": "تتبع الماء",
+  "feature_tracking_desc": "سجل استهلاكك اليومي من الماء بسهولة باستخدام أزرار الإضافة السريعة (250ml، 350ml، 500ml، 750ml) أو أدخل كمية مخصصة.",
+
+  "feature_reminders_title": "تذكيرات ذكية",
+  "feature_reminders_desc": "عيّن فترات تذكير قابلة للتخصيص واختر الساعات النشطة. لا تنس أبداً شرب الماء طوال اليوم.",
+
+  "feature_statistics_title": "إحصائيات ورؤى",
+  "feature_statistics_desc": "شاهد اتجاهات استهلاك الماء مع رسوم بيانية أسبوعية وشهرية وسنوية. تتبع تقدمك بمرور الوقت.",
+
+  "feature_achievements_title": "إنجازات وسلاسل",
+  "feature_achievements_desc": "اكسب إنجازات وحافظ على سلاسل يومية من خلال تحقيق أهداف الماء. ابق متحمساً مع اللعبة!",
+
+  "feature_profile_title": "الملف الشخصي والأهداف",
+  "feature_profile_desc": "عيّن معلوماتك الشخصية ودع التطبيق يحسب هدف الماء اليومي الأمثل بناءً على قياسات جسمك.",
+
+  "help_contact_email": "تواصل عبر البريد الإلكتروني",
+  "help_contact_email_address": "dilaraacikgoz.dev@gmail.com",
+  "help_rate_app": "قيّم تطبيقنا",
+  "help_rate_desc": "هل تستمتع بـ Aqualert؟ اترك لنا تقييماً!",
+
+  "help_build_number": "رقم البناء",
+  "help_copyright": "© 2024 Aqualert. جميع الحقوق محفوظة.",
+  "help_made_with": "صنع بـ ❤️ لصحتك",
+
+  "error_generic": "حدث خطأ ما. يرجى المحاولة مرة أخرى.",
+  "error_network": "خطأ في الشبكة. يرجى التحقق من اتصالك.",
+  "error_auth_failed": "فشل المصادقة. يرجى المحاولة مرة أخرى.",
+  "error_permission_denied": "تم رفض الإذن.",
+
+  "unit_ml": "ml",
+  "unit_floz": "fl oz",
+  "unit_kg": "kg",
+  "unit_lb": "lb",
+  "unit_cm": "cm",
+  "unit_ft": "ft",
+  "unit_liter": "L",
+
+  "time_morning": "الصباح",
+  "time_afternoon": "بعد الظهر",
+  "time_evening": "المساء",
+  "time_night": "الليل",
+
+  "help_privacy_policy": "سياسة الخصوصية",
+  "help_privacy_policy_desc": "عرض سياسة الخصوصية",
+  "help_privacy_policy_error": "تعذر فتح سياسة الخصوصية"
+}

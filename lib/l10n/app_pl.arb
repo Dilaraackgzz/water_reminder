@@ -1,0 +1,425 @@
+{
+  "@@locale": "pl",
+
+  "appName": "Aqualert",
+  "appTagline": "Nawadniaj się dla zdrowego życia",
+
+  "common_cancel": "Anuluj",
+  "common_save": "Zapisz",
+  "common_delete": "Usuń",
+  "common_edit": "Edytuj",
+  "common_add": "Dodaj",
+  "common_ok": "OK",
+  "common_yes": "Tak",
+  "common_no": "Nie",
+  "common_or": "lub",
+  "common_done": "Gotowe",
+  "common_skip": "Pomiń",
+  "common_next": "Dalej",
+  "common_back": "Wstecz",
+  "common_continue": "Kontynuuj",
+  "common_loading": "Ładowanie...",
+  "common_error": "Błąd",
+  "common_success": "Sukces",
+
+  "auth_login_title": "Zaloguj się",
+  "auth_register_title": "Zarejestruj się",
+  "auth_email_label": "E-mail",
+  "auth_email_hint": "przyklad@email.com",
+  "auth_password_label": "Hasło",
+  "auth_password_hint": "••••••••",
+  "auth_name_label": "Imię i nazwisko",
+  "auth_name_hint": "Jan Kowalski",
+  "auth_forgot_password": "Zapomniałeś hasła?",
+  "auth_dont_have_account": "Nie masz konta? ",
+  "auth_already_have_account": "Masz już konto? ",
+  "auth_sign_in_button": "Zaloguj się",
+  "auth_sign_up_button": "Zarejestruj się",
+  "auth_sign_in_google": "Zaloguj się przez Google",
+  "auth_sign_up_google": "Zarejestruj się przez Google",
+  "auth_logout": "Wyloguj się",
+
+  "auth_validation_email_required": "E-mail jest wymagany",
+  "auth_validation_email_invalid": "Wprowadź prawidłowy e-mail",
+  "auth_validation_password_required": "Hasło jest wymagane",
+  "auth_validation_password_min_length": "Hasło musi mieć co najmniej 6 znaków",
+  "auth_validation_name_required": "Imię jest wymagane",
+  "auth_validation_name_min_length": "Imię musi mieć co najmniej 2 znaki",
+
+  "auth_email_verification_title": "Zweryfikuj swój e-mail",
+  "auth_email_verification_sent": "Wysłaliśmy link weryfikacyjny na:",
+  "auth_email_verification_instruction": "Sprawdź swój e-mail i kliknij link weryfikacyjny.",
+  "auth_email_verification_not_received": "Nie otrzymałeś e-maila?",
+  "auth_email_verification_resend": "Wyślij ponownie",
+  "auth_email_verification_check": "Zweryfikowałem swój e-mail",
+  "auth_email_verification_success": "E-mail zweryfikowany pomyślnie!",
+  "auth_email_verification_failed": "E-mail jeszcze nie zweryfikowany. Sprawdź skrzynkę odbiorczą.",
+
+  "auth_forgot_password_title": "Resetuj hasło",
+  "auth_forgot_password_instruction": "Wprowadź swój adres e-mail, a wyślemy Ci link do resetowania hasła.",
+  "auth_forgot_password_button": "Wyślij link resetujący",
+  "auth_forgot_password_success": "E-mail z resetowaniem hasła wysłany!",
+  "auth_back_to_login": "Wróć do logowania",
+
+  "home_title": "Strona główna",
+  "home_daily_goal": "Dzienny cel",
+  "home_today": "Dzisiaj",
+  "home_custom_amount": "Własna ilość",
+  "home_amount_label": "Ilość",
+  "home_add_water_success": "Woda dodana!",
+  "home_add_water_failed": "Nie udało się dodać wody",
+  "home_delete_water_confirm": "Usunąć ten wpis?",
+  "home_delete_water_success": "Wpis usunięty",
+  "home_no_records_today": "Brak wpisów na dziś",
+  "home_start_drinking": "Zacznij pić wodę!",
+
+  "progress_current": "Obecny",
+  "progress_goal": "Cel",
+  "progress_remaining": "Pozostało",
+  "progress_completed": "Cel osiągnięty!",
+  "progress_percentage": "{percent}% dziennego celu",
+  "@progress_percentage": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+
+  "motivational_keep_going": "Tak trzymaj! Świetnie ci idzie!",
+  "motivational_almost_there": "Prawie gotowe! Jeszcze trochę!",
+  "motivational_goal_reached": "Gratulacje! Osiągnąłeś swój cel!",
+  "motivational_good_start": "Dobry początek! Kontynuuj!",
+  "motivational_stay_hydrated": "Nawadniaj się przez cały dzień!",
+
+  "motivational_100_1": "Gratulacje! Osiągnąłeś swój cel!",
+  "motivational_100_2": "Świetna robota! Jutro też się nawadniaj!",
+  "motivational_100_3": "Jesteś mistrzem nawadniania!",
+  "motivational_100_4": "Perfekcyjnie! Utrzymuj dobre nawyki!",
+  "motivational_100_short": "Cel osiągnięty!",
+
+  "motivational_75_1": "Prawie gotowe! Jeszcze trochę!",
+  "motivational_75_2": "Świetnie ci idzie! Kontynuuj!",
+  "motivational_75_3": "Tak blisko celu!",
+  "motivational_75_4": "Fantastyczny postęp! Nie przestawaj!",
+  "motivational_75_short": "Prawie gotowe!",
+
+  "motivational_50_1": "W połowie drogi! Świetnie!",
+  "motivational_50_2": "Dobra robota! Kontynuuj!",
+  "motivational_50_3": "Jesteś na dobrej drodze!",
+  "motivational_50_4": "Dobry postęp! Bądź konsekwentny!",
+  "motivational_50_short": "Połowa!",
+
+  "motivational_25_1": "Dobry początek! Pij dalej wodę!",
+  "motivational_25_2": "Świetny start!",
+  "motivational_25_3": "Dobre początki! Nawadniaj się!",
+  "motivational_25_4": "Kontynuuj! Każdy łyk się liczy!",
+  "motivational_25_short": "Dobry początek!",
+
+  "motivational_0_1": "Czas na nawadnianie! Twoje ciało ci podziękuje!",
+  "motivational_0_2": "Rozpocznij swoją podróż nawadniania!",
+  "motivational_0_3": "Zacznij dzień od wody!",
+  "motivational_0_4": "Twoje zdrowie jest ważne! Zacznij pić!",
+  "motivational_0_short": "Zaczynamy!",
+
+  "profile_title": "Profil",
+  "profile_edit": "Edytuj",
+  "profile_personal_info": "Informacje osobiste",
+  "profile_body_metrics": "Parametry ciała",
+  "profile_activity_level": "Poziom aktywności",
+  "profile_name": "Imię",
+  "profile_email": "E-mail",
+  "profile_age": "Wiek",
+  "profile_gender": "Płeć",
+  "profile_weight": "Waga",
+  "profile_height": "Wzrost",
+  "profile_bmi": "BMI",
+  "profile_bmi_category": "Kategoria BMI",
+  "profile_daily_goal": "Dzienny cel wody",
+  "profile_use_calculated_goal": "Użyj obliczonego celu",
+  "profile_custom_goal": "Własny cel",
+  "profile_save_success": "Profil zaktualizowany",
+  "profile_save_failed": "Nie udało się zaktualizować profilu",
+  "profile_user_default": "Użytkownik",
+
+  "gender_male": "Mężczyzna",
+  "gender_female": "Kobieta",
+  "gender_other": "Inne",
+
+  "activity_sedentary": "Siedzący tryb życia",
+  "activity_light": "Lekka aktywność",
+  "activity_moderate": "Umiarkowana aktywność",
+  "activity_very_active": "Bardzo aktywny",
+  "activity_extra_active": "Ekstremalnie aktywny",
+
+  "bmi_underweight": "Niedowaga",
+  "bmi_normal": "Normalna waga",
+  "bmi_overweight": "Nadwaga",
+  "bmi_obese": "Otyłość",
+
+  "settings_title": "Ustawienia",
+  "settings_notifications": "Powiadomienia",
+  "settings_reminders": "Przypomnienia",
+  "settings_theme": "Motyw",
+  "settings_units": "Jednostki",
+  "settings_language": "Język",
+  "settings_profile": "Ustawienia profilu",
+  "settings_daily_goal": "Ustawienia celu",
+  "settings_data": "Zarządzanie danymi",
+  "settings_export_data": "Eksportuj dane",
+  "settings_import_data": "Importuj dane",
+  "settings_help": "Pomoc",
+  "settings_about": "O aplikacji",
+
+  "settings_enable_notifications": "Włącz powiadomienia",
+  "settings_reminder_interval": "Interwał przypomnień",
+  "settings_reminder_start_time": "Czas rozpoczęcia",
+  "settings_reminder_end_time": "Czas zakończenia",
+  "settings_test_notification": "Testowe powiadomienie",
+
+  "settings_theme_light": "Jasny",
+  "settings_theme_dark": "Ciemny",
+  "settings_theme_system": "Systemowy",
+
+  "settings_unit_ml": "Mililitry (ml)",
+  "settings_unit_floz": "Uncje płynne (fl oz)",
+  "settings_unit_metric": "System metryczny",
+  "settings_unit_imperial": "System imperialny",
+
+  "settings_subtitle": "Dostosuj swoje doświadczenie",
+  "settings_reminders_active": "Przypomnienia są aktywne",
+  "settings_reminders_inactive": "Włącz, aby otrzymywać przypomnienia",
+  "settings_minutes": "minut",
+  "settings_export_subtitle": "Utwórz kopię zapasową danych",
+  "settings_import_subtitle": "Przywróć z pliku kopii zapasowej",
+  "settings_profile_subtitle": "Zaktualizuj swoje informacje",
+  "settings_daily_goal_subtitle": "Zarządzaj swoim celem nawadniania",
+  "settings_theme_dialog_title": "Motyw",
+  "settings_theme_light_mode": "Jasny motyw",
+  "settings_theme_dark_mode": "Ciemny motyw",
+  "settings_theme_system_mode": "Motyw systemowy",
+  "settings_theme_light_subtitle": "Użyj jasnego motywu",
+  "settings_theme_dark_subtitle": "Użyj ciemnego motywu",
+  "settings_theme_system_subtitle": "Podążaj za ustawieniami systemu",
+  "settings_language_dialog_title": "Język",
+  "settings_export_loading": "Eksportowanie danych...",
+  "settings_export_success_message": "Dane wyeksportowane pomyślnie!",
+  "settings_export_failed_message": "Eksport nie powiódł się: {error}",
+  "@settings_export_failed_message": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "settings_import_loading": "Importowanie danych...",
+  "settings_import_complete": "Import zakończony",
+  "settings_import_success_subtitle": "Pomyślnie zaimportowano:",
+  "settings_import_water_records": "wpisów wody",
+  "settings_import_daily_goals": "dziennych celów",
+  "settings_import_duplicate_skipped": "duplikatów pominiętych",
+  "settings_import_failed_message": "Import nie powiódł się: {error}",
+  "@settings_import_failed_message": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "settings_reminder_interval_title": "Interwał przypomnień",
+
+  "settings_language_coming_soon": "Wkrótce",
+  "settings_export_success": "Dane wyeksportowane",
+  "settings_export_failed": "Eksport nie powiódł się",
+  "settings_import_success": "Dane zaimportowane",
+  "settings_import_failed": "Import nie powiódł się",
+  "settings_import_stats": "Zaimportowano {imported} wpisów, pominięto {skipped} duplikatów",
+  "@settings_import_stats": {
+    "placeholders": {
+      "imported": {
+        "type": "int"
+      },
+      "skipped": {
+        "type": "int"
+      }
+    }
+  },
+
+  "statistics_title": "Statystyki",
+  "statistics_weekly": "Tygodniowe",
+  "statistics_monthly": "Miesięczne",
+  "statistics_yearly": "Roczne",
+  "statistics_average": "Średnia",
+  "statistics_total": "Suma",
+  "statistics_best_day": "Najlepszy dzień",
+  "statistics_goal_achievement": "Osiągnięcie celu",
+  "statistics_no_data": "Brak danych dla tego okresu",
+  "statistics_chart_label": "Spożycie wody",
+
+  "achievements_title": "Osiągnięcia",
+  "achievements_unlocked": "Odblokowane",
+  "achievements_locked": "Zablokowane",
+  "achievements_progress": "Postęp",
+  "achievements_reward_points": "Punkty nagród",
+  "achievements_total_points": "Suma punktów: {points}",
+  "@achievements_total_points": {
+    "placeholders": {
+      "points": {
+        "type": "int"
+      }
+    }
+  },
+
+  "achievement_first_drop": "Pierwsza kropla",
+  "achievement_first_drop_desc": "Zapisz pierwsze spożycie wody",
+  "achievement_daily_goal_1": "Zdobywca celów",
+  "achievement_daily_goal_1_desc": "Osiągnij dzienny cel raz",
+  "achievement_streak_3": "3-dniowa seria",
+  "achievement_streak_3_desc": "Utrzymaj 3-dniową serię",
+  "achievement_streak_7": "Wojownik tygodnia",
+  "achievement_streak_7_desc": "Utrzymaj 7-dniową serię",
+  "achievement_streak_30": "Mistrz miesiąca",
+  "achievement_streak_30_desc": "Utrzymaj 30-dniową serię",
+  "achievement_total_10l": "10 litrów",
+  "achievement_total_10l_desc": "Wypij łącznie 10 litrów",
+  "achievement_total_100l": "100 litrów",
+  "achievement_total_100l_desc": "Wypij łącznie 100 litrów",
+  "achievement_consistency": "Tydzień konsekwencji",
+  "achievement_consistency_desc": "Osiągaj cel przez 7 dni z rzędu",
+
+  "reminders_title": "Przypomnienia",
+  "reminders_active": "Aktywne przypomnienia",
+  "reminders_pending": "Oczekujące powiadomienia",
+  "reminders_interval_30": "Co 30 minut",
+  "reminders_interval_45": "Co 45 minut",
+  "reminders_interval_60": "Co godzinę",
+  "reminders_interval_90": "Co 1,5 godziny",
+  "reminders_interval_120": "Co 2 godziny",
+  "reminders_interval_180": "Co 3 godziny",
+
+  "notification_reminder_title": "Czas napić się wody!",
+  "notification_reminder_body": "Nawadniaj się! Wypij teraz trochę wody.",
+
+  "streak_current": "Obecna seria",
+  "streak_days": "{days} dni",
+  "@streak_days": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "streak_keep_going": "Utrzymuj serię!",
+  "streak_personal_best": "Rekord osobisty",
+  "streak_best": "Najlepsza!",
+  "streak_longest": "Najdłuższa",
+  "streak_next_milestone": "Następny kamień milowy",
+  "streak_start_today": "Zacznij swoją serię dzisiaj!",
+  "streak_complete_goal": "Ukończ dzienny cel, aby budować serię",
+  "streak_start": "Rozpocznij swoją serię!",
+  "streak_error": "Nie udało się załadować danych serii",
+  "streak_day_singular": "dzień",
+  "streak_day_plural": "dni",
+
+  "onboarding_title_1": "Śledź swoją wodę",
+  "onboarding_desc_1": "Łatwo zapisuj dzienne spożycie wody jednym dotknięciem",
+  "onboarding_title_2": "Inteligentne przypomnienia",
+  "onboarding_desc_2": "Otrzymuj terminowe przypomnienia, aby nawadniać się przez cały dzień",
+  "onboarding_title_3": "Monitoruj postępy",
+  "onboarding_desc_3": "Przeglądaj statystyki nawadniania i osiągaj cele",
+  "onboarding_title_4": "Bądź zdrowy",
+  "onboarding_desc_4": "Buduj zdrowe nawyki i poprawiaj ogólne samopoczucie",
+  "onboarding_get_started": "Rozpocznij",
+
+  "drawer_home": "Strona główna",
+  "drawer_statistics": "Statystyki",
+  "drawer_achievements": "Osiągnięcia",
+  "drawer_profile": "Profil",
+  "drawer_reminders": "Przypomnienia",
+  "drawer_settings": "Ustawienia",
+  "drawer_help": "Pomoc",
+  "drawer_about": "O aplikacji",
+  "drawer_logout": "Wyloguj się",
+
+  "about_title": "Aqualert",
+  "about_version": "Wersja 1.0.0",
+  "about_description": "Bądź nawodniony i zdrowy z Aqualert. Śledź dzienne spożycie wody i osiągaj cele nawadniania!",
+  "about_copyright": "© 2024 Aqualert. Wszelkie prawa zastrzeżone.",
+  "about_close": "Zamknij",
+
+  "help_title": "Pomoc",
+  "help_subtitle": "Uzyskaj pomoc",
+  "help_faq": "Najczęściej zadawane pytania",
+  "help_contact": "Skontaktuj się z nami",
+  "help_version": "Wersja",
+  "help_app_info": "Informacje o aplikacji",
+  "help_coming_soon": "Pomoc - Wkrótce!",
+
+  "help_faq_section": "FAQ",
+  "help_features_section": "Przewodnik po funkcjach",
+  "help_about_section": "O aplikacji",
+
+  "faq_1_q": "Jak obliczany jest mój dzienny cel wody?",
+  "faq_1_a": "Twój dzienny cel wody jest obliczany na podstawie wagi, wzrostu, wieku, płci i poziomu aktywności przy użyciu wzorów naukowych. Możesz także ustawić własny cel w ustawieniach profilu.",
+
+  "faq_2_q": "Jak działają przypomnienia?",
+  "faq_2_a": "Możesz ustawić interwały przypomnień (30-180 minut) i wybrać czas rozpoczęcia/zakończenia. Aplikacja będzie wysyłać powiadomienia w tym okresie.",
+
+  "faq_3_q": "Czym są serie i jak działają?",
+  "faq_3_a": "Serie śledzą kolejne dni, w których osiągnąłeś dzienny cel wody. Pij wodę codziennie, aby utrzymywać i zwiększać swoją serię!",
+
+  "faq_4_q": "Jak mogę zmienić jednostki miary?",
+  "faq_4_a": "Przejdź do Ustawienia → Jednostki i przełącz między mililitrami (ml) a uncjami płynnymi (fl oz). Wszystkie pomiary zostaną automatycznie zaktualizowane.",
+
+  "faq_5_q": "Czy mogę eksportować swoje dane?",
+  "faq_5_a": "Tak! Przejdź do Ustawienia → Zarządzanie danymi → Eksportuj dane. Możesz udostępnić lub zapisać dane jako plik JSON i zaimportować je później.",
+
+  "faq_6_q": "Jak działają osiągnięcia?",
+  "faq_6_a": "Ukończ kamienie milowe śledzenia wody, aby odblokować osiągnięcia i zdobywać punkty nagród. Śledź swoje postępy na ekranie Osiągnięcia.",
+
+  "feature_tracking_title": "Śledzenie wody",
+  "feature_tracking_desc": "Łatwo zapisuj dzienne spożycie wody przyciskami szybkiego dodawania (250ml, 350ml, 500ml, 750ml) lub wprowadź własną ilość.",
+
+  "feature_reminders_title": "Inteligentne przypomnienia",
+  "feature_reminders_desc": "Ustaw dostosowywalne interwały przypomnień i aktywne godziny. Nigdy nie zapomnij pić wody przez cały dzień.",
+
+  "feature_statistics_title": "Statystyki i spostrzeżenia",
+  "feature_statistics_desc": "Przeglądaj trendy spożycia wody z wykresami tygodniowymi, miesięcznymi i rocznymi. Śledź swoje postępy w czasie.",
+
+  "feature_achievements_title": "Osiągnięcia i serie",
+  "feature_achievements_desc": "Zdobywaj osiągnięcia i utrzymuj dzienne serie, osiągając cele wody. Bądź zmotywowany dzięki grywalizacji!",
+
+  "feature_profile_title": "Profil i cele",
+  "feature_profile_desc": "Ustaw swoje dane osobowe i pozwól aplikacji obliczyć optymalny dzienny cel wody na podstawie parametrów ciała.",
+
+  "help_contact_email": "Kontakt e-mailowy",
+  "help_contact_email_address": "dilaraacikgoz.dev@gmail.com",
+  "help_rate_app": "Oceń naszą aplikację",
+  "help_rate_desc": "Podoba ci się Aqualert? Zostaw recenzję!",
+
+  "help_build_number": "Kompilacja",
+  "help_copyright": "© 2024 Aqualert. Wszelkie prawa zastrzeżone.",
+  "help_made_with": "Stworzone z ❤️ dla twojego zdrowia",
+
+  "error_generic": "Coś poszło nie tak. Spróbuj ponownie.",
+  "error_network": "Błąd sieci. Sprawdź połączenie.",
+  "error_auth_failed": "Uwierzytelnianie nie powiodło się. Spróbuj ponownie.",
+  "error_permission_denied": "Odmowa dostępu.",
+
+  "unit_ml": "ml",
+  "unit_floz": "fl oz",
+  "unit_kg": "kg",
+  "unit_lb": "lb",
+  "unit_cm": "cm",
+  "unit_ft": "ft",
+  "unit_liter": "L",
+
+  "time_morning": "Rano",
+  "time_afternoon": "Popołudnie",
+  "time_evening": "Wieczór",
+  "time_night": "Noc",
+
+  "help_privacy_policy": "Polityka prywatności",
+  "help_privacy_policy_desc": "Zobacz naszą politykę prywatności",
+  "help_privacy_policy_error": "Nie można otworzyć polityki prywatności"
+}

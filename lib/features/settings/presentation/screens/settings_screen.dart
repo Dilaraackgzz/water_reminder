@@ -429,6 +429,14 @@ class SettingsScreen extends ConsumerWidget {
             {'code': 'de', 'name': 'Deutsch', 'native': 'German'},
             {'code': 'it', 'name': 'Italiano', 'native': 'Italian'},
             {'code': 'pt', 'name': 'Português', 'native': 'Portuguese'},
+            {'code': 'ru', 'name': 'Русский', 'native': 'Russian'},
+            {'code': 'ja', 'name': '日本語', 'native': 'Japanese'},
+            {'code': 'ko', 'name': '한국어', 'native': 'Korean'},
+            {'code': 'zh', 'name': '中文', 'native': 'Chinese'},
+            {'code': 'ar', 'name': 'العربية', 'native': 'Arabic'},
+            {'code': 'hi', 'name': 'हिन्दी', 'native': 'Hindi'},
+            {'code': 'nl', 'name': 'Nederlands', 'native': 'Dutch'},
+            {'code': 'pl', 'name': 'Polski', 'native': 'Polish'},
           ];
 
           return AlertDialog(
