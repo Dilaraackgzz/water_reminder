@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../../../core/constants/ui_constants.dart';
 import '../../../../core/themes/app_theme.dart';
+import '../../../../core/utils/snackbar_helper.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../providers/auth_controller.dart';
 import '../widgets/auth_text_field.dart';
@@ -40,16 +43,11 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
 
     final l10n = AppLocalizations.of(context)!;
     if (_passwordController.text != _confirmPasswordController.text) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(l10n.auth_validation_password_min_length),
-          backgroundColor: Colors.red,
-          behavior: SnackBarBehavior.floating,
-        ),
-      );
+      SnackBarHelper.showError(context, l10n.auth_validation_password_mismatch);
       return;
     }
 
+    HapticFeedback.mediumImpact();
     setState(() => _isLoading = true);
 
     try {
@@ -65,12 +63,9 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
       }
     } catch (e) {
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(e.toString()),
-            backgroundColor: Colors.red,
-            behavior: SnackBarBehavior.floating,
-          ),
+        SnackBarHelper.showError(
+          context,
+          e.toString().replaceAll('Exception: ', ''),
         );
       }
     } finally {
@@ -81,6 +76,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
   }
 
   Future<void> _handleGoogleSignIn() async {
+    HapticFeedback.mediumImpact();
     setState(() => _isLoading = true);
 
     try {
@@ -91,12 +87,9 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
       }
     } catch (e) {
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(e.toString()),
-            backgroundColor: Colors.red,
-            behavior: SnackBarBehavior.floating,
-          ),
+        SnackBarHelper.showError(
+          context,
+          e.toString().replaceAll('Exception: ', ''),
         );
       }
     } finally {
@@ -110,49 +103,61 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final size = MediaQuery.of(context).size;
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
+    // Theme-aware colors
+    final backgroundColor = isDark ? AppTheme.surfaceDark : Colors.white;
+    final subtitleColor = isDark ? Colors.grey[400] : Colors.grey[600];
+    final dividerColor = isDark ? Colors.grey[700] : Colors.grey[300];
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: backgroundColor,
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                SizedBox(height: size.height * 0.05),
+        child: Semantics(
+          label: l10n.auth_register_title,
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: UIConstants.spacingL),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  SizedBox(height: size.height * 0.05),
 
-                // Back Button & Title
-                Row(
-                  children: [
-                    IconButton(
-                      onPressed: () => context.pop(),
-                      icon: const Icon(Icons.arrow_back_ios),
-                      padding: EdgeInsets.zero,
-                    ),
-                    const SizedBox(width: 8),
-                    Text(
-                      l10n.auth_register_title,
-                      style: GoogleFonts.poppins(
-                        fontSize: 28,
-                        fontWeight: FontWeight.bold,
-                        color: AppTheme.primaryBlue,
+                  // Back Button & Title
+                  Row(
+                    children: [
+                      Semantics(
+                        button: true,
+                        label: l10n.common_back,
+                        child: IconButton(
+                          onPressed: () => context.pop(),
+                          icon: const Icon(Icons.arrow_back_ios),
+                          padding: EdgeInsets.zero,
+                        ),
                       ),
+                      const SizedBox(width: UIConstants.spacingS),
+                      Text(
+                        l10n.auth_register_title,
+                        style: GoogleFonts.poppins(
+                          fontSize: 28,
+                          fontWeight: FontWeight.bold,
+                          color: AppTheme.primaryBlue,
+                        ),
+                      ),
+                    ],
+                  ).animate().fadeIn().slideX(begin: -0.2, duration: 400.ms),
+
+                  const SizedBox(height: UIConstants.spacingS),
+
+                  Text(
+                    l10n.appTagline,
+                    style: GoogleFonts.poppins(
+                      fontSize: 14,
+                      color: subtitleColor,
                     ),
-                  ],
-                ).animate().fadeIn().slideX(begin: -0.2, duration: 400.ms),
+                  ).animate().fadeIn(delay: 200.ms),
 
-                const SizedBox(height: 8),
-
-                Text(
-                  l10n.appTagline,
-                  style: GoogleFonts.poppins(
-                    fontSize: 14,
-                    color: Colors.grey[600],
-                  ),
-                ).animate().fadeIn(delay: 200.ms),
-
-                SizedBox(height: size.height * 0.04),
+                  SizedBox(height: size.height * 0.04),
 
                 // Registration Form
                 Form(
@@ -165,6 +170,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                         hint: l10n.auth_name_hint,
                         prefixIcon: Icons.person_outline,
                         keyboardType: TextInputType.name,
+                        semanticLabel: l10n.auth_name_label,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return l10n.auth_validation_name_required;
@@ -178,13 +184,14 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                             begin: -0.2,
                             duration: 400.ms,
                           ),
-                      const SizedBox(height: 16),
+                      const SizedBox(height: UIConstants.spacingM),
                       AuthTextField(
                         controller: _emailController,
                         label: l10n.auth_email_label,
                         hint: l10n.auth_email_hint,
                         prefixIcon: Icons.email_outlined,
                         keyboardType: TextInputType.emailAddress,
+                        semanticLabel: l10n.auth_email_label,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return l10n.auth_validation_email_required;
@@ -198,24 +205,29 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                             begin: -0.2,
                             duration: 400.ms,
                           ),
-                      const SizedBox(height: 16),
+                      const SizedBox(height: UIConstants.spacingM),
                       AuthTextField(
                         controller: _passwordController,
                         label: l10n.auth_password_label,
                         hint: l10n.auth_password_hint,
                         prefixIcon: Icons.lock_outline,
                         obscureText: _obscurePassword,
-                        suffixIcon: IconButton(
-                          icon: Icon(
-                            _obscurePassword
-                                ? Icons.visibility_outlined
-                                : Icons.visibility_off_outlined,
+                        semanticLabel: l10n.auth_password_label,
+                        suffixIcon: Semantics(
+                          button: true,
+                          label: _obscurePassword ? 'Show password' : 'Hide password',
+                          child: IconButton(
+                            icon: Icon(
+                              _obscurePassword
+                                  ? Icons.visibility_outlined
+                                  : Icons.visibility_off_outlined,
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                _obscurePassword = !_obscurePassword;
+                              });
+                            },
                           ),
-                          onPressed: () {
-                            setState(() {
-                              _obscurePassword = !_obscurePassword;
-                            });
-                          },
                         ),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
@@ -230,31 +242,36 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                             begin: -0.2,
                             duration: 400.ms,
                           ),
-                      const SizedBox(height: 16),
+                      const SizedBox(height: UIConstants.spacingM),
                       AuthTextField(
                         controller: _confirmPasswordController,
-                        label: l10n.auth_password_label,
-                        hint: l10n.auth_password_hint,
+                        label: l10n.auth_confirm_password_label,
+                        hint: l10n.auth_confirm_password_hint,
                         prefixIcon: Icons.lock_outline,
                         obscureText: _obscureConfirmPassword,
-                        suffixIcon: IconButton(
-                          icon: Icon(
-                            _obscureConfirmPassword
-                                ? Icons.visibility_outlined
-                                : Icons.visibility_off_outlined,
+                        semanticLabel: l10n.auth_confirm_password_label,
+                        suffixIcon: Semantics(
+                          button: true,
+                          label: _obscureConfirmPassword ? 'Show password' : 'Hide password',
+                          child: IconButton(
+                            icon: Icon(
+                              _obscureConfirmPassword
+                                  ? Icons.visibility_outlined
+                                  : Icons.visibility_off_outlined,
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                _obscureConfirmPassword = !_obscureConfirmPassword;
+                              });
+                            },
                           ),
-                          onPressed: () {
-                            setState(() {
-                              _obscureConfirmPassword = !_obscureConfirmPassword;
-                            });
-                          },
                         ),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return l10n.auth_validation_password_required;
                           }
                           if (value != _passwordController.text) {
-                            return l10n.auth_validation_password_min_length;
+                            return l10n.auth_validation_password_mismatch;
                           }
                           return null;
                         },
@@ -262,36 +279,40 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                             begin: -0.2,
                             duration: 400.ms,
                           ),
-                      const SizedBox(height: 32),
-                      SizedBox(
-                        width: double.infinity,
-                        height: 56,
-                        child: ElevatedButton(
-                          onPressed: _isLoading ? null : _handleRegister,
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: AppTheme.primaryBlue,
-                            foregroundColor: Colors.white,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(16),
+                      const SizedBox(height: UIConstants.spacingXL),
+                      Semantics(
+                        button: true,
+                        label: l10n.auth_sign_up_button,
+                        child: SizedBox(
+                          width: double.infinity,
+                          height: 56,
+                          child: ElevatedButton(
+                            onPressed: _isLoading ? null : _handleRegister,
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: AppTheme.primaryBlue,
+                              foregroundColor: Colors.white,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(UIConstants.radiusL),
+                              ),
+                              elevation: 0,
                             ),
-                            elevation: 0,
+                            child: _isLoading
+                                ? const SizedBox(
+                                    height: 24,
+                                    width: 24,
+                                    child: CircularProgressIndicator(
+                                      color: Colors.white,
+                                      strokeWidth: 2,
+                                    ),
+                                  )
+                                : Text(
+                                    l10n.auth_sign_up_button,
+                                    style: GoogleFonts.poppins(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
                           ),
-                          child: _isLoading
-                              ? const SizedBox(
-                                  height: 24,
-                                  width: 24,
-                                  child: CircularProgressIndicator(
-                                    color: Colors.white,
-                                    strokeWidth: 2,
-                                  ),
-                                )
-                              : Text(
-                                  l10n.auth_sign_up_button,
-                                  style: GoogleFonts.poppins(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
                         ),
                       ).animate().fadeIn(delay: 700.ms).scale(
                             begin: const Offset(0.8, 0.8),
@@ -301,27 +322,27 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                   ),
                 ),
 
-                const SizedBox(height: 32),
+                const SizedBox(height: UIConstants.spacingXL),
 
                 // Divider
                 Row(
                   children: [
-                    Expanded(child: Divider(color: Colors.grey[300])),
+                    Expanded(child: Divider(color: dividerColor)),
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      padding: const EdgeInsets.symmetric(horizontal: UIConstants.spacingM),
                       child: Text(
                         l10n.common_or,
                         style: GoogleFonts.poppins(
-                          color: Colors.grey[600],
+                          color: subtitleColor,
                           fontSize: 14,
                         ),
                       ),
                     ),
-                    Expanded(child: Divider(color: Colors.grey[300])),
+                    Expanded(child: Divider(color: dividerColor)),
                   ],
                 ).animate().fadeIn(delay: 800.ms),
 
-                const SizedBox(height: 24),
+                const SizedBox(height: UIConstants.spacingL),
 
                 // Social Registration
                 SocialAuthButton(
@@ -333,7 +354,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                       duration: 400.ms,
                     ),
 
-                const SizedBox(height: 24),
+                const SizedBox(height: UIConstants.spacingL),
 
                 // Login Link
                 Row(
@@ -342,27 +363,31 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                     Text(
                       l10n.auth_already_have_account,
                       style: GoogleFonts.poppins(
-                        color: Colors.grey[600],
+                        color: subtitleColor,
                         fontSize: 14,
                       ),
                     ),
-                    TextButton(
-                      onPressed: () {
-                        context.pop();
-                      },
-                      child: Text(
-                        l10n.auth_sign_in_button,
-                        style: GoogleFonts.poppins(
-                          color: AppTheme.primaryBlue,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
+                    Semantics(
+                      button: true,
+                      label: l10n.auth_sign_in_button,
+                      child: TextButton(
+                        onPressed: () {
+                          context.pop();
+                        },
+                        child: Text(
+                          l10n.auth_sign_in_button,
+                          style: GoogleFonts.poppins(
+                            color: AppTheme.primaryBlue,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
                       ),
                     ),
                   ],
                 ).animate().fadeIn(delay: 1000.ms),
 
-                const SizedBox(height: 24),
+                const SizedBox(height: UIConstants.spacingL),
               ],
             ),
           ),

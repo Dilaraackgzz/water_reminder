@@ -126,10 +126,35 @@ class AppLocalizationsZh extends AppLocalizations {
   String get auth_validation_password_min_length => '密码至少需要6个字符';
 
   @override
+  String get auth_validation_password_mismatch => 'Passwords don\'t match';
+
+  @override
   String get auth_validation_name_required => '请输入姓名';
 
   @override
   String get auth_validation_name_min_length => '姓名至少需要2个字符';
+
+  @override
+  String get auth_confirm_password_label => 'Confirm Password';
+
+  @override
+  String get auth_confirm_password_hint => 'Re-enter your password';
+
+  @override
+  String auth_resend_countdown(int seconds) {
+    return 'Resend in ${seconds}s';
+  }
+
+  @override
+  String get auth_verification_check_failed =>
+      'Failed to check verification status';
+
+  @override
+  String get auth_verification_send_failed =>
+      'Failed to send verification email';
+
+  @override
+  String get auth_signout_failed => 'Failed to sign out';
 
   @override
   String get auth_email_verification_title => '验证邮箱';
@@ -996,4 +1021,32 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get help_privacy_policy_error => '无法打开隐私政策';
+
+  @override
+  String get settings_delete_account => '删除账户';
+
+  @override
+  String get settings_delete_account_subtitle => '永久删除您的账户和所有数据';
+
+  @override
+  String get settings_delete_account_dialog_title => '删除账户？';
+
+  @override
+  String get settings_delete_account_dialog_message =>
+      '此操作无法撤消。您的所有数据，包括饮水记录、连续记录和设置，都将被永久删除。';
+
+  @override
+  String get settings_delete_account_confirm => '删除我的账户';
+
+  @override
+  String get settings_delete_account_cancel => '取消';
+
+  @override
+  String get settings_delete_account_success => '账户删除成功';
+
+  @override
+  String get settings_delete_account_error => '删除账户失败';
+
+  @override
+  String get settings_delete_account_reauth_required => '请重新登录以删除您的账户';
 }

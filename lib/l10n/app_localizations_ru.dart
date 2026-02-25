@@ -127,11 +127,36 @@ class AppLocalizationsRu extends AppLocalizations {
       'Пароль должен быть не менее 6 символов';
 
   @override
+  String get auth_validation_password_mismatch => 'Passwords don\'t match';
+
+  @override
   String get auth_validation_name_required => 'Требуется имя';
 
   @override
   String get auth_validation_name_min_length =>
       'Имя должно быть не менее 2 символов';
+
+  @override
+  String get auth_confirm_password_label => 'Confirm Password';
+
+  @override
+  String get auth_confirm_password_hint => 'Re-enter your password';
+
+  @override
+  String auth_resend_countdown(int seconds) {
+    return 'Resend in ${seconds}s';
+  }
+
+  @override
+  String get auth_verification_check_failed =>
+      'Failed to check verification status';
+
+  @override
+  String get auth_verification_send_failed =>
+      'Failed to send verification email';
+
+  @override
+  String get auth_signout_failed => 'Failed to sign out';
 
   @override
   String get auth_email_verification_title => 'Подтвердите Email';
@@ -1020,4 +1045,34 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get help_privacy_policy_error =>
       'Не удалось открыть политику конфиденциальности';
+
+  @override
+  String get settings_delete_account => 'Удалить аккаунт';
+
+  @override
+  String get settings_delete_account_subtitle =>
+      'Навсегда удалить аккаунт и все данные';
+
+  @override
+  String get settings_delete_account_dialog_title => 'Удалить аккаунт?';
+
+  @override
+  String get settings_delete_account_dialog_message =>
+      'Это действие нельзя отменить. Все ваши данные, включая историю потребления воды, серии и настройки, будут удалены навсегда.';
+
+  @override
+  String get settings_delete_account_confirm => 'Удалить мой аккаунт';
+
+  @override
+  String get settings_delete_account_cancel => 'Отмена';
+
+  @override
+  String get settings_delete_account_success => 'Аккаунт успешно удален';
+
+  @override
+  String get settings_delete_account_error => 'Не удалось удалить аккаунт';
+
+  @override
+  String get settings_delete_account_reauth_required =>
+      'Пожалуйста, войдите снова, чтобы удалить аккаунт';
 }

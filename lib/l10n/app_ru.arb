@@ -421,5 +421,15 @@
 
   "help_privacy_policy": "Политика конфиденциальности",
   "help_privacy_policy_desc": "Просмотреть политику конфиденциальности",
-  "help_privacy_policy_error": "Не удалось открыть политику конфиденциальности"
+  "help_privacy_policy_error": "Не удалось открыть политику конфиденциальности",
+
+  "settings_delete_account": "Удалить аккаунт",
+  "settings_delete_account_subtitle": "Навсегда удалить аккаунт и все данные",
+  "settings_delete_account_dialog_title": "Удалить аккаунт?",
+  "settings_delete_account_dialog_message": "Это действие нельзя отменить. Все ваши данные, включая историю потребления воды, серии и настройки, будут удалены навсегда.",
+  "settings_delete_account_confirm": "Удалить мой аккаунт",
+  "settings_delete_account_cancel": "Отмена",
+  "settings_delete_account_success": "Аккаунт успешно удален",
+  "settings_delete_account_error": "Не удалось удалить аккаунт",
+  "settings_delete_account_reauth_required": "Пожалуйста, войдите снова, чтобы удалить аккаунт"
 }

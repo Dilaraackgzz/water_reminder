@@ -376,5 +376,15 @@
 
   "help_privacy_policy": "Politique de confidentialité",
   "help_privacy_policy_desc": "Voir notre politique de confidentialité",
-  "help_privacy_policy_error": "Impossible d'ouvrir la politique de confidentialité"
+  "help_privacy_policy_error": "Impossible d'ouvrir la politique de confidentialité",
+
+  "settings_delete_account": "Supprimer le compte",
+  "settings_delete_account_subtitle": "Supprimer définitivement votre compte et toutes les données",
+  "settings_delete_account_dialog_title": "Supprimer le compte ?",
+  "settings_delete_account_dialog_message": "Cette action ne peut pas être annulée. Toutes vos données, y compris l'historique de consommation d'eau, les séries et les paramètres, seront définitivement supprimées.",
+  "settings_delete_account_confirm": "Supprimer mon compte",
+  "settings_delete_account_cancel": "Annuler",
+  "settings_delete_account_success": "Compte supprimé avec succès",
+  "settings_delete_account_error": "Échec de la suppression du compte",
+  "settings_delete_account_reauth_required": "Veuillez vous reconnecter pour supprimer votre compte"
 }

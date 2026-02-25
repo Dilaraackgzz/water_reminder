@@ -225,7 +225,7 @@ class _ReminderStatusCard extends StatelessWidget {
           Switch(
             value: isEnabled,
             onChanged: onToggle,
-            activeColor: Theme.of(context).colorScheme.primary,
+            activeThumbColor: Theme.of(context).colorScheme.primary,
           ),
         ],
       ),

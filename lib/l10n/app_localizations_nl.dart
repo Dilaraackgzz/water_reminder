@@ -127,11 +127,36 @@ class AppLocalizationsNl extends AppLocalizations {
       'Wachtwoord moet minimaal 6 tekens bevatten';
 
   @override
+  String get auth_validation_password_mismatch => 'Passwords don\'t match';
+
+  @override
   String get auth_validation_name_required => 'Naam is verplicht';
 
   @override
   String get auth_validation_name_min_length =>
       'Naam moet minimaal 2 tekens bevatten';
+
+  @override
+  String get auth_confirm_password_label => 'Confirm Password';
+
+  @override
+  String get auth_confirm_password_hint => 'Re-enter your password';
+
+  @override
+  String auth_resend_countdown(int seconds) {
+    return 'Resend in ${seconds}s';
+  }
+
+  @override
+  String get auth_verification_check_failed =>
+      'Failed to check verification status';
+
+  @override
+  String get auth_verification_send_failed =>
+      'Failed to send verification email';
+
+  @override
+  String get auth_signout_failed => 'Failed to sign out';
 
   @override
   String get auth_email_verification_title => 'Verifieer je e-mail';
@@ -1027,4 +1052,34 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get help_privacy_policy_error => 'Kon privacybeleid niet openen';
+
+  @override
+  String get settings_delete_account => 'Account verwijderen';
+
+  @override
+  String get settings_delete_account_subtitle =>
+      'Verwijder je account en alle gegevens permanent';
+
+  @override
+  String get settings_delete_account_dialog_title => 'Account verwijderen?';
+
+  @override
+  String get settings_delete_account_dialog_message =>
+      'Deze actie kan niet ongedaan worden gemaakt. Al je gegevens, inclusief waterinname-geschiedenis, reeksen en instellingen, worden permanent verwijderd.';
+
+  @override
+  String get settings_delete_account_confirm => 'Mijn account verwijderen';
+
+  @override
+  String get settings_delete_account_cancel => 'Annuleren';
+
+  @override
+  String get settings_delete_account_success => 'Account succesvol verwijderd';
+
+  @override
+  String get settings_delete_account_error => 'Kon account niet verwijderen';
+
+  @override
+  String get settings_delete_account_reauth_required =>
+      'Log opnieuw in om je account te verwijderen';
 }

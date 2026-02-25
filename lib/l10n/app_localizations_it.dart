@@ -127,11 +127,36 @@ class AppLocalizationsIt extends AppLocalizations {
       'La password deve avere almeno 6 caratteri';
 
   @override
+  String get auth_validation_password_mismatch => 'Passwords don\'t match';
+
+  @override
   String get auth_validation_name_required => 'Il nome è obbligatorio';
 
   @override
   String get auth_validation_name_min_length =>
       'Il nome deve avere almeno 2 caratteri';
+
+  @override
+  String get auth_confirm_password_label => 'Confirm Password';
+
+  @override
+  String get auth_confirm_password_hint => 'Re-enter your password';
+
+  @override
+  String auth_resend_countdown(int seconds) {
+    return 'Resend in ${seconds}s';
+  }
+
+  @override
+  String get auth_verification_check_failed =>
+      'Failed to check verification status';
+
+  @override
+  String get auth_verification_send_failed =>
+      'Failed to send verification email';
+
+  @override
+  String get auth_signout_failed => 'Failed to sign out';
 
   @override
   String get auth_email_verification_title => 'Verifica la tua e-mail';
@@ -1034,4 +1059,36 @@ class AppLocalizationsIt extends AppLocalizations {
   @override
   String get help_privacy_policy_error =>
       'Impossibile aprire l\'informativa sulla privacy';
+
+  @override
+  String get settings_delete_account => 'Elimina account';
+
+  @override
+  String get settings_delete_account_subtitle =>
+      'Elimina permanentemente il tuo account e tutti i dati';
+
+  @override
+  String get settings_delete_account_dialog_title => 'Eliminare l\'account?';
+
+  @override
+  String get settings_delete_account_dialog_message =>
+      'Questa azione non può essere annullata. Tutti i tuoi dati, inclusa la cronologia del consumo d\'acqua, le serie e le impostazioni, verranno eliminati permanentemente.';
+
+  @override
+  String get settings_delete_account_confirm => 'Elimina il mio account';
+
+  @override
+  String get settings_delete_account_cancel => 'Annulla';
+
+  @override
+  String get settings_delete_account_success =>
+      'Account eliminato con successo';
+
+  @override
+  String get settings_delete_account_error =>
+      'Impossibile eliminare l\'account';
+
+  @override
+  String get settings_delete_account_reauth_required =>
+      'Effettua nuovamente l\'accesso per eliminare il tuo account';
 }

@@ -127,11 +127,36 @@ class AppLocalizationsPl extends AppLocalizations {
       'Hasło musi mieć co najmniej 6 znaków';
 
   @override
+  String get auth_validation_password_mismatch => 'Passwords don\'t match';
+
+  @override
   String get auth_validation_name_required => 'Imię jest wymagane';
 
   @override
   String get auth_validation_name_min_length =>
       'Imię musi mieć co najmniej 2 znaki';
+
+  @override
+  String get auth_confirm_password_label => 'Confirm Password';
+
+  @override
+  String get auth_confirm_password_hint => 'Re-enter your password';
+
+  @override
+  String auth_resend_countdown(int seconds) {
+    return 'Resend in ${seconds}s';
+  }
+
+  @override
+  String get auth_verification_check_failed =>
+      'Failed to check verification status';
+
+  @override
+  String get auth_verification_send_failed =>
+      'Failed to send verification email';
+
+  @override
+  String get auth_signout_failed => 'Failed to sign out';
 
   @override
   String get auth_email_verification_title => 'Zweryfikuj swój e-mail';
@@ -1026,4 +1051,35 @@ class AppLocalizationsPl extends AppLocalizations {
   @override
   String get help_privacy_policy_error =>
       'Nie można otworzyć polityki prywatności';
+
+  @override
+  String get settings_delete_account => 'Usuń konto';
+
+  @override
+  String get settings_delete_account_subtitle =>
+      'Trwale usuń swoje konto i wszystkie dane';
+
+  @override
+  String get settings_delete_account_dialog_title => 'Usunąć konto?';
+
+  @override
+  String get settings_delete_account_dialog_message =>
+      'Ta czynność nie może zostać cofnięta. Wszystkie Twoje dane, w tym historia spożycia wody, serie i ustawienia, zostaną trwale usunięte.';
+
+  @override
+  String get settings_delete_account_confirm => 'Usuń moje konto';
+
+  @override
+  String get settings_delete_account_cancel => 'Anuluj';
+
+  @override
+  String get settings_delete_account_success =>
+      'Konto zostało pomyślnie usunięte';
+
+  @override
+  String get settings_delete_account_error => 'Nie udało się usunąć konta';
+
+  @override
+  String get settings_delete_account_reauth_required =>
+      'Zaloguj się ponownie, aby usunąć swoje konto';
 }

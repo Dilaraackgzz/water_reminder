@@ -128,11 +128,36 @@ class AppLocalizationsFr extends AppLocalizations {
       'Le mot de passe doit contenir au moins 6 caractères';
 
   @override
+  String get auth_validation_password_mismatch => 'Passwords don\'t match';
+
+  @override
   String get auth_validation_name_required => 'Le nom est requis';
 
   @override
   String get auth_validation_name_min_length =>
       'Le nom doit contenir au moins 2 caractères';
+
+  @override
+  String get auth_confirm_password_label => 'Confirm Password';
+
+  @override
+  String get auth_confirm_password_hint => 'Re-enter your password';
+
+  @override
+  String auth_resend_countdown(int seconds) {
+    return 'Resend in ${seconds}s';
+  }
+
+  @override
+  String get auth_verification_check_failed =>
+      'Failed to check verification status';
+
+  @override
+  String get auth_verification_send_failed =>
+      'Failed to send verification email';
+
+  @override
+  String get auth_signout_failed => 'Failed to sign out';
 
   @override
   String get auth_email_verification_title => 'Vérifiez votre e-mail';
@@ -1038,4 +1063,35 @@ class AppLocalizationsFr extends AppLocalizations {
   @override
   String get help_privacy_policy_error =>
       'Impossible d\'ouvrir la politique de confidentialité';
+
+  @override
+  String get settings_delete_account => 'Supprimer le compte';
+
+  @override
+  String get settings_delete_account_subtitle =>
+      'Supprimer définitivement votre compte et toutes les données';
+
+  @override
+  String get settings_delete_account_dialog_title => 'Supprimer le compte ?';
+
+  @override
+  String get settings_delete_account_dialog_message =>
+      'Cette action ne peut pas être annulée. Toutes vos données, y compris l\'historique de consommation d\'eau, les séries et les paramètres, seront définitivement supprimées.';
+
+  @override
+  String get settings_delete_account_confirm => 'Supprimer mon compte';
+
+  @override
+  String get settings_delete_account_cancel => 'Annuler';
+
+  @override
+  String get settings_delete_account_success => 'Compte supprimé avec succès';
+
+  @override
+  String get settings_delete_account_error =>
+      'Échec de la suppression du compte';
+
+  @override
+  String get settings_delete_account_reauth_required =>
+      'Veuillez vous reconnecter pour supprimer votre compte';
 }

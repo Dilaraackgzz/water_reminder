@@ -119,6 +119,12 @@ class StreakRepositoryImpl implements StreakRepository {
   }
 
   @override
+  Future<void> deleteStreak(String userId) async {
+    final box = await _streaks;
+    await box.delete(userId);
+  }
+
+  @override
   Future<List<DateTime>> getStreakHistory(String userId) async {
     final streak = await getUserStreak(userId);
     return streak?.completedDates ?? [];

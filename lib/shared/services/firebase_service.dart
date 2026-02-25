@@ -159,6 +159,17 @@ class FirebaseService {
     }
   }
 
+  Future<void> deleteUserData(String userId) async {
+    try {
+      await _firestore
+          .collection(AppConstants.usersCollection)
+          .doc(userId)
+          .delete();
+    } catch (e) {
+      throw Failure.server(message: 'Kullanıcı verileri silinemedi: $e');
+    }
+  }
+
   Stream<User?> get authStateChanges => _auth.authStateChanges();
   User? get currentUser => _auth.currentUser;
 

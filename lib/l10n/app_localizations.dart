@@ -358,6 +358,12 @@ abstract class AppLocalizations {
   /// **'Password must be at least 6 characters'**
   String get auth_validation_password_min_length;
 
+  /// No description provided for @auth_validation_password_mismatch.
+  ///
+  /// In en, this message translates to:
+  /// **'Passwords don\'t match'**
+  String get auth_validation_password_mismatch;
+
   /// No description provided for @auth_validation_name_required.
   ///
   /// In en, this message translates to:
@@ -369,6 +375,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Name must be at least 2 characters'**
   String get auth_validation_name_min_length;
+
+  /// No description provided for @auth_confirm_password_label.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm Password'**
+  String get auth_confirm_password_label;
+
+  /// No description provided for @auth_confirm_password_hint.
+  ///
+  /// In en, this message translates to:
+  /// **'Re-enter your password'**
+  String get auth_confirm_password_hint;
+
+  /// No description provided for @auth_resend_countdown.
+  ///
+  /// In en, this message translates to:
+  /// **'Resend in {seconds}s'**
+  String auth_resend_countdown(int seconds);
+
+  /// No description provided for @auth_verification_check_failed.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to check verification status'**
+  String get auth_verification_check_failed;
+
+  /// No description provided for @auth_verification_send_failed.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to send verification email'**
+  String get auth_verification_send_failed;
+
+  /// No description provided for @auth_signout_failed.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to sign out'**
+  String get auth_signout_failed;
 
   /// No description provided for @auth_email_verification_title.
   ///
@@ -2073,6 +2115,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Could not open Privacy Policy'**
   String get help_privacy_policy_error;
+
+  /// No description provided for @settings_delete_account.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Account'**
+  String get settings_delete_account;
+
+  /// No description provided for @settings_delete_account_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Permanently delete your account and all data'**
+  String get settings_delete_account_subtitle;
+
+  /// No description provided for @settings_delete_account_dialog_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Account?'**
+  String get settings_delete_account_dialog_title;
+
+  /// No description provided for @settings_delete_account_dialog_message.
+  ///
+  /// In en, this message translates to:
+  /// **'This action cannot be undone. All your data including water intake history, streaks, and settings will be permanently deleted.'**
+  String get settings_delete_account_dialog_message;
+
+  /// No description provided for @settings_delete_account_confirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete My Account'**
+  String get settings_delete_account_confirm;
+
+  /// No description provided for @settings_delete_account_cancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get settings_delete_account_cancel;
+
+  /// No description provided for @settings_delete_account_success.
+  ///
+  /// In en, this message translates to:
+  /// **'Account deleted successfully'**
+  String get settings_delete_account_success;
+
+  /// No description provided for @settings_delete_account_error.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to delete account'**
+  String get settings_delete_account_error;
+
+  /// No description provided for @settings_delete_account_reauth_required.
+  ///
+  /// In en, this message translates to:
+  /// **'Please sign in again to delete your account'**
+  String get settings_delete_account_reauth_required;
 }
 
 class _AppLocalizationsDelegate

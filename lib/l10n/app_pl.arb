@@ -421,5 +421,15 @@
 
   "help_privacy_policy": "Polityka prywatności",
   "help_privacy_policy_desc": "Zobacz naszą politykę prywatności",
-  "help_privacy_policy_error": "Nie można otworzyć polityki prywatności"
+  "help_privacy_policy_error": "Nie można otworzyć polityki prywatności",
+
+  "settings_delete_account": "Usuń konto",
+  "settings_delete_account_subtitle": "Trwale usuń swoje konto i wszystkie dane",
+  "settings_delete_account_dialog_title": "Usunąć konto?",
+  "settings_delete_account_dialog_message": "Ta czynność nie może zostać cofnięta. Wszystkie Twoje dane, w tym historia spożycia wody, serie i ustawienia, zostaną trwale usunięte.",
+  "settings_delete_account_confirm": "Usuń moje konto",
+  "settings_delete_account_cancel": "Anuluj",
+  "settings_delete_account_success": "Konto zostało pomyślnie usunięte",
+  "settings_delete_account_error": "Nie udało się usunąć konta",
+  "settings_delete_account_reauth_required": "Zaloguj się ponownie, aby usunąć swoje konto"
 }

@@ -126,10 +126,35 @@ class AppLocalizationsJa extends AppLocalizations {
   String get auth_validation_password_min_length => 'パスワードは6文字以上必要です';
 
   @override
+  String get auth_validation_password_mismatch => 'Passwords don\'t match';
+
+  @override
   String get auth_validation_name_required => '名前を入力してください';
 
   @override
   String get auth_validation_name_min_length => '名前は2文字以上必要です';
+
+  @override
+  String get auth_confirm_password_label => 'Confirm Password';
+
+  @override
+  String get auth_confirm_password_hint => 'Re-enter your password';
+
+  @override
+  String auth_resend_countdown(int seconds) {
+    return 'Resend in ${seconds}s';
+  }
+
+  @override
+  String get auth_verification_check_failed =>
+      'Failed to check verification status';
+
+  @override
+  String get auth_verification_send_failed =>
+      'Failed to send verification email';
+
+  @override
+  String get auth_signout_failed => 'Failed to sign out';
 
   @override
   String get auth_email_verification_title => 'メール確認';
@@ -1000,4 +1025,33 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get help_privacy_policy_error => 'プライバシーポリシーを開けませんでした';
+
+  @override
+  String get settings_delete_account => 'アカウントを削除';
+
+  @override
+  String get settings_delete_account_subtitle => 'アカウントとすべてのデータを完全に削除';
+
+  @override
+  String get settings_delete_account_dialog_title => 'アカウントを削除しますか？';
+
+  @override
+  String get settings_delete_account_dialog_message =>
+      'この操作は取り消せません。水分摂取履歴、連続記録、設定を含むすべてのデータが完全に削除されます。';
+
+  @override
+  String get settings_delete_account_confirm => 'アカウントを削除する';
+
+  @override
+  String get settings_delete_account_cancel => 'キャンセル';
+
+  @override
+  String get settings_delete_account_success => 'アカウントが正常に削除されました';
+
+  @override
+  String get settings_delete_account_error => 'アカウントの削除に失敗しました';
+
+  @override
+  String get settings_delete_account_reauth_required =>
+      'アカウントを削除するには再度サインインしてください';
 }

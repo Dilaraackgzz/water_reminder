@@ -127,11 +127,36 @@ class AppLocalizationsHi extends AppLocalizations {
       'पासवर्ड कम से कम 6 अक्षरों का होना चाहिए';
 
   @override
+  String get auth_validation_password_mismatch => 'Passwords don\'t match';
+
+  @override
   String get auth_validation_name_required => 'नाम आवश्यक है';
 
   @override
   String get auth_validation_name_min_length =>
       'नाम कम से कम 2 अक्षरों का होना चाहिए';
+
+  @override
+  String get auth_confirm_password_label => 'Confirm Password';
+
+  @override
+  String get auth_confirm_password_hint => 'Re-enter your password';
+
+  @override
+  String auth_resend_countdown(int seconds) {
+    return 'Resend in ${seconds}s';
+  }
+
+  @override
+  String get auth_verification_check_failed =>
+      'Failed to check verification status';
+
+  @override
+  String get auth_verification_send_failed =>
+      'Failed to send verification email';
+
+  @override
+  String get auth_signout_failed => 'Failed to sign out';
 
   @override
   String get auth_email_verification_title => 'अपना ईमेल सत्यापित करें';
@@ -1022,4 +1047,34 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get help_privacy_policy_error => 'गोपनीयता नीति खोलने में असमर्थ';
+
+  @override
+  String get settings_delete_account => 'खाता हटाएं';
+
+  @override
+  String get settings_delete_account_subtitle =>
+      'अपना खाता और सारा डेटा स्थायी रूप से हटाएं';
+
+  @override
+  String get settings_delete_account_dialog_title => 'खाता हटाएं?';
+
+  @override
+  String get settings_delete_account_dialog_message =>
+      'यह क्रिया पूर्ववत नहीं की जा सकती। पानी सेवन इतिहास, स्ट्रीक और सेटिंग्स सहित आपका सारा डेटा स्थायी रूप से हटा दिया जाएगा।';
+
+  @override
+  String get settings_delete_account_confirm => 'मेरा खाता हटाएं';
+
+  @override
+  String get settings_delete_account_cancel => 'रद्द करें';
+
+  @override
+  String get settings_delete_account_success => 'खाता सफलतापूर्वक हटाया गया';
+
+  @override
+  String get settings_delete_account_error => 'खाता हटाने में विफल';
+
+  @override
+  String get settings_delete_account_reauth_required =>
+      'अपना खाता हटाने के लिए कृपया फिर से साइन इन करें';
 }

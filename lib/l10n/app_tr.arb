@@ -43,8 +43,23 @@
   "auth_validation_email_invalid": "Geçerli bir e-posta adresi girin",
   "auth_validation_password_required": "Şifre gerekli",
   "auth_validation_password_min_length": "Şifre en az 6 karakter olmalı",
+  "auth_validation_password_mismatch": "Şifreler eşleşmiyor",
   "auth_validation_name_required": "Ad gerekli",
   "auth_validation_name_min_length": "Ad en az 2 karakter olmalı",
+  "auth_confirm_password_label": "Şifre Tekrar",
+  "auth_confirm_password_hint": "Şifrenizi tekrar girin",
+
+  "auth_resend_countdown": "{seconds} saniye sonra tekrar gönder",
+  "@auth_resend_countdown": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "auth_verification_check_failed": "Doğrulama durumu kontrol edilemedi",
+  "auth_verification_send_failed": "Doğrulama e-postası gönderilemedi",
+  "auth_signout_failed": "Çıkış yapılamadı",
 
   "auth_email_verification_title": "E-postanı Doğrula",
   "auth_email_verification_sent": "Doğrulama bağlantısını gönderdik:",
@@ -376,5 +391,15 @@
 
   "help_privacy_policy": "Gizlilik Politikası",
   "help_privacy_policy_desc": "Gizlilik politikamızı görüntüle",
-  "help_privacy_policy_error": "Gizlilik Politikası açılamadı"
+  "help_privacy_policy_error": "Gizlilik Politikası açılamadı",
+
+  "settings_delete_account": "Hesabı Sil",
+  "settings_delete_account_subtitle": "Hesabınızı ve tüm verilerinizi kalıcı olarak silin",
+  "settings_delete_account_dialog_title": "Hesabı Sil?",
+  "settings_delete_account_dialog_message": "Bu işlem geri alınamaz. Su tüketimi geçmişi, seriler ve ayarlar dahil tüm verileriniz kalıcı olarak silinecektir.",
+  "settings_delete_account_confirm": "Hesabımı Sil",
+  "settings_delete_account_cancel": "İptal",
+  "settings_delete_account_success": "Hesap başarıyla silindi",
+  "settings_delete_account_error": "Hesap silinemedi",
+  "settings_delete_account_reauth_required": "Hesabınızı silmek için lütfen tekrar giriş yapın"
 }

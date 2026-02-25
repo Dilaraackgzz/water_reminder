@@ -128,10 +128,35 @@ class AppLocalizationsTr extends AppLocalizations {
       'Şifre en az 6 karakter olmalı';
 
   @override
+  String get auth_validation_password_mismatch => 'Şifreler eşleşmiyor';
+
+  @override
   String get auth_validation_name_required => 'Ad gerekli';
 
   @override
   String get auth_validation_name_min_length => 'Ad en az 2 karakter olmalı';
+
+  @override
+  String get auth_confirm_password_label => 'Şifre Tekrar';
+
+  @override
+  String get auth_confirm_password_hint => 'Şifrenizi tekrar girin';
+
+  @override
+  String auth_resend_countdown(int seconds) {
+    return '$seconds saniye sonra tekrar gönder';
+  }
+
+  @override
+  String get auth_verification_check_failed =>
+      'Doğrulama durumu kontrol edilemedi';
+
+  @override
+  String get auth_verification_send_failed =>
+      'Doğrulama e-postası gönderilemedi';
+
+  @override
+  String get auth_signout_failed => 'Çıkış yapılamadı';
 
   @override
   String get auth_email_verification_title => 'E-postanı Doğrula';
@@ -1022,4 +1047,34 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get help_privacy_policy_error => 'Gizlilik Politikası açılamadı';
+
+  @override
+  String get settings_delete_account => 'Hesabı Sil';
+
+  @override
+  String get settings_delete_account_subtitle =>
+      'Hesabınızı ve tüm verilerinizi kalıcı olarak silin';
+
+  @override
+  String get settings_delete_account_dialog_title => 'Hesabı Sil?';
+
+  @override
+  String get settings_delete_account_dialog_message =>
+      'Bu işlem geri alınamaz. Su tüketimi geçmişi, seriler ve ayarlar dahil tüm verileriniz kalıcı olarak silinecektir.';
+
+  @override
+  String get settings_delete_account_confirm => 'Hesabımı Sil';
+
+  @override
+  String get settings_delete_account_cancel => 'İptal';
+
+  @override
+  String get settings_delete_account_success => 'Hesap başarıyla silindi';
+
+  @override
+  String get settings_delete_account_error => 'Hesap silinemedi';
+
+  @override
+  String get settings_delete_account_reauth_required =>
+      'Hesabınızı silmek için lütfen tekrar giriş yapın';
 }

@@ -17,6 +17,9 @@ abstract class StreakRepository {
   /// Reset streak (for testing or manual reset)
   Future<void> resetStreak(String userId);
 
+  /// Delete streak data completely
+  Future<void> deleteStreak(String userId);
+
   /// Get streak history (completed dates)
   Future<List<DateTime>> getStreakHistory(String userId);
 }

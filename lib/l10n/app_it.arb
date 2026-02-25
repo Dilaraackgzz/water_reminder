@@ -376,5 +376,15 @@
 
   "help_privacy_policy": "Informativa sulla privacy",
   "help_privacy_policy_desc": "Visualizza la nostra informativa sulla privacy",
-  "help_privacy_policy_error": "Impossibile aprire l'informativa sulla privacy"
+  "help_privacy_policy_error": "Impossibile aprire l'informativa sulla privacy",
+
+  "settings_delete_account": "Elimina account",
+  "settings_delete_account_subtitle": "Elimina permanentemente il tuo account e tutti i dati",
+  "settings_delete_account_dialog_title": "Eliminare l'account?",
+  "settings_delete_account_dialog_message": "Questa azione non può essere annullata. Tutti i tuoi dati, inclusa la cronologia del consumo d'acqua, le serie e le impostazioni, verranno eliminati permanentemente.",
+  "settings_delete_account_confirm": "Elimina il mio account",
+  "settings_delete_account_cancel": "Annulla",
+  "settings_delete_account_success": "Account eliminato con successo",
+  "settings_delete_account_error": "Impossibile eliminare l'account",
+  "settings_delete_account_reauth_required": "Effettua nuovamente l'accesso per eliminare il tuo account"
 }

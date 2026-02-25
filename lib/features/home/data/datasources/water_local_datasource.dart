@@ -117,4 +117,29 @@ class WaterLocalDataSource {
   String _getDailyGoalKey(DateTime date) {
     return '${date.year}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')}';
   }
+
+  /// Clear all water intake data for a specific user
+  Future<void> clearAllUserData(String userId) async {
+    final waterBox = await _waterIntakes;
+    final goalBox = await _dailyGoals;
+
+    // Get all water intakes and filter by userId
+    final allIntakes = waterBox.values.toList();
+    final keysToDelete = <dynamic>[];
+
+    for (final entry in waterBox.toMap().entries) {
+      final json = Map<String, dynamic>.from(entry.value);
+      if (json['userId'] == userId) {
+        keysToDelete.add(entry.key);
+      }
+    }
+
+    // Delete filtered water intakes
+    for (final key in keysToDelete) {
+      await waterBox.delete(key);
+    }
+
+    // Clear all daily goals (they're user-specific by design)
+    await goalBox.clear();
+  }
 }

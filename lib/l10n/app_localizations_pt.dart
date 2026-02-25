@@ -127,11 +127,36 @@ class AppLocalizationsPt extends AppLocalizations {
       'A senha deve ter pelo menos 6 caracteres';
 
   @override
+  String get auth_validation_password_mismatch => 'Passwords don\'t match';
+
+  @override
   String get auth_validation_name_required => 'O nome é obrigatório';
 
   @override
   String get auth_validation_name_min_length =>
       'O nome deve ter pelo menos 2 caracteres';
+
+  @override
+  String get auth_confirm_password_label => 'Confirm Password';
+
+  @override
+  String get auth_confirm_password_hint => 'Re-enter your password';
+
+  @override
+  String auth_resend_countdown(int seconds) {
+    return 'Resend in ${seconds}s';
+  }
+
+  @override
+  String get auth_verification_check_failed =>
+      'Failed to check verification status';
+
+  @override
+  String get auth_verification_send_failed =>
+      'Failed to send verification email';
+
+  @override
+  String get auth_signout_failed => 'Failed to sign out';
 
   @override
   String get auth_email_verification_title => 'Verifique seu e-mail';
@@ -1029,4 +1054,34 @@ class AppLocalizationsPt extends AppLocalizations {
   @override
   String get help_privacy_policy_error =>
       'Não foi possível abrir a política de privacidade';
+
+  @override
+  String get settings_delete_account => 'Excluir conta';
+
+  @override
+  String get settings_delete_account_subtitle =>
+      'Excluir permanentemente sua conta e todos os dados';
+
+  @override
+  String get settings_delete_account_dialog_title => 'Excluir conta?';
+
+  @override
+  String get settings_delete_account_dialog_message =>
+      'Esta ação não pode ser desfeita. Todos os seus dados, incluindo histórico de consumo de água, sequências e configurações, serão excluídos permanentemente.';
+
+  @override
+  String get settings_delete_account_confirm => 'Excluir minha conta';
+
+  @override
+  String get settings_delete_account_cancel => 'Cancelar';
+
+  @override
+  String get settings_delete_account_success => 'Conta excluída com sucesso';
+
+  @override
+  String get settings_delete_account_error => 'Falha ao excluir a conta';
+
+  @override
+  String get settings_delete_account_reauth_required =>
+      'Por favor, faça login novamente para excluir sua conta';
 }

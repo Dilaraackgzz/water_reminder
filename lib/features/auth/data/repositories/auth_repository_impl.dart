@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart' show FirebaseException;
 import 'package:google_sign_in/google_sign_in.dart';
 import '../../domain/models/user_model.dart';
 import '../../domain/repositories/auth_repository.dart';
@@ -125,6 +124,14 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   Future<void> sendEmailVerification() async {
     await _firebaseAuth.currentUser?.sendEmailVerification();
+  }
+
+  @override
+  Future<void> deleteAccount() async {
+    final user = _firebaseAuth.currentUser;
+    if (user != null) {
+      await user.delete();
+    }
   }
 
   UserModel _userToUserModel(User user) {

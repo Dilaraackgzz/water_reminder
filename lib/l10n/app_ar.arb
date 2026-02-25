@@ -421,5 +421,15 @@
 
   "help_privacy_policy": "سياسة الخصوصية",
   "help_privacy_policy_desc": "عرض سياسة الخصوصية",
-  "help_privacy_policy_error": "تعذر فتح سياسة الخصوصية"
+  "help_privacy_policy_error": "تعذر فتح سياسة الخصوصية",
+
+  "settings_delete_account": "حذف الحساب",
+  "settings_delete_account_subtitle": "حذف حسابك وجميع البيانات نهائياً",
+  "settings_delete_account_dialog_title": "حذف الحساب؟",
+  "settings_delete_account_dialog_message": "لا يمكن التراجع عن هذا الإجراء. سيتم حذف جميع بياناتك بما في ذلك سجل استهلاك الماء والسلاسل والإعدادات نهائياً.",
+  "settings_delete_account_confirm": "حذف حسابي",
+  "settings_delete_account_cancel": "إلغاء",
+  "settings_delete_account_success": "تم حذف الحساب بنجاح",
+  "settings_delete_account_error": "فشل في حذف الحساب",
+  "settings_delete_account_reauth_required": "يرجى تسجيل الدخول مرة أخرى لحذف حسابك"
 }

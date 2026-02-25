@@ -50,8 +50,23 @@
   "auth_validation_email_invalid": "Please enter a valid email",
   "auth_validation_password_required": "Password is required",
   "auth_validation_password_min_length": "Password must be at least 6 characters",
+  "auth_validation_password_mismatch": "Passwords don't match",
   "auth_validation_name_required": "Name is required",
   "auth_validation_name_min_length": "Name must be at least 2 characters",
+  "auth_confirm_password_label": "Confirm Password",
+  "auth_confirm_password_hint": "Re-enter your password",
+
+  "auth_resend_countdown": "Resend in {seconds}s",
+  "@auth_resend_countdown": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "auth_verification_check_failed": "Failed to check verification status",
+  "auth_verification_send_failed": "Failed to send verification email",
+  "auth_signout_failed": "Failed to sign out",
 
   "auth_email_verification_title": "Verify Your Email",
   "auth_email_verification_sent": "We've sent a verification link to:",
@@ -428,5 +443,15 @@
 
   "help_privacy_policy": "Privacy Policy",
   "help_privacy_policy_desc": "View our privacy policy",
-  "help_privacy_policy_error": "Could not open Privacy Policy"
+  "help_privacy_policy_error": "Could not open Privacy Policy",
+
+  "settings_delete_account": "Delete Account",
+  "settings_delete_account_subtitle": "Permanently delete your account and all data",
+  "settings_delete_account_dialog_title": "Delete Account?",
+  "settings_delete_account_dialog_message": "This action cannot be undone. All your data including water intake history, streaks, and settings will be permanently deleted.",
+  "settings_delete_account_confirm": "Delete My Account",
+  "settings_delete_account_cancel": "Cancel",
+  "settings_delete_account_success": "Account deleted successfully",
+  "settings_delete_account_error": "Failed to delete account",
+  "settings_delete_account_reauth_required": "Please sign in again to delete your account"
 }

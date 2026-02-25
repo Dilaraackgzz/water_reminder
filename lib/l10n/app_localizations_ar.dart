@@ -127,11 +127,36 @@ class AppLocalizationsAr extends AppLocalizations {
       'يجب أن تكون كلمة المرور 6 أحرف على الأقل';
 
   @override
+  String get auth_validation_password_mismatch => 'Passwords don\'t match';
+
+  @override
   String get auth_validation_name_required => 'الاسم مطلوب';
 
   @override
   String get auth_validation_name_min_length =>
       'يجب أن يكون الاسم حرفين على الأقل';
+
+  @override
+  String get auth_confirm_password_label => 'Confirm Password';
+
+  @override
+  String get auth_confirm_password_hint => 'Re-enter your password';
+
+  @override
+  String auth_resend_countdown(int seconds) {
+    return 'Resend in ${seconds}s';
+  }
+
+  @override
+  String get auth_verification_check_failed =>
+      'Failed to check verification status';
+
+  @override
+  String get auth_verification_send_failed =>
+      'Failed to send verification email';
+
+  @override
+  String get auth_signout_failed => 'Failed to sign out';
 
   @override
   String get auth_email_verification_title => 'تأكيد البريد الإلكتروني';
@@ -1014,4 +1039,34 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get help_privacy_policy_error => 'تعذر فتح سياسة الخصوصية';
+
+  @override
+  String get settings_delete_account => 'حذف الحساب';
+
+  @override
+  String get settings_delete_account_subtitle =>
+      'حذف حسابك وجميع البيانات نهائياً';
+
+  @override
+  String get settings_delete_account_dialog_title => 'حذف الحساب؟';
+
+  @override
+  String get settings_delete_account_dialog_message =>
+      'لا يمكن التراجع عن هذا الإجراء. سيتم حذف جميع بياناتك بما في ذلك سجل استهلاك الماء والسلاسل والإعدادات نهائياً.';
+
+  @override
+  String get settings_delete_account_confirm => 'حذف حسابي';
+
+  @override
+  String get settings_delete_account_cancel => 'إلغاء';
+
+  @override
+  String get settings_delete_account_success => 'تم حذف الحساب بنجاح';
+
+  @override
+  String get settings_delete_account_error => 'فشل في حذف الحساب';
+
+  @override
+  String get settings_delete_account_reauth_required =>
+      'يرجى تسجيل الدخول مرة أخرى لحذف حسابك';
 }

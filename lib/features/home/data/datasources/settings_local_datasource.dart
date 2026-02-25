@@ -39,4 +39,10 @@ class SettingsLocalDataSource {
     final key = '${_settingsKey}_$userId';
     yield* box.watch(key: key).asyncMap((_) => getUserSettings(userId));
   }
+
+  /// Delete user settings
+  Future<void> deleteUserSettings(String userId) async {
+    final box = await _settings;
+    await box.delete('${_settingsKey}_$userId');
+  }
 }

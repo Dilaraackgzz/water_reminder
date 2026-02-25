@@ -127,11 +127,36 @@ class AppLocalizationsEn extends AppLocalizations {
       'Password must be at least 6 characters';
 
   @override
+  String get auth_validation_password_mismatch => 'Passwords don\'t match';
+
+  @override
   String get auth_validation_name_required => 'Name is required';
 
   @override
   String get auth_validation_name_min_length =>
       'Name must be at least 2 characters';
+
+  @override
+  String get auth_confirm_password_label => 'Confirm Password';
+
+  @override
+  String get auth_confirm_password_hint => 'Re-enter your password';
+
+  @override
+  String auth_resend_countdown(int seconds) {
+    return 'Resend in ${seconds}s';
+  }
+
+  @override
+  String get auth_verification_check_failed =>
+      'Failed to check verification status';
+
+  @override
+  String get auth_verification_send_failed =>
+      'Failed to send verification email';
+
+  @override
+  String get auth_signout_failed => 'Failed to sign out';
 
   @override
   String get auth_email_verification_title => 'Verify Your Email';
@@ -1023,4 +1048,34 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get help_privacy_policy_error => 'Could not open Privacy Policy';
+
+  @override
+  String get settings_delete_account => 'Delete Account';
+
+  @override
+  String get settings_delete_account_subtitle =>
+      'Permanently delete your account and all data';
+
+  @override
+  String get settings_delete_account_dialog_title => 'Delete Account?';
+
+  @override
+  String get settings_delete_account_dialog_message =>
+      'This action cannot be undone. All your data including water intake history, streaks, and settings will be permanently deleted.';
+
+  @override
+  String get settings_delete_account_confirm => 'Delete My Account';
+
+  @override
+  String get settings_delete_account_cancel => 'Cancel';
+
+  @override
+  String get settings_delete_account_success => 'Account deleted successfully';
+
+  @override
+  String get settings_delete_account_error => 'Failed to delete account';
+
+  @override
+  String get settings_delete_account_reauth_required =>
+      'Please sign in again to delete your account';
 }

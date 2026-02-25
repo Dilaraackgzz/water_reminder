@@ -421,5 +421,15 @@
 
   "help_privacy_policy": "गोपनीयता नीति",
   "help_privacy_policy_desc": "गोपनीयता नीति देखें",
-  "help_privacy_policy_error": "गोपनीयता नीति खोलने में असमर्थ"
+  "help_privacy_policy_error": "गोपनीयता नीति खोलने में असमर्थ",
+
+  "settings_delete_account": "खाता हटाएं",
+  "settings_delete_account_subtitle": "अपना खाता और सारा डेटा स्थायी रूप से हटाएं",
+  "settings_delete_account_dialog_title": "खाता हटाएं?",
+  "settings_delete_account_dialog_message": "यह क्रिया पूर्ववत नहीं की जा सकती। पानी सेवन इतिहास, स्ट्रीक और सेटिंग्स सहित आपका सारा डेटा स्थायी रूप से हटा दिया जाएगा।",
+  "settings_delete_account_confirm": "मेरा खाता हटाएं",
+  "settings_delete_account_cancel": "रद्द करें",
+  "settings_delete_account_success": "खाता सफलतापूर्वक हटाया गया",
+  "settings_delete_account_error": "खाता हटाने में विफल",
+  "settings_delete_account_reauth_required": "अपना खाता हटाने के लिए कृपया फिर से साइन इन करें"
 }

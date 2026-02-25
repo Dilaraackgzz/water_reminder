@@ -376,5 +376,15 @@
 
   "help_privacy_policy": "Política de privacidade",
   "help_privacy_policy_desc": "Ver nossa política de privacidade",
-  "help_privacy_policy_error": "Não foi possível abrir a política de privacidade"
+  "help_privacy_policy_error": "Não foi possível abrir a política de privacidade",
+
+  "settings_delete_account": "Excluir conta",
+  "settings_delete_account_subtitle": "Excluir permanentemente sua conta e todos os dados",
+  "settings_delete_account_dialog_title": "Excluir conta?",
+  "settings_delete_account_dialog_message": "Esta ação não pode ser desfeita. Todos os seus dados, incluindo histórico de consumo de água, sequências e configurações, serão excluídos permanentemente.",
+  "settings_delete_account_confirm": "Excluir minha conta",
+  "settings_delete_account_cancel": "Cancelar",
+  "settings_delete_account_success": "Conta excluída com sucesso",
+  "settings_delete_account_error": "Falha ao excluir a conta",
+  "settings_delete_account_reauth_required": "Por favor, faça login novamente para excluir sua conta"
 }

@@ -376,5 +376,15 @@
 
   "help_privacy_policy": "Datenschutzrichtlinie",
   "help_privacy_policy_desc": "Unsere Datenschutzrichtlinie anzeigen",
-  "help_privacy_policy_error": "Datenschutzrichtlinie konnte nicht geöffnet werden"
+  "help_privacy_policy_error": "Datenschutzrichtlinie konnte nicht geöffnet werden",
+
+  "settings_delete_account": "Konto löschen",
+  "settings_delete_account_subtitle": "Konto und alle Daten dauerhaft löschen",
+  "settings_delete_account_dialog_title": "Konto löschen?",
+  "settings_delete_account_dialog_message": "Diese Aktion kann nicht rückgängig gemacht werden. Alle Ihre Daten, einschließlich Wasseraufnahme-Verlauf, Serien und Einstellungen, werden dauerhaft gelöscht.",
+  "settings_delete_account_confirm": "Mein Konto löschen",
+  "settings_delete_account_cancel": "Abbrechen",
+  "settings_delete_account_success": "Konto erfolgreich gelöscht",
+  "settings_delete_account_error": "Konto konnte nicht gelöscht werden",
+  "settings_delete_account_reauth_required": "Bitte melden Sie sich erneut an, um Ihr Konto zu löschen"
 }

@@ -126,10 +126,35 @@ class AppLocalizationsKo extends AppLocalizations {
   String get auth_validation_password_min_length => '비밀번호는 6자 이상이어야 합니다';
 
   @override
+  String get auth_validation_password_mismatch => 'Passwords don\'t match';
+
+  @override
   String get auth_validation_name_required => '이름을 입력해주세요';
 
   @override
   String get auth_validation_name_min_length => '이름은 2자 이상이어야 합니다';
+
+  @override
+  String get auth_confirm_password_label => 'Confirm Password';
+
+  @override
+  String get auth_confirm_password_hint => 'Re-enter your password';
+
+  @override
+  String auth_resend_countdown(int seconds) {
+    return 'Resend in ${seconds}s';
+  }
+
+  @override
+  String get auth_verification_check_failed =>
+      'Failed to check verification status';
+
+  @override
+  String get auth_verification_send_failed =>
+      'Failed to send verification email';
+
+  @override
+  String get auth_signout_failed => 'Failed to sign out';
 
   @override
   String get auth_email_verification_title => '이메일 인증';
@@ -1007,4 +1032,32 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get help_privacy_policy_error => '개인정보 처리방침을 열 수 없습니다';
+
+  @override
+  String get settings_delete_account => '계정 삭제';
+
+  @override
+  String get settings_delete_account_subtitle => '계정과 모든 데이터를 영구적으로 삭제';
+
+  @override
+  String get settings_delete_account_dialog_title => '계정을 삭제하시겠습니까?';
+
+  @override
+  String get settings_delete_account_dialog_message =>
+      '이 작업은 취소할 수 없습니다. 수분 섭취 기록, 연속 기록, 설정을 포함한 모든 데이터가 영구적으로 삭제됩니다.';
+
+  @override
+  String get settings_delete_account_confirm => '내 계정 삭제';
+
+  @override
+  String get settings_delete_account_cancel => '취소';
+
+  @override
+  String get settings_delete_account_success => '계정이 성공적으로 삭제되었습니다';
+
+  @override
+  String get settings_delete_account_error => '계정 삭제에 실패했습니다';
+
+  @override
+  String get settings_delete_account_reauth_required => '계정을 삭제하려면 다시 로그인해주세요';
 }

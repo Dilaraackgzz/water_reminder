@@ -127,11 +127,36 @@ class AppLocalizationsDe extends AppLocalizations {
       'Passwort muss mindestens 6 Zeichen haben';
 
   @override
+  String get auth_validation_password_mismatch => 'Passwords don\'t match';
+
+  @override
   String get auth_validation_name_required => 'Name ist erforderlich';
 
   @override
   String get auth_validation_name_min_length =>
       'Name muss mindestens 2 Zeichen haben';
+
+  @override
+  String get auth_confirm_password_label => 'Confirm Password';
+
+  @override
+  String get auth_confirm_password_hint => 'Re-enter your password';
+
+  @override
+  String auth_resend_countdown(int seconds) {
+    return 'Resend in ${seconds}s';
+  }
+
+  @override
+  String get auth_verification_check_failed =>
+      'Failed to check verification status';
+
+  @override
+  String get auth_verification_send_failed =>
+      'Failed to send verification email';
+
+  @override
+  String get auth_signout_failed => 'Failed to sign out';
 
   @override
   String get auth_email_verification_title => 'E-Mail bestätigen';
@@ -1031,4 +1056,35 @@ class AppLocalizationsDe extends AppLocalizations {
   @override
   String get help_privacy_policy_error =>
       'Datenschutzrichtlinie konnte nicht geöffnet werden';
+
+  @override
+  String get settings_delete_account => 'Konto löschen';
+
+  @override
+  String get settings_delete_account_subtitle =>
+      'Konto und alle Daten dauerhaft löschen';
+
+  @override
+  String get settings_delete_account_dialog_title => 'Konto löschen?';
+
+  @override
+  String get settings_delete_account_dialog_message =>
+      'Diese Aktion kann nicht rückgängig gemacht werden. Alle Ihre Daten, einschließlich Wasseraufnahme-Verlauf, Serien und Einstellungen, werden dauerhaft gelöscht.';
+
+  @override
+  String get settings_delete_account_confirm => 'Mein Konto löschen';
+
+  @override
+  String get settings_delete_account_cancel => 'Abbrechen';
+
+  @override
+  String get settings_delete_account_success => 'Konto erfolgreich gelöscht';
+
+  @override
+  String get settings_delete_account_error =>
+      'Konto konnte nicht gelöscht werden';
+
+  @override
+  String get settings_delete_account_reauth_required =>
+      'Bitte melden Sie sich erneut an, um Ihr Konto zu löschen';
 }
