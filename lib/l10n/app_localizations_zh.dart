@@ -205,6 +205,17 @@ class AppLocalizationsZh extends AppLocalizations {
   String get home_today => '今天';
 
   @override
+  String get home_todays_progress => 'Today\'s Progress';
+
+  @override
+  String get home_quick_add => 'Quick Add';
+
+  @override
+  String home_amount_to_go(String amount) {
+    return '$amount to go!';
+  }
+
+  @override
   String get home_custom_amount => '自定义量';
 
   @override
@@ -405,16 +416,31 @@ class AppLocalizationsZh extends AppLocalizations {
   String get activity_sedentary => '久坐';
 
   @override
+  String get activity_sedentary_desc => '很少或没有运动';
+
+  @override
   String get activity_light => '轻度活动';
+
+  @override
+  String get activity_light_desc => '每周1-3天轻度运动';
 
   @override
   String get activity_moderate => '中度活动';
 
   @override
+  String get activity_moderate_desc => '每周3-5天中度运动';
+
+  @override
   String get activity_very_active => '活跃';
 
   @override
+  String get activity_very_active_desc => '每周6-7天高强度运动';
+
+  @override
   String get activity_extra_active => '非常活跃';
+
+  @override
+  String get activity_extra_active_desc => '非常高强度运动和体力劳动';
 
   @override
   String get bmi_underweight => '体重过轻';
@@ -639,6 +665,59 @@ class AppLocalizationsZh extends AppLocalizations {
   String get statistics_chart_label => '饮水量';
 
   @override
+  String get statistics_total_intake => '总摄入量';
+
+  @override
+  String get statistics_total_consumed => '总消耗量';
+
+  @override
+  String get statistics_daily_average => '日均';
+
+  @override
+  String get statistics_goals_met => '达成目标';
+
+  @override
+  String statistics_out_of(int count) {
+    return '共$count天';
+  }
+
+  @override
+  String get statistics_progress => '进度';
+
+  @override
+  String get statistics_on_track => '进展顺利！';
+
+  @override
+  String get statistics_keep_going => '继续加油！';
+
+  @override
+  String get statistics_daily_intake => '每日摄入';
+
+  @override
+  String get statistics_below_goal => '未达目标';
+
+  @override
+  String get statistics_goal_met_label => '目标达成';
+
+  @override
+  String get statistics_your_streak => '你的连续记录';
+
+  @override
+  String get statistics_current => '当前';
+
+  @override
+  String get statistics_best => '最佳';
+
+  @override
+  String get statistics_completed => '已完成';
+
+  @override
+  String get statistics_next_goal => '下一个目标';
+
+  @override
+  String get statistics_days => '天';
+
+  @override
   String get achievements_title => '成就';
 
   @override
@@ -734,10 +813,89 @@ class AppLocalizationsZh extends AppLocalizations {
   String get reminders_interval_180 => '每3小时';
 
   @override
+  String get reminders_reschedule => 'Reschedule Reminders';
+
+  @override
+  String get reminders_reschedule_subtitle =>
+      'Update all pending notifications';
+
+  @override
+  String get reminders_cancel_all => 'Cancel All Reminders';
+
+  @override
+  String get reminders_cancel_all_subtitle =>
+      'Remove all pending notifications';
+
+  @override
+  String get reminders_schedule_success => 'Reminders scheduled successfully';
+
+  @override
+  String get reminders_cancel_success => 'All reminders cancelled';
+
+  @override
+  String get reminders_info_message =>
+      'Reminders help you stay hydrated throughout the day. Customize your schedule in Settings.';
+
+  @override
+  String get reminders_schedule_info => 'Current Schedule';
+
+  @override
   String get notification_reminder_title => '该喝水了！';
 
   @override
   String get notification_reminder_body => '保持水分！现在喝点水吧。';
+
+  @override
+  String get notification_title_1 => 'Time to Hydrate!';
+
+  @override
+  String get notification_title_2 => 'Water Break!';
+
+  @override
+  String get notification_title_3 => 'Stay Hydrated!';
+
+  @override
+  String get notification_title_4 => 'Drink Some Water!';
+
+  @override
+  String get notification_title_5 => 'Hydration Time!';
+
+  @override
+  String get notification_title_6 => 'Water Reminder!';
+
+  @override
+  String get notification_title_7 => 'Take Care of Yourself!';
+
+  @override
+  String get notification_body_1 =>
+      'Time to drink some water! Your body needs hydration.';
+
+  @override
+  String get notification_body_2 =>
+      'Don\'t forget to stay hydrated throughout the day!';
+
+  @override
+  String get notification_body_3 =>
+      'A quick water break can boost your energy!';
+
+  @override
+  String get notification_body_4 =>
+      'Your health matters! Take a moment to drink water.';
+
+  @override
+  String get notification_body_5 =>
+      'Keep your body happy with some refreshing water!';
+
+  @override
+  String get notification_body_6 => 'Stay healthy and hydrated! Drink up!';
+
+  @override
+  String get notification_body_7 =>
+      'Time for a water break! You\'re doing great!';
+
+  @override
+  String get notification_body_8 =>
+      'Remember to drink water regularly for better health!';
 
   @override
   String get streak_current => '当前连续';

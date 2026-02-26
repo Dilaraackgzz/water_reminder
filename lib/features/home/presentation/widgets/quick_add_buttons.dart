@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../../../core/constants/ui_constants.dart';
 import '../../../../core/providers/unit_provider.dart';
+import '../../../../l10n/app_localizations.dart';
 
 class QuickAddButtons extends ConsumerWidget {
   final Function(int) onAddWater;
@@ -15,10 +18,14 @@ class QuickAddButtons extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context)!;
     final unitNotifier = ref.watch(waterUnitProvider.notifier);
     final amounts = unitNotifier.getQuickAddAmounts();
     final labels = unitNotifier.getQuickAddLabels();
     final isDark = Theme.of(context).brightness == Brightness.dark;
+
+    // Theme-aware colors
+    final textColor = isDark ? Colors.white : Colors.black87;
 
     final icons = [
       Icons.local_drink,
@@ -31,14 +38,14 @@ class QuickAddButtons extends ConsumerWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Text(
-          'Quick Add',
+          l10n.home_quick_add,
           style: GoogleFonts.poppins(
             fontSize: 16,
             fontWeight: FontWeight.w600,
-            color: isDark ? Colors.white : Colors.black87,
+            color: textColor,
           ),
         ),
-        const SizedBox(height: 12),
+        const SizedBox(height: UIConstants.spacingM),
         Row(
           children: [
             Expanded(
@@ -50,7 +57,7 @@ class QuickAddButtons extends ConsumerWidget {
                 isLoading: isLoading,
               ),
             ),
-            const SizedBox(width: 12),
+            const SizedBox(width: UIConstants.spacingM),
             Expanded(
               child: _QuickAddButton(
                 amount: amounts[1],
@@ -62,7 +69,7 @@ class QuickAddButtons extends ConsumerWidget {
             ),
           ],
         ),
-        const SizedBox(height: 12),
+        const SizedBox(height: UIConstants.spacingM),
         Row(
           children: [
             Expanded(
@@ -74,7 +81,7 @@ class QuickAddButtons extends ConsumerWidget {
                 isLoading: isLoading,
               ),
             ),
-            const SizedBox(width: 12),
+            const SizedBox(width: UIConstants.spacingM),
             Expanded(
               child: _QuickAddButton(
                 amount: amounts[3],
@@ -135,6 +142,7 @@ class _QuickAddButtonState extends State<_QuickAddButton>
 
   void _handleTap() {
     if (!widget.isLoading) {
+      HapticFeedback.mediumImpact();
       _scaleController.forward().then((_) {
         _scaleController.reverse();
       });
@@ -144,6 +152,8 @@ class _QuickAddButtonState extends State<_QuickAddButton>
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return LayoutBuilder(
       builder: (context, constraints) {
         // Dynamic sizing based on available space
@@ -154,57 +164,61 @@ class _QuickAddButtonState extends State<_QuickAddButton>
         final fontSize = (iconSize * 0.45).clamp(13.0, 18.0);
         final spacing = (iconSize * 0.20).clamp(6.0, 10.0);
 
-        return ScaleTransition(
-          scale: _scaleAnimation,
-          child: Material(
-            color: Colors.transparent,
-            child: InkWell(
-              onTap: _handleTap,
-              borderRadius: BorderRadius.circular(16),
-              child: Container(
-                padding: EdgeInsets.symmetric(
-                  vertical: verticalPadding,
-                  horizontal: horizontalPadding,
-                ),
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      Theme.of(context).colorScheme.primary,
-                      Theme.of(context).colorScheme.primary.withAlpha(220),
-                    ],
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
+        return Semantics(
+          button: true,
+          label: 'Add ${widget.label} water',
+          child: ScaleTransition(
+            scale: _scaleAnimation,
+            child: Material(
+              color: Colors.transparent,
+              child: InkWell(
+                onTap: _handleTap,
+                borderRadius: BorderRadius.circular(UIConstants.radiusL),
+                child: Container(
+                  padding: EdgeInsets.symmetric(
+                    vertical: verticalPadding,
+                    horizontal: horizontalPadding,
                   ),
-                  borderRadius: BorderRadius.circular(16),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Theme.of(context).colorScheme.primary.withAlpha(60),
-                      blurRadius: 6,
-                      offset: const Offset(0, 3),
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [
+                        colorScheme.primary,
+                        colorScheme.primary.withAlpha(220),
+                      ],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
                     ),
-                  ],
-                ),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Icon(
-                      widget.icon,
-                      color: Colors.white,
-                      size: iconSize,
-                    ),
-                    SizedBox(height: spacing),
-                    FittedBox(
-                      fit: BoxFit.scaleDown,
-                      child: Text(
-                        widget.label,
-                        style: GoogleFonts.poppins(
-                          fontSize: fontSize,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.white,
+                    borderRadius: BorderRadius.circular(UIConstants.radiusL),
+                    boxShadow: [
+                      BoxShadow(
+                        color: colorScheme.primary.withAlpha(60),
+                        blurRadius: 6,
+                        offset: const Offset(0, 3),
+                      ),
+                    ],
+                  ),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(
+                        widget.icon,
+                        color: Colors.white,
+                        size: iconSize,
+                      ),
+                      SizedBox(height: spacing),
+                      FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: Text(
+                          widget.label,
+                          style: GoogleFonts.poppins(
+                            fontSize: fontSize,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.white,
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),

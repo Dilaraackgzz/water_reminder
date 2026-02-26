@@ -1,7 +1,8 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:water_reminder/l10n/app_localizations.dart';
+import '../../../../core/constants/ui_constants.dart';
 import '../../domain/models/water_statistics.dart';
 
 class StatisticsChart extends StatelessWidget {
@@ -13,20 +14,48 @@ class StatisticsChart extends StatelessWidget {
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
     final isDark = Theme.of(context).brightness == Brightness.dark;
+    final l10n = AppLocalizations.of(context)!;
+    final textTheme = Theme.of(context).textTheme;
+    final screenHeight = MediaQuery.of(context).size.height;
+
+    // Responsive chart height
+    final chartHeight = screenHeight < UIConstants.smallScreenHeight
+        ? UIConstants.chartHeightSmall
+        : screenHeight < UIConstants.largeScreenHeight
+            ? UIConstants.chartHeightMedium
+            : UIConstants.chartHeightLarge;
+
+    // Boş liste kontrolü
+    if (statistics.dailySummaries.isEmpty) {
+      return Container(
+        padding: const EdgeInsets.all(UIConstants.cardPaddingL),
+        decoration: BoxDecoration(
+          color: isDark ? Colors.grey[850] : Colors.white,
+          borderRadius: BorderRadius.circular(UIConstants.radiusL),
+          border: Border.all(
+            color: isDark ? Colors.grey[700]! : Colors.grey[200]!,
+          ),
+        ),
+        child: Center(
+          child: Text(
+            l10n.statistics_no_data,
+            style: textTheme.bodyMedium?.copyWith(
+              color: isDark ? Colors.white60 : Colors.black54,
+            ),
+          ),
+        ),
+      );
+    }
 
     return Container(
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.all(UIConstants.cardPaddingL),
       decoration: BoxDecoration(
         color: isDark ? Colors.grey[850] : Colors.white,
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: isDark ? Colors.grey[700]! : Colors.grey[200]!),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withAlpha(13),
-            blurRadius: 8,
-            offset: const Offset(0, 2),
-          ),
-        ],
+        borderRadius: BorderRadius.circular(UIConstants.radiusL),
+        border: Border.all(
+          color: isDark ? Colors.grey[700]! : Colors.grey[200]!,
+        ),
+        boxShadow: AppShadows.cardShadow(isDark: isDark),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -36,22 +65,21 @@ class StatisticsChart extends StatelessWidget {
               Icon(
                 Icons.bar_chart,
                 color: colorScheme.primary,
-                size: 24,
+                size: UIConstants.iconSizeL,
               ),
-              const SizedBox(width: 8),
+              const SizedBox(width: UIConstants.spacingS),
               Text(
-                'Daily Intake',
-                style: GoogleFonts.poppins(
-                  fontSize: 16,
+                l10n.statistics_daily_intake,
+                style: textTheme.titleMedium?.copyWith(
                   fontWeight: FontWeight.w600,
-                  color: isDark ? Colors.white : Colors.black87,
+                  color: isDark ? Colors.white : colorScheme.onSurface,
                 ),
               ),
             ],
           ),
-          const SizedBox(height: 24),
+          const SizedBox(height: UIConstants.spacingL),
           SizedBox(
-            height: 200,
+            height: chartHeight,
             child: BarChart(
               BarChartData(
                 alignment: BarChartAlignment.spaceAround,
@@ -61,18 +89,18 @@ class StatisticsChart extends StatelessWidget {
                   enabled: true,
                   touchTooltipData: BarTouchTooltipData(
                     getTooltipColor: (_) => Colors.black87,
-                    tooltipPadding: const EdgeInsets.all(8),
-                    tooltipMargin: 8,
+                    tooltipPadding: const EdgeInsets.all(UIConstants.spacingS),
+                    tooltipMargin: UIConstants.spacingS,
                     getTooltipItem: (group, groupIndex, rod, rodIndex) {
                       final date = statistics.dailySummaries[groupIndex].date;
                       final amount = rod.toY.toInt();
                       return BarTooltipItem(
-                        '${DateFormat('MMM d').format(date)}\n$amount ml',
-                        GoogleFonts.poppins(
-                          color: Colors.white,
-                          fontSize: 12,
-                          fontWeight: FontWeight.w500,
-                        ),
+                        '${DateFormat('MMM d').format(date)}\n$amount ${l10n.unit_ml}',
+                        textTheme.bodySmall?.copyWith(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w500,
+                            ) ??
+                            const TextStyle(color: Colors.white),
                       );
                     },
                   ),
@@ -92,7 +120,7 @@ class StatisticsChart extends StatelessWidget {
                       getTitlesWidget: (value, meta) {
                         return Text(
                           '${value.toInt()}',
-                          style: GoogleFonts.poppins(
+                          style: textTheme.bodySmall?.copyWith(
                             fontSize: 10,
                             color: isDark ? Colors.white60 : Colors.black54,
                           ),
@@ -107,13 +135,14 @@ class StatisticsChart extends StatelessWidget {
                         if (value.toInt() >= statistics.dailySummaries.length) {
                           return const SizedBox.shrink();
                         }
-                        final date = statistics
-                            .dailySummaries[value.toInt()].date;
+                        final date =
+                            statistics.dailySummaries[value.toInt()].date;
                         return Padding(
-                          padding: const EdgeInsets.only(top: 8),
+                          padding:
+                              const EdgeInsets.only(top: UIConstants.spacingS),
                           child: Text(
                             DateFormat('E').format(date).substring(0, 1),
-                            style: GoogleFonts.poppins(
+                            style: textTheme.bodySmall?.copyWith(
                               fontSize: 10,
                               color: isDark ? Colors.white60 : Colors.black54,
                             ),
@@ -139,14 +168,16 @@ class StatisticsChart extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(height: 16),
-          _buildLegend(context),
+          const SizedBox(height: UIConstants.cardPaddingM),
+          _buildLegend(context, l10n),
         ],
       ),
     );
   }
 
   double _calculateMaxY() {
+    if (statistics.dailySummaries.isEmpty) return 2000;
+
     final maxIntake = statistics.dailySummaries
         .map((e) => e.totalIntake)
         .reduce((a, b) => a > b ? a : b);
@@ -169,7 +200,7 @@ class StatisticsChart extends StatelessWidget {
           BarChartRodData(
             toY: summary.totalIntake.toDouble(),
             color: isGoalMet ? Colors.green : colorScheme.primary,
-            width: 16,
+            width: UIConstants.chartBarWidth,
             borderRadius: const BorderRadius.vertical(
               top: Radius.circular(4),
             ),
@@ -179,20 +210,23 @@ class StatisticsChart extends StatelessWidget {
     }).toList();
   }
 
-  Widget _buildLegend(BuildContext context) {
+  Widget _buildLegend(BuildContext context, AppLocalizations l10n) {
     final colorScheme = Theme.of(context).colorScheme;
+    final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         _LegendItem(
           color: colorScheme.primary,
-          label: 'Below Goal',
+          label: l10n.statistics_below_goal,
+          isDark: isDark,
         ),
-        const SizedBox(width: 16),
+        const SizedBox(width: UIConstants.cardPaddingM),
         _LegendItem(
           color: Colors.green,
-          label: 'Goal Met',
+          label: l10n.statistics_goal_met_label,
+          isDark: isDark,
         ),
       ],
     );
@@ -202,20 +236,24 @@ class StatisticsChart extends StatelessWidget {
 class _LegendItem extends StatelessWidget {
   final Color color;
   final String label;
+  final bool isDark;
 
   const _LegendItem({
     required this.color,
     required this.label,
+    required this.isDark,
   });
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
         Container(
-          width: 12,
-          height: 12,
+          width: UIConstants.cardPaddingS,
+          height: UIConstants.cardPaddingS,
           decoration: BoxDecoration(
             color: color,
             borderRadius: BorderRadius.circular(2),
@@ -224,9 +262,9 @@ class _LegendItem extends StatelessWidget {
         const SizedBox(width: 6),
         Text(
           label,
-          style: GoogleFonts.poppins(
+          style: textTheme.bodySmall?.copyWith(
             fontSize: 11,
-            color: Colors.black54,
+            color: isDark ? Colors.white60 : Colors.black54,
           ),
         ),
       ],

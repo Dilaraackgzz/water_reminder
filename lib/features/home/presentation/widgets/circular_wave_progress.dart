@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
+import '../../../../core/constants/ui_constants.dart';
 
 /// Beautiful circular wave progress animation
 class CircularWaveProgress extends StatefulWidget {
@@ -29,7 +30,7 @@ class _CircularWaveProgressState extends State<CircularWaveProgress>
     super.initState();
     _waveController = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 3),
+      duration: UIConstants.waveLoopAnimation,
     )..repeat();
   }
 
@@ -45,7 +46,7 @@ class _CircularWaveProgressState extends State<CircularWaveProgress>
 
     return TweenAnimationBuilder<double>(
       tween: Tween<double>(begin: 0.0, end: widget.progress.clamp(0.0, 1.0)),
-      duration: const Duration(milliseconds: 1200),
+      duration: UIConstants.progressWaveAnimation,
       curve: Curves.easeInOutCubic,
       builder: (context, animatedProgress, child) {
         return SizedBox(

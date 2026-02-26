@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:water_reminder/l10n/app_localizations.dart';
+import '../../../../core/constants/ui_constants.dart';
 import '../../domain/models/water_statistics.dart';
 import '../providers/statistics_providers.dart';
 import '../widgets/statistics_chart.dart';
@@ -21,6 +21,7 @@ class StatisticsScreen extends ConsumerWidget {
     final statisticsAsync = ref.watch(currentStatisticsProvider);
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final colorScheme = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
 
     return Scaffold(
       backgroundColor: isDark ? colorScheme.surface : Colors.grey[50],
@@ -36,14 +37,14 @@ class StatisticsScreen extends ConsumerWidget {
           },
           child: SingleChildScrollView(
             physics: const AlwaysScrollableScrollPhysics(),
-            padding: const EdgeInsets.all(20),
+            padding: const EdgeInsets.all(UIConstants.cardPaddingL),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 // Period Selector
                 _PeriodSelector(isDark: isDark, l10n: l10n),
 
-                const SizedBox(height: 24),
+                const SizedBox(height: UIConstants.spacingL),
 
                 // Statistics Content
                 statisticsAsync.when(
@@ -52,51 +53,53 @@ class StatisticsScreen extends ConsumerWidget {
                       // Summary Cards
                       StatsSummaryCards(statistics: statistics),
 
-                      const SizedBox(height: 24),
+                      const SizedBox(height: UIConstants.spacingL),
 
                       // Streak Stats
                       const StreakStatsCard(),
 
-                      const SizedBox(height: 24),
+                      const SizedBox(height: UIConstants.spacingL),
 
                       // Chart
                       StatisticsChart(statistics: statistics),
 
-                      const SizedBox(height: 24),
+                      const SizedBox(height: UIConstants.spacingL),
 
                       // Achievement Info
-                      _AchievementCard(statistics: statistics, isDark: isDark, l10n: l10n),
+                      _AchievementCard(
+                        statistics: statistics,
+                        isDark: isDark,
+                        l10n: l10n,
+                      ),
                     ],
                   ),
                   loading: () => Center(
                     child: Padding(
-                      padding: const EdgeInsets.all(40),
+                      padding: const EdgeInsets.all(UIConstants.spacingXXL),
                       child: Text(l10n.common_loading),
                     ),
                   ),
                   error: (error, stack) => Center(
                     child: Padding(
-                      padding: const EdgeInsets.all(40),
+                      padding: const EdgeInsets.all(UIConstants.spacingXXL),
                       child: Column(
                         children: [
                           Icon(
                             Icons.error_outline,
-                            size: 48,
+                            size: UIConstants.spacingXXL,
                             color: Colors.red[300],
                           ),
-                          const SizedBox(height: 16),
+                          const SizedBox(height: UIConstants.spacingM),
                           Text(
                             l10n.common_error,
-                            style: GoogleFonts.poppins(
-                              fontSize: 16,
+                            style: textTheme.bodyLarge?.copyWith(
                               color: Colors.red,
                             ),
                           ),
-                          const SizedBox(height: 8),
+                          const SizedBox(height: UIConstants.spacingS),
                           Text(
                             error.toString(),
-                            style: GoogleFonts.poppins(
-                              fontSize: 12,
+                            style: textTheme.bodySmall?.copyWith(
                               color: Colors.grey,
                             ),
                             textAlign: TextAlign.center,
@@ -137,10 +140,10 @@ class _PeriodSelector extends ConsumerWidget {
     final selectedPeriod = ref.watch(selectedPeriodProvider);
 
     return Container(
-      padding: const EdgeInsets.all(4),
+      padding: const EdgeInsets.all(UIConstants.spacingXS),
       decoration: BoxDecoration(
         color: isDark ? Colors.grey[850] : Colors.grey[100],
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(UIConstants.radiusM),
       ),
       child: Row(
         children: [
@@ -199,21 +202,21 @@ class _PeriodButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
 
     return GestureDetector(
       onTap: onTap,
       child: AnimatedContainer(
-        duration: const Duration(milliseconds: 200),
-        padding: const EdgeInsets.symmetric(vertical: 12),
+        duration: UIConstants.fastAnimation,
+        padding: const EdgeInsets.symmetric(vertical: UIConstants.cardPaddingS),
         decoration: BoxDecoration(
           color: isSelected ? colorScheme.primary : Colors.transparent,
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(UIConstants.radiusS + 2),
         ),
         child: Text(
           label,
           textAlign: TextAlign.center,
-          style: GoogleFonts.poppins(
-            fontSize: 14,
+          style: textTheme.bodyMedium?.copyWith(
             fontWeight: FontWeight.w600,
             color: isSelected
                 ? colorScheme.onPrimary
@@ -239,15 +242,22 @@ class _AchievementCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
     final bestDay = statistics.bestDay;
     final achievementPercent = statistics.achievementPercentage;
 
     final gradientColors = isDark
         ? (achievementPercent >= 80
-            ? [Colors.green[900]!.withAlpha(128), Colors.green[800]!.withAlpha(128)]
+            ? [
+                Colors.green[900]!.withAlpha(128),
+                Colors.green[800]!.withAlpha(128)
+              ]
             : achievementPercent >= 50
                 ? [const Color(0xFF004D5F), const Color(0xFF006978)]
-                : [Colors.orange[900]!.withAlpha(128), Colors.orange[800]!.withAlpha(128)])
+                : [
+                    Colors.orange[900]!.withAlpha(128),
+                    Colors.orange[800]!.withAlpha(128)
+                  ])
         : (achievementPercent >= 80
             ? [Colors.green[50]!, Colors.green[100]!]
             : achievementPercent >= 50
@@ -255,21 +265,15 @@ class _AchievementCard extends StatelessWidget {
                 : [Colors.orange[50]!, Colors.orange[100]!]);
 
     return Container(
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.all(UIConstants.cardPaddingL),
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: gradientColors,
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withAlpha(isDark ? 26 : 13),
-            blurRadius: 8,
-            offset: const Offset(0, 2),
-          ),
-        ],
+        borderRadius: BorderRadius.circular(UIConstants.radiusL),
+        boxShadow: AppShadows.cardShadow(isDark: isDark),
       ),
       child: Column(
         children: [
@@ -286,25 +290,23 @@ class _AchievementCard extends StatelessWidget {
                     : achievementPercent >= 50
                         ? colorScheme.primary
                         : Colors.orange,
-                size: 32,
+                size: UIConstants.iconSizeXL,
               ),
-              const SizedBox(width: 12),
+              const SizedBox(width: UIConstants.cardPaddingS),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       l10n.statistics_goal_achievement,
-                      style: GoogleFonts.poppins(
-                        fontSize: 14,
+                      style: textTheme.bodyMedium?.copyWith(
                         fontWeight: FontWeight.w500,
                         color: isDark ? Colors.white60 : Colors.black54,
                       ),
                     ),
                     Text(
                       '${achievementPercent.toStringAsFixed(0)}%',
-                      style: GoogleFonts.poppins(
-                        fontSize: 28,
+                      style: textTheme.headlineMedium?.copyWith(
                         fontWeight: FontWeight.bold,
                         color: isDark ? Colors.white : Colors.black87,
                       ),
@@ -315,24 +317,26 @@ class _AchievementCard extends StatelessWidget {
             ],
           ),
           if (bestDay != null) ...[
-            const SizedBox(height: 16),
+            const SizedBox(height: UIConstants.cardPaddingM),
             const Divider(),
-            const SizedBox(height: 12),
+            const SizedBox(height: UIConstants.cardPaddingS),
             Row(
               children: [
-                const Icon(Icons.star, color: Colors.amber, size: 20),
-                const SizedBox(width: 8),
+                const Icon(
+                  Icons.star,
+                  color: Colors.amber,
+                  size: UIConstants.iconSizeM,
+                ),
+                const SizedBox(width: UIConstants.spacingS),
                 Text(
                   '${l10n.statistics_best_day}: ',
-                  style: GoogleFonts.poppins(
-                    fontSize: 13,
+                  style: textTheme.bodySmall?.copyWith(
                     color: isDark ? Colors.white60 : Colors.black54,
                   ),
                 ),
                 Text(
                   DateFormat('MMM d').format(bestDay.date),
-                  style: GoogleFonts.poppins(
-                    fontSize: 13,
+                  style: textTheme.bodySmall?.copyWith(
                     fontWeight: FontWeight.w600,
                     color: isDark ? Colors.white : Colors.black87,
                   ),
@@ -340,8 +344,7 @@ class _AchievementCard extends StatelessWidget {
                 const Spacer(),
                 Text(
                   '${bestDay.totalIntake}${l10n.unit_ml}',
-                  style: GoogleFonts.poppins(
-                    fontSize: 15,
+                  style: textTheme.bodyLarge?.copyWith(
                     fontWeight: FontWeight.bold,
                     color: colorScheme.primary,
                   ),

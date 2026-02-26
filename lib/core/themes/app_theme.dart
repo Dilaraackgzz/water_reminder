@@ -16,6 +16,7 @@ class AppTheme {
   static const Color successGreen = Color(0xFF81C784);
   static const Color warningOrange = Color(0xFFFFB74D);
   static const Color errorRed = Color(0xffD67B79);
+  static const Color streakGold = Color(0xFFFFC107);  // Amber for streaks
 
   static const Color surfaceLight = Color(0xffF8FAFA);
   static const Color surfaceDark = Color(0xff1A2224);

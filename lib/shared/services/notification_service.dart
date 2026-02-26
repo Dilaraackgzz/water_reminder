@@ -15,6 +15,28 @@ class NotificationService {
   bool _isInitialized = false;
   bool get isInitialized => _isInitialized;
 
+  // Shared notification details to avoid duplication
+  static const _androidDetails = AndroidNotificationDetails(
+    'water_reminder_channel',
+    'Water Reminders',
+    channelDescription: 'Notifications to remind you to drink water',
+    importance: Importance.high,
+    priority: Priority.high,
+    enableVibration: true,
+    playSound: true,
+  );
+
+  static const _iosDetails = DarwinNotificationDetails(
+    presentAlert: true,
+    presentBadge: true,
+    presentSound: true,
+  );
+
+  static const _notificationDetails = NotificationDetails(
+    android: _androidDetails,
+    iOS: _iosDetails,
+  );
+
   /// Initialize notification service
   Future<void> initialize() async {
     if (_isInitialized) return;
@@ -115,32 +137,11 @@ class NotificationService {
       return;
     }
 
-    const androidDetails = AndroidNotificationDetails(
-      'water_reminder_channel',
-      'Water Reminders',
-      channelDescription: 'Notifications to remind you to drink water',
-      importance: Importance.high,
-      priority: Priority.high,
-      enableVibration: true,
-      playSound: true,
-    );
-
-    const iosDetails = DarwinNotificationDetails(
-      presentAlert: true,
-      presentBadge: true,
-      presentSound: true,
-    );
-
-    const notificationDetails = NotificationDetails(
-      android: androidDetails,
-      iOS: iosDetails,
-    );
-
     await _notifications.show(
       id,
       title,
       body,
-      notificationDetails,
+      _notificationDetails,
       payload: payload,
     );
   }
@@ -158,33 +159,12 @@ class NotificationService {
       return;
     }
 
-    const androidDetails = AndroidNotificationDetails(
-      'water_reminder_channel',
-      'Water Reminders',
-      channelDescription: 'Notifications to remind you to drink water',
-      importance: Importance.high,
-      priority: Priority.high,
-      enableVibration: true,
-      playSound: true,
-    );
-
-    const iosDetails = DarwinNotificationDetails(
-      presentAlert: true,
-      presentBadge: true,
-      presentSound: true,
-    );
-
-    const notificationDetails = NotificationDetails(
-      android: androidDetails,
-      iOS: iosDetails,
-    );
-
     await _notifications.zonedSchedule(
       id,
       title,
       body,
       tz.TZDateTime.from(scheduledTime, tz.local),
-      notificationDetails,
+      _notificationDetails,
       androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
       uiLocalNotificationDateInterpretation:
           UILocalNotificationDateInterpretation.absoluteTime,
@@ -219,33 +199,12 @@ class NotificationService {
       scheduledDate = scheduledDate.add(const Duration(days: 1));
     }
 
-    const androidDetails = AndroidNotificationDetails(
-      'water_reminder_channel',
-      'Water Reminders',
-      channelDescription: 'Notifications to remind you to drink water',
-      importance: Importance.high,
-      priority: Priority.high,
-      enableVibration: true,
-      playSound: true,
-    );
-
-    const iosDetails = DarwinNotificationDetails(
-      presentAlert: true,
-      presentBadge: true,
-      presentSound: true,
-    );
-
-    const notificationDetails = NotificationDetails(
-      android: androidDetails,
-      iOS: iosDetails,
-    );
-
     await _notifications.zonedSchedule(
       id,
       title,
       body,
       tz.TZDateTime.from(scheduledDate, tz.local),
-      notificationDetails,
+      _notificationDetails,
       androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
       uiLocalNotificationDateInterpretation:
           UILocalNotificationDateInterpretation.absoluteTime,

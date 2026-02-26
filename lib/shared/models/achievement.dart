@@ -54,7 +54,7 @@ extension AchievementExtension on Achievement {
       'title': title,
       'description': description,
       'iconName': iconName,
-      'type': type.index,
+      'type': type.name,
       'targetValue': targetValue,
       'currentValue': currentValue,
       'isUnlocked': isUnlocked,
@@ -62,14 +62,27 @@ extension AchievementExtension on Achievement {
       'rewardPoints': rewardPoints,
     };
   }
+}
+
+/// Helper class for Firestore serialization
+class AchievementMapper {
+  AchievementMapper._();
 
   static Achievement fromFirestore(Map<String, dynamic> data) {
+    final typeValue = data['type'];
+    final type = typeValue is int
+        ? AchievementType.values[typeValue]
+        : AchievementType.values.firstWhere(
+            (e) => e.name == typeValue,
+            orElse: () => AchievementType.milestone,
+          );
+
     return Achievement(
       id: data['id'] ?? '',
       title: data['title'] ?? '',
       description: data['description'] ?? '',
       iconName: data['iconName'] ?? '',
-      type: AchievementType.values[data['type'] ?? 0],
+      type: type,
       targetValue: data['targetValue'] ?? 0,
       currentValue: data['currentValue'] ?? 0,
       isUnlocked: data['isUnlocked'] ?? false,
@@ -85,8 +98,8 @@ class AchievementDefinitions {
   static List<Achievement> get defaultAchievements => [
         const Achievement(
           id: 'first_drop',
-          title: 'İlk Damla',
-          description: 'İlk su kaydını oluştur',
+          title: 'achievement_first_drop',
+          description: 'achievement_first_drop_desc',
           iconName: 'water_drop',
           type: AchievementType.milestone,
           targetValue: 1,
@@ -94,8 +107,8 @@ class AchievementDefinitions {
         ),
         const Achievement(
           id: 'daily_goal_1',
-          title: 'Günlük Hedef',
-          description: 'Günlük su hedefini tamamla',
+          title: 'achievement_daily_goal_1',
+          description: 'achievement_daily_goal_1_desc',
           iconName: 'check_circle',
           type: AchievementType.dailyGoal,
           targetValue: 1,
@@ -103,8 +116,8 @@ class AchievementDefinitions {
         ),
         const Achievement(
           id: 'streak_3',
-          title: '3 Günlük Seri',
-          description: 'Üst üste 3 gün hedefini tamamla',
+          title: 'achievement_streak_3',
+          description: 'achievement_streak_3_desc',
           iconName: 'local_fire_department',
           type: AchievementType.streak,
           targetValue: 3,
@@ -112,8 +125,8 @@ class AchievementDefinitions {
         ),
         const Achievement(
           id: 'streak_7',
-          title: '1 Haftalık Seri',
-          description: 'Üst üste 7 gün hedefini tamamla',
+          title: 'achievement_streak_7',
+          description: 'achievement_streak_7_desc',
           iconName: 'local_fire_department',
           type: AchievementType.streak,
           targetValue: 7,
@@ -121,8 +134,8 @@ class AchievementDefinitions {
         ),
         const Achievement(
           id: 'streak_30',
-          title: '1 Aylık Seri',
-          description: 'Üst üste 30 gün hedefini tamamla',
+          title: 'achievement_streak_30',
+          description: 'achievement_streak_30_desc',
           iconName: 'local_fire_department',
           type: AchievementType.streak,
           targetValue: 30,
@@ -130,8 +143,8 @@ class AchievementDefinitions {
         ),
         const Achievement(
           id: 'total_10l',
-          title: '10 Litre Toplam',
-          description: 'Toplam 10 litre su iç',
+          title: 'achievement_total_10l',
+          description: 'achievement_total_10l_desc',
           iconName: 'waves',
           type: AchievementType.totalConsumption,
           targetValue: 10000,
@@ -139,8 +152,8 @@ class AchievementDefinitions {
         ),
         const Achievement(
           id: 'total_100l',
-          title: '100 Litre Toplam',
-          description: 'Toplam 100 litre su iç',
+          title: 'achievement_total_100l',
+          description: 'achievement_total_100l_desc',
           iconName: 'waves',
           type: AchievementType.totalConsumption,
           targetValue: 100000,
@@ -148,8 +161,8 @@ class AchievementDefinitions {
         ),
         const Achievement(
           id: 'consistency_week',
-          title: 'Tutarlı Hafta',
-          description: 'Bir haftada her gün en az bir su kaydı oluştur',
+          title: 'achievement_consistency',
+          description: 'achievement_consistency_desc',
           iconName: 'event_available',
           type: AchievementType.consistency,
           targetValue: 7,

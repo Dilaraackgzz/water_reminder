@@ -508,6 +508,24 @@ abstract class AppLocalizations {
   /// **'Today'**
   String get home_today;
 
+  /// No description provided for @home_todays_progress.
+  ///
+  /// In en, this message translates to:
+  /// **'Today\'s Progress'**
+  String get home_todays_progress;
+
+  /// No description provided for @home_quick_add.
+  ///
+  /// In en, this message translates to:
+  /// **'Quick Add'**
+  String get home_quick_add;
+
+  /// No description provided for @home_amount_to_go.
+  ///
+  /// In en, this message translates to:
+  /// **'{amount} to go!'**
+  String home_amount_to_go(String amount);
+
   /// No description provided for @home_custom_amount.
   ///
   /// In en, this message translates to:
@@ -904,11 +922,23 @@ abstract class AppLocalizations {
   /// **'Sedentary'**
   String get activity_sedentary;
 
+  /// No description provided for @activity_sedentary_desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Little or no exercise'**
+  String get activity_sedentary_desc;
+
   /// No description provided for @activity_light.
   ///
   /// In en, this message translates to:
   /// **'Lightly Active'**
   String get activity_light;
+
+  /// No description provided for @activity_light_desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Light exercise 1-3 days/week'**
+  String get activity_light_desc;
 
   /// No description provided for @activity_moderate.
   ///
@@ -916,17 +946,35 @@ abstract class AppLocalizations {
   /// **'Moderately Active'**
   String get activity_moderate;
 
+  /// No description provided for @activity_moderate_desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Moderate exercise 3-5 days/week'**
+  String get activity_moderate_desc;
+
   /// No description provided for @activity_very_active.
   ///
   /// In en, this message translates to:
   /// **'Very Active'**
   String get activity_very_active;
 
+  /// No description provided for @activity_very_active_desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Heavy exercise 6-7 days/week'**
+  String get activity_very_active_desc;
+
   /// No description provided for @activity_extra_active.
   ///
   /// In en, this message translates to:
   /// **'Extra Active'**
   String get activity_extra_active;
+
+  /// No description provided for @activity_extra_active_desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Very heavy exercise & physical job'**
+  String get activity_extra_active_desc;
 
   /// No description provided for @bmi_underweight.
   ///
@@ -1360,6 +1408,108 @@ abstract class AppLocalizations {
   /// **'Water Intake'**
   String get statistics_chart_label;
 
+  /// No description provided for @statistics_total_intake.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Intake'**
+  String get statistics_total_intake;
+
+  /// No description provided for @statistics_total_consumed.
+  ///
+  /// In en, this message translates to:
+  /// **'Total consumed'**
+  String get statistics_total_consumed;
+
+  /// No description provided for @statistics_daily_average.
+  ///
+  /// In en, this message translates to:
+  /// **'Daily average'**
+  String get statistics_daily_average;
+
+  /// No description provided for @statistics_goals_met.
+  ///
+  /// In en, this message translates to:
+  /// **'Goals Met'**
+  String get statistics_goals_met;
+
+  /// No description provided for @statistics_out_of.
+  ///
+  /// In en, this message translates to:
+  /// **'out of {count}'**
+  String statistics_out_of(int count);
+
+  /// No description provided for @statistics_progress.
+  ///
+  /// In en, this message translates to:
+  /// **'Progress'**
+  String get statistics_progress;
+
+  /// No description provided for @statistics_on_track.
+  ///
+  /// In en, this message translates to:
+  /// **'On track!'**
+  String get statistics_on_track;
+
+  /// No description provided for @statistics_keep_going.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep going!'**
+  String get statistics_keep_going;
+
+  /// No description provided for @statistics_daily_intake.
+  ///
+  /// In en, this message translates to:
+  /// **'Daily Intake'**
+  String get statistics_daily_intake;
+
+  /// No description provided for @statistics_below_goal.
+  ///
+  /// In en, this message translates to:
+  /// **'Below Goal'**
+  String get statistics_below_goal;
+
+  /// No description provided for @statistics_goal_met_label.
+  ///
+  /// In en, this message translates to:
+  /// **'Goal Met'**
+  String get statistics_goal_met_label;
+
+  /// No description provided for @statistics_your_streak.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Streak'**
+  String get statistics_your_streak;
+
+  /// No description provided for @statistics_current.
+  ///
+  /// In en, this message translates to:
+  /// **'Current'**
+  String get statistics_current;
+
+  /// No description provided for @statistics_best.
+  ///
+  /// In en, this message translates to:
+  /// **'Best'**
+  String get statistics_best;
+
+  /// No description provided for @statistics_completed.
+  ///
+  /// In en, this message translates to:
+  /// **'Completed'**
+  String get statistics_completed;
+
+  /// No description provided for @statistics_next_goal.
+  ///
+  /// In en, this message translates to:
+  /// **'Next Goal'**
+  String get statistics_next_goal;
+
+  /// No description provided for @statistics_days.
+  ///
+  /// In en, this message translates to:
+  /// **'days'**
+  String get statistics_days;
+
   /// No description provided for @achievements_title.
   ///
   /// In en, this message translates to:
@@ -1546,6 +1696,54 @@ abstract class AppLocalizations {
   /// **'Every 3 hours'**
   String get reminders_interval_180;
 
+  /// No description provided for @reminders_reschedule.
+  ///
+  /// In en, this message translates to:
+  /// **'Reschedule Reminders'**
+  String get reminders_reschedule;
+
+  /// No description provided for @reminders_reschedule_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Update all pending notifications'**
+  String get reminders_reschedule_subtitle;
+
+  /// No description provided for @reminders_cancel_all.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel All Reminders'**
+  String get reminders_cancel_all;
+
+  /// No description provided for @reminders_cancel_all_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove all pending notifications'**
+  String get reminders_cancel_all_subtitle;
+
+  /// No description provided for @reminders_schedule_success.
+  ///
+  /// In en, this message translates to:
+  /// **'Reminders scheduled successfully'**
+  String get reminders_schedule_success;
+
+  /// No description provided for @reminders_cancel_success.
+  ///
+  /// In en, this message translates to:
+  /// **'All reminders cancelled'**
+  String get reminders_cancel_success;
+
+  /// No description provided for @reminders_info_message.
+  ///
+  /// In en, this message translates to:
+  /// **'Reminders help you stay hydrated throughout the day. Customize your schedule in Settings.'**
+  String get reminders_info_message;
+
+  /// No description provided for @reminders_schedule_info.
+  ///
+  /// In en, this message translates to:
+  /// **'Current Schedule'**
+  String get reminders_schedule_info;
+
   /// No description provided for @notification_reminder_title.
   ///
   /// In en, this message translates to:
@@ -1557,6 +1755,96 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Stay hydrated! Drink some water now.'**
   String get notification_reminder_body;
+
+  /// No description provided for @notification_title_1.
+  ///
+  /// In en, this message translates to:
+  /// **'Time to Hydrate!'**
+  String get notification_title_1;
+
+  /// No description provided for @notification_title_2.
+  ///
+  /// In en, this message translates to:
+  /// **'Water Break!'**
+  String get notification_title_2;
+
+  /// No description provided for @notification_title_3.
+  ///
+  /// In en, this message translates to:
+  /// **'Stay Hydrated!'**
+  String get notification_title_3;
+
+  /// No description provided for @notification_title_4.
+  ///
+  /// In en, this message translates to:
+  /// **'Drink Some Water!'**
+  String get notification_title_4;
+
+  /// No description provided for @notification_title_5.
+  ///
+  /// In en, this message translates to:
+  /// **'Hydration Time!'**
+  String get notification_title_5;
+
+  /// No description provided for @notification_title_6.
+  ///
+  /// In en, this message translates to:
+  /// **'Water Reminder!'**
+  String get notification_title_6;
+
+  /// No description provided for @notification_title_7.
+  ///
+  /// In en, this message translates to:
+  /// **'Take Care of Yourself!'**
+  String get notification_title_7;
+
+  /// No description provided for @notification_body_1.
+  ///
+  /// In en, this message translates to:
+  /// **'Time to drink some water! Your body needs hydration.'**
+  String get notification_body_1;
+
+  /// No description provided for @notification_body_2.
+  ///
+  /// In en, this message translates to:
+  /// **'Don\'t forget to stay hydrated throughout the day!'**
+  String get notification_body_2;
+
+  /// No description provided for @notification_body_3.
+  ///
+  /// In en, this message translates to:
+  /// **'A quick water break can boost your energy!'**
+  String get notification_body_3;
+
+  /// No description provided for @notification_body_4.
+  ///
+  /// In en, this message translates to:
+  /// **'Your health matters! Take a moment to drink water.'**
+  String get notification_body_4;
+
+  /// No description provided for @notification_body_5.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep your body happy with some refreshing water!'**
+  String get notification_body_5;
+
+  /// No description provided for @notification_body_6.
+  ///
+  /// In en, this message translates to:
+  /// **'Stay healthy and hydrated! Drink up!'**
+  String get notification_body_6;
+
+  /// No description provided for @notification_body_7.
+  ///
+  /// In en, this message translates to:
+  /// **'Time for a water break! You\'re doing great!'**
+  String get notification_body_7;
+
+  /// No description provided for @notification_body_8.
+  ///
+  /// In en, this message translates to:
+  /// **'Remember to drink water regularly for better health!'**
+  String get notification_body_8;
 
   /// No description provided for @streak_current.
   ///

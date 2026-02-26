@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import '../models/achievement.dart';
 
 /// Service for managing user achievements
@@ -15,25 +16,30 @@ class AchievementService {
 
   /// Initialize achievements for a new user
   Future<void> initializeAchievements() async {
-    final userId = _auth.currentUser?.uid;
-    if (userId == null) return;
+    try {
+      final userId = _auth.currentUser?.uid;
+      if (userId == null) return;
 
-    final achievementsRef = _firestore
-        .collection('users')
-        .doc(userId)
-        .collection('achievements');
+      final achievementsRef = _firestore
+          .collection('users')
+          .doc(userId)
+          .collection('achievements');
 
-    // Check if achievements already exist
-    final existing = await achievementsRef.limit(1).get();
-    if (existing.docs.isNotEmpty) return;
+      // Check if achievements already exist
+      final existing = await achievementsRef.limit(1).get();
+      if (existing.docs.isNotEmpty) return;
 
-    // Create default achievements
-    final batch = _firestore.batch();
-    for (final achievement in AchievementDefinitions.defaultAchievements) {
-      final docRef = achievementsRef.doc(achievement.id);
-      batch.set(docRef, achievement.toFirestore());
+      // Create default achievements
+      final batch = _firestore.batch();
+      for (final achievement in AchievementDefinitions.defaultAchievements) {
+        final docRef = achievementsRef.doc(achievement.id);
+        batch.set(docRef, achievement.toFirestore());
+      }
+      await batch.commit();
+    } catch (e, stackTrace) {
+      debugPrint('AchievementService.initializeAchievements error: $e');
+      debugPrint('Stack trace: $stackTrace');
     }
-    await batch.commit();
   }
 
   /// Get all achievements for current user
@@ -47,43 +53,56 @@ class AchievementService {
         .collection('achievements')
         .snapshots()
         .map((snapshot) => snapshot.docs
-            .map((doc) => AchievementExtension.fromFirestore(doc.data()))
-            .toList());
+            .map((doc) => AchievementMapper.fromFirestore(doc.data()))
+            .toList())
+        .handleError((error, stackTrace) {
+      debugPrint('AchievementService.watchAchievements error: $error');
+      debugPrint('Stack trace: $stackTrace');
+      return <Achievement>[];
+    });
   }
 
   /// Update achievement progress
-  Future<void> updateProgress(
+  Future<bool> updateProgress(
     String achievementId,
     int newValue, {
     bool increment = false,
   }) async {
-    final userId = _auth.currentUser?.uid;
-    if (userId == null) return;
+    try {
+      final userId = _auth.currentUser?.uid;
+      if (userId == null) return false;
 
-    final docRef = _firestore
-        .collection('users')
-        .doc(userId)
-        .collection('achievements')
-        .doc(achievementId);
+      final docRef = _firestore
+          .collection('users')
+          .doc(userId)
+          .collection('achievements')
+          .doc(achievementId);
 
-    final doc = await docRef.get();
-    if (!doc.exists) return;
+      final doc = await docRef.get();
+      if (!doc.exists) return false;
 
-    final achievement = AchievementExtension.fromFirestore(doc.data()!);
+      final achievement = AchievementMapper.fromFirestore(doc.data()!);
 
-    // Don't update if already unlocked
-    if (achievement.isUnlocked) return;
+      // Don't update if already unlocked
+      if (achievement.isUnlocked) return false;
 
-    final updatedValue = increment ? achievement.currentValue + newValue : newValue;
-    final isNowUnlocked = updatedValue >= achievement.targetValue;
+      final updatedValue = increment ? achievement.currentValue + newValue : newValue;
+      final isNowUnlocked = updatedValue >= achievement.targetValue;
 
-    await docRef.update({
-      'currentValue': updatedValue,
-      if (isNowUnlocked) ...{
-        'isUnlocked': true,
-        'unlockedAt': DateTime.now().millisecondsSinceEpoch,
-      },
-    });
+      await docRef.update({
+        'currentValue': updatedValue,
+        if (isNowUnlocked) ...{
+          'isUnlocked': true,
+          'unlockedAt': DateTime.now().millisecondsSinceEpoch,
+        },
+      });
+
+      return isNowUnlocked;
+    } catch (e, stackTrace) {
+      debugPrint('AchievementService.updateProgress error: $e');
+      debugPrint('Stack trace: $stackTrace');
+      return false;
+    }
   }
 
   /// Check and update achievements based on water intake
@@ -93,83 +112,127 @@ class AchievementService {
     required bool goalReached,
     required int consecutiveDays,
   }) async {
-    final userId = _auth.currentUser?.uid;
-    if (userId == null) return [];
+    try {
+      final userId = _auth.currentUser?.uid;
+      if (userId == null) return [];
 
-    final newlyUnlocked = <Achievement>[];
+      final newlyUnlocked = <Achievement>[];
 
-    // Check first water record
-    if (totalIntake > 0) {
-      await updateProgress('first_drop', 1);
+      // Check first water record
+      if (totalIntake > 0) {
+        final unlocked = await updateProgress('first_drop', 1);
+        if (unlocked) {
+          final achievement = await _getAchievement(userId, 'first_drop');
+          if (achievement != null) newlyUnlocked.add(achievement);
+        }
+      }
+
+      // Check daily goal
+      if (goalReached) {
+        final unlocked = await updateProgress('daily_goal_1', 1);
+        if (unlocked) {
+          final achievement = await _getAchievement(userId, 'daily_goal_1');
+          if (achievement != null) newlyUnlocked.add(achievement);
+        }
+      }
+
+      // Check streaks
+      for (final streakTarget in [3, 7, 30]) {
+        if (currentStreak >= streakTarget) {
+          final unlocked = await updateProgress('streak_$streakTarget', currentStreak);
+          if (unlocked) {
+            final achievement = await _getAchievement(userId, 'streak_$streakTarget');
+            if (achievement != null) newlyUnlocked.add(achievement);
+          }
+        }
+      }
+
+      // Check total consumption
+      for (final target in [10000, 100000]) {
+        final achievementId = 'total_${target ~/ 1000}l';
+        final unlocked = await updateProgress(achievementId, totalIntake);
+        if (unlocked) {
+          final achievement = await _getAchievement(userId, achievementId);
+          if (achievement != null) newlyUnlocked.add(achievement);
+        }
+      }
+
+      // Check consistency
+      final consistencyUnlocked = await updateProgress('consistency_week', consecutiveDays);
+      if (consistencyUnlocked) {
+        final achievement = await _getAchievement(userId, 'consistency_week');
+        if (achievement != null) newlyUnlocked.add(achievement);
+      }
+
+      return newlyUnlocked;
+    } catch (e, stackTrace) {
+      debugPrint('AchievementService.checkAchievements error: $e');
+      debugPrint('Stack trace: $stackTrace');
+      return [];
     }
+  }
 
-    // Check daily goal
-    if (goalReached) {
+  /// Helper to get a single achievement
+  Future<Achievement?> _getAchievement(String userId, String achievementId) async {
+    try {
       final doc = await _firestore
           .collection('users')
           .doc(userId)
           .collection('achievements')
-          .doc('daily_goal_1')
+          .doc(achievementId)
           .get();
 
-      if (doc.exists) {
-        final achievement = AchievementExtension.fromFirestore(doc.data()!);
-        if (!achievement.isUnlocked) {
-          await updateProgress('daily_goal_1', 1);
-          newlyUnlocked.add(achievement.copyWith(isUnlocked: true));
-        }
-      }
+      if (!doc.exists) return null;
+      return AchievementMapper.fromFirestore(doc.data()!);
+    } catch (e) {
+      debugPrint('AchievementService._getAchievement error: $e');
+      return null;
     }
-
-    // Check streaks
-    for (final streakTarget in [3, 7, 30]) {
-      if (currentStreak >= streakTarget) {
-        await updateProgress('streak_$streakTarget', currentStreak);
-      }
-    }
-
-    // Check total consumption
-    for (final target in [10000, 100000]) {
-      await updateProgress('total_${target ~/ 1000}l', totalIntake);
-    }
-
-    // Check consistency
-    await updateProgress('consistency_week', consecutiveDays);
-
-    return newlyUnlocked;
   }
 
   /// Get unlocked achievements count
   Future<int> getUnlockedCount() async {
-    final userId = _auth.currentUser?.uid;
-    if (userId == null) return 0;
+    try {
+      final userId = _auth.currentUser?.uid;
+      if (userId == null) return 0;
 
-    final snapshot = await _firestore
-        .collection('users')
-        .doc(userId)
-        .collection('achievements')
-        .where('isUnlocked', isEqualTo: true)
-        .count()
-        .get();
+      final snapshot = await _firestore
+          .collection('users')
+          .doc(userId)
+          .collection('achievements')
+          .where('isUnlocked', isEqualTo: true)
+          .count()
+          .get();
 
-    return snapshot.count ?? 0;
+      return snapshot.count ?? 0;
+    } catch (e, stackTrace) {
+      debugPrint('AchievementService.getUnlockedCount error: $e');
+      debugPrint('Stack trace: $stackTrace');
+      return 0;
+    }
   }
 
   /// Get total reward points earned
   Future<int> getTotalPoints() async {
-    final userId = _auth.currentUser?.uid;
-    if (userId == null) return 0;
+    try {
+      final userId = _auth.currentUser?.uid;
+      if (userId == null) return 0;
 
-    final snapshot = await _firestore
-        .collection('users')
-        .doc(userId)
-        .collection('achievements')
-        .where('isUnlocked', isEqualTo: true)
-        .get();
+      final snapshot = await _firestore
+          .collection('users')
+          .doc(userId)
+          .collection('achievements')
+          .where('isUnlocked', isEqualTo: true)
+          .get();
 
-    return snapshot.docs.fold<int>(
-      0,
-      (total, doc) => total + ((doc.data()['rewardPoints'] as int?) ?? 0),
-    );
+      return snapshot.docs.fold<int>(
+        0,
+        (total, doc) => total + ((doc.data()['rewardPoints'] as int?) ?? 0),
+      );
+    } catch (e, stackTrace) {
+      debugPrint('AchievementService.getTotalPoints error: $e');
+      debugPrint('Stack trace: $stackTrace');
+      return 0;
+    }
   }
 }

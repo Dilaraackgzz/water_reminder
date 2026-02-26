@@ -211,6 +211,17 @@ class AppLocalizationsHi extends AppLocalizations {
   String get home_today => 'आज';
 
   @override
+  String get home_todays_progress => 'Today\'s Progress';
+
+  @override
+  String get home_quick_add => 'Quick Add';
+
+  @override
+  String home_amount_to_go(String amount) {
+    return '$amount to go!';
+  }
+
+  @override
   String get home_custom_amount => 'कस्टम मात्रा';
 
   @override
@@ -413,16 +424,31 @@ class AppLocalizationsHi extends AppLocalizations {
   String get activity_sedentary => 'गतिहीन';
 
   @override
+  String get activity_sedentary_desc => 'कम या कोई व्यायाम नहीं';
+
+  @override
   String get activity_light => 'हल्की गतिविधि';
+
+  @override
+  String get activity_light_desc => 'सप्ताह में 1-3 दिन हल्का व्यायाम';
 
   @override
   String get activity_moderate => 'मध्यम गतिविधि';
 
   @override
+  String get activity_moderate_desc => 'सप्ताह में 3-5 दिन मध्यम व्यायाम';
+
+  @override
   String get activity_very_active => 'बहुत सक्रिय';
 
   @override
+  String get activity_very_active_desc => 'सप्ताह में 6-7 दिन तीव्र व्यायाम';
+
+  @override
   String get activity_extra_active => 'अत्यधिक सक्रिय';
+
+  @override
+  String get activity_extra_active_desc => 'बहुत तीव्र व्यायाम और शारीरिक काम';
 
   @override
   String get bmi_underweight => 'कम वजन';
@@ -648,6 +674,59 @@ class AppLocalizationsHi extends AppLocalizations {
   String get statistics_chart_label => 'पानी का सेवन';
 
   @override
+  String get statistics_total_intake => 'कुल सेवन';
+
+  @override
+  String get statistics_total_consumed => 'कुल उपभोग';
+
+  @override
+  String get statistics_daily_average => 'दैनिक औसत';
+
+  @override
+  String get statistics_goals_met => 'लक्ष्य पूरे हुए';
+
+  @override
+  String statistics_out_of(int count) {
+    return '$count में से';
+  }
+
+  @override
+  String get statistics_progress => 'प्रगति';
+
+  @override
+  String get statistics_on_track => 'सही रास्ते पर!';
+
+  @override
+  String get statistics_keep_going => 'जारी रखें!';
+
+  @override
+  String get statistics_daily_intake => 'दैनिक सेवन';
+
+  @override
+  String get statistics_below_goal => 'लक्ष्य से नीचे';
+
+  @override
+  String get statistics_goal_met_label => 'लक्ष्य प्राप्त';
+
+  @override
+  String get statistics_your_streak => 'आपकी लकीर';
+
+  @override
+  String get statistics_current => 'वर्तमान';
+
+  @override
+  String get statistics_best => 'सर्वश्रेष्ठ';
+
+  @override
+  String get statistics_completed => 'पूर्ण';
+
+  @override
+  String get statistics_next_goal => 'अगला लक्ष्य';
+
+  @override
+  String get statistics_days => 'दिन';
+
+  @override
   String get achievements_title => 'उपलब्धियां';
 
   @override
@@ -744,11 +823,90 @@ class AppLocalizationsHi extends AppLocalizations {
   String get reminders_interval_180 => 'हर 3 घंटे';
 
   @override
+  String get reminders_reschedule => 'Reschedule Reminders';
+
+  @override
+  String get reminders_reschedule_subtitle =>
+      'Update all pending notifications';
+
+  @override
+  String get reminders_cancel_all => 'Cancel All Reminders';
+
+  @override
+  String get reminders_cancel_all_subtitle =>
+      'Remove all pending notifications';
+
+  @override
+  String get reminders_schedule_success => 'Reminders scheduled successfully';
+
+  @override
+  String get reminders_cancel_success => 'All reminders cancelled';
+
+  @override
+  String get reminders_info_message =>
+      'Reminders help you stay hydrated throughout the day. Customize your schedule in Settings.';
+
+  @override
+  String get reminders_schedule_info => 'Current Schedule';
+
+  @override
   String get notification_reminder_title => 'पानी पीने का समय!';
 
   @override
   String get notification_reminder_body =>
       'हाइड्रेटेड रहें! अभी कुछ पानी पिएं।';
+
+  @override
+  String get notification_title_1 => 'Time to Hydrate!';
+
+  @override
+  String get notification_title_2 => 'Water Break!';
+
+  @override
+  String get notification_title_3 => 'Stay Hydrated!';
+
+  @override
+  String get notification_title_4 => 'Drink Some Water!';
+
+  @override
+  String get notification_title_5 => 'Hydration Time!';
+
+  @override
+  String get notification_title_6 => 'Water Reminder!';
+
+  @override
+  String get notification_title_7 => 'Take Care of Yourself!';
+
+  @override
+  String get notification_body_1 =>
+      'Time to drink some water! Your body needs hydration.';
+
+  @override
+  String get notification_body_2 =>
+      'Don\'t forget to stay hydrated throughout the day!';
+
+  @override
+  String get notification_body_3 =>
+      'A quick water break can boost your energy!';
+
+  @override
+  String get notification_body_4 =>
+      'Your health matters! Take a moment to drink water.';
+
+  @override
+  String get notification_body_5 =>
+      'Keep your body happy with some refreshing water!';
+
+  @override
+  String get notification_body_6 => 'Stay healthy and hydrated! Drink up!';
+
+  @override
+  String get notification_body_7 =>
+      'Time for a water break! You\'re doing great!';
+
+  @override
+  String get notification_body_8 =>
+      'Remember to drink water regularly for better health!';
 
   @override
   String get streak_current => 'वर्तमान स्ट्रीक';

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:water_reminder/l10n/app_localizations.dart';
 import 'dart:math' as math;
+import '../../../../core/constants/ui_constants.dart';
+import '../../../../core/themes/app_theme.dart';
 
 class MotivationalMessage extends StatelessWidget {
   final double progressPercentage;
@@ -74,13 +76,13 @@ class MotivationalMessage extends StatelessWidget {
 
   Color _getColor(BuildContext context) {
     if (progressPercentage >= 100) {
-      return Colors.amber;
+      return AppTheme.streakGold;
     } else if (progressPercentage >= 75) {
-      return Colors.green;
+      return AppTheme.successGreen;
     } else if (progressPercentage >= 50) {
       return Theme.of(context).colorScheme.primary;
     } else {
-      return Colors.blue;
+      return AppTheme.primaryBlue;
     }
   }
 
@@ -153,46 +155,55 @@ class _CompactCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
-      decoration: BoxDecoration(
-        color: color.withAlpha(26),
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(
-          color: color.withAlpha(77),
-          width: 1,
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final textColor = isDark ? Colors.white : Colors.black87;
+
+    return Semantics(
+      label: text,
+      child: Container(
+        width: double.infinity,
+        padding: const EdgeInsets.symmetric(
+          vertical: UIConstants.spacingL,
+          horizontal: UIConstants.spacingM,
         ),
-      ),
-      child: Row(
-        children: [
-          TweenAnimationBuilder<double>(
-            tween: Tween(begin: 0.8, end: 1.0),
-            duration: const Duration(milliseconds: 600),
-            curve: Curves.elasticOut,
-            builder: (context, scale, child) {
-              return Transform.scale(
-                scale: scale,
-                child: Icon(
-                  icon,
-                  color: color,
-                  size: 32,
-                ),
-              );
-            },
+        decoration: BoxDecoration(
+          color: color.withAlpha(26),
+          borderRadius: BorderRadius.circular(UIConstants.radiusL),
+          border: Border.all(
+            color: color.withAlpha(77),
+            width: 1,
           ),
-          const SizedBox(width: 16),
-          Expanded(
-            child: Text(
-              text,
-              style: GoogleFonts.poppins(
-                fontSize: 15,
-                fontWeight: FontWeight.w600,
-                color: Colors.black87,
+        ),
+        child: Row(
+          children: [
+            TweenAnimationBuilder<double>(
+              tween: Tween(begin: 0.8, end: 1.0),
+              duration: UIConstants.slowAnimation,
+              curve: Curves.elasticOut,
+              builder: (context, scale, child) {
+                return Transform.scale(
+                  scale: scale,
+                  child: Icon(
+                    icon,
+                    color: color,
+                    size: 32,
+                  ),
+                );
+              },
+            ),
+            const SizedBox(width: UIConstants.spacingM),
+            Expanded(
+              child: Text(
+                text,
+                style: GoogleFonts.poppins(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w600,
+                  color: textColor,
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -212,45 +223,51 @@ class _FullCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(20),
-      decoration: BoxDecoration(
-        color: color.withAlpha(26),
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(
-          color: color.withAlpha(77),
-          width: 1,
-        ),
-      ),
-      child: Row(
-        children: [
-          TweenAnimationBuilder<double>(
-            tween: Tween(begin: 0.8, end: 1.0),
-            duration: const Duration(milliseconds: 600),
-            curve: Curves.elasticOut,
-            builder: (context, scale, child) {
-              return Transform.scale(
-                scale: scale,
-                child: Icon(
-                  icon,
-                  color: color,
-                  size: 32,
-                ),
-              );
-            },
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final textColor = isDark ? Colors.white : Colors.black87;
+
+    return Semantics(
+      label: message,
+      child: Container(
+        padding: const EdgeInsets.all(UIConstants.spacingL),
+        decoration: BoxDecoration(
+          color: color.withAlpha(26),
+          borderRadius: BorderRadius.circular(UIConstants.radiusL),
+          border: Border.all(
+            color: color.withAlpha(77),
+            width: 1,
           ),
-          const SizedBox(width: 16),
-          Expanded(
-            child: Text(
-              message,
-              style: GoogleFonts.poppins(
-                fontSize: 14,
-                fontWeight: FontWeight.w500,
-                color: Colors.black87,
+        ),
+        child: Row(
+          children: [
+            TweenAnimationBuilder<double>(
+              tween: Tween(begin: 0.8, end: 1.0),
+              duration: UIConstants.slowAnimation,
+              curve: Curves.elasticOut,
+              builder: (context, scale, child) {
+                return Transform.scale(
+                  scale: scale,
+                  child: Icon(
+                    icon,
+                    color: color,
+                    size: 32,
+                  ),
+                );
+              },
+            ),
+            const SizedBox(width: UIConstants.spacingM),
+            Expanded(
+              child: Text(
+                message,
+                style: GoogleFonts.poppins(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
+                  color: textColor,
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

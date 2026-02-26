@@ -86,6 +86,16 @@
   "home_title": "Home",
   "home_daily_goal": "Daily Goal",
   "home_today": "Today",
+  "home_todays_progress": "Today's Progress",
+  "home_quick_add": "Quick Add",
+  "home_amount_to_go": "{amount} to go!",
+  "@home_amount_to_go": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
   "home_custom_amount": "Custom Amount",
   "home_amount_label": "Amount",
   "home_add_water_success": "Water added successfully!",
@@ -169,10 +179,15 @@
   "gender_other": "Other",
 
   "activity_sedentary": "Sedentary",
+  "activity_sedentary_desc": "Little or no exercise",
   "activity_light": "Lightly Active",
+  "activity_light_desc": "Light exercise 1-3 days/week",
   "activity_moderate": "Moderately Active",
+  "activity_moderate_desc": "Moderate exercise 3-5 days/week",
   "activity_very_active": "Very Active",
+  "activity_very_active_desc": "Heavy exercise 6-7 days/week",
   "activity_extra_active": "Extra Active",
+  "activity_extra_active_desc": "Very heavy exercise & physical job",
 
   "bmi_underweight": "Underweight",
   "bmi_normal": "Normal Weight",
@@ -277,6 +292,30 @@
   "statistics_goal_achievement": "Goal Achievement",
   "statistics_no_data": "No data available for this period",
   "statistics_chart_label": "Water Intake",
+  "statistics_total_intake": "Total Intake",
+  "statistics_total_consumed": "Total consumed",
+  "statistics_daily_average": "Daily average",
+  "statistics_goals_met": "Goals Met",
+  "statistics_out_of": "out of {count}",
+  "@statistics_out_of": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "statistics_progress": "Progress",
+  "statistics_on_track": "On track!",
+  "statistics_keep_going": "Keep going!",
+  "statistics_daily_intake": "Daily Intake",
+  "statistics_below_goal": "Below Goal",
+  "statistics_goal_met_label": "Goal Met",
+  "statistics_your_streak": "Your Streak",
+  "statistics_current": "Current",
+  "statistics_best": "Best",
+  "statistics_completed": "Completed",
+  "statistics_next_goal": "Next Goal",
+  "statistics_days": "days",
 
   "achievements_title": "Achievements",
   "achievements_unlocked": "Unlocked",
@@ -318,9 +357,32 @@
   "reminders_interval_90": "Every 1.5 hours",
   "reminders_interval_120": "Every 2 hours",
   "reminders_interval_180": "Every 3 hours",
+  "reminders_reschedule": "Reschedule Reminders",
+  "reminders_reschedule_subtitle": "Update all pending notifications",
+  "reminders_cancel_all": "Cancel All Reminders",
+  "reminders_cancel_all_subtitle": "Remove all pending notifications",
+  "reminders_schedule_success": "Reminders scheduled successfully",
+  "reminders_cancel_success": "All reminders cancelled",
+  "reminders_info_message": "Reminders help you stay hydrated throughout the day. Customize your schedule in Settings.",
+  "reminders_schedule_info": "Current Schedule",
 
   "notification_reminder_title": "Time to Drink Water!",
   "notification_reminder_body": "Stay hydrated! Drink some water now.",
+  "notification_title_1": "Time to Hydrate!",
+  "notification_title_2": "Water Break!",
+  "notification_title_3": "Stay Hydrated!",
+  "notification_title_4": "Drink Some Water!",
+  "notification_title_5": "Hydration Time!",
+  "notification_title_6": "Water Reminder!",
+  "notification_title_7": "Take Care of Yourself!",
+  "notification_body_1": "Time to drink some water! Your body needs hydration.",
+  "notification_body_2": "Don't forget to stay hydrated throughout the day!",
+  "notification_body_3": "A quick water break can boost your energy!",
+  "notification_body_4": "Your health matters! Take a moment to drink water.",
+  "notification_body_5": "Keep your body happy with some refreshing water!",
+  "notification_body_6": "Stay healthy and hydrated! Drink up!",
+  "notification_body_7": "Time for a water break! You're doing great!",
+  "notification_body_8": "Remember to drink water regularly for better health!",
 
   "streak_current": "Current Streak",
   "streak_days": "{days} days",

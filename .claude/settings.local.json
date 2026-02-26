@@ -27,7 +27,8 @@
       "Bash(git add:*)",
       "Bash(git commit:*)",
       "Bash(pod repo update)",
-      "Bash(pod install:*)"
+      "Bash(pod install:*)",
+      "Bash(dart analyze:*)"
     ],
     "deny": [],
     "ask": []

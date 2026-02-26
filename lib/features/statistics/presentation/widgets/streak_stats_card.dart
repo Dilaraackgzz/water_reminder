@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:water_reminder/l10n/app_localizations.dart';
+import '../../../../core/constants/ui_constants.dart';
 import '../../../home/domain/models/user_streak.dart';
 import '../../../home/presentation/providers/streak_providers.dart';
 
@@ -33,28 +34,37 @@ class _StreakStatsContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final l10n = AppLocalizations.of(context)!;
+    final textTheme = Theme.of(context).textTheme;
+
+    final gradientColors = isDark
+        ? (streak.currentStreak >= 7
+            ? [
+                Colors.amber.shade900.withAlpha(180),
+                Colors.amber.shade800.withAlpha(180)
+              ]
+            : [
+                colorScheme.primaryContainer.withAlpha(180),
+                colorScheme.primaryContainer.withAlpha(140),
+              ])
+        : (streak.currentStreak >= 7
+            ? [Colors.amber.shade100, Colors.amber.shade200]
+            : [
+                colorScheme.primaryContainer.withAlpha(180),
+                colorScheme.primaryContainer.withAlpha(140),
+              ]);
 
     return Container(
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.all(UIConstants.cardPaddingL),
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: streak.currentStreak >= 7
-              ? [Colors.amber.shade100, Colors.amber.shade200]
-              : [
-                  colorScheme.primaryContainer.withAlpha(180),
-                  colorScheme.primaryContainer.withAlpha(140),
-                ],
+          colors: gradientColors,
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
-        borderRadius: BorderRadius.circular(20),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withAlpha(13),
-            blurRadius: 8,
-            offset: const Offset(0, 2),
-          ),
-        ],
+        borderRadius: BorderRadius.circular(UIConstants.radiusXL),
+        boxShadow: AppShadows.cardShadow(isDark: isDark),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -64,21 +74,20 @@ class _StreakStatsContent extends StatelessWidget {
             children: [
               Text(
                 streak.streakEmoji,
-                style: const TextStyle(fontSize: 32),
+                style: const TextStyle(fontSize: UIConstants.iconSizeXL),
               ),
-              const SizedBox(width: 12),
+              const SizedBox(width: UIConstants.cardPaddingS),
               Text(
-                'Your Streak',
-                style: GoogleFonts.poppins(
-                  fontSize: 18,
+                l10n.statistics_your_streak,
+                style: textTheme.titleMedium?.copyWith(
                   fontWeight: FontWeight.bold,
-                  color: Colors.black87,
+                  color: isDark ? Colors.white : Colors.black87,
                 ),
               ),
             ],
           ),
 
-          const SizedBox(height: 20),
+          const SizedBox(height: UIConstants.cardPaddingL),
 
           // Stats Grid
           Row(
@@ -86,46 +95,50 @@ class _StreakStatsContent extends StatelessWidget {
               Expanded(
                 child: _StatBox(
                   icon: Icons.local_fire_department,
-                  label: 'Current',
+                  label: l10n.statistics_current,
                   value: '${streak.currentStreak}',
-                  unit: 'days',
+                  unit: l10n.statistics_days,
                   isHighlighted: streak.currentStreak > 0,
+                  isDark: isDark,
                 ),
               ),
-              const SizedBox(width: 12),
+              const SizedBox(width: UIConstants.cardPaddingS),
               Expanded(
                 child: _StatBox(
                   icon: Icons.emoji_events,
-                  label: 'Best',
+                  label: l10n.statistics_best,
                   value: '${streak.longestStreak}',
-                  unit: 'days',
+                  unit: l10n.statistics_days,
                   isHighlighted: streak.isPersonalBest,
+                  isDark: isDark,
                 ),
               ),
             ],
           ),
 
-          const SizedBox(height: 12),
+          const SizedBox(height: UIConstants.cardPaddingS),
 
           Row(
             children: [
               Expanded(
                 child: _StatBox(
                   icon: Icons.calendar_today,
-                  label: 'Completed',
+                  label: l10n.statistics_completed,
                   value: '${streak.completedDates.length}',
-                  unit: 'days',
+                  unit: l10n.statistics_days,
                   isHighlighted: false,
+                  isDark: isDark,
                 ),
               ),
-              const SizedBox(width: 12),
+              const SizedBox(width: UIConstants.cardPaddingS),
               Expanded(
                 child: _StatBox(
                   icon: Icons.trending_up,
-                  label: 'Next Goal',
+                  label: l10n.statistics_next_goal,
                   value: '${streak.daysToNextMilestone}',
-                  unit: 'days',
+                  unit: l10n.statistics_days,
                   isHighlighted: false,
+                  isDark: isDark,
                 ),
               ),
             ],
@@ -133,12 +146,12 @@ class _StreakStatsContent extends StatelessWidget {
 
           // Milestone indicator
           if (streak.isStreakMilestone()) ...[
-            const SizedBox(height: 16),
+            const SizedBox(height: UIConstants.cardPaddingM),
             Container(
-              padding: const EdgeInsets.all(12),
+              padding: const EdgeInsets.all(UIConstants.cardPaddingS),
               decoration: BoxDecoration(
                 color: Colors.amber,
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(UIConstants.radiusM),
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -146,14 +159,13 @@ class _StreakStatsContent extends StatelessWidget {
                   const Icon(
                     Icons.celebration,
                     color: Colors.white,
-                    size: 20,
+                    size: UIConstants.iconSizeM,
                   ),
-                  const SizedBox(width: 8),
+                  const SizedBox(width: UIConstants.spacingS),
                   Flexible(
                     child: Text(
                       streak.getMilestoneText(),
-                      style: GoogleFonts.poppins(
-                        fontSize: 14,
+                      style: textTheme.bodyMedium?.copyWith(
                         fontWeight: FontWeight.w600,
                         color: Colors.white,
                       ),
@@ -176,6 +188,7 @@ class _StatBox extends StatelessWidget {
   final String value;
   final String unit;
   final bool isHighlighted;
+  final bool isDark;
 
   const _StatBox({
     required this.icon,
@@ -183,37 +196,43 @@ class _StatBox extends StatelessWidget {
     required this.value,
     required this.unit,
     required this.isHighlighted,
+    required this.isDark,
   });
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Container(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(UIConstants.cardPaddingM),
       decoration: BoxDecoration(
-        color: isHighlighted
-            ? Colors.white.withAlpha(230)
-            : Colors.white.withAlpha(179),
-        borderRadius: BorderRadius.circular(16),
-        border: isHighlighted
-            ? Border.all(color: Colors.amber, width: 2)
-            : null,
+        color: isDark
+            ? (isHighlighted
+                ? Colors.grey[800]!.withAlpha(230)
+                : Colors.grey[850]!.withAlpha(200))
+            : (isHighlighted
+                ? Colors.white.withAlpha(230)
+                : Colors.white.withAlpha(179)),
+        borderRadius: BorderRadius.circular(UIConstants.radiusL),
+        border: isHighlighted ? Border.all(color: Colors.amber, width: 2) : null,
       ),
       child: Column(
         children: [
           Icon(
             icon,
-            size: 24,
-            color: isHighlighted ? Colors.amber[700] : Theme.of(context).colorScheme.primary,
+            size: UIConstants.iconSizeL,
+            color: isHighlighted ? Colors.amber[700] : colorScheme.primary,
           ),
-          const SizedBox(height: 8),
+          const SizedBox(height: UIConstants.spacingS),
           Text(
             label,
-            style: GoogleFonts.poppins(
+            style: textTheme.bodySmall?.copyWith(
               fontSize: 11,
-              color: Colors.black54,
+              color: isDark ? Colors.white60 : Colors.black54,
             ),
           ),
-          const SizedBox(height: 4),
+          const SizedBox(height: UIConstants.spacingXS),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.baseline,
@@ -221,19 +240,18 @@ class _StatBox extends StatelessWidget {
             children: [
               Text(
                 value,
-                style: GoogleFonts.poppins(
-                  fontSize: 24,
+                style: textTheme.headlineSmall?.copyWith(
                   fontWeight: FontWeight.bold,
-                  color: Colors.black87,
+                  color: isDark ? Colors.white : Colors.black87,
                   height: 1.0,
                 ),
               ),
-              const SizedBox(width: 4),
+              const SizedBox(width: UIConstants.spacingXS),
               Text(
                 unit,
-                style: GoogleFonts.poppins(
+                style: textTheme.bodySmall?.copyWith(
                   fontSize: 11,
-                  color: Colors.black54,
+                  color: isDark ? Colors.white60 : Colors.black54,
                 ),
               ),
             ],

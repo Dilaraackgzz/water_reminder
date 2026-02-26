@@ -79,6 +79,16 @@
   "home_title": "Ana Sayfa",
   "home_daily_goal": "Günlük Hedef",
   "home_today": "Bugün",
+  "home_todays_progress": "Bugünkü İlerleme",
+  "home_quick_add": "Hızlı Ekle",
+  "home_amount_to_go": "{amount} kaldı!",
+  "@home_amount_to_go": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
   "home_custom_amount": "Özel Miktar",
   "home_amount_label": "Miktar",
   "home_add_water_success": "Su başarıyla eklendi!",
@@ -155,10 +165,15 @@
   "gender_other": "Diğer",
 
   "activity_sedentary": "Hareketsiz",
+  "activity_sedentary_desc": "Çok az veya hiç egzersiz yok",
   "activity_light": "Az Hareketli",
+  "activity_light_desc": "Haftada 1-3 gün hafif egzersiz",
   "activity_moderate": "Orta Hareketli",
+  "activity_moderate_desc": "Haftada 3-5 gün orta düzey egzersiz",
   "activity_very_active": "Çok Hareketli",
+  "activity_very_active_desc": "Haftada 6-7 gün yoğun egzersiz",
   "activity_extra_active": "Son Derece Hareketli",
+  "activity_extra_active_desc": "Çok yoğun egzersiz ve fiziksel iş",
 
   "bmi_underweight": "Zayıf",
   "bmi_normal": "Normal Kilo",
@@ -239,6 +254,30 @@
   "statistics_goal_achievement": "Hedef Başarısı",
   "statistics_no_data": "Bu dönem için veri yok",
   "statistics_chart_label": "Su Tüketimi",
+  "statistics_total_intake": "Toplam Tüketim",
+  "statistics_total_consumed": "Toplam tüketilen",
+  "statistics_daily_average": "Günlük ortalama",
+  "statistics_goals_met": "Hedefe Ulaşılan",
+  "statistics_out_of": "{count} günden",
+  "@statistics_out_of": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "statistics_progress": "İlerleme",
+  "statistics_on_track": "Yolunda!",
+  "statistics_keep_going": "Devam et!",
+  "statistics_daily_intake": "Günlük Tüketim",
+  "statistics_below_goal": "Hedefin Altında",
+  "statistics_goal_met_label": "Hedefe Ulaşıldı",
+  "statistics_your_streak": "Serin",
+  "statistics_current": "Mevcut",
+  "statistics_best": "En İyi",
+  "statistics_completed": "Tamamlanan",
+  "statistics_next_goal": "Sonraki Hedef",
+  "statistics_days": "gün",
 
   "achievements_title": "Başarımlar",
   "achievements_unlocked": "Açıldı",
@@ -273,9 +312,32 @@
   "reminders_interval_90": "Her 1.5 saatte",
   "reminders_interval_120": "Her 2 saatte",
   "reminders_interval_180": "Her 3 saatte",
+  "reminders_reschedule": "Hatırlatıcıları Yeniden Planla",
+  "reminders_reschedule_subtitle": "Bekleyen tüm bildirimleri güncelle",
+  "reminders_cancel_all": "Tüm Hatırlatıcıları İptal Et",
+  "reminders_cancel_all_subtitle": "Bekleyen tüm bildirimleri kaldır",
+  "reminders_schedule_success": "Hatırlatıcılar başarıyla planlandı",
+  "reminders_cancel_success": "Tüm hatırlatıcılar iptal edildi",
+  "reminders_info_message": "Hatırlatıcılar gün boyunca su içmenize yardımcı olur. Programınızı Ayarlar'dan özelleştirin.",
+  "reminders_schedule_info": "Mevcut Program",
 
   "notification_reminder_title": "Su İçme Zamanı!",
   "notification_reminder_body": "Susuz kalma! Şimdi biraz su iç.",
+  "notification_title_1": "Su İçme Zamanı!",
+  "notification_title_2": "Su Molası!",
+  "notification_title_3": "Susuz Kalma!",
+  "notification_title_4": "Biraz Su İç!",
+  "notification_title_5": "Hidrasyon Vakti!",
+  "notification_title_6": "Su Hatırlatıcısı!",
+  "notification_title_7": "Kendine İyi Bak!",
+  "notification_body_1": "Su içme zamanı! Vücudunun hidrasyon ihtiyacı var.",
+  "notification_body_2": "Gün boyunca su içmeyi unutma!",
+  "notification_body_3": "Kısa bir su molası enerjini artırabilir!",
+  "notification_body_4": "Sağlığın önemli! Bir dakikanı ayırıp su iç.",
+  "notification_body_5": "Vücudunu ferahlatıcı bir su ile mutlu et!",
+  "notification_body_6": "Sağlıklı ve susuz kal! Haydi iç!",
+  "notification_body_7": "Su molası zamanı! Harika gidiyorsun!",
+  "notification_body_8": "Düzenli su içmeyi unutma, sağlığın için önemli!",
 
   "streak_current": "Mevcut Seri",
   "streak_days": "{days} gün",

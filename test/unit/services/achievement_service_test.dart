@@ -77,7 +77,7 @@ void main() {
             .get();
 
         final achievements = snapshot.docs
-            .map((doc) => AchievementExtension.fromFirestore(doc.data()))
+            .map((doc) => AchievementMapper.fromFirestore(doc.data()))
             .toList();
 
         // Check that we have different types
@@ -138,7 +138,7 @@ void main() {
             .doc('first_drop')
             .get();
 
-        final achievement = AchievementExtension.fromFirestore(doc.data()!);
+        final achievement = AchievementMapper.fromFirestore(doc.data()!);
         expect(achievement.currentValue, 1);
       });
 
@@ -154,7 +154,7 @@ void main() {
             .doc('first_drop')
             .get();
 
-        final achievement = AchievementExtension.fromFirestore(doc.data()!);
+        final achievement = AchievementMapper.fromFirestore(doc.data()!);
         expect(achievement.isUnlocked, true);
         expect(achievement.unlockedAt, isNotNull);
       });
@@ -174,7 +174,7 @@ void main() {
             .doc('total_10l')
             .get();
 
-        final achievement = AchievementExtension.fromFirestore(doc.data()!);
+        final achievement = AchievementMapper.fromFirestore(doc.data()!);
         expect(achievement.currentValue, 1500);
       });
 
@@ -247,7 +247,7 @@ void main() {
             .doc('first_drop')
             .get();
 
-        final achievement = AchievementExtension.fromFirestore(doc.data()!);
+        final achievement = AchievementMapper.fromFirestore(doc.data()!);
         expect(achievement.currentValue, greaterThanOrEqualTo(1));
       });
 
@@ -268,7 +268,7 @@ void main() {
             .doc('daily_goal_1')
             .get();
 
-        final achievement = AchievementExtension.fromFirestore(doc.data()!);
+        final achievement = AchievementMapper.fromFirestore(doc.data()!);
         expect(achievement.currentValue, greaterThanOrEqualTo(1));
       });
 
@@ -289,7 +289,7 @@ void main() {
             .doc('streak_3')
             .get();
 
-        final achievement = AchievementExtension.fromFirestore(doc.data()!);
+        final achievement = AchievementMapper.fromFirestore(doc.data()!);
         expect(achievement.currentValue, greaterThanOrEqualTo(3));
       });
 
@@ -310,7 +310,7 @@ void main() {
             .doc('total_10l')
             .get();
 
-        final achievement = AchievementExtension.fromFirestore(doc.data()!);
+        final achievement = AchievementMapper.fromFirestore(doc.data()!);
         expect(achievement.currentValue, 5000);
       });
 
@@ -331,7 +331,7 @@ void main() {
             .doc('consistency_week')
             .get();
 
-        final achievement = AchievementExtension.fromFirestore(doc.data()!);
+        final achievement = AchievementMapper.fromFirestore(doc.data()!);
         expect(achievement.currentValue, 5);
       });
     });

@@ -18,6 +18,9 @@ class UIConstants {
   static const Duration normalAnimation = Duration(milliseconds: 300);
   static const Duration slowAnimation = Duration(milliseconds: 500);
   static const Duration pageTransition = Duration(milliseconds: 400);
+  static const Duration progressAnimation = Duration(milliseconds: 800);
+  static const Duration progressWaveAnimation = Duration(milliseconds: 1200);
+  static const Duration waveLoopAnimation = Duration(seconds: 3);
 
   // Animation curves
   static const Curve defaultCurve = Curves.easeInOut;
@@ -38,6 +41,54 @@ class UIConstants {
   static const double radiusL = 16.0;
   static const double radiusXL = 24.0;
   static const double radiusRound = 100.0;
+
+  // Card padding
+  static const double cardPaddingS = 12.0;
+  static const double cardPaddingM = 16.0;
+  static const double cardPaddingL = 20.0;
+
+  // Chart
+  static const double chartHeightSmall = 160.0;
+  static const double chartHeightMedium = 200.0;
+  static const double chartHeightLarge = 240.0;
+  static const double chartBarWidth = 16.0;
+
+  // Icon sizes
+  static const double iconSizeS = 16.0;
+  static const double iconSizeM = 20.0;
+  static const double iconSizeL = 24.0;
+  static const double iconSizeXL = 32.0;
+
+  // Shadow
+  static const double shadowBlurS = 4.0;
+  static const double shadowBlurM = 8.0;
+  static const double shadowBlurL = 12.0;
+  static const double shadowOffsetY = 2.0;
+}
+
+/// Common shadow styles
+class AppShadows {
+  AppShadows._();
+
+  static List<BoxShadow> cardShadow({bool isDark = false}) {
+    return [
+      BoxShadow(
+        color: Colors.black.withAlpha(isDark ? 26 : 13),
+        blurRadius: UIConstants.shadowBlurM,
+        offset: const Offset(0, UIConstants.shadowOffsetY),
+      ),
+    ];
+  }
+
+  static List<BoxShadow> elevatedShadow({bool isDark = false}) {
+    return [
+      BoxShadow(
+        color: Colors.black.withAlpha(isDark ? 38 : 20),
+        blurRadius: UIConstants.shadowBlurL,
+        offset: const Offset(0, 4),
+      ),
+    ];
+  }
 }
 
 /// Responsive sizing helper for splash and onboarding screens

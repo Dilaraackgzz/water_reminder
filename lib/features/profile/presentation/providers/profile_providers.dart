@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../../data/repositories/profile_repository_impl.dart';
@@ -54,35 +55,49 @@ class ProfileController {
   ProfileController(this._ref);
 
   /// Update profile with new data
-  Future<void> updateProfile(UserProfile profile) async {
-    final repository = _ref.read(profileRepositoryProvider);
-    await repository.saveProfile(profile);
+  Future<bool> updateProfile(UserProfile profile) async {
+    try {
+      final repository = _ref.read(profileRepositoryProvider);
+      await repository.saveProfile(profile);
 
-    // Update today's daily goal with the new target
-    await _updateTodaysDailyGoal(profile.dailyGoal);
+      // Update today's daily goal with the new target
+      await _updateTodaysDailyGoal(profile.dailyGoal);
 
-    // Sync displayName with Firebase Auth if name changed
-    final firebaseUser = FirebaseAuth.instance.currentUser;
-    if (firebaseUser != null && profile.name.isNotEmpty) {
-      if (firebaseUser.displayName != profile.name) {
-        await firebaseUser.updateDisplayName(profile.name);
+      // Sync displayName with Firebase Auth if name changed
+      final firebaseUser = FirebaseAuth.instance.currentUser;
+      if (firebaseUser != null && profile.name.isNotEmpty) {
+        if (firebaseUser.displayName != profile.name) {
+          await firebaseUser.updateDisplayName(profile.name);
+        }
       }
-    }
 
-    // Refresh the user profile provider
-    _ref.invalidate(userProfileProvider);
+      // Refresh the user profile provider
+      _ref.invalidate(userProfileProvider);
+      return true;
+    } catch (e, stack) {
+      debugPrint('ProfileController.updateProfile error: $e');
+      debugPrint('Stack trace: $stack');
+      return false;
+    }
   }
 
   /// Update only daily goal
-  Future<void> updateDailyGoal(String userId, int newGoal, {bool isCustom = true}) async {
-    final repository = _ref.read(profileRepositoryProvider);
-    await repository.updateDailyGoal(userId, newGoal, isCustom: isCustom);
+  Future<bool> updateDailyGoal(String userId, int newGoal, {bool isCustom = true}) async {
+    try {
+      final repository = _ref.read(profileRepositoryProvider);
+      await repository.updateDailyGoal(userId, newGoal, isCustom: isCustom);
 
-    // Update today's daily goal in the water repository
-    await _updateTodaysDailyGoal(newGoal);
+      // Update today's daily goal in the water repository
+      await _updateTodaysDailyGoal(newGoal);
 
-    // Refresh the user profile provider
-    _ref.invalidate(userProfileProvider);
+      // Refresh the user profile provider
+      _ref.invalidate(userProfileProvider);
+      return true;
+    } catch (e, stack) {
+      debugPrint('ProfileController.updateDailyGoal error: $e');
+      debugPrint('Stack trace: $stack');
+      return false;
+    }
   }
 
   /// Update today's daily goal target amount
@@ -95,8 +110,10 @@ class ProfileController {
 
       // Refresh the today's daily goal provider
       _ref.invalidate(todaysDailyGoalProvider);
-    } catch (e) {
+    } catch (e, stack) {
       // Silent fail - profile update succeeded, don't fail the whole operation
+      debugPrint('ProfileController._updateTodaysDailyGoal error: $e');
+      debugPrint('Stack trace: $stack');
     }
   }
 
@@ -105,26 +122,39 @@ class ProfileController {
     required double weight,
     required ActivityLevel activityLevel,
   }) async {
-    final repository = _ref.read(profileRepositoryProvider);
-    return await repository.calculateDailyGoal(
-      weight: weight,
-      activityLevel: activityLevel,
-    );
+    try {
+      final repository = _ref.read(profileRepositoryProvider);
+      return await repository.calculateDailyGoal(
+        weight: weight,
+        activityLevel: activityLevel,
+      );
+    } catch (e, stack) {
+      debugPrint('ProfileController.calculateDailyGoal error: $e');
+      debugPrint('Stack trace: $stack');
+      // Return default value on error
+      return 2000;
+    }
   }
 
   /// Apply calculated goal to profile
-  Future<void> applyCalculatedGoal(UserProfile profile) async {
-    final calculatedGoal = await calculateDailyGoal(
-      weight: profile.weight,
-      activityLevel: profile.activityLevel,
-    );
+  Future<bool> applyCalculatedGoal(UserProfile profile) async {
+    try {
+      final calculatedGoal = await calculateDailyGoal(
+        weight: profile.weight,
+        activityLevel: profile.activityLevel,
+      );
 
-    final updatedProfile = profile.copyWith(
-      dailyGoal: calculatedGoal,
-      isCustomGoal: false,
-      updatedAt: DateTime.now(),
-    );
+      final updatedProfile = profile.copyWith(
+        dailyGoal: calculatedGoal,
+        isCustomGoal: false,
+        updatedAt: DateTime.now(),
+      );
 
-    await updateProfile(updatedProfile);
+      return await updateProfile(updatedProfile);
+    } catch (e, stack) {
+      debugPrint('ProfileController.applyCalculatedGoal error: $e');
+      debugPrint('Stack trace: $stack');
+      return false;
+    }
   }
 }

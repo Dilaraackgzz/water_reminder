@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
+import '../../../../core/constants/ui_constants.dart';
 
 class WaterProgressRing extends StatelessWidget {
   final double progress; // 0.0 to 1.0
@@ -18,7 +19,7 @@ class WaterProgressRing extends StatelessWidget {
     this.progressColor,
     this.backgroundColor = const Color(0xFFE0F7FA),
     this.child,
-    this.duration = const Duration(milliseconds: 800),
+    this.duration = UIConstants.progressAnimation,
   });
 
   @override

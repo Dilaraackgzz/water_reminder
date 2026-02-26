@@ -212,6 +212,17 @@ class AppLocalizationsTr extends AppLocalizations {
   String get home_today => 'Bugün';
 
   @override
+  String get home_todays_progress => 'Bugünkü İlerleme';
+
+  @override
+  String get home_quick_add => 'Hızlı Ekle';
+
+  @override
+  String home_amount_to_go(String amount) {
+    return '$amount kaldı!';
+  }
+
+  @override
   String get home_custom_amount => 'Özel Miktar';
 
   @override
@@ -413,16 +424,31 @@ class AppLocalizationsTr extends AppLocalizations {
   String get activity_sedentary => 'Hareketsiz';
 
   @override
+  String get activity_sedentary_desc => 'Çok az veya hiç egzersiz yok';
+
+  @override
   String get activity_light => 'Az Hareketli';
+
+  @override
+  String get activity_light_desc => 'Haftada 1-3 gün hafif egzersiz';
 
   @override
   String get activity_moderate => 'Orta Hareketli';
 
   @override
+  String get activity_moderate_desc => 'Haftada 3-5 gün orta düzey egzersiz';
+
+  @override
   String get activity_very_active => 'Çok Hareketli';
 
   @override
+  String get activity_very_active_desc => 'Haftada 6-7 gün yoğun egzersiz';
+
+  @override
   String get activity_extra_active => 'Son Derece Hareketli';
+
+  @override
+  String get activity_extra_active_desc => 'Çok yoğun egzersiz ve fiziksel iş';
 
   @override
   String get bmi_underweight => 'Zayıf';
@@ -649,6 +675,59 @@ class AppLocalizationsTr extends AppLocalizations {
   String get statistics_chart_label => 'Su Tüketimi';
 
   @override
+  String get statistics_total_intake => 'Toplam Tüketim';
+
+  @override
+  String get statistics_total_consumed => 'Toplam tüketilen';
+
+  @override
+  String get statistics_daily_average => 'Günlük ortalama';
+
+  @override
+  String get statistics_goals_met => 'Hedefe Ulaşılan';
+
+  @override
+  String statistics_out_of(int count) {
+    return '$count günden';
+  }
+
+  @override
+  String get statistics_progress => 'İlerleme';
+
+  @override
+  String get statistics_on_track => 'Yolunda!';
+
+  @override
+  String get statistics_keep_going => 'Devam et!';
+
+  @override
+  String get statistics_daily_intake => 'Günlük Tüketim';
+
+  @override
+  String get statistics_below_goal => 'Hedefin Altında';
+
+  @override
+  String get statistics_goal_met_label => 'Hedefe Ulaşıldı';
+
+  @override
+  String get statistics_your_streak => 'Serin';
+
+  @override
+  String get statistics_current => 'Mevcut';
+
+  @override
+  String get statistics_best => 'En İyi';
+
+  @override
+  String get statistics_completed => 'Tamamlanan';
+
+  @override
+  String get statistics_next_goal => 'Sonraki Hedef';
+
+  @override
+  String get statistics_days => 'gün';
+
+  @override
   String get achievements_title => 'Başarımlar';
 
   @override
@@ -744,10 +823,85 @@ class AppLocalizationsTr extends AppLocalizations {
   String get reminders_interval_180 => 'Her 3 saatte';
 
   @override
+  String get reminders_reschedule => 'Hatırlatıcıları Yeniden Planla';
+
+  @override
+  String get reminders_reschedule_subtitle =>
+      'Bekleyen tüm bildirimleri güncelle';
+
+  @override
+  String get reminders_cancel_all => 'Tüm Hatırlatıcıları İptal Et';
+
+  @override
+  String get reminders_cancel_all_subtitle =>
+      'Bekleyen tüm bildirimleri kaldır';
+
+  @override
+  String get reminders_schedule_success => 'Hatırlatıcılar başarıyla planlandı';
+
+  @override
+  String get reminders_cancel_success => 'Tüm hatırlatıcılar iptal edildi';
+
+  @override
+  String get reminders_info_message =>
+      'Hatırlatıcılar gün boyunca su içmenize yardımcı olur. Programınızı Ayarlar\'dan özelleştirin.';
+
+  @override
+  String get reminders_schedule_info => 'Mevcut Program';
+
+  @override
   String get notification_reminder_title => 'Su İçme Zamanı!';
 
   @override
   String get notification_reminder_body => 'Susuz kalma! Şimdi biraz su iç.';
+
+  @override
+  String get notification_title_1 => 'Su İçme Zamanı!';
+
+  @override
+  String get notification_title_2 => 'Su Molası!';
+
+  @override
+  String get notification_title_3 => 'Susuz Kalma!';
+
+  @override
+  String get notification_title_4 => 'Biraz Su İç!';
+
+  @override
+  String get notification_title_5 => 'Hidrasyon Vakti!';
+
+  @override
+  String get notification_title_6 => 'Su Hatırlatıcısı!';
+
+  @override
+  String get notification_title_7 => 'Kendine İyi Bak!';
+
+  @override
+  String get notification_body_1 =>
+      'Su içme zamanı! Vücudunun hidrasyon ihtiyacı var.';
+
+  @override
+  String get notification_body_2 => 'Gün boyunca su içmeyi unutma!';
+
+  @override
+  String get notification_body_3 => 'Kısa bir su molası enerjini artırabilir!';
+
+  @override
+  String get notification_body_4 =>
+      'Sağlığın önemli! Bir dakikanı ayırıp su iç.';
+
+  @override
+  String get notification_body_5 => 'Vücudunu ferahlatıcı bir su ile mutlu et!';
+
+  @override
+  String get notification_body_6 => 'Sağlıklı ve susuz kal! Haydi iç!';
+
+  @override
+  String get notification_body_7 => 'Su molası zamanı! Harika gidiyorsun!';
+
+  @override
+  String get notification_body_8 =>
+      'Düzenli su içmeyi unutma, sağlığın için önemli!';
 
   @override
   String get streak_current => 'Mevcut Seri';

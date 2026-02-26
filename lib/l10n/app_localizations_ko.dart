@@ -207,6 +207,17 @@ class AppLocalizationsKo extends AppLocalizations {
   String get home_today => '오늘';
 
   @override
+  String get home_todays_progress => 'Today\'s Progress';
+
+  @override
+  String get home_quick_add => 'Quick Add';
+
+  @override
+  String home_amount_to_go(String amount) {
+    return '$amount to go!';
+  }
+
+  @override
   String get home_custom_amount => '직접 입력';
 
   @override
@@ -407,16 +418,31 @@ class AppLocalizationsKo extends AppLocalizations {
   String get activity_sedentary => '앉아서 생활';
 
   @override
+  String get activity_sedentary_desc => '거의 또는 전혀 운동하지 않음';
+
+  @override
   String get activity_light => '가벼운 활동';
+
+  @override
+  String get activity_light_desc => '주 1-3일 가벼운 운동';
 
   @override
   String get activity_moderate => '보통 활동';
 
   @override
+  String get activity_moderate_desc => '주 3-5일 중간 강도 운동';
+
+  @override
   String get activity_very_active => '활발한 활동';
 
   @override
+  String get activity_very_active_desc => '주 6-7일 고강도 운동';
+
+  @override
   String get activity_extra_active => '매우 활발한 활동';
+
+  @override
+  String get activity_extra_active_desc => '매우 고강도 운동 및 육체 노동';
 
   @override
   String get bmi_underweight => '저체중';
@@ -641,6 +667,59 @@ class AppLocalizationsKo extends AppLocalizations {
   String get statistics_chart_label => '수분 섭취량';
 
   @override
+  String get statistics_total_intake => '총 섭취량';
+
+  @override
+  String get statistics_total_consumed => '총 소비량';
+
+  @override
+  String get statistics_daily_average => '일일 평균';
+
+  @override
+  String get statistics_goals_met => '달성한 목표';
+
+  @override
+  String statistics_out_of(int count) {
+    return '$count일 중';
+  }
+
+  @override
+  String get statistics_progress => '진행률';
+
+  @override
+  String get statistics_on_track => '순조로워요!';
+
+  @override
+  String get statistics_keep_going => '계속 해보세요!';
+
+  @override
+  String get statistics_daily_intake => '일일 섭취량';
+
+  @override
+  String get statistics_below_goal => '목표 미달';
+
+  @override
+  String get statistics_goal_met_label => '목표 달성';
+
+  @override
+  String get statistics_your_streak => '내 연속 기록';
+
+  @override
+  String get statistics_current => '현재';
+
+  @override
+  String get statistics_best => '최고';
+
+  @override
+  String get statistics_completed => '완료';
+
+  @override
+  String get statistics_next_goal => '다음 목표';
+
+  @override
+  String get statistics_days => '일';
+
+  @override
   String get achievements_title => '업적';
 
   @override
@@ -736,10 +815,89 @@ class AppLocalizationsKo extends AppLocalizations {
   String get reminders_interval_180 => '3시간마다';
 
   @override
+  String get reminders_reschedule => 'Reschedule Reminders';
+
+  @override
+  String get reminders_reschedule_subtitle =>
+      'Update all pending notifications';
+
+  @override
+  String get reminders_cancel_all => 'Cancel All Reminders';
+
+  @override
+  String get reminders_cancel_all_subtitle =>
+      'Remove all pending notifications';
+
+  @override
+  String get reminders_schedule_success => 'Reminders scheduled successfully';
+
+  @override
+  String get reminders_cancel_success => 'All reminders cancelled';
+
+  @override
+  String get reminders_info_message =>
+      'Reminders help you stay hydrated throughout the day. Customize your schedule in Settings.';
+
+  @override
+  String get reminders_schedule_info => 'Current Schedule';
+
+  @override
   String get notification_reminder_title => '물 마실 시간이에요!';
 
   @override
   String get notification_reminder_body => '수분을 섭취하세요! 지금 물을 마시세요.';
+
+  @override
+  String get notification_title_1 => 'Time to Hydrate!';
+
+  @override
+  String get notification_title_2 => 'Water Break!';
+
+  @override
+  String get notification_title_3 => 'Stay Hydrated!';
+
+  @override
+  String get notification_title_4 => 'Drink Some Water!';
+
+  @override
+  String get notification_title_5 => 'Hydration Time!';
+
+  @override
+  String get notification_title_6 => 'Water Reminder!';
+
+  @override
+  String get notification_title_7 => 'Take Care of Yourself!';
+
+  @override
+  String get notification_body_1 =>
+      'Time to drink some water! Your body needs hydration.';
+
+  @override
+  String get notification_body_2 =>
+      'Don\'t forget to stay hydrated throughout the day!';
+
+  @override
+  String get notification_body_3 =>
+      'A quick water break can boost your energy!';
+
+  @override
+  String get notification_body_4 =>
+      'Your health matters! Take a moment to drink water.';
+
+  @override
+  String get notification_body_5 =>
+      'Keep your body happy with some refreshing water!';
+
+  @override
+  String get notification_body_6 => 'Stay healthy and hydrated! Drink up!';
+
+  @override
+  String get notification_body_7 =>
+      'Time for a water break! You\'re doing great!';
+
+  @override
+  String get notification_body_8 =>
+      'Remember to drink water regularly for better health!';
 
   @override
   String get streak_current => '현재 연속';

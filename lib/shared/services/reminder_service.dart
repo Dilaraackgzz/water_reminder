@@ -7,11 +7,25 @@ class ReminderService {
   final NotificationService _notificationService;
   final LocalStorageService _storageService;
 
+  // Localized notification messages (set via setLocalizedMessages)
+  List<String> _localizedTitles = [];
+  List<String> _localizedBodies = [];
+
   ReminderService({
     required NotificationService notificationService,
     required LocalStorageService storageService,
   })  : _notificationService = notificationService,
         _storageService = storageService;
+
+  /// Set localized notification messages
+  /// Call this method when app starts or locale changes
+  void setLocalizedMessages({
+    required List<String> titles,
+    required List<String> bodies,
+  }) {
+    _localizedTitles = titles;
+    _localizedBodies = bodies;
+  }
 
   // Storage keys
   static const String _reminderEnabledKey = 'reminder_enabled';
@@ -25,8 +39,11 @@ class ReminderService {
   static const TimeOfDay _defaultStartTime = TimeOfDay(hour: 8, minute: 0);
   static const TimeOfDay _defaultEndTime = TimeOfDay(hour: 22, minute: 0);
 
-  // Notification IDs
+  // Notification IDs and limits
   static const int _baseNotificationId = 1000;
+  static const int _maxScheduledReminders = 100;
+  static const int _customReminderIdOffset = 500;
+
 
   /// Check if reminders are enabled
   bool isReminderEnabled() {
@@ -66,10 +83,20 @@ class ReminderService {
 
   /// Get reminder start time
   TimeOfDay getReminderStartTime() {
-    final timeString = _storageService.getSetting<String>(_reminderStartTimeKey);
-    if (timeString != null) {
-      final parts = timeString.split(':');
-      return TimeOfDay(hour: int.parse(parts[0]), minute: int.parse(parts[1]));
+    try {
+      final timeString = _storageService.getSetting<String>(_reminderStartTimeKey);
+      if (timeString != null && timeString.contains(':')) {
+        final parts = timeString.split(':');
+        if (parts.length == 2) {
+          final hour = int.parse(parts[0]);
+          final minute = int.parse(parts[1]);
+          if (hour >= 0 && hour <= 23 && minute >= 0 && minute <= 59) {
+            return TimeOfDay(hour: hour, minute: minute);
+          }
+        }
+      }
+    } catch (e) {
+      debugPrint('⚠️ Error parsing start time: $e');
     }
     return _defaultStartTime;
   }
@@ -87,10 +114,20 @@ class ReminderService {
 
   /// Get reminder end time
   TimeOfDay getReminderEndTime() {
-    final timeString = _storageService.getSetting<String>(_reminderEndTimeKey);
-    if (timeString != null) {
-      final parts = timeString.split(':');
-      return TimeOfDay(hour: int.parse(parts[0]), minute: int.parse(parts[1]));
+    try {
+      final timeString = _storageService.getSetting<String>(_reminderEndTimeKey);
+      if (timeString != null && timeString.contains(':')) {
+        final parts = timeString.split(':');
+        if (parts.length == 2) {
+          final hour = int.parse(parts[0]);
+          final minute = int.parse(parts[1]);
+          if (hour >= 0 && hour <= 23 && minute >= 0 && minute <= 59) {
+            return TimeOfDay(hour: hour, minute: minute);
+          }
+        }
+      }
+    } catch (e) {
+      debugPrint('⚠️ Error parsing end time: $e');
     }
     return _defaultEndTime;
   }
@@ -113,7 +150,7 @@ class ReminderService {
 
     final lastScheduleDate = _storageService.getSetting<String>(_lastScheduleDateKey);
     final today = DateTime.now();
-    final todayString = '${today.year}-${today.month}-${today.day}';
+    final todayString = '${today.year}-${today.month.toString().padLeft(2, '0')}-${today.day.toString().padLeft(2, '0')}';
 
     // If never scheduled or last scheduled on a different day, reschedule
     if (lastScheduleDate == null || lastScheduleDate != todayString) {
@@ -192,7 +229,7 @@ class ReminderService {
 
     // Schedule notifications
     for (final time in reminderTimes) {
-      if (notificationId >= _baseNotificationId + 100) break; // Safety limit
+      if (notificationId >= _baseNotificationId + _maxScheduledReminders) break; // Safety limit
       await _notificationService.scheduleNotification(
         id: notificationId++,
         title: _getRandomReminderTitle(),
@@ -203,7 +240,7 @@ class ReminderService {
     }
 
     // Update last schedule date
-    final todayString = '${today.year}-${today.month}-${today.day}';
+    final todayString = '${today.year}-${today.month.toString().padLeft(2, '0')}-${today.day.toString().padLeft(2, '0')}';
     await _storageService.saveSetting(_lastScheduleDateKey, todayString);
 
     debugPrint('📅 Scheduled ${reminderTimes.length} reminders (today + tomorrow)');
@@ -212,7 +249,7 @@ class ReminderService {
   /// Cancel all reminders
   Future<void> cancelAllReminders() async {
     // Cancel all notifications with IDs starting from base
-    for (int i = _baseNotificationId; i < _baseNotificationId + 100; i++) {
+    for (int i = _baseNotificationId; i < _baseNotificationId + _maxScheduledReminders; i++) {
       await _notificationService.cancelNotification(i);
     }
     debugPrint('🚫 Cancelled all reminders');
@@ -223,7 +260,7 @@ class ReminderService {
     required DateTime time,
     String? customMessage,
   }) async {
-    final notificationId = _baseNotificationId + 500 + DateTime.now().millisecondsSinceEpoch % 100;
+    final notificationId = _baseNotificationId + _customReminderIdOffset + DateTime.now().millisecondsSinceEpoch % _maxScheduledReminders;
 
     await _notificationService.scheduleNotification(
       id: notificationId,
@@ -236,35 +273,41 @@ class ReminderService {
     debugPrint('⏰ Custom reminder scheduled for $time');
   }
 
+  // Default English titles (fallback when no localized messages set)
+  static const List<String> _defaultTitles = [
+    '💧 Time to Hydrate!',
+    '🌊 Water Break!',
+    '💦 Stay Hydrated!',
+    '✨ Drink Some Water!',
+    '🚰 Hydration Time!',
+    '🌟 Water Reminder!',
+    '💙 Take Care of Yourself!',
+  ];
+
+  // Default English bodies (fallback when no localized messages set)
+  static const List<String> _defaultBodies = [
+    'Time to drink some water! Your body needs hydration.',
+    'Don\'t forget to stay hydrated throughout the day!',
+    'A quick water break can boost your energy!',
+    'Your health matters! Take a moment to drink water.',
+    'Keep your body happy with some refreshing water!',
+    'Stay healthy and hydrated! Drink up!',
+    'Time for a water break! You\'re doing great!',
+    'Remember to drink water regularly for better health!',
+  ];
+
   /// Get random motivational reminder title
   String _getRandomReminderTitle() {
-    final titles = [
-      '💧 Time to Hydrate!',
-      '🌊 Water Break!',
-      '💦 Stay Hydrated!',
-      '✨ Drink Some Water!',
-      '🚰 Hydration Time!',
-      '🌟 Water Reminder!',
-      '💙 Take Care of Yourself!',
-    ];
-    titles.shuffle();
-    return titles.first;
+    final titles = _localizedTitles.isNotEmpty ? _localizedTitles : _defaultTitles;
+    final shuffled = List<String>.from(titles)..shuffle();
+    return shuffled.first;
   }
 
   /// Get random motivational reminder body
   String _getRandomReminderBody() {
-    final bodies = [
-      'Time to drink some water! Your body needs hydration.',
-      'Don\'t forget to stay hydrated throughout the day!',
-      'A quick water break can boost your energy!',
-      'Your health matters! Take a moment to drink water.',
-      'Keep your body happy with some refreshing water!',
-      'Stay healthy and hydrated! Drink up!',
-      'Time for a water break! You\'re doing great!',
-      'Remember to drink water regularly for better health!',
-    ];
-    bodies.shuffle();
-    return bodies.first;
+    final bodies = _localizedBodies.isNotEmpty ? _localizedBodies : _defaultBodies;
+    final shuffled = List<String>.from(bodies)..shuffle();
+    return shuffled.first;
   }
 
   /// Check pending reminders count
@@ -273,35 +316,4 @@ class ReminderService {
     return pending.length;
   }
 
-  /// Smart reminder algorithm - adjust based on user behavior
-  /// Future Enhancement: ML-based smart reminders
-  /// Could analyze user behavior patterns and suggest optimal reminder times
-  /// based on historical water intake data and activity patterns
-  Future<void> adjustRemindersBasedOnActivity({
-    required int todayIntake,
-    required int targetGoal,
-    required int currentHour,
-  }) async {
-    // Calculate progress percentage
-    final progressPercentage = (todayIntake / targetGoal * 100).round();
-
-    // If user is behind schedule, increase reminder frequency
-    final expectedProgress = (currentHour - 8) / 14 * 100; // Assume 8AM-10PM window
-
-    if (progressPercentage < expectedProgress - 20) {
-      // Behind schedule - increase frequency
-      final currentInterval = getReminderInterval();
-      if (currentInterval > 30) {
-        await setReminderInterval(currentInterval - 15);
-        debugPrint('⚡ Increased reminder frequency due to low progress');
-      }
-    } else if (progressPercentage > expectedProgress + 20) {
-      // Ahead of schedule - decrease frequency
-      final currentInterval = getReminderInterval();
-      if (currentInterval < 120) {
-        await setReminderInterval(currentInterval + 15);
-        debugPrint('😌 Decreased reminder frequency - good progress!');
-      }
-    }
-  }
 }
