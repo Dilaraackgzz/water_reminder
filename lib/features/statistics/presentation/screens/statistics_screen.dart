@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 import 'package:water_reminder/l10n/app_localizations.dart';
 import '../../../../core/constants/ui_constants.dart';
+import '../../../../core/providers/premium_provider.dart';
 import '../../domain/models/water_statistics.dart';
 import '../providers/statistics_providers.dart';
 import '../widgets/statistics_chart.dart';
@@ -19,6 +21,8 @@ class StatisticsScreen extends ConsumerWidget {
     final l10n = AppLocalizations.of(context)!;
     final selectedPeriod = ref.watch(selectedPeriodProvider);
     final statisticsAsync = ref.watch(currentStatisticsProvider);
+    final isPremiumAsync = ref.watch(isPremiumProvider);
+    final isPremium = isPremiumAsync.valueOrNull ?? false;
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final colorScheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
@@ -27,92 +31,82 @@ class StatisticsScreen extends ConsumerWidget {
       backgroundColor: isDark ? colorScheme.surface : Colors.grey[50],
       appBar: ModernAppBar(
         title: l10n.statistics_title,
-        subtitle: _getSubtitle(selectedPeriod, l10n),
+        subtitle: isPremium ? _getSubtitle(selectedPeriod, l10n) : null,
       ),
       drawer: const AppDrawer(),
       body: SafeArea(
-        child: RefreshIndicator(
-          onRefresh: () async {
-            ref.invalidate(currentStatisticsProvider);
-          },
-          child: SingleChildScrollView(
-            physics: const AlwaysScrollableScrollPhysics(),
-            padding: const EdgeInsets.all(UIConstants.cardPaddingL),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                // Period Selector
-                _PeriodSelector(isDark: isDark, l10n: l10n),
-
-                const SizedBox(height: UIConstants.spacingL),
-
-                // Statistics Content
-                statisticsAsync.when(
-                  data: (statistics) => Column(
+        child: isPremium
+            ? RefreshIndicator(
+                onRefresh: () async {
+                  ref.invalidate(currentStatisticsProvider);
+                },
+                child: SingleChildScrollView(
+                  physics: const AlwaysScrollableScrollPhysics(),
+                  padding: const EdgeInsets.all(UIConstants.cardPaddingL),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      // Summary Cards
-                      StatsSummaryCards(statistics: statistics),
-
+                      _PeriodSelector(isDark: isDark, l10n: l10n),
                       const SizedBox(height: UIConstants.spacingL),
-
-                      // Streak Stats
-                      const StreakStatsCard(),
-
-                      const SizedBox(height: UIConstants.spacingL),
-
-                      // Chart
-                      StatisticsChart(statistics: statistics),
-
-                      const SizedBox(height: UIConstants.spacingL),
-
-                      // Achievement Info
-                      _AchievementCard(
-                        statistics: statistics,
-                        isDark: isDark,
-                        l10n: l10n,
+                      statisticsAsync.when(
+                        data: (statistics) => Column(
+                          children: [
+                            StatsSummaryCards(statistics: statistics),
+                            const SizedBox(height: UIConstants.spacingL),
+                            const StreakStatsCard(),
+                            const SizedBox(height: UIConstants.spacingL),
+                            StatisticsChart(statistics: statistics),
+                            const SizedBox(height: UIConstants.spacingL),
+                            _AchievementCard(
+                              statistics: statistics,
+                              isDark: isDark,
+                              l10n: l10n,
+                            ),
+                          ],
+                        ),
+                        loading: () => Center(
+                          child: Padding(
+                            padding:
+                                const EdgeInsets.all(UIConstants.spacingXXL),
+                            child: Text(l10n.common_loading),
+                          ),
+                        ),
+                        error: (error, stack) => Center(
+                          child: Padding(
+                            padding:
+                                const EdgeInsets.all(UIConstants.spacingXXL),
+                            child: Column(
+                              children: [
+                                Icon(
+                                  Icons.error_outline,
+                                  size: UIConstants.spacingXXL,
+                                  color: Colors.red[300],
+                                ),
+                                const SizedBox(height: UIConstants.spacingM),
+                                Text(
+                                  l10n.common_error,
+                                  style: textTheme.bodyLarge?.copyWith(
+                                    color: Colors.red,
+                                  ),
+                                ),
+                                const SizedBox(height: UIConstants.spacingS),
+                                Text(
+                                  error.toString(),
+                                  style: textTheme.bodySmall?.copyWith(
+                                    color: Colors.grey,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
                       ),
                     ],
                   ),
-                  loading: () => Center(
-                    child: Padding(
-                      padding: const EdgeInsets.all(UIConstants.spacingXXL),
-                      child: Text(l10n.common_loading),
-                    ),
-                  ),
-                  error: (error, stack) => Center(
-                    child: Padding(
-                      padding: const EdgeInsets.all(UIConstants.spacingXXL),
-                      child: Column(
-                        children: [
-                          Icon(
-                            Icons.error_outline,
-                            size: UIConstants.spacingXXL,
-                            color: Colors.red[300],
-                          ),
-                          const SizedBox(height: UIConstants.spacingM),
-                          Text(
-                            l10n.common_error,
-                            style: textTheme.bodyLarge?.copyWith(
-                              color: Colors.red,
-                            ),
-                          ),
-                          const SizedBox(height: UIConstants.spacingS),
-                          Text(
-                            error.toString(),
-                            style: textTheme.bodySmall?.copyWith(
-                              color: Colors.grey,
-                            ),
-                            textAlign: TextAlign.center,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
                 ),
-              ],
-            ),
-          ),
-        ),
+              )
+            : _PremiumRequiredView(isDark: isDark),
       ),
     );
   }
@@ -126,6 +120,96 @@ class StatisticsScreen extends ConsumerWidget {
       case StatisticsPeriod.year:
         return l10n.statistics_yearly;
     }
+  }
+}
+
+class _PremiumRequiredView extends StatelessWidget {
+  final bool isDark;
+
+  const _PremiumRequiredView({required this.isDark});
+
+  @override
+  Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(UIConstants.spacingXXL),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              width: 88,
+              height: 88,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [
+                    colorScheme.primary,
+                    colorScheme.primary.withAlpha(180),
+                  ],
+                ),
+                shape: BoxShape.circle,
+                boxShadow: [
+                  BoxShadow(
+                    color: colorScheme.primary.withAlpha(60),
+                    blurRadius: 20,
+                    offset: const Offset(0, 6),
+                  ),
+                ],
+              ),
+              child: const Icon(
+                Icons.bar_chart_rounded,
+                color: Colors.white,
+                size: 44,
+              ),
+            ),
+            const SizedBox(height: UIConstants.spacingL),
+            Text(
+              'Premium Özellik',
+              style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                    fontWeight: FontWeight.w700,
+                    color: isDark ? Colors.white : const Color(0xFF1E1E1E),
+                  ),
+            ),
+            const SizedBox(height: UIConstants.spacingS),
+            Text(
+              'Haftalık, aylık ve yıllık su tüketimi istatistiklerine erişmek için Premium\'a geç.',
+              textAlign: TextAlign.center,
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    color: isDark ? Colors.white60 : Colors.black54,
+                    height: 1.5,
+                  ),
+            ),
+            const SizedBox(height: UIConstants.spacingXL),
+            SizedBox(
+              width: double.infinity,
+              height: 52,
+              child: FilledButton.icon(
+                onPressed: () => context.push('/paywall'),
+                icon: const Icon(Icons.workspace_premium_rounded, size: 18),
+                label: const Text(
+                  'Premium\'a Geç',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                style: FilledButton.styleFrom(
+                  backgroundColor: colorScheme.primary,
+                  foregroundColor: colorScheme.onPrimary,
+                  shape: RoundedRectangleBorder(
+                    borderRadius:
+                        BorderRadius.circular(UIConstants.radiusL),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
 
@@ -152,10 +236,8 @@ class _PeriodSelector extends ConsumerWidget {
               label: l10n.statistics_weekly,
               isSelected: selectedPeriod == StatisticsPeriod.week,
               isDark: isDark,
-              onTap: () {
-                ref.read(selectedPeriodProvider.notifier).state =
-                    StatisticsPeriod.week;
-              },
+              onTap: () => ref.read(selectedPeriodProvider.notifier).state =
+                  StatisticsPeriod.week,
             ),
           ),
           Expanded(
@@ -163,10 +245,8 @@ class _PeriodSelector extends ConsumerWidget {
               label: l10n.statistics_monthly,
               isSelected: selectedPeriod == StatisticsPeriod.month,
               isDark: isDark,
-              onTap: () {
-                ref.read(selectedPeriodProvider.notifier).state =
-                    StatisticsPeriod.month;
-              },
+              onTap: () => ref.read(selectedPeriodProvider.notifier).state =
+                  StatisticsPeriod.month,
             ),
           ),
           Expanded(
@@ -174,10 +254,8 @@ class _PeriodSelector extends ConsumerWidget {
               label: l10n.statistics_yearly,
               isSelected: selectedPeriod == StatisticsPeriod.year,
               isDark: isDark,
-              onTap: () {
-                ref.read(selectedPeriodProvider.notifier).state =
-                    StatisticsPeriod.year;
-              },
+              onTap: () => ref.read(selectedPeriodProvider.notifier).state =
+                  StatisticsPeriod.year,
             ),
           ),
         ],

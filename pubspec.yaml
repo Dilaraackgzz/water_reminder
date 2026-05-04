@@ -62,6 +62,10 @@ dependencies:
   cupertino_icons: ^1.0.8
   uuid: ^4.5.1
 
+  # In-App Purchases
+  # TODO: Adım 1 tamamlandığında aşağıdaki satırı aktif et:
+  # purchases_flutter: ^8.0.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

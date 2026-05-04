@@ -90,7 +90,7 @@ class LanguageService {
   List<Locale> get supportedLocales =>
       supportedLanguageCodes.map((code) => Locale(code)).toList();
 
-  /// Get language name from code
+  /// Get language name from code (native name)
   static String getLanguageName(String languageCode) {
     switch (languageCode) {
       case 'en':
@@ -123,6 +123,44 @@ class LanguageService {
         return 'Nederlands';
       case 'pl':
         return 'Polski';
+      default:
+        return languageCode.toUpperCase();
+    }
+  }
+
+  /// Get language name in English (for subtitle)
+  static String getNativeLanguageName(String languageCode) {
+    switch (languageCode) {
+      case 'en':
+        return 'English';
+      case 'tr':
+        return 'Turkish';
+      case 'es':
+        return 'Spanish';
+      case 'fr':
+        return 'French';
+      case 'de':
+        return 'German';
+      case 'it':
+        return 'Italian';
+      case 'pt':
+        return 'Portuguese';
+      case 'ru':
+        return 'Russian';
+      case 'ja':
+        return 'Japanese';
+      case 'ko':
+        return 'Korean';
+      case 'zh':
+        return 'Chinese';
+      case 'ar':
+        return 'Arabic';
+      case 'hi':
+        return 'Hindi';
+      case 'nl':
+        return 'Dutch';
+      case 'pl':
+        return 'Polish';
       default:
         return languageCode.toUpperCase();
     }

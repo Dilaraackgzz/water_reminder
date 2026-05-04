@@ -1,6 +1,5 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import '../../data/repositories/profile_repository_impl.dart';
 import '../../domain/models/user_profile.dart';
 import '../../domain/repositories/profile_repository.dart';
@@ -25,9 +24,8 @@ final userProfileProvider = FutureProvider<UserProfile?>((ref) async {
 
       // Create initial profile if not exists
       if (profile == null) {
-        // Get the Firebase Auth user to retrieve displayName
-        final firebaseUser = FirebaseAuth.instance.currentUser;
-        final displayName = firebaseUser?.displayName ?? '';
+        // Use displayName from the auth state user
+        final displayName = user.displayName ?? '';
 
         // Create initial profile with displayName from Firebase Auth
         profile = UserProfile.initial(user.uid).copyWith(
@@ -64,7 +62,7 @@ class ProfileController {
       await _updateTodaysDailyGoal(profile.dailyGoal);
 
       // Sync displayName with Firebase Auth if name changed
-      final firebaseUser = FirebaseAuth.instance.currentUser;
+      final firebaseUser = _ref.read(currentUserProvider);
       if (firebaseUser != null && profile.name.isNotEmpty) {
         if (firebaseUser.displayName != profile.name) {
           await firebaseUser.updateDisplayName(profile.name);

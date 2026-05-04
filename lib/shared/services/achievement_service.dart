@@ -25,13 +25,19 @@ class AchievementService {
           .doc(userId)
           .collection('achievements');
 
-      // Check if achievements already exist
-      final existing = await achievementsRef.limit(1).get();
-      if (existing.docs.isNotEmpty) return;
+      // Mevcut başarımların ID'lerini al
+      final existing = await achievementsRef.get();
+      final existingIds = existing.docs.map((d) => d.id).toSet();
 
-      // Create default achievements
+      // Yalnızca eksik olan başarımları ekle (yeni kullanıcı veya migration)
+      final missing = AchievementDefinitions.defaultAchievements
+          .where((a) => !existingIds.contains(a.id))
+          .toList();
+
+      if (missing.isEmpty) return;
+
       final batch = _firestore.batch();
-      for (final achievement in AchievementDefinitions.defaultAchievements) {
+      for (final achievement in missing) {
         final docRef = achievementsRef.doc(achievement.id);
         batch.set(docRef, achievement.toFirestore());
       }
@@ -129,15 +135,17 @@ class AchievementService {
 
       // Check daily goal
       if (goalReached) {
-        final unlocked = await updateProgress('daily_goal_1', 1);
-        if (unlocked) {
-          final achievement = await _getAchievement(userId, 'daily_goal_1');
-          if (achievement != null) newlyUnlocked.add(achievement);
+        for (final goalId in ['daily_goal_1', 'daily_goal_5', 'daily_goal_10', 'daily_goal_30']) {
+          final unlocked = await updateProgress(goalId, 1, increment: true);
+          if (unlocked) {
+            final achievement = await _getAchievement(userId, goalId);
+            if (achievement != null) newlyUnlocked.add(achievement);
+          }
         }
       }
 
       // Check streaks
-      for (final streakTarget in [3, 7, 30]) {
+      for (final streakTarget in [3, 7, 14, 30, 60]) {
         if (currentStreak >= streakTarget) {
           final unlocked = await updateProgress('streak_$streakTarget', currentStreak);
           if (unlocked) {
@@ -148,7 +156,7 @@ class AchievementService {
       }
 
       // Check total consumption
-      for (final target in [10000, 100000]) {
+      for (final target in [1000, 5000, 10000, 50000, 100000]) {
         final achievementId = 'total_${target ~/ 1000}l';
         final unlocked = await updateProgress(achievementId, totalIntake);
         if (unlocked) {
@@ -158,10 +166,15 @@ class AchievementService {
       }
 
       // Check consistency
-      final consistencyUnlocked = await updateProgress('consistency_week', consecutiveDays);
-      if (consistencyUnlocked) {
-        final achievement = await _getAchievement(userId, 'consistency_week');
-        if (achievement != null) newlyUnlocked.add(achievement);
+      for (final target in ['consistency_week', 'consistency_month']) {
+        final targetDays = target == 'consistency_week' ? 7 : 30;
+        if (consecutiveDays >= targetDays) {
+          final unlocked = await updateProgress(target, consecutiveDays);
+          if (unlocked) {
+            final achievement = await _getAchievement(userId, target);
+            if (achievement != null) newlyUnlocked.add(achievement);
+          }
+        }
       }
 
       return newlyUnlocked;

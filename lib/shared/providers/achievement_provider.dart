@@ -10,14 +10,22 @@ final achievementServiceProvider = Provider<AchievementService>((ref) {
   return AchievementService(firestore: firestore, auth: auth);
 });
 
-/// Provider to watch all achievements
+/// Provider to watch all achievements (+ initialize/migrate on first load)
 final achievementsProvider = StreamProvider<List<Achievement>>((ref) {
   final service = ref.watch(achievementServiceProvider);
+  // Eksik başarımları Firestore'a yaz, ardından stream'i dinle
+  service.initializeAchievements();
   return service.watchAchievements();
 });
 
-/// Provider for total points earned
-final totalPointsProvider = FutureProvider<int>((ref) async {
-  final service = ref.watch(achievementServiceProvider);
-  return await service.getTotalPoints();
+/// Kazanılan toplam puan — achievementsProvider'dan türetilir, anında güncellenir
+final totalPointsProvider = Provider<int>((ref) {
+  final achievementsAsync = ref.watch(achievementsProvider);
+  return achievementsAsync.when(
+    data: (achievements) => achievements
+        .where((a) => a.isUnlocked)
+        .fold<int>(0, (sum, a) => sum + a.rewardPoints),
+    loading: () => 0,
+    error: (_, __) => 0,
+  );
 });

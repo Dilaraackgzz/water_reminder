@@ -3,12 +3,13 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:water_reminder/l10n/app_localizations.dart';
 
 /// A reusable text field dialog for editing profile fields
-class ProfileEditDialog extends StatelessWidget {
+class ProfileEditDialog extends StatefulWidget {
   final String title;
   final String labelText;
   final String initialValue;
   final TextInputType keyboardType;
-  final Future<void> Function(String value) onSave;
+  final Future<bool> Function(String value) onSave;
+  final String? Function(String value, AppLocalizations l10n)? validator;
 
   const ProfileEditDialog({
     super.key,
@@ -17,6 +18,7 @@ class ProfileEditDialog extends StatelessWidget {
     required this.initialValue,
     this.keyboardType = TextInputType.text,
     required this.onSave,
+    this.validator,
   });
 
   /// Shows the dialog and returns true if saved successfully
@@ -26,7 +28,8 @@ class ProfileEditDialog extends StatelessWidget {
     required String labelText,
     required String initialValue,
     TextInputType keyboardType = TextInputType.text,
-    required Future<void> Function(String value) onSave,
+    required Future<bool> Function(String value) onSave,
+    String? Function(String value, AppLocalizations l10n)? validator,
   }) {
     return showDialog<bool>(
       context: context,
@@ -36,34 +39,60 @@ class ProfileEditDialog extends StatelessWidget {
         initialValue: initialValue,
         keyboardType: keyboardType,
         onSave: onSave,
+        validator: validator,
       ),
     );
+  }
+
+  @override
+  State<ProfileEditDialog> createState() => _ProfileEditDialogState();
+}
+
+class _ProfileEditDialogState extends State<ProfileEditDialog> {
+  late final TextEditingController _controller;
+  String? _errorText;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = TextEditingController(text: widget.initialValue);
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
-    final controller = TextEditingController(text: initialValue);
 
     return AlertDialog(
       backgroundColor: colorScheme.surface,
       title: Text(
-        title,
+        widget.title,
         style: GoogleFonts.poppins(
           fontWeight: FontWeight.bold,
           color: colorScheme.onSurface,
         ),
       ),
       content: TextField(
-        controller: controller,
-        keyboardType: keyboardType,
+        controller: _controller,
+        keyboardType: widget.keyboardType,
         style: TextStyle(color: colorScheme.onSurface),
         decoration: InputDecoration(
-          labelText: labelText,
+          labelText: widget.labelText,
           labelStyle: TextStyle(color: colorScheme.onSurfaceVariant),
           border: const OutlineInputBorder(),
+          errorText: _errorText,
         ),
+        onChanged: (_) {
+          if (_errorText != null) {
+            setState(() => _errorText = null);
+          }
+        },
       ),
       actions: [
         TextButton(
@@ -72,8 +101,27 @@ class ProfileEditDialog extends StatelessWidget {
         ),
         TextButton(
           onPressed: () async {
-            await onSave(controller.text);
-            if (context.mounted) Navigator.pop(context, true);
+            if (widget.validator != null) {
+              final error = widget.validator!(_controller.text, l10n);
+              if (error != null) {
+                setState(() => _errorText = error);
+                return;
+              }
+            }
+            final success = await widget.onSave(_controller.text);
+            if (context.mounted) {
+              Navigator.pop(context, success);
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(
+                    success ? l10n.profile_save_success : l10n.profile_save_failed,
+                    style: GoogleFonts.poppins(),
+                  ),
+                  backgroundColor: success ? colorScheme.primary : colorScheme.error,
+                  behavior: SnackBarBehavior.floating,
+                ),
+              );
+            }
           },
           child: Text(
             l10n.common_save,

@@ -14,6 +14,7 @@ import '../../features/reminders/presentation/screens/reminders_screen.dart';
 import '../../features/profile/presentation/screens/profile_screen.dart';
 import '../../features/achievements/presentation/screens/achievements_screen.dart';
 import '../../features/help/presentation/screens/help_screen.dart';
+import '../../features/premium/presentation/screens/paywall_screen.dart';
 import '../services/onboarding_service.dart';
 
 // Router provider with auth state management
@@ -180,6 +181,11 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: '/help',
         name: 'help',
         builder: (context, state) => const HelpScreen(),
+      ),
+      GoRoute(
+        path: '/paywall',
+        name: 'paywall',
+        builder: (context, state) => const PaywallScreen(),
       ),
     ],
   );

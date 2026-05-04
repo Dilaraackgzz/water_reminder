@@ -4,9 +4,9 @@ import 'package:water_reminder/l10n/app_localizations.dart';
 import '../../domain/models/user_profile.dart';
 
 /// Dialog for selecting activity level
-class ProfileActivityDialog extends StatelessWidget {
+class ProfileActivityDialog extends StatefulWidget {
   final ActivityLevel currentLevel;
-  final Future<void> Function(ActivityLevel level) onSelect;
+  final Future<bool> Function(ActivityLevel level) onSelect;
 
   const ProfileActivityDialog({
     super.key,
@@ -18,7 +18,7 @@ class ProfileActivityDialog extends StatelessWidget {
   static Future<void> show({
     required BuildContext context,
     required ActivityLevel currentLevel,
-    required Future<void> Function(ActivityLevel level) onSelect,
+    required Future<bool> Function(ActivityLevel level) onSelect,
   }) {
     return showDialog<void>(
       context: context,
@@ -27,6 +27,19 @@ class ProfileActivityDialog extends StatelessWidget {
         onSelect: onSelect,
       ),
     );
+  }
+
+  @override
+  State<ProfileActivityDialog> createState() => _ProfileActivityDialogState();
+}
+
+class _ProfileActivityDialogState extends State<ProfileActivityDialog> {
+  late ActivityLevel _selectedLevel;
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedLevel = widget.currentLevel;
   }
 
   String _getActivityLevelName(ActivityLevel level, AppLocalizations l10n) {
@@ -56,6 +69,26 @@ class ProfileActivityDialog extends StatelessWidget {
         return l10n.activity_very_active_desc;
       case ActivityLevel.veryActive:
         return l10n.activity_extra_active_desc;
+    }
+  }
+
+  Future<void> _handleSave() async {
+    final l10n = AppLocalizations.of(context)!;
+    final colorScheme = Theme.of(context).colorScheme;
+
+    final success = await widget.onSelect(_selectedLevel);
+    if (mounted) {
+      Navigator.pop(context);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            success ? l10n.profile_save_success : l10n.profile_save_failed,
+            style: GoogleFonts.poppins(),
+          ),
+          backgroundColor: success ? colorScheme.primary : colorScheme.error,
+          behavior: SnackBarBehavior.floating,
+        ),
+      );
     }
   }
 
@@ -92,17 +125,29 @@ class ProfileActivityDialog extends StatelessWidget {
                 ),
               ),
               value: level,
-              groupValue: currentLevel,
-              onChanged: (value) async {
+              groupValue: _selectedLevel,
+              onChanged: (value) {
                 if (value != null) {
-                  await onSelect(value);
-                  if (context.mounted) Navigator.pop(context);
+                  setState(() => _selectedLevel = value);
                 }
               },
             );
           }).toList(),
         ),
       ),
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.pop(context),
+          child: Text(l10n.common_cancel, style: GoogleFonts.poppins()),
+        ),
+        TextButton(
+          onPressed: _handleSave,
+          child: Text(
+            l10n.common_save,
+            style: GoogleFonts.poppins(fontWeight: FontWeight.bold),
+          ),
+        ),
+      ],
     );
   }
 }

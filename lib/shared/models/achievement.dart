@@ -96,6 +96,7 @@ class AchievementMapper {
 
 class AchievementDefinitions {
   static List<Achievement> get defaultAchievements => [
+        // --- Kilometre Taşları ---
         const Achievement(
           id: 'first_drop',
           title: 'achievement_first_drop',
@@ -105,6 +106,8 @@ class AchievementDefinitions {
           targetValue: 1,
           rewardPoints: 5,
         ),
+
+        // --- Günlük Hedef ---
         const Achievement(
           id: 'daily_goal_1',
           title: 'achievement_daily_goal_1',
@@ -114,6 +117,35 @@ class AchievementDefinitions {
           targetValue: 1,
           rewardPoints: 10,
         ),
+        const Achievement(
+          id: 'daily_goal_5',
+          title: 'achievement_daily_goal_5',
+          description: 'achievement_daily_goal_5_desc',
+          iconName: 'stars',
+          type: AchievementType.dailyGoal,
+          targetValue: 5,
+          rewardPoints: 20,
+        ),
+        const Achievement(
+          id: 'daily_goal_10',
+          title: 'achievement_daily_goal_10',
+          description: 'achievement_daily_goal_10_desc',
+          iconName: 'military_tech',
+          type: AchievementType.dailyGoal,
+          targetValue: 10,
+          rewardPoints: 30,
+        ),
+        const Achievement(
+          id: 'daily_goal_30',
+          title: 'achievement_daily_goal_30',
+          description: 'achievement_daily_goal_30_desc',
+          iconName: 'emoji_events',
+          type: AchievementType.dailyGoal,
+          targetValue: 30,
+          rewardPoints: 50,
+        ),
+
+        // --- Seri ---
         const Achievement(
           id: 'streak_3',
           title: 'achievement_streak_3',
@@ -133,6 +165,15 @@ class AchievementDefinitions {
           rewardPoints: 25,
         ),
         const Achievement(
+          id: 'streak_14',
+          title: 'achievement_streak_14',
+          description: 'achievement_streak_14_desc',
+          iconName: 'local_fire_department',
+          type: AchievementType.streak,
+          targetValue: 14,
+          rewardPoints: 40,
+        ),
+        const Achievement(
           id: 'streak_30',
           title: 'achievement_streak_30',
           description: 'achievement_streak_30_desc',
@@ -140,6 +181,35 @@ class AchievementDefinitions {
           type: AchievementType.streak,
           targetValue: 30,
           rewardPoints: 50,
+        ),
+        const Achievement(
+          id: 'streak_60',
+          title: 'achievement_streak_60',
+          description: 'achievement_streak_60_desc',
+          iconName: 'bolt',
+          type: AchievementType.streak,
+          targetValue: 60,
+          rewardPoints: 75,
+        ),
+
+        // --- Toplam Tüketim ---
+        const Achievement(
+          id: 'total_1l',
+          title: 'achievement_total_1l',
+          description: 'achievement_total_1l_desc',
+          iconName: 'water_drop',
+          type: AchievementType.totalConsumption,
+          targetValue: 1000,
+          rewardPoints: 10,
+        ),
+        const Achievement(
+          id: 'total_5l',
+          title: 'achievement_total_5l',
+          description: 'achievement_total_5l_desc',
+          iconName: 'waves',
+          type: AchievementType.totalConsumption,
+          targetValue: 5000,
+          rewardPoints: 15,
         ),
         const Achievement(
           id: 'total_10l',
@@ -151,14 +221,25 @@ class AchievementDefinitions {
           rewardPoints: 20,
         ),
         const Achievement(
+          id: 'total_50l',
+          title: 'achievement_total_50l',
+          description: 'achievement_total_50l_desc',
+          iconName: 'waves',
+          type: AchievementType.totalConsumption,
+          targetValue: 50000,
+          rewardPoints: 40,
+        ),
+        const Achievement(
           id: 'total_100l',
           title: 'achievement_total_100l',
           description: 'achievement_total_100l_desc',
           iconName: 'waves',
           type: AchievementType.totalConsumption,
           targetValue: 100000,
-          rewardPoints: 30,
+          rewardPoints: 60,
         ),
+
+        // --- Tutarlılık ---
         const Achievement(
           id: 'consistency_week',
           title: 'achievement_consistency',
@@ -167,6 +248,15 @@ class AchievementDefinitions {
           type: AchievementType.consistency,
           targetValue: 7,
           rewardPoints: 20,
+        ),
+        const Achievement(
+          id: 'consistency_month',
+          title: 'achievement_consistency_month',
+          description: 'achievement_consistency_month_desc',
+          iconName: 'calendar_month',
+          type: AchievementType.consistency,
+          targetValue: 30,
+          rewardPoints: 60,
         ),
       ];
 }

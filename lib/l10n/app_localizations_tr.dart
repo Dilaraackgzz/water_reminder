@@ -412,6 +412,20 @@ class AppLocalizationsTr extends AppLocalizations {
   String get profile_user_default => 'Kullanıcı';
 
   @override
+  String get profile_validation_name_required => 'Ad gerekli';
+
+  @override
+  String get profile_validation_age_invalid => 'Yaş 1 ile 120 arasında olmalı';
+
+  @override
+  String get profile_validation_weight_invalid =>
+      'Kilo 10 ile 500 kg arasında olmalı';
+
+  @override
+  String get profile_validation_height_invalid =>
+      'Boy 50 ile 300 cm arasında olmalı';
+
+  @override
   String get gender_male => 'Erkek';
 
   @override
@@ -585,6 +599,12 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get settings_language_dialog_title => 'Dil';
+
+  @override
+  String get settings_system_language => 'Sistem Dili';
+
+  @override
+  String get settings_use_device_language => 'Cihaz dilini kullan';
 
   @override
   String get settings_export_loading => 'Veriler dışa aktarılıyor...';
@@ -794,6 +814,61 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get achievement_consistency_desc => '7 gün üst üste hedefe ulaş';
+
+  @override
+  String get achievement_consistency_month => 'Aylık Tutarlılık';
+
+  @override
+  String get achievement_consistency_month_desc =>
+      '30 gün boyunca hedefini tutarlı şekilde karşıladın';
+
+  @override
+  String get achievement_daily_goal_5 => '5 Hedef Tamamlandı';
+
+  @override
+  String get achievement_daily_goal_5_desc => '5 kez günlük hedefine ulaştın';
+
+  @override
+  String get achievement_daily_goal_10 => '10 Hedef Tamamlandı';
+
+  @override
+  String get achievement_daily_goal_10_desc => '10 kez günlük hedefine ulaştın';
+
+  @override
+  String get achievement_daily_goal_30 => '30 Hedef Tamamlandı';
+
+  @override
+  String get achievement_daily_goal_30_desc => '30 kez günlük hedefine ulaştın';
+
+  @override
+  String get achievement_streak_14 => '14 Günlük Seri';
+
+  @override
+  String get achievement_streak_14_desc => '14 gün art arda su içtin';
+
+  @override
+  String get achievement_streak_60 => '60 Günlük Seri';
+
+  @override
+  String get achievement_streak_60_desc => '60 gün art arda su içtin';
+
+  @override
+  String get achievement_total_1l => 'İlk Litre';
+
+  @override
+  String get achievement_total_1l_desc => 'Toplamda 1 litre su içtin';
+
+  @override
+  String get achievement_total_5l => '5 Litre';
+
+  @override
+  String get achievement_total_5l_desc => 'Toplamda 5 litre su içtin';
+
+  @override
+  String get achievement_total_50l => '50 Litre';
+
+  @override
+  String get achievement_total_50l_desc => 'Toplamda 50 litre su içtin';
 
   @override
   String get reminders_title => 'Hatırlatıcılar';
@@ -1231,4 +1306,24 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get settings_delete_account_reauth_required =>
       'Hesabınızı silmek için lütfen tekrar giriş yapın';
+
+  @override
+  String get settings_premium_section => 'Premium';
+
+  @override
+  String get settings_premium_upgrade => 'Premium\'a Geç';
+
+  @override
+  String get settings_premium_upgrade_subtitle =>
+      'Tüm özelliklerin kilidini aç';
+
+  @override
+  String get settings_premium_active => 'Premium Aktif ✓';
+
+  @override
+  String get settings_premium_restore => 'Satın Alımı Geri Yükle';
+
+  @override
+  String get settings_premium_restore_subtitle =>
+      'Daha önce satın aldın mı? Geri yükle';
 }

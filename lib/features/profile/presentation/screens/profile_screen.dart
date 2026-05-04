@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:water_reminder/l10n/app_localizations.dart';
+import '../../../auth/presentation/providers/auth_providers.dart';
 import '../../../../core/constants/ui_constants.dart';
 import '../../../../shared/widgets/modern_app_bar.dart';
 import '../../../../shared/widgets/app_drawer.dart';
@@ -23,7 +23,7 @@ class ProfileScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = AppLocalizations.of(context)!;
     final profileAsync = ref.watch(userProfileProvider);
-    final user = FirebaseAuth.instance.currentUser;
+    final user = ref.watch(currentUserProvider);
     final colorScheme = Theme.of(context).colorScheme;
 
     return Scaffold(
@@ -279,12 +279,18 @@ class ProfileScreen extends ConsumerWidget {
       title: l10n.profile_name,
       labelText: l10n.profile_name,
       initialValue: profile.name,
+      validator: (value, l10n) {
+        if (value.trim().isEmpty) {
+          return l10n.profile_validation_name_required;
+        }
+        return null;
+      },
       onSave: (value) async {
         final updatedProfile = profile.copyWith(
-          name: value,
+          name: value.trim(),
           updatedAt: DateTime.now(),
         );
-        await ref.read(profileControllerProvider).updateProfile(updatedProfile);
+        return await ref.read(profileControllerProvider).updateProfile(updatedProfile);
       },
     );
   }
@@ -296,13 +302,20 @@ class ProfileScreen extends ConsumerWidget {
       labelText: l10n.profile_age,
       initialValue: profile.age.toString(),
       keyboardType: TextInputType.number,
+      validator: (value, l10n) {
+        final age = int.tryParse(value);
+        if (age == null || age < 1 || age > 120) {
+          return l10n.profile_validation_age_invalid;
+        }
+        return null;
+      },
       onSave: (value) async {
         final age = int.tryParse(value) ?? profile.age;
         final updatedProfile = profile.copyWith(
           age: age,
           updatedAt: DateTime.now(),
         );
-        await ref.read(profileControllerProvider).updateProfile(updatedProfile);
+        return await ref.read(profileControllerProvider).updateProfile(updatedProfile);
       },
     );
   }
@@ -314,13 +327,20 @@ class ProfileScreen extends ConsumerWidget {
       labelText: '${l10n.profile_weight} (${l10n.unit_kg})',
       initialValue: profile.weight.toString(),
       keyboardType: TextInputType.number,
+      validator: (value, l10n) {
+        final weight = double.tryParse(value);
+        if (weight == null || weight < 10 || weight > 500) {
+          return l10n.profile_validation_weight_invalid;
+        }
+        return null;
+      },
       onSave: (value) async {
         final weight = double.tryParse(value) ?? profile.weight;
         final updatedProfile = profile.copyWith(
           weight: weight,
           updatedAt: DateTime.now(),
         );
-        await ref.read(profileControllerProvider).updateProfile(updatedProfile);
+        return await ref.read(profileControllerProvider).updateProfile(updatedProfile);
       },
     );
   }
@@ -332,13 +352,20 @@ class ProfileScreen extends ConsumerWidget {
       labelText: '${l10n.profile_height} (${l10n.unit_cm})',
       initialValue: profile.height.toInt().toString(),
       keyboardType: TextInputType.number,
+      validator: (value, l10n) {
+        final height = double.tryParse(value);
+        if (height == null || height < 50 || height > 300) {
+          return l10n.profile_validation_height_invalid;
+        }
+        return null;
+      },
       onSave: (value) async {
         final height = double.tryParse(value) ?? profile.height;
         final updatedProfile = profile.copyWith(
           height: height,
           updatedAt: DateTime.now(),
         );
-        await ref.read(profileControllerProvider).updateProfile(updatedProfile);
+        return await ref.read(profileControllerProvider).updateProfile(updatedProfile);
       },
     );
   }
@@ -352,7 +379,7 @@ class ProfileScreen extends ConsumerWidget {
           gender: gender,
           updatedAt: DateTime.now(),
         );
-        await ref.read(profileControllerProvider).updateProfile(updatedProfile);
+        return await ref.read(profileControllerProvider).updateProfile(updatedProfile);
       },
     );
   }
@@ -366,7 +393,7 @@ class ProfileScreen extends ConsumerWidget {
           activityLevel: level,
           updatedAt: DateTime.now(),
         );
-        await ref.read(profileControllerProvider).updateProfile(updatedProfile);
+        return await ref.read(profileControllerProvider).updateProfile(updatedProfile);
       },
     );
   }
@@ -377,7 +404,7 @@ class ProfileScreen extends ConsumerWidget {
       currentGoal: profile.dailyGoal,
       calculatedGoal: profile.calculatedDailyGoal,
       onSave: (goal) async {
-        await ref.read(profileControllerProvider).updateDailyGoal(
+        return await ref.read(profileControllerProvider).updateDailyGoal(
           profile.userId,
           goal,
           isCustom: true,
@@ -387,6 +414,19 @@ class ProfileScreen extends ConsumerWidget {
   }
 
   void _applyCalculatedGoal(BuildContext context, WidgetRef ref, UserProfile profile, AppLocalizations l10n) async {
-    await ref.read(profileControllerProvider).applyCalculatedGoal(profile);
+    final success = await ref.read(profileControllerProvider).applyCalculatedGoal(profile);
+    if (context.mounted) {
+      final colorScheme = Theme.of(context).colorScheme;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            success ? l10n.profile_save_success : l10n.profile_save_failed,
+            style: GoogleFonts.poppins(),
+          ),
+          backgroundColor: success ? colorScheme.primary : colorScheme.error,
+          behavior: SnackBarBehavior.floating,
+        ),
+      );
+    }
   }
 }

@@ -7,7 +7,7 @@ import '../../../../core/constants/ui_constants.dart';
 class ProfileGoalDialog extends StatelessWidget {
   final int currentGoal;
   final int calculatedGoal;
-  final Future<void> Function(int goal) onSave;
+  final Future<bool> Function(int goal) onSave;
 
   const ProfileGoalDialog({
     super.key,
@@ -21,7 +21,7 @@ class ProfileGoalDialog extends StatelessWidget {
     required BuildContext context,
     required int currentGoal,
     required int calculatedGoal,
-    required Future<void> Function(int goal) onSave,
+    required Future<bool> Function(int goal) onSave,
   }) {
     return showDialog<bool>(
       context: context,
@@ -79,8 +79,20 @@ class ProfileGoalDialog extends StatelessWidget {
         TextButton(
           onPressed: () async {
             final goal = int.tryParse(controller.text) ?? currentGoal;
-            await onSave(goal);
-            if (context.mounted) Navigator.pop(context, true);
+            final success = await onSave(goal);
+            if (context.mounted) {
+              Navigator.pop(context, success);
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(
+                    success ? l10n.profile_save_success : l10n.profile_save_failed,
+                    style: GoogleFonts.poppins(),
+                  ),
+                  backgroundColor: success ? colorScheme.primary : colorScheme.error,
+                  behavior: SnackBarBehavior.floating,
+                ),
+              );
+            }
           },
           child: Text(
             l10n.common_save,

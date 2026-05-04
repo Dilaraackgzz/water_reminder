@@ -898,6 +898,30 @@ abstract class AppLocalizations {
   /// **'User'**
   String get profile_user_default;
 
+  /// No description provided for @profile_validation_name_required.
+  ///
+  /// In en, this message translates to:
+  /// **'Name is required'**
+  String get profile_validation_name_required;
+
+  /// No description provided for @profile_validation_age_invalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Age must be between 1 and 120'**
+  String get profile_validation_age_invalid;
+
+  /// No description provided for @profile_validation_weight_invalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Weight must be between 10 and 500 kg'**
+  String get profile_validation_weight_invalid;
+
+  /// No description provided for @profile_validation_height_invalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Height must be between 50 and 300 cm'**
+  String get profile_validation_height_invalid;
+
   /// No description provided for @gender_male.
   ///
   /// In en, this message translates to:
@@ -1245,6 +1269,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Language'**
   String get settings_language_dialog_title;
+
+  /// No description provided for @settings_system_language.
+  ///
+  /// In en, this message translates to:
+  /// **'System Language'**
+  String get settings_system_language;
+
+  /// No description provided for @settings_use_device_language.
+  ///
+  /// In en, this message translates to:
+  /// **'Use device language'**
+  String get settings_use_device_language;
 
   /// No description provided for @settings_export_loading.
   ///
@@ -1641,6 +1677,114 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Reach your goal 7 days in a row'**
   String get achievement_consistency_desc;
+
+  /// No description provided for @achievement_consistency_month.
+  ///
+  /// In en, this message translates to:
+  /// **'Monthly Consistency'**
+  String get achievement_consistency_month;
+
+  /// No description provided for @achievement_consistency_month_desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Reach your goal consistently for 30 days'**
+  String get achievement_consistency_month_desc;
+
+  /// No description provided for @achievement_daily_goal_5.
+  ///
+  /// In en, this message translates to:
+  /// **'5 Goals Reached'**
+  String get achievement_daily_goal_5;
+
+  /// No description provided for @achievement_daily_goal_5_desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Reached your daily goal 5 times'**
+  String get achievement_daily_goal_5_desc;
+
+  /// No description provided for @achievement_daily_goal_10.
+  ///
+  /// In en, this message translates to:
+  /// **'10 Goals Reached'**
+  String get achievement_daily_goal_10;
+
+  /// No description provided for @achievement_daily_goal_10_desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Reached your daily goal 10 times'**
+  String get achievement_daily_goal_10_desc;
+
+  /// No description provided for @achievement_daily_goal_30.
+  ///
+  /// In en, this message translates to:
+  /// **'30 Goals Reached'**
+  String get achievement_daily_goal_30;
+
+  /// No description provided for @achievement_daily_goal_30_desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Reached your daily goal 30 times'**
+  String get achievement_daily_goal_30_desc;
+
+  /// No description provided for @achievement_streak_14.
+  ///
+  /// In en, this message translates to:
+  /// **'14-Day Streak'**
+  String get achievement_streak_14;
+
+  /// No description provided for @achievement_streak_14_desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Drank water 14 days in a row'**
+  String get achievement_streak_14_desc;
+
+  /// No description provided for @achievement_streak_60.
+  ///
+  /// In en, this message translates to:
+  /// **'60-Day Streak'**
+  String get achievement_streak_60;
+
+  /// No description provided for @achievement_streak_60_desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Drank water 60 days in a row'**
+  String get achievement_streak_60_desc;
+
+  /// No description provided for @achievement_total_1l.
+  ///
+  /// In en, this message translates to:
+  /// **'First Liter'**
+  String get achievement_total_1l;
+
+  /// No description provided for @achievement_total_1l_desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Consumed a total of 1 liter of water'**
+  String get achievement_total_1l_desc;
+
+  /// No description provided for @achievement_total_5l.
+  ///
+  /// In en, this message translates to:
+  /// **'5 Liters'**
+  String get achievement_total_5l;
+
+  /// No description provided for @achievement_total_5l_desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Consumed a total of 5 liters of water'**
+  String get achievement_total_5l_desc;
+
+  /// No description provided for @achievement_total_50l.
+  ///
+  /// In en, this message translates to:
+  /// **'50 Liters'**
+  String get achievement_total_50l;
+
+  /// No description provided for @achievement_total_50l_desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Consumed a total of 50 liters of water'**
+  String get achievement_total_50l_desc;
 
   /// No description provided for @reminders_title.
   ///
@@ -2457,6 +2601,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Please sign in again to delete your account'**
   String get settings_delete_account_reauth_required;
+
+  /// No description provided for @settings_premium_section.
+  ///
+  /// In en, this message translates to:
+  /// **'Premium'**
+  String get settings_premium_section;
+
+  /// No description provided for @settings_premium_upgrade.
+  ///
+  /// In en, this message translates to:
+  /// **'Upgrade to Premium'**
+  String get settings_premium_upgrade;
+
+  /// No description provided for @settings_premium_upgrade_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Unlock all features'**
+  String get settings_premium_upgrade_subtitle;
+
+  /// No description provided for @settings_premium_active.
+  ///
+  /// In en, this message translates to:
+  /// **'Premium Active ✓'**
+  String get settings_premium_active;
+
+  /// No description provided for @settings_premium_restore.
+  ///
+  /// In en, this message translates to:
+  /// **'Restore Purchase'**
+  String get settings_premium_restore;
+
+  /// No description provided for @settings_premium_restore_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Already purchased? Tap to restore'**
+  String get settings_premium_restore_subtitle;
 }
 
 class _AppLocalizationsDelegate

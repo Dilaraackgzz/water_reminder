@@ -412,6 +412,20 @@ class AppLocalizationsHi extends AppLocalizations {
   String get profile_user_default => 'उपयोगकर्ता';
 
   @override
+  String get profile_validation_name_required => 'Name is required';
+
+  @override
+  String get profile_validation_age_invalid => 'Age must be between 1 and 120';
+
+  @override
+  String get profile_validation_weight_invalid =>
+      'Weight must be between 10 and 500 kg';
+
+  @override
+  String get profile_validation_height_invalid =>
+      'Height must be between 50 and 300 cm';
+
+  @override
   String get gender_male => 'पुरुष';
 
   @override
@@ -585,6 +599,12 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get settings_language_dialog_title => 'भाषा';
+
+  @override
+  String get settings_system_language => 'System Language';
+
+  @override
+  String get settings_use_device_language => 'Use device language';
 
   @override
   String get settings_export_loading => 'डेटा निर्यात हो रहा है...';
@@ -794,6 +814,66 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get achievement_consistency_desc => 'लगातार 7 दिन लक्ष्य प्राप्त करें';
+
+  @override
+  String get achievement_consistency_month => 'Monthly Consistency';
+
+  @override
+  String get achievement_consistency_month_desc =>
+      'Reach your goal consistently for 30 days';
+
+  @override
+  String get achievement_daily_goal_5 => '5 Goals Reached';
+
+  @override
+  String get achievement_daily_goal_5_desc => 'Reached your daily goal 5 times';
+
+  @override
+  String get achievement_daily_goal_10 => '10 Goals Reached';
+
+  @override
+  String get achievement_daily_goal_10_desc =>
+      'Reached your daily goal 10 times';
+
+  @override
+  String get achievement_daily_goal_30 => '30 Goals Reached';
+
+  @override
+  String get achievement_daily_goal_30_desc =>
+      'Reached your daily goal 30 times';
+
+  @override
+  String get achievement_streak_14 => '14-Day Streak';
+
+  @override
+  String get achievement_streak_14_desc => 'Drank water 14 days in a row';
+
+  @override
+  String get achievement_streak_60 => '60-Day Streak';
+
+  @override
+  String get achievement_streak_60_desc => 'Drank water 60 days in a row';
+
+  @override
+  String get achievement_total_1l => 'First Liter';
+
+  @override
+  String get achievement_total_1l_desc =>
+      'Consumed a total of 1 liter of water';
+
+  @override
+  String get achievement_total_5l => '5 Liters';
+
+  @override
+  String get achievement_total_5l_desc =>
+      'Consumed a total of 5 liters of water';
+
+  @override
+  String get achievement_total_50l => '50 Liters';
+
+  @override
+  String get achievement_total_50l_desc =>
+      'Consumed a total of 50 liters of water';
 
   @override
   String get reminders_title => 'रिमाइंडर';
@@ -1235,4 +1315,23 @@ class AppLocalizationsHi extends AppLocalizations {
   @override
   String get settings_delete_account_reauth_required =>
       'अपना खाता हटाने के लिए कृपया फिर से साइन इन करें';
+
+  @override
+  String get settings_premium_section => 'Premium';
+
+  @override
+  String get settings_premium_upgrade => 'Upgrade to Premium';
+
+  @override
+  String get settings_premium_upgrade_subtitle => 'Unlock all features';
+
+  @override
+  String get settings_premium_active => 'Premium Active ✓';
+
+  @override
+  String get settings_premium_restore => 'Restore Purchase';
+
+  @override
+  String get settings_premium_restore_subtitle =>
+      'Already purchased? Tap to restore';
 }
