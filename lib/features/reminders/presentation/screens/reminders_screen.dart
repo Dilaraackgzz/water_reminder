@@ -6,6 +6,7 @@ import '../../../../shared/widgets/modern_app_bar.dart';
 import '../../../../shared/widgets/app_drawer.dart';
 import '../../../../core/providers/app_providers.dart';
 import '../../../../core/constants/ui_constants.dart';
+import '../../../../features/premium/presentation/widgets/premium_gate.dart';
 import '../widgets/reminder_status_card.dart';
 import '../widgets/pending_count_card.dart';
 import '../widgets/schedule_info_card.dart';
@@ -152,9 +153,148 @@ class _RemindersScreenState extends ConsumerState<RemindersScreen> {
 
               // Info Section
               ReminderInfoCard(isDark: isDark, l10n: l10n),
+
+              const SizedBox(height: 24),
+
+              // Premium: Custom Timed Reminders
+              Text(
+                'Premium: Özel Saatli Hatırlatıcılar',
+                style: GoogleFonts.poppins(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                  color: isDark ? Colors.white70 : Colors.black87,
+                ),
+              ),
+              const SizedBox(height: 12),
+              PremiumGate(
+                child: _CustomRemindersCard(
+                  isDark: isDark,
+                  reminderService: reminderService,
+                ),
+              ),
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class _CustomRemindersCard extends ConsumerStatefulWidget {
+  final bool isDark;
+  final dynamic reminderService;
+
+  const _CustomRemindersCard({
+    required this.isDark,
+    required this.reminderService,
+  });
+
+  @override
+  ConsumerState<_CustomRemindersCard> createState() =>
+      _CustomRemindersCardState();
+}
+
+class _CustomRemindersCardState extends ConsumerState<_CustomRemindersCard> {
+  final List<TimeOfDay> _customTimes = [];
+
+  Future<void> _pickTime() async {
+    final picked = await showTimePicker(
+      context: context,
+      initialTime: TimeOfDay.now(),
+    );
+    if (picked == null || !mounted) return;
+
+    setState(() => _customTimes.add(picked));
+
+    final now = DateTime.now();
+    var scheduled = DateTime(
+      now.year,
+      now.month,
+      now.day,
+      picked.hour,
+      picked.minute,
+    );
+    if (scheduled.isBefore(now)) {
+      scheduled = scheduled.add(const Duration(days: 1));
+    }
+    await widget.reminderService.scheduleCustomReminder(time: scheduled);
+
+    if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            'Özel hatırlatıcı eklendi: ${picked.format(context)}',
+          ),
+          backgroundColor: Theme.of(context).colorScheme.primary,
+        ),
+      );
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
+    return Container(
+      decoration: BoxDecoration(
+        color: widget.isDark
+            ? colorScheme.surfaceContainerHigh
+            : Colors.white,
+        borderRadius: BorderRadius.circular(UIConstants.radiusL),
+        border: Border.all(color: colorScheme.outline.withAlpha(40)),
+      ),
+      padding: const EdgeInsets.all(UIConstants.spacingM),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Icon(Icons.schedule_rounded, color: colorScheme.primary, size: 20),
+              const SizedBox(width: 8),
+              Expanded(
+                child: Text(
+                  'Sınırsız, kendi saatlerinle hatırlatıcı ekle',
+                  style: GoogleFonts.poppins(
+                    fontSize: 13,
+                    color: widget.isDark ? Colors.white70 : Colors.black54,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          if (_customTimes.isNotEmpty) ...[
+            const SizedBox(height: 12),
+            ..._customTimes.map(
+              (t) => Padding(
+                padding: const EdgeInsets.only(bottom: 6),
+                child: Row(
+                  children: [
+                    Icon(Icons.alarm_rounded,
+                        size: 16, color: colorScheme.primary),
+                    const SizedBox(width: 8),
+                    Text(
+                      t.format(context),
+                      style: GoogleFonts.poppins(fontSize: 14),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+          const SizedBox(height: 12),
+          SizedBox(
+            width: double.infinity,
+            child: OutlinedButton.icon(
+              onPressed: _pickTime,
+              icon: const Icon(Icons.add_alarm_rounded, size: 18),
+              label: const Text('Özel Saat Ekle'),
+              style: OutlinedButton.styleFrom(
+                foregroundColor: colorScheme.primary,
+                side: BorderSide(color: colorScheme.primary),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

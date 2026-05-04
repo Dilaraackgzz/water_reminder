@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import '../providers/home_providers.dart';
@@ -13,6 +14,7 @@ import '../../../../shared/widgets/modern_app_bar.dart';
 import '../../../../shared/widgets/app_drawer.dart';
 import '../../../../core/constants/ui_constants.dart';
 import '../../../../core/providers/unit_provider.dart';
+import '../../../../core/providers/premium_provider.dart';
 import '../../../../core/themes/app_theme.dart';
 import '../../../../core/utils/snackbar_helper.dart';
 import '../../../../l10n/app_localizations.dart';
@@ -180,29 +182,49 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
                   const SizedBox(height: UIConstants.spacingM),
 
-                  // Custom Amount Button (Compact)
-                  Semantics(
-                    button: true,
-                    label: l10n.home_custom_amount,
-                    child: OutlinedButton.icon(
-                      onPressed: _showCustomAmountDialog,
-                      icon: const Icon(Icons.add_circle_outline, size: 20),
-                      label: Text(
-                        l10n.home_custom_amount,
-                        style: GoogleFonts.poppins(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
+                  // Custom Amount Button — Premium only
+                  Consumer(
+                    builder: (context, ref, _) {
+                      final isPremium =
+                          ref.watch(isPremiumProvider).valueOrNull ?? false;
+                      return Semantics(
+                        button: true,
+                        label: l10n.home_custom_amount,
+                        child: OutlinedButton.icon(
+                          onPressed: () {
+                            if (isPremium) {
+                              _showCustomAmountDialog();
+                            } else {
+                              context.push('/paywall');
+                            }
+                          },
+                          icon: Icon(
+                            isPremium
+                                ? Icons.add_circle_outline
+                                : Icons.lock_outline,
+                            size: 20,
+                          ),
+                          label: Text(
+                            l10n.home_custom_amount,
+                            style: GoogleFonts.poppins(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          style: OutlinedButton.styleFrom(
+                            foregroundColor: colorScheme.primary,
+                            side: BorderSide(
+                                color: colorScheme.primary, width: 2),
+                            padding: const EdgeInsets.symmetric(
+                                vertical: UIConstants.spacingM),
+                            shape: RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.circular(UIConstants.radiusL),
+                            ),
+                          ),
                         ),
-                      ),
-                      style: OutlinedButton.styleFrom(
-                        foregroundColor: colorScheme.primary,
-                        side: BorderSide(color: colorScheme.primary, width: 2),
-                        padding: const EdgeInsets.symmetric(vertical: UIConstants.spacingM),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(UIConstants.radiusL),
-                        ),
-                      ),
-                    ),
+                      );
+                    },
                   ),
 
                   const SizedBox(height: UIConstants.spacingM),

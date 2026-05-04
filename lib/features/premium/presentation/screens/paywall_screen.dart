@@ -1,3 +1,4 @@
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -6,6 +7,8 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../../core/providers/premium_provider.dart';
 import '../../../../core/services/premium_service.dart';
 import '../../../../l10n/app_localizations.dart';
+
+final _analytics = FirebaseAnalytics.instance;
 
 /// RevenueCat paket ID'leri — Adım 1'den sonra gerçek ID'lerle değiştir
 const _kLifetimePackageId = '\$rc_lifetime';
@@ -22,6 +25,12 @@ class PaywallScreen extends ConsumerStatefulWidget {
 class _PaywallScreenState extends ConsumerState<PaywallScreen> {
   int _selectedPlanIndex = 1; // Varsayılan: Yıllık
   bool _isLoading = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _analytics.logEvent(name: 'paywall_viewed');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -112,7 +121,10 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
           top: 8,
           right: 8,
           child: IconButton(
-            onPressed: () => context.pop(),
+            onPressed: () {
+              _analytics.logEvent(name: 'paywall_closed');
+              context.pop();
+            },
             icon: Icon(
               Icons.close_rounded,
               color: colorScheme.onSurface.withAlpha(180),
@@ -276,6 +288,7 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
   Future<void> _handlePurchase(BuildContext context, String packageId) async {
     setState(() => _isLoading = true);
     HapticFeedback.mediumImpact();
+    _analytics.logEvent(name: 'purchase_initiated', parameters: {'package_id': packageId});
 
     final router = GoRouter.of(context);
     final messenger = ScaffoldMessenger.of(context);
@@ -289,14 +302,17 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
 
     switch (result) {
       case PurchaseResult.success:
+        _analytics.logEvent(name: 'purchase_completed', parameters: {'package_id': packageId});
         HapticFeedback.heavyImpact();
         _showSnackBarWithMessenger(messenger, 'Premium\'a hoş geldin! 🎉', isError: false);
         router.pop();
       case PurchaseResult.cancelled:
         break;
       case PurchaseResult.failed:
+        _analytics.logEvent(name: 'purchase_failed', parameters: {'package_id': packageId});
         _showSnackBarWithMessenger(messenger, 'Satın alma başarısız. Tekrar dene.', isError: true);
       case PurchaseResult.notFound:
+        _analytics.logEvent(name: 'purchase_failed', parameters: {'package_id': packageId, 'reason': 'not_found'});
         _showSnackBarWithMessenger(messenger, 'Paket bulunamadı.', isError: true);
     }
   }
@@ -317,6 +333,7 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
 
     switch (result) {
       case PurchaseResult.success:
+        _analytics.logEvent(name: 'purchase_restored');
         _showSnackBarWithMessenger(messenger, 'Satın alım geri yüklendi!', isError: false);
         router.pop();
       case PurchaseResult.notFound:

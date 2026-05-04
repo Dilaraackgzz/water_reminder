@@ -24,6 +24,7 @@ class AppConstants {
   static const String userPrefsKey = 'user_preferences';
   static const String waterDataKey = 'water_data';
   static const String themeKey = 'theme_mode';
+  static const String premiumThemeKey = 'premium_theme_variant';
   static const String onboardingCompletedKey = 'onboarding_completed';
 
   // Firebase collection names

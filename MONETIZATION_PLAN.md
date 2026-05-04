@@ -235,11 +235,11 @@ Karar: **Blur + kilit ikonu + tıklanınca paywall** (en iyi UX)
 - [x] `ModernAppBar` subtitle'ı premium olmayanda gizlenir
 
 #### 5.2 Ana Ekran — Özel Miktar
-- [ ] `home_screen.dart`: "+" özel miktar butonuna premium kontrolü
-- [ ] Premium değilse paywall'a yönlendir
+- [x] `home_screen.dart`: "+" özel miktar butonuna premium kontrolü
+- [x] Premium değilse paywall'a yönlendir (kilit ikonu gösterilir)
 
 #### 5.3 Hatırlatıcılar — Çoklu Reminder
-- [ ] `reminders/`: 2. hatırlatıcı eklenmeye çalışılınca premium kontrolü
+- [x] `reminders/`: "Premium: Özel Saatli Hatırlatıcılar" bölümü eklendi, PremiumGate ile kilitli
 
 #### 5.4 Başarımlar — Kapsamlı Yenileme
 - [x] Toplam 17 başarım: 9 ücretsiz + 8 premium
@@ -263,7 +263,7 @@ Karar: **Blur + kilit ikonu + tıklanınca paywall** (en iyi UX)
 
 ### ADIM 6 — Premium Temalar
 **Tahmini süre:** 2 saat  
-**Durum:** ⬜ Bekliyor
+**Durum:** ✅ Tamamlandı
 
 4 yeni renk paleti (mevcut teal'e ek):
 - **Ocean Blue** — koyu mavi tonlar
@@ -272,9 +272,11 @@ Karar: **Blur + kilit ikonu + tıklanınca paywall** (en iyi UX)
 - **Midnight Purple** — mor/lacivert tonlar
 
 Uygulama:
-- [ ] `app_theme.dart`'a 4 yeni tema ekle
-- [ ] `theme_service.dart`'a premium tema kontrolü ekle
-- [ ] `theme_dialog.dart`'a premium temalar için kilit ikonu ekle
+- [x] `app_theme.dart`'a `PremiumThemeVariant` enum + 4 yeni tema eklendi
+- [x] `theme_service.dart`'a premium tema kayıt/okuma eklendi
+- [x] `theme_provider.dart`'a `PremiumThemeNotifier` eklendi
+- [x] `theme_dialog.dart`'a renk swatchları + kilit ikonu eklendi
+- [x] `main.dart` premium tema varyantını kullanacak şekilde güncellendi
 
 ---
 
@@ -300,15 +302,15 @@ paywall_close
 
 ### ADIM 8 — Analytics & Tracking
 **Tahmini süre:** 1 saat  
-**Durum:** ⬜ Tamamlandı
+**Durum:** ✅ Tamamlandı
 
 Firebase Analytics event'leri:
-- [ ] `paywall_viewed` — paywall görüntülendiğinde
-- [ ] `paywall_closed` — kapatıldığında (conversion takibi için)
-- [ ] `purchase_initiated` — satın alma başladığında
-- [ ] `purchase_completed` — başarılı satın alma
-- [ ] `purchase_failed` — başarısız satın alma
-- [ ] `purchase_restored` — geri yükleme
+- [x] `paywall_viewed` — paywall görüntülendiğinde
+- [x] `paywall_closed` — kapatıldığında (conversion takibi için)
+- [x] `purchase_initiated` — satın alma başladığında (package_id parametresi ile)
+- [x] `purchase_completed` — başarılı satın alma
+- [x] `purchase_failed` — başarısız satın alma
+- [x] `purchase_restored` — geri yükleme
 
 RevenueCat kendi analytics'ini de sunuyor (dashboard'dan takip edilir).
 
@@ -413,13 +415,13 @@ Hafta 3:
 | 3 | PremiumGate widget | ✅ |
 | 4 | Paywall ekranı | ✅ |
 | 5.1 | İstatistikler — tüm ekran premium (upsell kartı) | ✅ |
-| 5.2 | Ana ekran — özel miktar premium | ⬜ |
-| 5.3 | Hatırlatıcılar — çoklu reminder premium | ⬜ |
+| 5.2 | Ana ekran — özel miktar premium | ✅ |
+| 5.3 | Hatırlatıcılar — çoklu reminder premium | ✅ |
 | 5.4 | Başarımlar — 17 başarım, blur efekti, gerçek zamanlı güncelleme | ✅ |
 | 5.5 | Ayarlar — export premium | ✅ |
 | 5.6 | Ayarlar — premium bölümü | ✅ |
-| 6 | Premium temalar | ⬜ |
+| 6 | Premium temalar | ✅ |
 | 7 | Localization (EN+TR tam, 13 dil fallback) | ✅ |
-| 8 | Analytics & Tracking | ⬜ |
+| 8 | Analytics & Tracking | ✅ |
 | 9 | Testler | ⬜ |
 | 10 | Store listing | ⬜ |

@@ -109,11 +109,12 @@ class AqualertApp extends ConsumerWidget {
     final router = ref.watch(routerProvider);
     final themeMode = ref.watch(themeModeProvider);
     final locale = ref.watch(localeProvider);
+    final themeVariant = ref.watch(premiumThemeVariantProvider);
 
     return MaterialApp.router(
       title: 'Aqualert',
-      theme: AppTheme.lightTheme,
-      darkTheme: AppTheme.darkTheme,
+      theme: AppTheme.lightThemeForVariant(themeVariant),
+      darkTheme: AppTheme.darkThemeForVariant(themeVariant),
       themeMode: themeMode,
       locale: locale,
       routerConfig: router,

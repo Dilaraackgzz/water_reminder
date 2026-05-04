@@ -2,6 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'theme.dart';
 
+enum PremiumThemeVariant {
+  standard,
+  ocean,
+  sunset,
+  forest,
+  midnight,
+}
+
 /// AppTheme - Wrapper around MaterialTheme for backward compatibility
 ///
 /// This class provides easy access to Material Theme Builder generated themes
@@ -95,6 +103,45 @@ class AppTheme {
       extensions: [
         _WaterThemeExtension(accentColor: waterAccent),
       ],
+    );
+  }
+
+  // Seed colors for premium variants
+  static const _seedColors = {
+    PremiumThemeVariant.standard: Color(0xFF7EBFBA),
+    PremiumThemeVariant.ocean: Color(0xFF1565C0),
+    PremiumThemeVariant.sunset: Color(0xFFBF360C),
+    PremiumThemeVariant.forest: Color(0xFF2E7D32),
+    PremiumThemeVariant.midnight: Color(0xFF4A148C),
+  };
+
+  static Color seedColorFor(PremiumThemeVariant variant) =>
+      _seedColors[variant] ?? waterAccent;
+
+  static ThemeData lightThemeForVariant(PremiumThemeVariant variant) {
+    if (variant == PremiumThemeVariant.standard) return lightTheme;
+    final seed = _seedColors[variant]!;
+    return ThemeData(
+      useMaterial3: true,
+      colorScheme: ColorScheme.fromSeed(seedColor: seed),
+      textTheme: GoogleFonts.poppinsTextTheme(),
+      extensions: [_WaterThemeExtension(accentColor: seed)],
+    );
+  }
+
+  static ThemeData darkThemeForVariant(PremiumThemeVariant variant) {
+    if (variant == PremiumThemeVariant.standard) return darkTheme;
+    final seed = _seedColors[variant]!;
+    return ThemeData(
+      useMaterial3: true,
+      colorScheme: ColorScheme.fromSeed(
+        seedColor: seed,
+        brightness: Brightness.dark,
+      ),
+      textTheme: GoogleFonts.poppinsTextTheme(
+        ThemeData(brightness: Brightness.dark).textTheme,
+      ),
+      extensions: [_WaterThemeExtension(accentColor: seed)],
     );
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../services/theme_service.dart';
+import '../themes/app_theme.dart';
 import 'app_providers.dart';
 
 /// Provider for ThemeService
@@ -37,4 +38,20 @@ class ThemeModeNotifier extends StateNotifier<ThemeMode> {
 final themeModeProvider = StateNotifierProvider<ThemeModeNotifier, ThemeMode>((ref) {
   final themeService = ref.watch(themeServiceProvider);
   return ThemeModeNotifier(themeService);
+});
+
+class PremiumThemeNotifier extends StateNotifier<PremiumThemeVariant> {
+  final ThemeService _service;
+
+  PremiumThemeNotifier(this._service) : super(_service.getPremiumThemeVariant());
+
+  Future<void> setVariant(PremiumThemeVariant variant) async {
+    await _service.setPremiumThemeVariant(variant);
+    state = variant;
+  }
+}
+
+final premiumThemeVariantProvider =
+    StateNotifierProvider<PremiumThemeNotifier, PremiumThemeVariant>((ref) {
+  return PremiumThemeNotifier(ref.watch(themeServiceProvider));
 });

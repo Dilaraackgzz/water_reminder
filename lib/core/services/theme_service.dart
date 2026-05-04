@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../constants/app_constants.dart';
+import '../themes/app_theme.dart';
 
 /// Service for managing theme mode persistence
 class ThemeService {
@@ -36,5 +37,17 @@ class ThemeService {
     }
 
     return themeMode == ThemeMode.dark;
+  }
+
+  PremiumThemeVariant getPremiumThemeVariant() {
+    final value = _prefs.getString(AppConstants.premiumThemeKey);
+    return PremiumThemeVariant.values.firstWhere(
+      (v) => v.name == value,
+      orElse: () => PremiumThemeVariant.standard,
+    );
+  }
+
+  Future<void> setPremiumThemeVariant(PremiumThemeVariant variant) async {
+    await _prefs.setString(AppConstants.premiumThemeKey, variant.name);
   }
 }
