@@ -4,11 +4,17 @@ import 'package:intl/intl.dart';
 import 'package:water_reminder/l10n/app_localizations.dart';
 import '../../../../core/constants/ui_constants.dart';
 import '../../domain/models/water_statistics.dart';
+import '../providers/statistics_providers.dart';
 
 class StatisticsChart extends StatelessWidget {
   final WaterStatistics statistics;
+  final StatisticsPeriod period;
 
-  const StatisticsChart({super.key, required this.statistics});
+  const StatisticsChart({
+    super.key,
+    required this.statistics,
+    required this.period,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -132,16 +138,35 @@ class StatisticsChart extends StatelessWidget {
                     sideTitles: SideTitles(
                       showTitles: true,
                       getTitlesWidget: (value, meta) {
-                        if (value.toInt() >= statistics.dailySummaries.length) {
+                        final index = value.toInt();
+                        if (index >= statistics.dailySummaries.length) {
                           return const SizedBox.shrink();
                         }
-                        final date =
-                            statistics.dailySummaries[value.toInt()].date;
+                        final date = statistics.dailySummaries[index].date;
+
+                        String? label;
+                        if (period == StatisticsPeriod.year) {
+                          // Yalnızca ayın ilk gününde ay adını göster
+                          if (date.day == 1 ||
+                              (index == 0)) {
+                            label = DateFormat('MMM').format(date);
+                          }
+                        } else if (period == StatisticsPeriod.month) {
+                          // Her 5 günde bir göster
+                          if (date.day % 5 == 1 || index == 0) {
+                            label = '${date.day}';
+                          }
+                        } else {
+                          label = DateFormat('E').format(date).substring(0, 1);
+                        }
+
+                        if (label == null) return const SizedBox.shrink();
+
                         return Padding(
                           padding:
                               const EdgeInsets.only(top: UIConstants.spacingS),
                           child: Text(
-                            DateFormat('E').format(date).substring(0, 1),
+                            label,
                             style: textTheme.bodySmall?.copyWith(
                               fontSize: 10,
                               color: isDark ? Colors.white60 : Colors.black54,

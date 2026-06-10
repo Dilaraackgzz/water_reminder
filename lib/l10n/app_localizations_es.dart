@@ -936,6 +936,22 @@ class AppLocalizationsEs extends AppLocalizations {
   String get reminders_schedule_info => 'Current Schedule';
 
   @override
+  String get reminders_premium_custom_title =>
+      'Premium: Recordatorios personalizados';
+
+  @override
+  String get reminders_custom_description =>
+      'Agrega recordatorios ilimitados a tus propias horas';
+
+  @override
+  String get reminders_custom_add_button => 'Agregar hora personalizada';
+
+  @override
+  String reminders_custom_added(String time) {
+    return 'Recordatorio personalizado agregado: $time';
+  }
+
+  @override
   String get notification_reminder_title => '¡Hora de Beber Agua!';
 
   @override
@@ -1344,4 +1360,78 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get settings_premium_restore_subtitle =>
       'Already purchased? Tap to restore';
+
+  @override
+  String get privacy_last_updated =>
+      'Última actualización: 2 de diciembre de 2025';
+
+  @override
+  String get privacy_intro_title => 'Introducción';
+
+  @override
+  String get privacy_intro_content =>
+      'Bienvenido a Aqualert. Respetamos su privacidad y estamos comprometidos a proteger sus datos personales. Esta Política de Privacidad explica cómo recopilamos, usamos y protegemos su información cuando usa nuestra aplicación móvil.';
+
+  @override
+  String get privacy_collect_title => 'Información que Recopilamos';
+
+  @override
+  String get privacy_collect_content =>
+      '• Dirección de correo electrónico — para la creación de cuenta y autenticación\n• Nombre para mostrar — opcional, para personalización\n• Información de perfil — edad, peso, altura, género, nivel de actividad\n• Registros de ingesta de agua — cantidad y marca de tiempo del consumo\n• Estadísticas de uso de la app — a través de Firebase Analytics\n• Información del dispositivo — tipo de dispositivo, versión del SO, identificadores únicos';
+
+  @override
+  String get privacy_use_title => 'Cómo Usamos su Información';
+
+  @override
+  String get privacy_use_content =>
+      '• Calcular objetivos diarios personalizados de ingesta de agua\n• Rastrear y mostrar su historial de consumo de agua\n• Proporcionar estadísticas e información sobre sus hábitos de hidratación\n• Enviar notificaciones de recordatorio\n• Sincronizar sus datos entre dispositivos\n• Mejorar el rendimiento de la app y la experiencia del usuario';
+
+  @override
+  String get privacy_storage_title => 'Almacenamiento de Datos y Seguridad';
+
+  @override
+  String get privacy_storage_content =>
+      'Sus datos se almacenan usando Firebase Authentication y Cloud Firestore (servidores de Google Cloud). Los datos transmitidos entre su dispositivo y nuestros servidores están encriptados usando SSL/TLS. Los datos del usuario solo son accesibles por el usuario autenticado a través de las Reglas de Seguridad de Firebase.';
+
+  @override
+  String get privacy_third_party_title => 'Servicios de Terceros';
+
+  @override
+  String get privacy_third_party_content =>
+      '• Google Firebase — autenticación, base de datos, análisis, notificaciones push\n• Google Sign-In — autenticación OAuth\n• Firebase Analytics — análisis de uso de la app\n\nNO vendemos, comercializamos ni alquilamos su información personal a terceros.';
+
+  @override
+  String get privacy_rights_title => 'Sus Derechos';
+
+  @override
+  String get privacy_rights_content =>
+      '• Acceder y actualizar su información personal a través de Perfil y Configuración\n• Exportar sus datos (registros de agua, logros, configuraciones) en formato JSON\n• Solicitar la eliminación de su cuenta y todos los datos asociados\n• Controlar las preferencias de notificación\n\nPara eliminación de datos, contáctenos en: dilaraacikgoz.dev@gmail.com\nTras la eliminación, todos los datos personales se eliminarán de nuestros servidores en 30 días.';
+
+  @override
+  String get privacy_children_title => 'Privacidad de los Niños';
+
+  @override
+  String get privacy_children_content =>
+      'Aqualert no está destinado a niños menores de 13 años. No recopilamos intencionalmente información personal de niños menores de 13 años.';
+
+  @override
+  String get privacy_gdpr_title => 'Derechos RGPD (Usuarios UE/EEE)';
+
+  @override
+  String get privacy_gdpr_content =>
+      '• Derecho de acceso a sus datos personales\n• Derecho de rectificación de datos inexactos\n• Derecho de supresión (\"derecho al olvido\")\n• Derecho a la limitación del tratamiento\n• Derecho a la portabilidad de datos\n• Derecho de oposición al tratamiento';
+
+  @override
+  String get privacy_kvkk_title => 'Derechos KVKK (Turquía)';
+
+  @override
+  String get privacy_kvkk_content =>
+      '• Conocer si sus datos personales están siendo procesados\n• Solicitar información si son procesados\n• Conocer el propósito del procesamiento\n• Conocer los terceros a quienes se transfieren los datos\n• Solicitar corrección de datos incompletos o incorrectos\n• Solicitar eliminación o destrucción de datos';
+
+  @override
+  String get privacy_contact_title => 'Contáctenos';
+
+  @override
+  String get privacy_contact_content =>
+      'Si tiene alguna pregunta sobre esta Política de Privacidad:\n\nCorreo electrónico: dilaraacikgoz.dev@gmail.com\nTiempo de respuesta: Nos esforzamos por responder dentro de 48 horas.';
 }

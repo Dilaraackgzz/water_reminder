@@ -173,14 +173,14 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
       ),
       _PlanOption(
         label: 'Yıllık',
-        price: '\$4.99',
+        price: '\$7.99',
         period: '/yıl',
         packageId: _kAnnualPackageId,
         isBestValue: true,
       ),
       _PlanOption(
         label: 'Ömür Boyu',
-        price: '\$2.99',
+        price: '\$19.99',
         period: '',
         packageId: _kLifetimePackageId,
         isBestValue: false,

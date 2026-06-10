@@ -1888,6 +1888,30 @@ abstract class AppLocalizations {
   /// **'Current Schedule'**
   String get reminders_schedule_info;
 
+  /// No description provided for @reminders_premium_custom_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Premium: Custom Timed Reminders'**
+  String get reminders_premium_custom_title;
+
+  /// No description provided for @reminders_custom_description.
+  ///
+  /// In en, this message translates to:
+  /// **'Add unlimited reminders at your own times'**
+  String get reminders_custom_description;
+
+  /// No description provided for @reminders_custom_add_button.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Custom Time'**
+  String get reminders_custom_add_button;
+
+  /// No description provided for @reminders_custom_added.
+  ///
+  /// In en, this message translates to:
+  /// **'Custom reminder added: {time}'**
+  String reminders_custom_added(String time);
+
   /// No description provided for @notification_reminder_title.
   ///
   /// In en, this message translates to:
@@ -2637,6 +2661,132 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Already purchased? Tap to restore'**
   String get settings_premium_restore_subtitle;
+
+  /// No description provided for @privacy_last_updated.
+  ///
+  /// In en, this message translates to:
+  /// **'Last Updated: December 2, 2025'**
+  String get privacy_last_updated;
+
+  /// No description provided for @privacy_intro_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Introduction'**
+  String get privacy_intro_title;
+
+  /// No description provided for @privacy_intro_content.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome to Aqualert. We respect your privacy and are committed to protecting your personal data. This Privacy Policy explains how we collect, use, and safeguard your information when you use our mobile application.'**
+  String get privacy_intro_content;
+
+  /// No description provided for @privacy_collect_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Information We Collect'**
+  String get privacy_collect_title;
+
+  /// No description provided for @privacy_collect_content.
+  ///
+  /// In en, this message translates to:
+  /// **'• Email Address — for account creation and authentication\n• Display Name — optional, for personalization\n• Profile Information — age, weight, height, gender, activity level\n• Water Intake Records — amount and timestamp of consumption\n• App Usage Statistics — via Firebase Analytics\n• Device Information — device type, OS version, unique identifiers'**
+  String get privacy_collect_content;
+
+  /// No description provided for @privacy_use_title.
+  ///
+  /// In en, this message translates to:
+  /// **'How We Use Your Information'**
+  String get privacy_use_title;
+
+  /// No description provided for @privacy_use_content.
+  ///
+  /// In en, this message translates to:
+  /// **'• Calculate personalized daily water intake goals\n• Track and display your water consumption history\n• Provide statistics and insights about your hydration habits\n• Send reminder notifications\n• Sync your data across devices\n• Improve app performance and user experience'**
+  String get privacy_use_content;
+
+  /// No description provided for @privacy_storage_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Data Storage and Security'**
+  String get privacy_storage_title;
+
+  /// No description provided for @privacy_storage_content.
+  ///
+  /// In en, this message translates to:
+  /// **'Your data is stored using Firebase Authentication and Cloud Firestore (Google Cloud servers). Data transmitted between your device and our servers is encrypted using SSL/TLS. User data is accessible only by the authenticated user through Firebase Security Rules.'**
+  String get privacy_storage_content;
+
+  /// No description provided for @privacy_third_party_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Third-Party Services'**
+  String get privacy_third_party_title;
+
+  /// No description provided for @privacy_third_party_content.
+  ///
+  /// In en, this message translates to:
+  /// **'• Google Firebase — authentication, database, analytics, push notifications\n• Google Sign-In — OAuth authentication\n• Firebase Analytics — app usage analytics\n\nWe do NOT sell, trade, or rent your personal information to third parties.'**
+  String get privacy_third_party_content;
+
+  /// No description provided for @privacy_rights_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Rights'**
+  String get privacy_rights_title;
+
+  /// No description provided for @privacy_rights_content.
+  ///
+  /// In en, this message translates to:
+  /// **'• Access and update your personal information via Profile & Settings\n• Export your data (water records, achievements, settings) in JSON format\n• Request deletion of your account and all associated data\n• Control notification preferences\n\nFor data deletion, contact us at: dilaraacikgoz.dev@gmail.com\nUpon deletion, all personal data will be removed from our servers within 30 days.'**
+  String get privacy_rights_content;
+
+  /// No description provided for @privacy_children_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Children\'s Privacy'**
+  String get privacy_children_title;
+
+  /// No description provided for @privacy_children_content.
+  ///
+  /// In en, this message translates to:
+  /// **'Aqualert is not intended for children under the age of 13. We do not knowingly collect personal information from children under 13.'**
+  String get privacy_children_content;
+
+  /// No description provided for @privacy_gdpr_title.
+  ///
+  /// In en, this message translates to:
+  /// **'GDPR Rights (EU/EEA Users)'**
+  String get privacy_gdpr_title;
+
+  /// No description provided for @privacy_gdpr_content.
+  ///
+  /// In en, this message translates to:
+  /// **'• Right to Access your personal data\n• Right to Rectification of inaccurate data\n• Right to Erasure (\"right to be forgotten\")\n• Right to Restrict Processing\n• Right to Data Portability\n• Right to Object to processing'**
+  String get privacy_gdpr_content;
+
+  /// No description provided for @privacy_kvkk_title.
+  ///
+  /// In en, this message translates to:
+  /// **'KVKK Rights (Turkey)'**
+  String get privacy_kvkk_title;
+
+  /// No description provided for @privacy_kvkk_content.
+  ///
+  /// In en, this message translates to:
+  /// **'• Learn whether your personal data is being processed\n• Request information if processed\n• Learn the purpose of processing\n• Know the third parties to whom data is transferred\n• Request correction of incomplete or incorrect data\n• Request deletion or destruction of data'**
+  String get privacy_kvkk_content;
+
+  /// No description provided for @privacy_contact_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact Us'**
+  String get privacy_contact_title;
+
+  /// No description provided for @privacy_contact_content.
+  ///
+  /// In en, this message translates to:
+  /// **'If you have any questions regarding this Privacy Policy:\n\nEmail: dilaraacikgoz.dev@gmail.com\nResponse Time: We aim to respond within 48 hours.'**
+  String get privacy_contact_content;
 }
 
 class _AppLocalizationsDelegate

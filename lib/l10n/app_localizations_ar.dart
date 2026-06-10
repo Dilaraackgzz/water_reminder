@@ -926,6 +926,21 @@ class AppLocalizationsAr extends AppLocalizations {
   String get reminders_schedule_info => 'Current Schedule';
 
   @override
+  String get reminders_premium_custom_title => 'مميز: تذكيرات مخصصة';
+
+  @override
+  String get reminders_custom_description =>
+      'أضف تذكيرات غير محدودة في أوقاتك الخاصة';
+
+  @override
+  String get reminders_custom_add_button => 'إضافة وقت مخصص';
+
+  @override
+  String reminders_custom_added(String time) {
+    return 'تمت إضافة التذكير المخصص: $time';
+  }
+
+  @override
   String get notification_reminder_title => 'وقت شرب الماء!';
 
   @override
@@ -1326,4 +1341,78 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get settings_premium_restore_subtitle =>
       'Already purchased? Tap to restore';
+
+  @override
+  String get privacy_last_updated => 'آخر تحديث: 2 ديسمبر 2025';
+
+  @override
+  String get privacy_intro_title => 'مقدمة';
+
+  @override
+  String get privacy_intro_content =>
+      'مرحباً بك في Aqualert. نحترم خصوصيتك ونلتزم بحماية بياناتك الشخصية. توضح سياسة الخصوصية هذه كيفية جمع معلوماتك واستخدامها وحمايتها عند استخدام تطبيقنا المحمول.';
+
+  @override
+  String get privacy_collect_title => 'المعلومات التي نجمعها';
+
+  @override
+  String get privacy_collect_content =>
+      '• عنوان البريد الإلكتروني — لإنشاء الحساب والمصادقة\n• الاسم المعروض — اختياري، للتخصيص\n• معلومات الملف الشخصي — العمر، الوزن، الطول، الجنس، مستوى النشاط\n• سجلات تناول الماء — الكمية والطابع الزمني للاستهلاك\n• إحصائيات استخدام التطبيق — عبر Firebase Analytics\n• معلومات الجهاز — نوع الجهاز، إصدار نظام التشغيل، المعرّفات الفريدة';
+
+  @override
+  String get privacy_use_title => 'كيف نستخدم معلوماتك';
+
+  @override
+  String get privacy_use_content =>
+      '• حساب أهداف يومية مخصصة لتناول الماء\n• تتبع وعرض سجل استهلاكك للماء\n• تقديم إحصاءات ورؤى حول عادات الترطيب لديك\n• إرسال إشعارات التذكير\n• مزامنة بياناتك عبر الأجهزة\n• تحسين أداء التطبيق وتجربة المستخدم';
+
+  @override
+  String get privacy_storage_title => 'تخزين البيانات والأمان';
+
+  @override
+  String get privacy_storage_content =>
+      'يتم تخزين بياناتك باستخدام Firebase Authentication وCloud Firestore (خوادم Google Cloud). يتم تشفير البيانات المنقولة بين جهازك وخوادمنا باستخدام SSL/TLS. لا يمكن الوصول إلى بيانات المستخدم إلا للمستخدم المصادق عليه من خلال قواعد أمان Firebase.';
+
+  @override
+  String get privacy_third_party_title => 'خدمات الطرف الثالث';
+
+  @override
+  String get privacy_third_party_content =>
+      '• Google Firebase — المصادقة، قاعدة البيانات، التحليلات، الإشعارات الفورية\n• Google Sign-In — مصادقة OAuth\n• Firebase Analytics — تحليلات استخدام التطبيق\n\nنحن لا نبيع أو نتاجر أو نؤجر معلوماتك الشخصية لأطراف ثالثة.';
+
+  @override
+  String get privacy_rights_title => 'حقوقك';
+
+  @override
+  String get privacy_rights_content =>
+      '• الوصول إلى معلوماتك الشخصية وتحديثها عبر الملف الشخصي والإعدادات\n• تصدير بياناتك (سجلات الماء، الإنجازات، الإعدادات) بتنسيق JSON\n• طلب حذف حسابك وجميع البيانات المرتبطة به\n• التحكم في تفضيلات الإشعارات\n\nللحذف، تواصل معنا: dilaraacikgoz.dev@gmail.com\nبعد الحذف، ستُزال جميع البيانات الشخصية من خوادمنا خلال 30 يوماً.';
+
+  @override
+  String get privacy_children_title => 'خصوصية الأطفال';
+
+  @override
+  String get privacy_children_content =>
+      'Aqualert غير مخصص للأطفال دون سن 13 عاماً. لا نجمع عن قصد معلومات شخصية من الأطفال دون سن 13 عاماً.';
+
+  @override
+  String get privacy_gdpr_title =>
+      'حقوق GDPR (مستخدمو الاتحاد الأوروبي/المنطقة الاقتصادية الأوروبية)';
+
+  @override
+  String get privacy_gdpr_content =>
+      '• حق الوصول إلى بياناتك الشخصية\n• حق تصحيح البيانات غير الدقيقة\n• حق المحو (\"الحق في النسيان\")\n• حق تقييد المعالجة\n• حق نقل البيانات\n• حق الاعتراض على المعالجة';
+
+  @override
+  String get privacy_kvkk_title => 'حقوق KVKK (تركيا)';
+
+  @override
+  String get privacy_kvkk_content =>
+      '• معرفة ما إذا كانت بياناتك الشخصية تُعالج\n• طلب معلومات إذا كانت تُعالج\n• معرفة غرض المعالجة\n• معرفة الأطراف الثالثة التي تُنقل إليها البيانات\n• طلب تصحيح البيانات غير المكتملة أو غير الصحيحة\n• طلب حذف البيانات أو إتلافها';
+
+  @override
+  String get privacy_contact_title => 'اتصل بنا';
+
+  @override
+  String get privacy_contact_content =>
+      'إذا كانت لديك أي أسئلة حول سياسة الخصوصية هذه:\n\nالبريد الإلكتروني: dilaraacikgoz.dev@gmail.com\nوقت الرد: نسعى للرد خلال 48 ساعة.';
 }

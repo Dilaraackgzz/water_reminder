@@ -1,9 +1,7 @@
 {
   "@@locale": "pt",
-
   "appName": "Aqualert",
   "appTagline": "Mantenha-se hidratado para uma vida saudável",
-
   "common_cancel": "Cancelar",
   "common_save": "Salvar",
   "common_delete": "Excluir",
@@ -21,7 +19,6 @@
   "common_loading": "Carregando...",
   "common_error": "Erro",
   "common_success": "Sucesso",
-
   "auth_login_title": "Entrar",
   "auth_register_title": "Cadastrar",
   "auth_email_label": "E-mail",
@@ -38,14 +35,12 @@
   "auth_sign_in_google": "Entrar com Google",
   "auth_sign_up_google": "Cadastrar com Google",
   "auth_logout": "Sair",
-
   "auth_validation_email_required": "O e-mail é obrigatório",
   "auth_validation_email_invalid": "Digite um e-mail válido",
   "auth_validation_password_required": "A senha é obrigatória",
   "auth_validation_password_min_length": "A senha deve ter pelo menos 6 caracteres",
   "auth_validation_name_required": "O nome é obrigatório",
   "auth_validation_name_min_length": "O nome deve ter pelo menos 2 caracteres",
-
   "auth_email_verification_title": "Verifique seu e-mail",
   "auth_email_verification_sent": "Enviamos um link de verificação para:",
   "auth_email_verification_instruction": "Verifique seu e-mail e clique no link de verificação para continuar.",
@@ -54,13 +49,11 @@
   "auth_email_verification_check": "Já verifiquei meu e-mail",
   "auth_email_verification_success": "E-mail verificado com sucesso!",
   "auth_email_verification_failed": "E-mail ainda não verificado. Verifique sua caixa de entrada.",
-
   "auth_forgot_password_title": "Redefinir senha",
   "auth_forgot_password_instruction": "Digite seu e-mail e enviaremos um link para redefinir sua senha.",
   "auth_forgot_password_button": "Enviar link",
   "auth_forgot_password_success": "E-mail de redefinição enviado! Verifique sua caixa de entrada.",
   "auth_back_to_login": "Voltar para o login",
-
   "home_title": "Início",
   "home_daily_goal": "Meta Diária",
   "home_today": "Hoje",
@@ -72,49 +65,41 @@
   "home_delete_water_success": "Registro excluído",
   "home_no_records_today": "Sem registros hoje",
   "home_start_drinking": "Comece a beber água!",
-
   "progress_current": "Atual",
   "progress_goal": "Meta",
   "progress_remaining": "Restante",
   "progress_completed": "Meta concluída!",
   "progress_percentage": "{percent}% da meta diária",
-
   "motivational_keep_going": "Continue assim! Você está indo muito bem!",
   "motivational_almost_there": "Quase lá! Só mais um pouco!",
   "motivational_goal_reached": "Parabéns! Você atingiu sua meta!",
   "motivational_good_start": "Bom começo! Continue assim!",
   "motivational_stay_hydrated": "Mantenha-se hidratado durante o dia!",
-
   "motivational_100_1": "Parabéns! Você atingiu sua meta!",
   "motivational_100_2": "Trabalho incrível! Continue hidratado amanhã também!",
   "motivational_100_3": "Você é um campeão da hidratação!",
   "motivational_100_4": "Perfeito! Mantenha esses bons hábitos!",
   "motivational_100_short": "Meta Atingida!",
-
   "motivational_75_1": "Quase lá! Só mais um pouco!",
   "motivational_75_2": "Você está indo muito bem! Continue!",
   "motivational_75_3": "Tão perto da sua meta!",
   "motivational_75_4": "Progresso fantástico! Não pare agora!",
   "motivational_75_short": "Quase lá!",
-
   "motivational_50_1": "Na metade! Você está ótimo!",
   "motivational_50_2": "Ótimo trabalho! Continue!",
   "motivational_50_3": "Você está no caminho certo!",
   "motivational_50_4": "Bom progresso! Seja constante!",
   "motivational_50_short": "Na metade!",
-
   "motivational_25_1": "Bom começo! Continue bebendo água!",
   "motivational_25_2": "Você começou muito bem!",
   "motivational_25_3": "Belo começo! Mantenha-se hidratado!",
   "motivational_25_4": "Continue! Cada gole conta!",
   "motivational_25_short": "Bom começo!",
-
   "motivational_0_1": "Hora de se hidratar! Seu corpo vai agradecer!",
   "motivational_0_2": "Vamos começar sua jornada de hidratação!",
   "motivational_0_3": "Comece seu dia com água!",
   "motivational_0_4": "Sua saúde importa! Comece a beber!",
   "motivational_0_short": "Vamos começar!",
-
   "profile_title": "Perfil",
   "profile_edit": "Editar perfil",
   "profile_personal_info": "Informações pessoais",
@@ -134,11 +119,9 @@
   "profile_save_success": "Perfil atualizado com sucesso",
   "profile_save_failed": "Falha ao atualizar perfil",
   "profile_user_default": "Usuário",
-
   "gender_male": "Masculino",
   "gender_female": "Feminino",
   "gender_other": "Outro",
-
   "activity_sedentary": "Sedentário",
   "activity_sedentary_desc": "Pouco ou nenhum exercício",
   "activity_light": "Levemente ativo",
@@ -149,12 +132,10 @@
   "activity_very_active_desc": "Exercício intenso 6-7 dias/semana",
   "activity_extra_active": "Extra ativo",
   "activity_extra_active_desc": "Exercício muito intenso e trabalho físico",
-
   "bmi_underweight": "Abaixo do peso",
   "bmi_normal": "Peso normal",
   "bmi_overweight": "Sobrepeso",
   "bmi_obese": "Obeso",
-
   "settings_title": "Configurações",
   "settings_notifications": "Notificações",
   "settings_reminders": "Lembretes",
@@ -168,22 +149,18 @@
   "settings_import_data": "Importar dados",
   "settings_help": "Ajuda e suporte",
   "settings_about": "Sobre",
-
   "settings_enable_notifications": "Ativar notificações",
   "settings_reminder_interval": "Intervalo de lembrete",
   "settings_reminder_start_time": "Hora de início",
   "settings_reminder_end_time": "Hora de término",
   "settings_test_notification": "Testar notificação",
-
   "settings_theme_light": "Claro",
   "settings_theme_dark": "Escuro",
   "settings_theme_system": "Sistema",
-
   "settings_unit_ml": "Mililitros (ml)",
   "settings_unit_floz": "Onças líquidas (fl oz)",
   "settings_unit_metric": "Sistema métrico",
   "settings_unit_imperial": "Sistema imperial",
-
   "settings_subtitle": "Personalize sua experiência",
   "settings_reminders_active": "Lembretes de água ativos",
   "settings_reminders_inactive": "Ative os lembretes",
@@ -211,14 +188,12 @@
   "settings_import_duplicate_skipped": "duplicados ignorados",
   "settings_import_failed_message": "Falha na importação: {error}",
   "settings_reminder_interval_title": "Intervalo de lembrete",
-
   "settings_language_coming_soon": "Em breve",
   "settings_export_success": "Dados exportados com sucesso",
   "settings_export_failed": "Falha ao exportar dados",
   "settings_import_success": "Dados importados com sucesso",
   "settings_import_failed": "Falha ao importar dados",
   "settings_import_stats": "Importados {imported} registros, ignorados {skipped} duplicados",
-
   "statistics_title": "Estatísticas",
   "statistics_weekly": "Semanal",
   "statistics_monthly": "Mensal",
@@ -234,7 +209,13 @@
   "statistics_daily_average": "Média diária",
   "statistics_goals_met": "Metas Atingidas",
   "statistics_out_of": "de {count}",
-  "@statistics_out_of": {"placeholders": {"count": {"type": "int"}}},
+  "@statistics_out_of": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "statistics_progress": "Progresso",
   "statistics_on_track": "No caminho!",
   "statistics_keep_going": "Continue assim!",
@@ -247,14 +228,12 @@
   "statistics_completed": "Completados",
   "statistics_next_goal": "Próxima Meta",
   "statistics_days": "dias",
-
   "achievements_title": "Conquistas",
   "achievements_unlocked": "Desbloqueado",
   "achievements_locked": "Bloqueado",
   "achievements_progress": "Progresso",
   "achievements_reward_points": "Pontos de recompensa",
   "achievements_total_points": "Pontos totais: {points}",
-
   "achievement_first_drop": "Primeira gota",
   "achievement_first_drop_desc": "Registre seu primeiro consumo de água",
   "achievement_daily_goal_1": "Conquistador de metas",
@@ -271,7 +250,6 @@
   "achievement_total_100l_desc": "Beba 100 litros no total",
   "achievement_consistency": "Semana constante",
   "achievement_consistency_desc": "Atinja sua meta por 7 dias consecutivos",
-
   "reminders_title": "Lembretes",
   "reminders_active": "Lembretes ativos",
   "reminders_pending": "Notificações pendentes",
@@ -281,10 +259,12 @@
   "reminders_interval_90": "A cada 1,5 horas",
   "reminders_interval_120": "A cada 2 horas",
   "reminders_interval_180": "A cada 3 horas",
-
+  "reminders_premium_custom_title": "Premium: Lembretes personalizados",
+  "reminders_custom_description": "Adicione lembretes ilimitados nos seus próprios horários",
+  "reminders_custom_add_button": "Adicionar horário personalizado",
+  "reminders_custom_added": "Lembrete personalizado adicionado: {time}",
   "notification_reminder_title": "Hora de beber água!",
   "notification_reminder_body": "Mantenha-se hidratado! Beba um pouco de água agora.",
-
   "streak_current": "Sequência atual",
   "streak_days": "{days} dias",
   "streak_keep_going": "Mantenha a sequência!",
@@ -298,7 +278,6 @@
   "streak_error": "Falha ao carregar dados da sequência",
   "streak_day_singular": "dia",
   "streak_day_plural": "dias",
-
   "onboarding_title_1": "Registre sua água",
   "onboarding_desc_1": "Registre facilmente seu consumo diário com um toque",
   "onboarding_title_2": "Lembretes inteligentes",
@@ -308,7 +287,6 @@
   "onboarding_title_4": "Mantenha-se saudável",
   "onboarding_desc_4": "Construa hábitos saudáveis e melhore seu bem-estar",
   "onboarding_get_started": "Começar",
-
   "drawer_home": "Início",
   "drawer_statistics": "Estatísticas",
   "drawer_achievements": "Conquistas",
@@ -318,13 +296,11 @@
   "drawer_help": "Ajuda e suporte",
   "drawer_about": "Sobre",
   "drawer_logout": "Sair",
-
   "about_title": "Aqualert",
   "about_version": "Versão 1.0.0",
   "about_description": "Mantenha-se hidratado e saudável com o Aqualert. Registre seu consumo diário de água e alcance suas metas de hidratação!",
   "about_copyright": "© 2024 Aqualert. Todos os direitos reservados.",
   "about_close": "Fechar",
-
   "help_title": "Ajuda e suporte",
   "help_subtitle": "Obtenha ajuda e saiba mais",
   "help_faq": "Perguntas frequentes",
@@ -332,58 +308,42 @@
   "help_version": "Versão",
   "help_app_info": "Informações do app",
   "help_coming_soon": "Ajuda e suporte - Em breve!",
-
   "help_faq_section": "FAQ",
   "help_features_section": "Guia de recursos",
   "help_about_section": "Sobre",
-
   "faq_1_q": "Como minha meta diária de água é calculada?",
   "faq_1_a": "Sua meta diária é calculada com base em peso, altura, idade, gênero e nível de atividade usando fórmulas científicas. Você também pode definir uma meta personalizada nas configurações do perfil.",
-
   "faq_2_q": "Como funcionam os lembretes?",
   "faq_2_a": "Você pode definir intervalos de lembrete (30-180 minutos) e escolher horários de início/término. O app enviará notificações durante este período para ajudá-lo a se manter hidratado.",
-
   "faq_3_q": "O que são sequências e como funcionam?",
   "faq_3_a": "Sequências registram dias consecutivos em que você atingiu sua meta diária. Continue bebendo água todos os dias para manter e aumentar sua sequência!",
-
   "faq_4_q": "Como posso mudar as unidades de medida?",
   "faq_4_a": "Vá em Configurações → Unidades e alterne entre mililitros (ml) e onças líquidas (fl oz). Todas as medidas serão atualizadas automaticamente.",
-
   "faq_5_q": "Posso exportar meus dados de rastreamento?",
   "faq_5_a": "Sim! Vá em Configurações → Gerenciamento de dados → Exportar dados. Você pode compartilhar ou salvar seus dados como arquivo JSON e importá-los depois.",
-
   "faq_6_q": "Como funcionam as conquistas?",
   "faq_6_a": "Complete marcos de rastreamento de água para desbloquear conquistas e ganhar pontos de recompensa. Acompanhe seu progresso na tela de Conquistas.",
-
   "feature_tracking_title": "Rastreamento de água",
   "feature_tracking_desc": "Registre facilmente seu consumo diário com botões rápidos (250ml, 350ml, 500ml, 750ml) ou insira uma quantidade personalizada.",
-
   "feature_reminders_title": "Lembretes inteligentes",
   "feature_reminders_desc": "Defina intervalos de lembrete personalizáveis e escolha as horas ativas. Nunca esqueça de beber água durante o dia.",
-
   "feature_statistics_title": "Estatísticas e insights",
   "feature_statistics_desc": "Veja suas tendências de consumo de água com gráficos semanais, mensais e anuais. Acompanhe seu progresso ao longo do tempo.",
-
   "feature_achievements_title": "Conquistas e sequências",
   "feature_achievements_desc": "Ganhe conquistas e mantenha sequências diárias alcançando suas metas de água. Mantenha-se motivado com gamificação!",
-
   "feature_profile_title": "Perfil e metas",
   "feature_profile_desc": "Configure suas informações pessoais e deixe o app calcular sua meta diária ideal de água com base nas suas métricas corporais.",
-
   "help_contact_email": "Contatar por e-mail",
   "help_contact_email_address": "dilaraacikgoz.dev@gmail.com",
   "help_rate_app": "Avalie nosso app",
   "help_rate_desc": "Gostando do Aqualert? Deixe uma avaliação!",
-
   "help_build_number": "Build",
   "help_copyright": "© 2024 Aqualert. Todos os direitos reservados.",
   "help_made_with": "Feito com ❤️ para sua saúde",
-
   "error_generic": "Algo deu errado. Por favor, tente novamente.",
   "error_network": "Erro de rede. Por favor, verifique sua conexão.",
   "error_auth_failed": "Falha na autenticação. Por favor, tente novamente.",
   "error_permission_denied": "Permissão negada.",
-
   "unit_ml": "ml",
   "unit_floz": "fl oz",
   "unit_kg": "kg",
@@ -391,16 +351,13 @@
   "unit_cm": "cm",
   "unit_ft": "ft",
   "unit_liter": "L",
-
   "time_morning": "Manhã",
   "time_afternoon": "Tarde",
   "time_evening": "Entardecer",
   "time_night": "Noite",
-
   "help_privacy_policy": "Política de privacidade",
   "help_privacy_policy_desc": "Ver nossa política de privacidade",
   "help_privacy_policy_error": "Não foi possível abrir a política de privacidade",
-
   "settings_delete_account": "Excluir conta",
   "settings_delete_account_subtitle": "Excluir permanentemente sua conta e todos os dados",
   "settings_delete_account_dialog_title": "Excluir conta?",
@@ -409,5 +366,26 @@
   "settings_delete_account_cancel": "Cancelar",
   "settings_delete_account_success": "Conta excluída com sucesso",
   "settings_delete_account_error": "Falha ao excluir a conta",
-  "settings_delete_account_reauth_required": "Por favor, faça login novamente para excluir sua conta"
+  "settings_delete_account_reauth_required": "Por favor, faça login novamente para excluir sua conta",
+  "privacy_last_updated": "Última atualização: 2 de dezembro de 2025",
+  "privacy_intro_title": "Introdução",
+  "privacy_intro_content": "Bem-vindo ao Aqualert. Respeitamos sua privacidade e estamos comprometidos em proteger seus dados pessoais. Esta Política de Privacidade explica como coletamos, usamos e protegemos suas informações quando você usa nosso aplicativo móvel.",
+  "privacy_collect_title": "Informações que Coletamos",
+  "privacy_collect_content": "• Endereço de e-mail — para criação de conta e autenticação\n• Nome de exibição — opcional, para personalização\n• Informações do perfil — idade, peso, altura, gênero, nível de atividade\n• Registros de ingestão de água — quantidade e timestamp do consumo\n• Estatísticas de uso do app — via Firebase Analytics\n• Informações do dispositivo — tipo de dispositivo, versão do SO, identificadores únicos",
+  "privacy_use_title": "Como Usamos Suas Informações",
+  "privacy_use_content": "• Calcular metas diárias personalizadas de ingestão de água\n• Rastrear e exibir seu histórico de consumo de água\n• Fornecer estatísticas e insights sobre seus hábitos de hidratação\n• Enviar notificações de lembrete\n• Sincronizar seus dados entre dispositivos\n• Melhorar o desempenho do app e a experiência do usuário",
+  "privacy_storage_title": "Armazenamento de Dados e Segurança",
+  "privacy_storage_content": "Seus dados são armazenados usando Firebase Authentication e Cloud Firestore (servidores Google Cloud). Os dados transmitidos entre seu dispositivo e nossos servidores são criptografados usando SSL/TLS. Os dados do usuário são acessíveis apenas pelo usuário autenticado através das Regras de Segurança do Firebase.",
+  "privacy_third_party_title": "Serviços de Terceiros",
+  "privacy_third_party_content": "• Google Firebase — autenticação, banco de dados, análises, notificações push\n• Google Sign-In — autenticação OAuth\n• Firebase Analytics — análises de uso do app\n\nNÃO vendemos, negociamos ou alugamos suas informações pessoais a terceiros.",
+  "privacy_rights_title": "Seus Direitos",
+  "privacy_rights_content": "• Acessar e atualizar suas informações pessoais via Perfil e Configurações\n• Exportar seus dados (registros de água, conquistas, configurações) em formato JSON\n• Solicitar a exclusão da sua conta e todos os dados associados\n• Controlar as preferências de notificação\n\nPara exclusão de dados, entre em contato: dilaraacikgoz.dev@gmail.com\nApós a exclusão, todos os dados pessoais serão removidos de nossos servidores em 30 dias.",
+  "privacy_children_title": "Privacidade de Crianças",
+  "privacy_children_content": "Aqualert não se destina a crianças menores de 13 anos. Não coletamos intencionalmente informações pessoais de crianças menores de 13 anos.",
+  "privacy_gdpr_title": "Direitos RGPD (Usuários UE/EEE)",
+  "privacy_gdpr_content": "• Direito de acesso aos seus dados pessoais\n• Direito de retificação de dados imprecisos\n• Direito ao apagamento (\"direito ao esquecimento\")\n• Direito à limitação do tratamento\n• Direito à portabilidade de dados\n• Direito de oposição ao tratamento",
+  "privacy_kvkk_title": "Direitos KVKK (Turquia)",
+  "privacy_kvkk_content": "• Saber se seus dados pessoais estão sendo processados\n• Solicitar informações se forem processados\n• Conhecer o objetivo do processamento\n• Conhecer terceiros para quem os dados são transferidos\n• Solicitar correção de dados incompletos ou incorretos\n• Solicitar exclusão ou destruição de dados",
+  "privacy_contact_title": "Entre em Contato",
+  "privacy_contact_content": "Se você tiver alguma dúvida sobre esta Política de Privacidade:\n\nE-mail: dilaraacikgoz.dev@gmail.com\nTempo de resposta: Buscamos responder dentro de 48 horas."
 }

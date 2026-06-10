@@ -1,9 +1,7 @@
 {
   "@@locale": "hi",
-
   "appName": "Aqualert",
   "appTagline": "स्वस्थ जीवन के लिए हाइड्रेटेड रहें",
-
   "common_cancel": "रद्द करें",
   "common_save": "सहेजें",
   "common_delete": "हटाएं",
@@ -21,7 +19,6 @@
   "common_loading": "लोड हो रहा है...",
   "common_error": "त्रुटि",
   "common_success": "सफल",
-
   "auth_login_title": "साइन इन",
   "auth_register_title": "साइन अप",
   "auth_email_label": "ईमेल",
@@ -38,14 +35,12 @@
   "auth_sign_in_google": "Google से साइन इन करें",
   "auth_sign_up_google": "Google से साइन अप करें",
   "auth_logout": "लॉग आउट",
-
   "auth_validation_email_required": "ईमेल आवश्यक है",
   "auth_validation_email_invalid": "कृपया वैध ईमेल दर्ज करें",
   "auth_validation_password_required": "पासवर्ड आवश्यक है",
   "auth_validation_password_min_length": "पासवर्ड कम से कम 6 अक्षरों का होना चाहिए",
   "auth_validation_name_required": "नाम आवश्यक है",
   "auth_validation_name_min_length": "नाम कम से कम 2 अक्षरों का होना चाहिए",
-
   "auth_email_verification_title": "अपना ईमेल सत्यापित करें",
   "auth_email_verification_sent": "हमने सत्यापन लिंक भेजा है:",
   "auth_email_verification_instruction": "कृपया अपना ईमेल जांचें और सत्यापन लिंक पर क्लिक करें।",
@@ -54,13 +49,11 @@
   "auth_email_verification_check": "मैंने अपना ईमेल सत्यापित कर लिया",
   "auth_email_verification_success": "ईमेल सफलतापूर्वक सत्यापित!",
   "auth_email_verification_failed": "ईमेल अभी तक सत्यापित नहीं हुआ। कृपया इनबॉक्स जांचें।",
-
   "auth_forgot_password_title": "पासवर्ड रीसेट करें",
   "auth_forgot_password_instruction": "अपना ईमेल पता दर्ज करें और हम आपको पासवर्ड रीसेट लिंक भेजेंगे।",
   "auth_forgot_password_button": "रीसेट लिंक भेजें",
   "auth_forgot_password_success": "पासवर्ड रीसेट ईमेल भेजा गया!",
   "auth_back_to_login": "साइन इन पर वापस जाएं",
-
   "home_title": "होम",
   "home_daily_goal": "दैनिक लक्ष्य",
   "home_today": "आज",
@@ -72,7 +65,6 @@
   "home_delete_water_success": "रिकॉर्ड हटाया गया",
   "home_no_records_today": "आज कोई रिकॉर्ड नहीं",
   "home_start_drinking": "पानी पीना शुरू करें!",
-
   "progress_current": "वर्तमान",
   "progress_goal": "लक्ष्य",
   "progress_remaining": "शेष",
@@ -85,43 +77,36 @@
       }
     }
   },
-
   "motivational_keep_going": "जारी रखें! आप बहुत अच्छा कर रहे हैं!",
   "motivational_almost_there": "लगभग पहुंच गए! बस थोड़ा और!",
   "motivational_goal_reached": "बधाई! आपने अपना लक्ष्य हासिल किया!",
   "motivational_good_start": "अच्छी शुरुआत! जारी रखें!",
   "motivational_stay_hydrated": "दिन भर हाइड्रेटेड रहें!",
-
   "motivational_100_1": "बधाई! आपने अपना लक्ष्य हासिल किया!",
   "motivational_100_2": "शानदार! कल भी हाइड्रेटेड रहें!",
   "motivational_100_3": "आप हाइड्रेशन चैंपियन हैं!",
   "motivational_100_4": "बिल्कुल सही! अच्छी आदतें जारी रखें!",
   "motivational_100_short": "लक्ष्य पूरा!",
-
   "motivational_75_1": "लगभग पहुंच गए! बस थोड़ा और!",
   "motivational_75_2": "आप बहुत अच्छा कर रहे हैं! जारी रखें!",
   "motivational_75_3": "अपने लक्ष्य के बहुत करीब!",
   "motivational_75_4": "शानदार प्रगति! अभी मत रुकें!",
   "motivational_75_short": "लगभग पहुंच गए!",
-
   "motivational_50_1": "आधा रास्ता! बहुत बढ़िया!",
   "motivational_50_2": "अच्छा काम! जारी रखें!",
   "motivational_50_3": "आप सही रास्ते पर हैं!",
   "motivational_50_4": "अच्छी प्रगति! लगातार रहें!",
   "motivational_50_short": "आधा!",
-
   "motivational_25_1": "अच्छी शुरुआत! पानी पीते रहें!",
   "motivational_25_2": "शानदार शुरुआत!",
   "motivational_25_3": "अच्छी शुरुआत! हाइड्रेटेड रहें!",
   "motivational_25_4": "जारी रखें! हर घूंट मायने रखती है!",
   "motivational_25_short": "अच्छी शुरुआत!",
-
   "motivational_0_1": "हाइड्रेट करने का समय! आपका शरीर धन्यवाद देगा!",
   "motivational_0_2": "अपनी हाइड्रेशन यात्रा शुरू करें!",
   "motivational_0_3": "अपने दिन की शुरुआत पानी से करें!",
   "motivational_0_4": "आपका स्वास्थ्य महत्वपूर्ण है! पीना शुरू करें!",
   "motivational_0_short": "शुरू करें!",
-
   "profile_title": "प्रोफाइल",
   "profile_edit": "संपादित करें",
   "profile_personal_info": "व्यक्तिगत जानकारी",
@@ -141,11 +126,9 @@
   "profile_save_success": "प्रोफाइल अपडेट हुई",
   "profile_save_failed": "प्रोफाइल अपडेट विफल",
   "profile_user_default": "उपयोगकर्ता",
-
   "gender_male": "पुरुष",
   "gender_female": "महिला",
   "gender_other": "अन्य",
-
   "activity_sedentary": "गतिहीन",
   "activity_sedentary_desc": "कम या कोई व्यायाम नहीं",
   "activity_light": "हल्की गतिविधि",
@@ -156,12 +139,10 @@
   "activity_very_active_desc": "सप्ताह में 6-7 दिन तीव्र व्यायाम",
   "activity_extra_active": "अत्यधिक सक्रिय",
   "activity_extra_active_desc": "बहुत तीव्र व्यायाम और शारीरिक काम",
-
   "bmi_underweight": "कम वजन",
   "bmi_normal": "सामान्य वजन",
   "bmi_overweight": "अधिक वजन",
   "bmi_obese": "मोटापा",
-
   "settings_title": "सेटिंग्स",
   "settings_notifications": "नोटिफिकेशन",
   "settings_reminders": "रिमाइंडर",
@@ -175,22 +156,18 @@
   "settings_import_data": "डेटा आयात करें",
   "settings_help": "सहायता",
   "settings_about": "ऐप के बारे में",
-
   "settings_enable_notifications": "नोटिफिकेशन सक्षम करें",
   "settings_reminder_interval": "रिमाइंडर अंतराल",
   "settings_reminder_start_time": "शुरुआत का समय",
   "settings_reminder_end_time": "समाप्ति का समय",
   "settings_test_notification": "टेस्ट नोटिफिकेशन",
-
   "settings_theme_light": "लाइट",
   "settings_theme_dark": "डार्क",
   "settings_theme_system": "सिस्टम डिफॉल्ट",
-
   "settings_unit_ml": "मिलीलीटर (ml)",
   "settings_unit_floz": "फ्लुइड आउंस (fl oz)",
   "settings_unit_metric": "मीट्रिक प्रणाली",
   "settings_unit_imperial": "इम्पीरियल प्रणाली",
-
   "settings_subtitle": "अपना अनुभव कस्टमाइज़ करें",
   "settings_reminders_active": "रिमाइंडर सक्रिय हैं",
   "settings_reminders_inactive": "रिमाइंडर पाने के लिए चालू करें",
@@ -232,7 +209,6 @@
     }
   },
   "settings_reminder_interval_title": "रिमाइंडर अंतराल",
-
   "settings_language_coming_soon": "जल्द आ रहा है",
   "settings_export_success": "डेटा निर्यात हुआ",
   "settings_export_failed": "निर्यात विफल",
@@ -249,7 +225,6 @@
       }
     }
   },
-
   "statistics_title": "आंकड़े",
   "statistics_weekly": "साप्ताहिक",
   "statistics_monthly": "मासिक",
@@ -265,7 +240,13 @@
   "statistics_daily_average": "दैनिक औसत",
   "statistics_goals_met": "लक्ष्य पूरे हुए",
   "statistics_out_of": "{count} में से",
-  "@statistics_out_of": {"placeholders": {"count": {"type": "int"}}},
+  "@statistics_out_of": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "statistics_progress": "प्रगति",
   "statistics_on_track": "सही रास्ते पर!",
   "statistics_keep_going": "जारी रखें!",
@@ -278,7 +259,6 @@
   "statistics_completed": "पूर्ण",
   "statistics_next_goal": "अगला लक्ष्य",
   "statistics_days": "दिन",
-
   "achievements_title": "उपलब्धियां",
   "achievements_unlocked": "अनलॉक",
   "achievements_locked": "लॉक",
@@ -292,7 +272,6 @@
       }
     }
   },
-
   "achievement_first_drop": "पहली बूंद",
   "achievement_first_drop_desc": "अपना पहला पानी का सेवन दर्ज करें",
   "achievement_daily_goal_1": "लक्ष्य प्राप्तकर्ता",
@@ -309,7 +288,6 @@
   "achievement_total_100l_desc": "कुल 100 लीटर पिएं",
   "achievement_consistency": "निरंतरता सप्ताह",
   "achievement_consistency_desc": "लगातार 7 दिन लक्ष्य प्राप्त करें",
-
   "reminders_title": "रिमाइंडर",
   "reminders_active": "सक्रिय रिमाइंडर",
   "reminders_pending": "लंबित नोटिफिकेशन",
@@ -319,10 +297,12 @@
   "reminders_interval_90": "हर 1.5 घंटे",
   "reminders_interval_120": "हर 2 घंटे",
   "reminders_interval_180": "हर 3 घंटे",
-
+  "reminders_premium_custom_title": "प्रीमियम: कस्टम रिमाइंडर",
+  "reminders_custom_description": "अपने समय पर असीमित रिमाइंडर जोड़ें",
+  "reminders_custom_add_button": "कस्टम समय जोड़ें",
+  "reminders_custom_added": "कस्टम रिमाइंडर जोड़ा गया: {time}",
   "notification_reminder_title": "पानी पीने का समय!",
   "notification_reminder_body": "हाइड्रेटेड रहें! अभी कुछ पानी पिएं।",
-
   "streak_current": "वर्तमान स्ट्रीक",
   "streak_days": "{days} दिन",
   "@streak_days": {
@@ -343,7 +323,6 @@
   "streak_error": "स्ट्रीक डेटा लोड करने में विफल",
   "streak_day_singular": "दिन",
   "streak_day_plural": "दिन",
-
   "onboarding_title_1": "अपना पानी ट्रैक करें",
   "onboarding_desc_1": "एक टैप से आसानी से अपने दैनिक पानी के सेवन को दर्ज करें",
   "onboarding_title_2": "स्मार्ट रिमाइंडर",
@@ -353,7 +332,6 @@
   "onboarding_title_4": "स्वस्थ रहें",
   "onboarding_desc_4": "स्वस्थ आदतें बनाएं और समग्र स्वास्थ्य में सुधार करें",
   "onboarding_get_started": "शुरू करें",
-
   "drawer_home": "होम",
   "drawer_statistics": "आंकड़े",
   "drawer_achievements": "उपलब्धियां",
@@ -363,13 +341,11 @@
   "drawer_help": "सहायता",
   "drawer_about": "ऐप के बारे में",
   "drawer_logout": "लॉग आउट",
-
   "about_title": "Aqualert",
   "about_version": "संस्करण 1.0.0",
   "about_description": "Aqualert के साथ हाइड्रेटेड और स्वस्थ रहें। अपने दैनिक पानी के सेवन को ट्रैक करें और लक्ष्य प्राप्त करें!",
   "about_copyright": "© 2024 Aqualert. सर्वाधिकार सुरक्षित।",
   "about_close": "बंद करें",
-
   "help_title": "सहायता",
   "help_subtitle": "मदद प्राप्त करें",
   "help_faq": "अक्सर पूछे जाने वाले प्रश्न",
@@ -377,58 +353,42 @@
   "help_version": "संस्करण",
   "help_app_info": "ऐप जानकारी",
   "help_coming_soon": "सहायता - जल्द आ रहा है!",
-
   "help_faq_section": "FAQ",
   "help_features_section": "फीचर गाइड",
   "help_about_section": "बारे में",
-
   "faq_1_q": "मेरा दैनिक पानी का लक्ष्य कैसे गणना किया जाता है?",
   "faq_1_a": "आपका दैनिक पानी का लक्ष्य वजन, ऊंचाई, उम्र, लिंग और गतिविधि स्तर के आधार पर वैज्ञानिक सूत्रों का उपयोग करके गणना किया जाता है। आप प्रोफाइल सेटिंग्स में कस्टम लक्ष्य भी सेट कर सकते हैं।",
-
   "faq_2_q": "रिमाइंडर कैसे काम करते हैं?",
   "faq_2_a": "आप रिमाइंडर अंतराल (30-180 मिनट) और शुरुआत/समाप्ति समय सेट कर सकते हैं। ऐप इस अवधि के दौरान नोटिफिकेशन भेजेगा।",
-
   "faq_3_q": "स्ट्रीक क्या हैं और कैसे काम करती हैं?",
   "faq_3_a": "स्ट्रीक लगातार दिनों को ट्रैक करती हैं जब आपने दैनिक लक्ष्य प्राप्त किया। स्ट्रीक बनाए रखने के लिए रोज़ पानी पिएं!",
-
   "faq_4_q": "मैं माप इकाइयां कैसे बदल सकता हूं?",
   "faq_4_a": "सेटिंग्स → इकाइयां पर जाएं और मिलीलीटर (ml) और फ्लुइड आउंस (fl oz) के बीच स्विच करें। सभी माप स्वचालित रूप से अपडेट होंगे।",
-
   "faq_5_q": "क्या मैं अपना डेटा निर्यात कर सकता हूं?",
   "faq_5_a": "हाँ! सेटिंग्स → डेटा प्रबंधन → डेटा निर्यात करें पर जाएं। आप अपना डेटा JSON फाइल के रूप में शेयर या सेव कर सकते हैं।",
-
   "faq_6_q": "उपलब्धियां कैसे काम करती हैं?",
   "faq_6_a": "पानी ट्रैकिंग माइलस्टोन पूरे करें उपलब्धियां अनलॉक करने और रिवॉर्ड पॉइंट्स कमाने के लिए। उपलब्धियां स्क्रीन पर प्रगति देखें।",
-
   "feature_tracking_title": "पानी ट्रैकिंग",
   "feature_tracking_desc": "क्विक-एड बटन (250ml, 350ml, 500ml, 750ml) या कस्टम मात्रा से आसानी से दैनिक पानी सेवन दर्ज करें।",
-
   "feature_reminders_title": "स्मार्ट रिमाइंडर",
   "feature_reminders_desc": "कस्टमाइज़ेबल रिमाइंडर अंतराल और सक्रिय घंटे सेट करें। दिन भर पानी पीना न भूलें।",
-
   "feature_statistics_title": "आंकड़े और इनसाइट्स",
   "feature_statistics_desc": "साप्ताहिक, मासिक और वार्षिक चार्ट के साथ पानी सेवन के रुझान देखें। समय के साथ प्रगति ट्रैक करें।",
-
   "feature_achievements_title": "उपलब्धियां और स्ट्रीक",
   "feature_achievements_desc": "पानी के लक्ष्य प्राप्त करके उपलब्धियां कमाएं और दैनिक स्ट्रीक बनाए रखें। गेमिफिकेशन से प्रेरित रहें!",
-
   "feature_profile_title": "प्रोफाइल और लक्ष्य",
   "feature_profile_desc": "अपनी व्यक्तिगत जानकारी सेट करें और ऐप को अपने शारीरिक माप के आधार पर इष्टतम दैनिक पानी लक्ष्य की गणना करने दें।",
-
   "help_contact_email": "ईमेल से संपर्क करें",
   "help_contact_email_address": "dilaraacikgoz.dev@gmail.com",
   "help_rate_app": "ऐप रेट करें",
   "help_rate_desc": "Aqualert पसंद है? हमें रिव्यू दें!",
-
   "help_build_number": "बिल्ड",
   "help_copyright": "© 2024 Aqualert. सर्वाधिकार सुरक्षित।",
   "help_made_with": "आपके स्वास्थ्य के लिए ❤️ से बनाया गया",
-
   "error_generic": "कुछ गलत हो गया। कृपया पुनः प्रयास करें।",
   "error_network": "नेटवर्क त्रुटि। कृपया अपना कनेक्शन जांचें।",
   "error_auth_failed": "प्रमाणीकरण विफल। कृपया पुनः प्रयास करें।",
   "error_permission_denied": "अनुमति अस्वीकृत।",
-
   "unit_ml": "ml",
   "unit_floz": "fl oz",
   "unit_kg": "kg",
@@ -436,16 +396,13 @@
   "unit_cm": "cm",
   "unit_ft": "ft",
   "unit_liter": "L",
-
   "time_morning": "सुबह",
   "time_afternoon": "दोपहर",
   "time_evening": "शाम",
   "time_night": "रात",
-
   "help_privacy_policy": "गोपनीयता नीति",
   "help_privacy_policy_desc": "गोपनीयता नीति देखें",
   "help_privacy_policy_error": "गोपनीयता नीति खोलने में असमर्थ",
-
   "settings_delete_account": "खाता हटाएं",
   "settings_delete_account_subtitle": "अपना खाता और सारा डेटा स्थायी रूप से हटाएं",
   "settings_delete_account_dialog_title": "खाता हटाएं?",
@@ -454,5 +411,26 @@
   "settings_delete_account_cancel": "रद्द करें",
   "settings_delete_account_success": "खाता सफलतापूर्वक हटाया गया",
   "settings_delete_account_error": "खाता हटाने में विफल",
-  "settings_delete_account_reauth_required": "अपना खाता हटाने के लिए कृपया फिर से साइन इन करें"
+  "settings_delete_account_reauth_required": "अपना खाता हटाने के लिए कृपया फिर से साइन इन करें",
+  "privacy_last_updated": "अंतिम अपडेट: 2 दिसंबर 2025",
+  "privacy_intro_title": "परिचय",
+  "privacy_intro_content": "Aqualert में आपका स्वागत है। हम आपकी गोपनीयता का सम्मान करते हैं और आपके व्यक्तिगत डेटा की सुरक्षा के लिए प्रतिबद्ध हैं। यह गोपनीयता नीति बताती है कि हम हमारे मोबाइल ऐप का उपयोग करते समय आपकी जानकारी कैसे एकत्र, उपयोग और सुरक्षित करते हैं।",
+  "privacy_collect_title": "हम जो जानकारी एकत्र करते हैं",
+  "privacy_collect_content": "• ईमेल पता — खाता बनाने और प्रमाणीकरण के लिए\n• प्रदर्शन नाम — वैकल्पिक, व्यक्तिगतकरण के लिए\n• प्रोफ़ाइल जानकारी — आयु, वजन, ऊंचाई, लिंग, गतिविधि स्तर\n• पानी सेवन रिकॉर्ड — उपभोग की मात्रा और टाइमस्टैंप\n• ऐप उपयोग सांख्यिकी — Firebase Analytics के माध्यम से\n• डिवाइस जानकारी — डिवाइस प्रकार, OS संस्करण, अद्वितीय पहचानकर्ता",
+  "privacy_use_title": "हम आपकी जानकारी का उपयोग कैसे करते हैं",
+  "privacy_use_content": "• व्यक्तिगत दैनिक जल सेवन लक्ष्य की गणना करना\n• आपके पानी की खपत इतिहास को ट्रैक और प्रदर्शित करना\n• आपकी जलयोजन आदतों के बारे में आंकड़े और अंतर्दृष्टि प्रदान करना\n• रिमाइंडर नोटिफिकेशन भेजना\n• आपके डेटा को डिवाइस के पार सिंक करना\n• ऐप प्रदर्शन और उपयोगकर्ता अनुभव में सुधार करना",
+  "privacy_storage_title": "डेटा संग्रहण और सुरक्षा",
+  "privacy_storage_content": "आपका डेटा Firebase Authentication और Cloud Firestore (Google Cloud सर्वर) का उपयोग करके संग्रहीत किया जाता है। आपके डिवाइस और हमारे सर्वर के बीच प्रेषित डेटा SSL/TLS का उपयोग करके एन्क्रिप्ट किया जाता है। उपयोगकर्ता डेटा केवल Firebase Security Rules के माध्यम से प्रमाणित उपयोगकर्ता द्वारा ही पहुंच योग्य है।",
+  "privacy_third_party_title": "तृतीय-पक्ष सेवाएं",
+  "privacy_third_party_content": "• Google Firebase — प्रमाणीकरण, डेटाबेस, विश्लेषण, पुश नोटिफिकेशन\n• Google Sign-In — OAuth प्रमाणीकरण\n• Firebase Analytics — ऐप उपयोग विश्लेषण\n\nहम तृतीय पक्षों को आपकी व्यक्तिगत जानकारी नहीं बेचते, व्यापार नहीं करते या किराए पर नहीं देते।",
+  "privacy_rights_title": "आपके अधिकार",
+  "privacy_rights_content": "• प्रोफ़ाइल और सेटिंग्स के माध्यम से अपनी व्यक्तिगत जानकारी तक पहुंचें और अपडेट करें\n• JSON प्रारूप में अपना डेटा (पानी रिकॉर्ड, उपलब्धियां, सेटिंग्स) निर्यात करें\n• अपने खाते और सभी संबद्ध डेटा को हटाने का अनुरोध करें\n• नोटिफिकेशन प्राथमिकताएं नियंत्रित करें\n\nडेटा हटाने के लिए, हमसे संपर्क करें: dilaraacikgoz.dev@gmail.com\nहटाने के बाद, सभी व्यक्तिगत डेटा 30 दिनों के भीतर हमारे सर्वर से हटा दिए जाएंगे।",
+  "privacy_children_title": "बच्चों की गोपनीयता",
+  "privacy_children_content": "Aqualert 13 वर्ष से कम आयु के बच्चों के लिए नहीं है। हम जानबूझकर 13 वर्ष से कम आयु के बच्चों से व्यक्तिगत जानकारी एकत्र नहीं करते।",
+  "privacy_gdpr_title": "GDPR अधिकार (EU/EEA उपयोगकर्ता)",
+  "privacy_gdpr_content": "• अपने व्यक्तिगत डेटा तक पहुंच का अधिकार\n• गलत डेटा के सुधार का अधिकार\n• मिटाने का अधिकार (\"भुला दिए जाने का अधिकार\")\n• प्रोसेसिंग को प्रतिबंधित करने का अधिकार\n• डेटा पोर्टेबिलिटी का अधिकार\n• प्रोसेसिंग पर आपत्ति का अधिकार",
+  "privacy_kvkk_title": "KVKK अधिकार (तुर्की)",
+  "privacy_kvkk_content": "• जानें कि आपका व्यक्तिगत डेटा संसाधित हो रहा है या नहीं\n• यदि संसाधित हो तो जानकारी का अनुरोध करें\n• प्रसंस्करण का उद्देश्य जानें\n• वे तृतीय पक्ष जानें जिन्हें डेटा स्थानांतरित किया जाता है\n• अधूरे या गलत डेटा के सुधार का अनुरोध करें\n• डेटा के विलोपन या विनाश का अनुरोध करें",
+  "privacy_contact_title": "संपर्क करें",
+  "privacy_contact_content": "यदि आपके पास इस गोपनीयता नीति के बारे में कोई प्रश्न है:\n\nईमेल: dilaraacikgoz.dev@gmail.com\nप्रतिक्रिया समय: हम 48 घंटों के भीतर प्रतिक्रिया देने का प्रयास करते हैं।"
 }

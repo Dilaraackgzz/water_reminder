@@ -1,9 +1,7 @@
 {
   "@@locale": "ja",
-
   "appName": "Aqualert",
   "appTagline": "健康的な生活のために水分補給を",
-
   "common_cancel": "キャンセル",
   "common_save": "保存",
   "common_delete": "削除",
@@ -21,7 +19,6 @@
   "common_loading": "読み込み中...",
   "common_error": "エラー",
   "common_success": "成功",
-
   "auth_login_title": "サインイン",
   "auth_register_title": "サインアップ",
   "auth_email_label": "メールアドレス",
@@ -38,14 +35,12 @@
   "auth_sign_in_google": "Googleでサインイン",
   "auth_sign_up_google": "Googleでサインアップ",
   "auth_logout": "ログアウト",
-
   "auth_validation_email_required": "メールアドレスを入力してください",
   "auth_validation_email_invalid": "有効なメールアドレスを入力してください",
   "auth_validation_password_required": "パスワードを入力してください",
   "auth_validation_password_min_length": "パスワードは6文字以上必要です",
   "auth_validation_name_required": "名前を入力してください",
   "auth_validation_name_min_length": "名前は2文字以上必要です",
-
   "auth_email_verification_title": "メール確認",
   "auth_email_verification_sent": "確認リンクを送信しました：",
   "auth_email_verification_instruction": "メールを確認し、確認リンクをクリックしてください。",
@@ -54,13 +49,11 @@
   "auth_email_verification_check": "メールを確認しました",
   "auth_email_verification_success": "メールが確認されました！",
   "auth_email_verification_failed": "メールはまだ確認されていません。受信箱を確認してください。",
-
   "auth_forgot_password_title": "パスワードリセット",
   "auth_forgot_password_instruction": "メールアドレスを入力すると、パスワードリセットリンクを送信します。",
   "auth_forgot_password_button": "リセットリンクを送信",
   "auth_forgot_password_success": "パスワードリセットメールを送信しました！",
   "auth_back_to_login": "サインインに戻る",
-
   "home_title": "ホーム",
   "home_daily_goal": "1日の目標",
   "home_today": "今日",
@@ -72,7 +65,6 @@
   "home_delete_water_success": "記録を削除しました",
   "home_no_records_today": "今日の記録はありません",
   "home_start_drinking": "水を飲み始めましょう！",
-
   "progress_current": "現在",
   "progress_goal": "目標",
   "progress_remaining": "残り",
@@ -85,43 +77,36 @@
       }
     }
   },
-
   "motivational_keep_going": "頑張って！素晴らしいです！",
   "motivational_almost_there": "もう少し！頑張って！",
   "motivational_goal_reached": "おめでとうございます！目標達成！",
   "motivational_good_start": "良いスタート！続けましょう！",
   "motivational_stay_hydrated": "一日中水分補給を！",
-
   "motivational_100_1": "おめでとうございます！目標達成！",
   "motivational_100_2": "素晴らしい！明日も頑張りましょう！",
   "motivational_100_3": "水分補給のチャンピオンです！",
   "motivational_100_4": "完璧！良い習慣を続けましょう！",
   "motivational_100_short": "目標達成！",
-
   "motivational_75_1": "もう少し！頑張って！",
   "motivational_75_2": "素晴らしい！続けましょう！",
   "motivational_75_3": "目標まであと少し！",
   "motivational_75_4": "素晴らしい進捗！止まらないで！",
   "motivational_75_short": "もう少し！",
-
   "motivational_50_1": "半分達成！素晴らしい！",
   "motivational_50_2": "良い調子！続けましょう！",
   "motivational_50_3": "順調です！",
   "motivational_50_4": "良い進捗！一貫性を保ちましょう！",
   "motivational_50_short": "半分！",
-
   "motivational_25_1": "良いスタート！水を飲み続けましょう！",
   "motivational_25_2": "素晴らしいスタート！",
   "motivational_25_3": "良い始まり！水分補給を！",
   "motivational_25_4": "続けましょう！一口一口が大切！",
   "motivational_25_short": "良いスタート！",
-
   "motivational_0_1": "水分補給の時間！体が喜びます！",
   "motivational_0_2": "水分補給の旅を始めましょう！",
   "motivational_0_3": "水で一日を始めましょう！",
   "motivational_0_4": "健康が大切！飲み始めましょう！",
   "motivational_0_short": "始めましょう！",
-
   "profile_title": "プロフィール",
   "profile_edit": "編集",
   "profile_personal_info": "個人情報",
@@ -141,11 +126,9 @@
   "profile_save_success": "プロフィールを更新しました",
   "profile_save_failed": "プロフィールの更新に失敗しました",
   "profile_user_default": "ユーザー",
-
   "gender_male": "男性",
   "gender_female": "女性",
   "gender_other": "その他",
-
   "activity_sedentary": "座りがち",
   "activity_sedentary_desc": "運動なしまたはほとんどなし",
   "activity_light": "軽い運動",
@@ -156,12 +139,10 @@
   "activity_very_active_desc": "週6-7日の激しい運動",
   "activity_extra_active": "非常に活発",
   "activity_extra_active_desc": "非常に激しい運動と肉体労働",
-
   "bmi_underweight": "低体重",
   "bmi_normal": "標準体重",
   "bmi_overweight": "過体重",
   "bmi_obese": "肥満",
-
   "settings_title": "設定",
   "settings_notifications": "通知",
   "settings_reminders": "リマインダー",
@@ -175,22 +156,18 @@
   "settings_import_data": "データをインポート",
   "settings_help": "ヘルプ",
   "settings_about": "アプリについて",
-
   "settings_enable_notifications": "通知を有効にする",
   "settings_reminder_interval": "リマインダー間隔",
   "settings_reminder_start_time": "開始時間",
   "settings_reminder_end_time": "終了時間",
   "settings_test_notification": "通知テスト",
-
   "settings_theme_light": "ライト",
   "settings_theme_dark": "ダーク",
   "settings_theme_system": "システム設定",
-
   "settings_unit_ml": "ミリリットル (ml)",
   "settings_unit_floz": "液量オンス (fl oz)",
   "settings_unit_metric": "メートル法",
   "settings_unit_imperial": "ヤード・ポンド法",
-
   "settings_subtitle": "アプリをカスタマイズ",
   "settings_reminders_active": "リマインダーが有効です",
   "settings_reminders_inactive": "リマインダーを有効にする",
@@ -232,7 +209,6 @@
     }
   },
   "settings_reminder_interval_title": "リマインダー間隔",
-
   "settings_language_coming_soon": "近日公開",
   "settings_export_success": "データをエクスポートしました",
   "settings_export_failed": "エクスポートに失敗しました",
@@ -249,7 +225,6 @@
       }
     }
   },
-
   "statistics_title": "統計",
   "statistics_weekly": "週間",
   "statistics_monthly": "月間",
@@ -265,7 +240,13 @@
   "statistics_daily_average": "日平均",
   "statistics_goals_met": "達成した目標",
   "statistics_out_of": "{count}日中",
-  "@statistics_out_of": {"placeholders": {"count": {"type": "int"}}},
+  "@statistics_out_of": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "statistics_progress": "進捗",
   "statistics_on_track": "順調です！",
   "statistics_keep_going": "頑張って！",
@@ -278,7 +259,6 @@
   "statistics_completed": "完了",
   "statistics_next_goal": "次の目標",
   "statistics_days": "日",
-
   "achievements_title": "実績",
   "achievements_unlocked": "解除済み",
   "achievements_locked": "未解除",
@@ -292,7 +272,6 @@
       }
     }
   },
-
   "achievement_first_drop": "最初の一滴",
   "achievement_first_drop_desc": "初めての水分記録",
   "achievement_daily_goal_1": "目標達成者",
@@ -309,7 +288,6 @@
   "achievement_total_100l_desc": "合計100リットル達成",
   "achievement_consistency": "一貫性の週",
   "achievement_consistency_desc": "7日連続で目標達成",
-
   "reminders_title": "リマインダー",
   "reminders_active": "有効なリマインダー",
   "reminders_pending": "保留中の通知",
@@ -319,10 +297,12 @@
   "reminders_interval_90": "1.5時間ごと",
   "reminders_interval_120": "2時間ごと",
   "reminders_interval_180": "3時間ごと",
-
+  "reminders_premium_custom_title": "プレミアム：カスタムリマインダー",
+  "reminders_custom_description": "カスタム時間に無制限のリマインダーを追加",
+  "reminders_custom_add_button": "カスタム時間を追加",
+  "reminders_custom_added": "カスタムリマインダーを追加しました: {time}",
   "notification_reminder_title": "水を飲む時間です！",
   "notification_reminder_body": "水分補給を忘れずに！",
-
   "streak_current": "現在の連続",
   "streak_days": "{days}日",
   "@streak_days": {
@@ -343,7 +323,6 @@
   "streak_error": "データの読み込みに失敗しました",
   "streak_day_singular": "日",
   "streak_day_plural": "日",
-
   "onboarding_title_1": "水分を記録",
   "onboarding_desc_1": "タップするだけで簡単に水分摂取を記録",
   "onboarding_title_2": "スマートリマインダー",
@@ -353,7 +332,6 @@
   "onboarding_title_4": "健康を維持",
   "onboarding_desc_4": "健康的な習慣を身につけよう",
   "onboarding_get_started": "始める",
-
   "drawer_home": "ホーム",
   "drawer_statistics": "統計",
   "drawer_achievements": "実績",
@@ -363,13 +341,11 @@
   "drawer_help": "ヘルプ",
   "drawer_about": "アプリについて",
   "drawer_logout": "ログアウト",
-
   "about_title": "Aqualert",
   "about_version": "バージョン 1.0.0",
   "about_description": "Aqualertで水分補給を管理。毎日の水分摂取を記録して目標を達成しましょう！",
   "about_copyright": "© 2024 Aqualert. All rights reserved.",
   "about_close": "閉じる",
-
   "help_title": "ヘルプ",
   "help_subtitle": "サポートを受ける",
   "help_faq": "よくある質問",
@@ -377,58 +353,42 @@
   "help_version": "バージョン",
   "help_app_info": "アプリ情報",
   "help_coming_soon": "ヘルプ - 近日公開！",
-
   "help_faq_section": "FAQ",
   "help_features_section": "機能ガイド",
   "help_about_section": "アプリについて",
-
   "faq_1_q": "1日の水分目標はどのように計算されますか？",
   "faq_1_a": "体重、身長、年齢、性別、活動レベルに基づいて科学的な計算式で算出されます。プロフィール設定でカスタム目標も設定できます。",
-
   "faq_2_q": "リマインダーはどのように機能しますか？",
   "faq_2_a": "リマインダー間隔（30〜180分）と開始/終了時間を設定できます。この期間中にアプリが通知を送信します。",
-
   "faq_3_q": "連続とは何ですか？",
   "faq_3_a": "連続は、毎日の目標を達成した連続日数を追跡します。毎日水を飲んで連続を増やしましょう！",
-
   "faq_4_q": "単位を変更するには？",
   "faq_4_a": "設定→単位でミリリットル（ml）と液量オンス（fl oz）を切り替えられます。すべての測定値が自動的に更新されます。",
-
   "faq_5_q": "データをエクスポートできますか？",
   "faq_5_a": "はい！設定→データ管理→データをエクスポートでJSONファイルとして保存し、後でインポートできます。",
-
   "faq_6_q": "実績はどのように機能しますか？",
   "faq_6_a": "水分記録のマイルストーンを達成すると実績が解除され、報酬ポイントを獲得できます。実績画面で進捗を確認できます。",
-
   "feature_tracking_title": "水分記録",
   "feature_tracking_desc": "クイック追加ボタン（250ml、350ml、500ml、750ml）またはカスタム量で簡単に水分摂取を記録できます。",
-
   "feature_reminders_title": "スマートリマインダー",
   "feature_reminders_desc": "リマインダー間隔と有効時間を設定。一日中水分補給を忘れません。",
-
   "feature_statistics_title": "統計と分析",
   "feature_statistics_desc": "週間、月間、年間のチャートで水分摂取のトレンドを確認できます。",
-
   "feature_achievements_title": "実績と連続",
   "feature_achievements_desc": "目標を達成して実績を獲得し、連続を維持しましょう。ゲーミフィケーションでモチベーションアップ！",
-
   "feature_profile_title": "プロフィールと目標",
   "feature_profile_desc": "個人情報を設定すると、アプリが最適な1日の水分目標を計算します。",
-
   "help_contact_email": "メールで連絡",
   "help_contact_email_address": "dilaraacikgoz.dev@gmail.com",
   "help_rate_app": "アプリを評価",
   "help_rate_desc": "Aqualertを気に入りましたか？レビューをお願いします！",
-
   "help_build_number": "ビルド",
   "help_copyright": "© 2024 Aqualert. All rights reserved.",
   "help_made_with": "あなたの健康のために❤️で作られました",
-
   "error_generic": "エラーが発生しました。もう一度お試しください。",
   "error_network": "ネットワークエラー。接続を確認してください。",
   "error_auth_failed": "認証に失敗しました。もう一度お試しください。",
   "error_permission_denied": "権限が拒否されました。",
-
   "unit_ml": "ml",
   "unit_floz": "fl oz",
   "unit_kg": "kg",
@@ -436,16 +396,13 @@
   "unit_cm": "cm",
   "unit_ft": "ft",
   "unit_liter": "L",
-
   "time_morning": "朝",
   "time_afternoon": "午後",
   "time_evening": "夕方",
   "time_night": "夜",
-
   "help_privacy_policy": "プライバシーポリシー",
   "help_privacy_policy_desc": "プライバシーポリシーを表示",
   "help_privacy_policy_error": "プライバシーポリシーを開けませんでした",
-
   "settings_delete_account": "アカウントを削除",
   "settings_delete_account_subtitle": "アカウントとすべてのデータを完全に削除",
   "settings_delete_account_dialog_title": "アカウントを削除しますか？",
@@ -454,5 +411,26 @@
   "settings_delete_account_cancel": "キャンセル",
   "settings_delete_account_success": "アカウントが正常に削除されました",
   "settings_delete_account_error": "アカウントの削除に失敗しました",
-  "settings_delete_account_reauth_required": "アカウントを削除するには再度サインインしてください"
+  "settings_delete_account_reauth_required": "アカウントを削除するには再度サインインしてください",
+  "privacy_last_updated": "最終更新日：2025年12月2日",
+  "privacy_intro_title": "はじめに",
+  "privacy_intro_content": "Aqualertへようこそ。私たちはあなたのプライバシーを尊重し、個人データの保護に努めています。このプライバシーポリシーは、当社のモバイルアプリを使用する際に、情報をどのように収集、使用、保護するかを説明しています。",
+  "privacy_collect_title": "収集する情報",
+  "privacy_collect_content": "• メールアドレス — アカウント作成と認証のため\n• 表示名 — オプション、パーソナライゼーションのため\n• プロフィール情報 — 年齢、体重、身長、性別、活動レベル\n• 水分摂取記録 — 摂取量とタイムスタンプ\n• アプリ使用統計 — Firebase Analytics経由\n• デバイス情報 — デバイスの種類、OSバージョン、固有識別子",
+  "privacy_use_title": "情報の利用方法",
+  "privacy_use_content": "• パーソナライズされた日々の水分摂取目標の計算\n• 水分消費履歴の追跡と表示\n• 水分補給習慣に関する統計と洞察の提供\n• リマインダー通知の送信\n• デバイス間でのデータ同期\n• アプリのパフォーマンスとユーザー体験の向上",
+  "privacy_storage_title": "データの保存とセキュリティ",
+  "privacy_storage_content": "お客様のデータはFirebase AuthenticationとCloud Firestore（Google Cloudサーバー）を使用して保存されます。デバイスとサーバー間で送信されるデータはSSL/TLSで暗号化されています。ユーザーデータはFirebaseセキュリティルールを通じて認証済みユーザーのみがアクセスできます。",
+  "privacy_third_party_title": "サードパーティサービス",
+  "privacy_third_party_content": "• Google Firebase — 認証、データベース、分析、プッシュ通知\n• Google Sign-In — OAuth認証\n• Firebase Analytics — アプリ使用状況分析\n\n個人情報を第三者に販売、取引、賃貸しません。",
+  "privacy_rights_title": "お客様の権利",
+  "privacy_rights_content": "• プロフィールと設定から個人情報にアクセスして更新する\n• データ（水分記録、実績、設定）をJSON形式でエクスポートする\n• アカウントと関連データすべての削除をリクエストする\n• 通知設定を管理する\n\nデータ削除については、ご連絡ください：dilaraacikgoz.dev@gmail.com\n削除後、30日以内にすべての個人データがサーバーから削除されます。",
+  "privacy_children_title": "子供のプライバシー",
+  "privacy_children_content": "Aqualertは13歳未満の子供を対象としていません。13歳未満の子供から意図的に個人情報を収集することはありません。",
+  "privacy_gdpr_title": "GDPR権利（EU/EEA ユーザー）",
+  "privacy_gdpr_content": "• 個人データへのアクセス権\n• 不正確なデータの訂正権\n• 削除権（「忘れられる権利」）\n• 処理制限権\n• データポータビリティ権\n• 処理への異議申し立て権",
+  "privacy_kvkk_title": "KVKK権利（トルコ）",
+  "privacy_kvkk_content": "• 個人データが処理されているかどうかを知る\n• 処理されている場合は情報を要求する\n• 処理の目的を知る\n• データが転送される第三者を知る\n• 不完全または不正確なデータの訂正を要求する\n• データの削除または破棄を要求する",
+  "privacy_contact_title": "お問い合わせ",
+  "privacy_contact_content": "このプライバシーポリシーについてご質問がある場合：\n\nメール：dilaraacikgoz.dev@gmail.com\n返信時間：48時間以内に返答するよう努めています。"
 }

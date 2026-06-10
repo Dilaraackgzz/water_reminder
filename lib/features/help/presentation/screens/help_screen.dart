@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -284,44 +285,8 @@ class _HelpScreenState extends State<HelpScreen> {
     }
   }
 
-  Future<void> _launchPrivacyPolicy(AppLocalizations l10n) async {
-    // Privacy Policy URL - GitHub repository
-    final Uri privacyPolicyUri = Uri.parse(
-      'https://github.com/dilaraacikgoz/water_reminder/blob/main/PRIVACY_POLICY.md',
-    );
-
-    try {
-      if (await canLaunchUrl(privacyPolicyUri)) {
-        await launchUrl(
-          privacyPolicyUri,
-          mode: LaunchMode.externalApplication,
-        );
-      } else {
-        if (mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(
-                l10n.help_privacy_policy_error,
-                style: GoogleFonts.poppins(),
-              ),
-              backgroundColor: Colors.red,
-            ),
-          );
-        }
-      }
-    } catch (e) {
-      if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(
-              l10n.help_privacy_policy_error,
-              style: GoogleFonts.poppins(),
-            ),
-            backgroundColor: Colors.red,
-          ),
-        );
-      }
-    }
+  void _launchPrivacyPolicy(AppLocalizations l10n) {
+    context.push('/privacy-policy');
   }
 
   void _showRateAppDialog(AppLocalizations l10n, bool isDark) {

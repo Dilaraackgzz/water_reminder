@@ -921,6 +921,20 @@ class AppLocalizationsJa extends AppLocalizations {
   String get reminders_schedule_info => 'Current Schedule';
 
   @override
+  String get reminders_premium_custom_title => 'プレミアム：カスタムリマインダー';
+
+  @override
+  String get reminders_custom_description => 'カスタム時間に無制限のリマインダーを追加';
+
+  @override
+  String get reminders_custom_add_button => 'カスタム時間を追加';
+
+  @override
+  String reminders_custom_added(String time) {
+    return 'カスタムリマインダーを追加しました: $time';
+  }
+
+  @override
   String get notification_reminder_title => '水を飲む時間です！';
 
   @override
@@ -1311,4 +1325,77 @@ class AppLocalizationsJa extends AppLocalizations {
   @override
   String get settings_premium_restore_subtitle =>
       'Already purchased? Tap to restore';
+
+  @override
+  String get privacy_last_updated => '最終更新日：2025年12月2日';
+
+  @override
+  String get privacy_intro_title => 'はじめに';
+
+  @override
+  String get privacy_intro_content =>
+      'Aqualertへようこそ。私たちはあなたのプライバシーを尊重し、個人データの保護に努めています。このプライバシーポリシーは、当社のモバイルアプリを使用する際に、情報をどのように収集、使用、保護するかを説明しています。';
+
+  @override
+  String get privacy_collect_title => '収集する情報';
+
+  @override
+  String get privacy_collect_content =>
+      '• メールアドレス — アカウント作成と認証のため\n• 表示名 — オプション、パーソナライゼーションのため\n• プロフィール情報 — 年齢、体重、身長、性別、活動レベル\n• 水分摂取記録 — 摂取量とタイムスタンプ\n• アプリ使用統計 — Firebase Analytics経由\n• デバイス情報 — デバイスの種類、OSバージョン、固有識別子';
+
+  @override
+  String get privacy_use_title => '情報の利用方法';
+
+  @override
+  String get privacy_use_content =>
+      '• パーソナライズされた日々の水分摂取目標の計算\n• 水分消費履歴の追跡と表示\n• 水分補給習慣に関する統計と洞察の提供\n• リマインダー通知の送信\n• デバイス間でのデータ同期\n• アプリのパフォーマンスとユーザー体験の向上';
+
+  @override
+  String get privacy_storage_title => 'データの保存とセキュリティ';
+
+  @override
+  String get privacy_storage_content =>
+      'お客様のデータはFirebase AuthenticationとCloud Firestore（Google Cloudサーバー）を使用して保存されます。デバイスとサーバー間で送信されるデータはSSL/TLSで暗号化されています。ユーザーデータはFirebaseセキュリティルールを通じて認証済みユーザーのみがアクセスできます。';
+
+  @override
+  String get privacy_third_party_title => 'サードパーティサービス';
+
+  @override
+  String get privacy_third_party_content =>
+      '• Google Firebase — 認証、データベース、分析、プッシュ通知\n• Google Sign-In — OAuth認証\n• Firebase Analytics — アプリ使用状況分析\n\n個人情報を第三者に販売、取引、賃貸しません。';
+
+  @override
+  String get privacy_rights_title => 'お客様の権利';
+
+  @override
+  String get privacy_rights_content =>
+      '• プロフィールと設定から個人情報にアクセスして更新する\n• データ（水分記録、実績、設定）をJSON形式でエクスポートする\n• アカウントと関連データすべての削除をリクエストする\n• 通知設定を管理する\n\nデータ削除については、ご連絡ください：dilaraacikgoz.dev@gmail.com\n削除後、30日以内にすべての個人データがサーバーから削除されます。';
+
+  @override
+  String get privacy_children_title => '子供のプライバシー';
+
+  @override
+  String get privacy_children_content =>
+      'Aqualertは13歳未満の子供を対象としていません。13歳未満の子供から意図的に個人情報を収集することはありません。';
+
+  @override
+  String get privacy_gdpr_title => 'GDPR権利（EU/EEA ユーザー）';
+
+  @override
+  String get privacy_gdpr_content =>
+      '• 個人データへのアクセス権\n• 不正確なデータの訂正権\n• 削除権（「忘れられる権利」）\n• 処理制限権\n• データポータビリティ権\n• 処理への異議申し立て権';
+
+  @override
+  String get privacy_kvkk_title => 'KVKK権利（トルコ）';
+
+  @override
+  String get privacy_kvkk_content =>
+      '• 個人データが処理されているかどうかを知る\n• 処理されている場合は情報を要求する\n• 処理の目的を知る\n• データが転送される第三者を知る\n• 不完全または不正確なデータの訂正を要求する\n• データの削除または破棄を要求する';
+
+  @override
+  String get privacy_contact_title => 'お問い合わせ';
+
+  @override
+  String get privacy_contact_content =>
+      'このプライバシーポリシーについてご質問がある場合：\n\nメール：dilaraacikgoz.dev@gmail.com\n返信時間：48時間以内に返答するよう努めています。';
 }

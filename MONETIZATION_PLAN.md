@@ -1,7 +1,7 @@
 # Aqualert - Monetizasyon Uygulama Planı
 
-**Model:** Freemium + Tek Seferlik Premium Unlock  
-**Fiyat:** $2.99 (tek seferlik) veya $0.99/ay / $4.99/yıl (opsiyonel)  
+**Model:** Freemium + Abonelik + Tek Seferlik Premium Unlock  
+**Fiyat:** $19.99 (ömür boyu) veya $0.99/ay / $7.99/yıl  
 **Paket:** RevenueCat (`purchases_flutter`)  
 **Son Güncelleme:** 4 Mayıs 2026  
 **Durum:** Aktif geliştirme
@@ -37,7 +37,7 @@ Bu model, benzer sağlık uygulamalarında (Waterllama, Hydro Coach) en yüksek 
 | Veri export (JSON) | ❌ Premium |
 | Premium temalar | ❌ Premium |
 
-### Premium — Tek seferlik $2.99
+### Premium — $0.99/ay · $7.99/yıl · $19.99 ömür boyu
 
 | Özellik | Açıklama |
 |---------|----------|
@@ -114,10 +114,11 @@ lib/
 
 #### 1.2 Google Play & App Store Ürün Tanımları
 - [ ] **Google Play Console'da:**
-  - In-app product oluştur: `aqualert_premium` (non-consumable, $2.99)
-  - Opsiyonel abonelik: `aqualert_monthly` ($0.99/ay), `aqualert_yearly` ($4.99/yıl)
+  - Abonelik oluştur: `aqualert_monthly` ($0.99/ay), `aqualert_yearly` ($7.99/yıl)
+  - Non-consumable oluştur: `aqualert_lifetime` ($19.99)
 - [ ] **App Store Connect'te:**
-  - Non-consumable IAP: `com.dlrackgz.aqualert.premium` ($2.99)
+  - Subscription: `com.dlrackgz.aqualert.monthly` ($0.99), `com.dlrackgz.aqualert.yearly` ($7.99)
+  - Non-consumable IAP: `com.dlrackgz.aqualert.lifetime` ($19.99)
 
 #### 1.3 RevenueCat'te Entitlement & Offering Tanımla
 - [ ] Entitlement oluştur: `premium`
@@ -215,8 +216,8 @@ Karar: **Blur + kilit ikonu + tıklanınca paywall** (en iyi UX)
    ✅ Gelecekteki tüm özellikler
 
    [  Aylık   $0.99/ay  ]
-   [ Yıllık  $4.99/yıl  ← En Popüler ]
-   [ Ömür boyu  $2.99   ]
+   [ Yıllık  $7.99/yıl  ← En Popüler ]
+   [ Ömür boyu  $19.99  ]
 
    [ PREMIUM'A GEÇ ]
 
@@ -373,11 +374,11 @@ Hafta 3:
 
 | Senaryo | Aylık İndirme | Dönüşüm | Aylık Gelir |
 |---------|---------------|---------|-------------|
-| Düşük | 500 | %3 | ~$45 |
-| Orta | 2.000 | %5 | ~$300 |
-| İyi | 10.000 | %7 | ~$2.100 |
+| Düşük | 500 | %3 | ~$120 |
+| Orta | 2.000 | %5 | ~$800 |
+| İyi | 10.000 | %7 | ~$5.600 |
 
-*Google Play/App Store %30 komisyon dahil değil. RevenueCat ücretsiz (ilk $2.500/ay).*
+*Ortalama sepet değeri ~$8 (yıllık + ömür boyu karışımı) baz alındı. Google Play/App Store %30 komisyon dahil değil. RevenueCat ücretsiz (ilk $2.500/ay).*
 
 ---
 

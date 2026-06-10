@@ -935,6 +935,22 @@ class AppLocalizationsNl extends AppLocalizations {
   String get reminders_schedule_info => 'Current Schedule';
 
   @override
+  String get reminders_premium_custom_title =>
+      'Premium: Aangepaste herinneringen';
+
+  @override
+  String get reminders_custom_description =>
+      'Voeg onbeperkte herinneringen toe op eigen tijden';
+
+  @override
+  String get reminders_custom_add_button => 'Aangepaste tijd toevoegen';
+
+  @override
+  String reminders_custom_added(String time) {
+    return 'Aangepaste herinnering toegevoegd: $time';
+  }
+
+  @override
   String get notification_reminder_title => 'Tijd om water te drinken!';
 
   @override
@@ -1340,4 +1356,77 @@ class AppLocalizationsNl extends AppLocalizations {
   @override
   String get settings_premium_restore_subtitle =>
       'Already purchased? Tap to restore';
+
+  @override
+  String get privacy_last_updated => 'Laatst bijgewerkt: 2 december 2025';
+
+  @override
+  String get privacy_intro_title => 'Inleiding';
+
+  @override
+  String get privacy_intro_content =>
+      'Welkom bij Aqualert. Wij respecteren uw privacy en zijn toegewijd aan het beschermen van uw persoonlijke gegevens. Dit Privacybeleid legt uit hoe wij uw informatie verzamelen, gebruiken en beschermen wanneer u onze mobiele app gebruikt.';
+
+  @override
+  String get privacy_collect_title => 'Informatie die wij verzamelen';
+
+  @override
+  String get privacy_collect_content =>
+      '• E-mailadres — voor het aanmaken van een account en authenticatie\n• Weergavenaam — optioneel, voor personalisatie\n• Profielinformatie — leeftijd, gewicht, lengte, geslacht, activiteitsniveau\n• Water inname records — hoeveelheid en tijdstempel van consumptie\n• App gebruiksstatistieken — via Firebase Analytics\n• Apparaatinformatie — apparaattype, OS-versie, unieke identificatoren';
+
+  @override
+  String get privacy_use_title => 'Hoe wij uw informatie gebruiken';
+
+  @override
+  String get privacy_use_content =>
+      '• Gepersonaliseerde dagelijkse waterdoelen berekenen\n• Uw waterconsumptiegeschiedenis bijhouden en weergeven\n• Statistieken en inzichten over uw hydratatiehabbits bieden\n• Herinneringsnotificaties sturen\n• Uw gegevens synchroniseren op alle apparaten\n• App-prestaties en gebruikerservaring verbeteren';
+
+  @override
+  String get privacy_storage_title => 'Gegevensopslag en beveiliging';
+
+  @override
+  String get privacy_storage_content =>
+      'Uw gegevens worden opgeslagen met Firebase Authentication en Cloud Firestore (Google Cloud-servers). Gegevens die worden verzonden tussen uw apparaat en onze servers zijn versleuteld met SSL/TLS. Gebruikersgegevens zijn alleen toegankelijk voor de geauthenticeerde gebruiker via Firebase-beveiligingsregels.';
+
+  @override
+  String get privacy_third_party_title => 'Diensten van derden';
+
+  @override
+  String get privacy_third_party_content =>
+      '• Google Firebase — authenticatie, database, analyses, pushmeldingen\n• Google Sign-In — OAuth-authenticatie\n• Firebase Analytics — app-gebruiksanalyses\n\nWij VERKOPEN, verhandelen of verhuren uw persoonlijke informatie NIET aan derden.';
+
+  @override
+  String get privacy_rights_title => 'Uw rechten';
+
+  @override
+  String get privacy_rights_content =>
+      '• Toegang tot en bijwerken van uw persoonlijke informatie via Profiel & Instellingen\n• Uw gegevens (waterrecords, prestaties, instellingen) exporteren in JSON-formaat\n• Verzoek tot verwijdering van uw account en alle bijbehorende gegevens\n• Meldingsvoorkeuren beheren\n\nVoor gegevensverwijdering, neem contact op: dilaraacikgoz.dev@gmail.com\nNa verwijdering worden alle persoonlijke gegevens binnen 30 dagen van onze servers verwijderd.';
+
+  @override
+  String get privacy_children_title => 'Privacy van kinderen';
+
+  @override
+  String get privacy_children_content =>
+      'Aqualert is niet bedoeld voor kinderen onder de 13 jaar. Wij verzamelen niet bewust persoonlijke informatie van kinderen onder de 13 jaar.';
+
+  @override
+  String get privacy_gdpr_title => 'AVG-rechten (EU/EER-gebruikers)';
+
+  @override
+  String get privacy_gdpr_content =>
+      '• Recht op toegang tot uw persoonlijke gegevens\n• Recht op rectificatie van onjuiste gegevens\n• Recht op verwijdering (\"recht om vergeten te worden\")\n• Recht op beperking van de verwerking\n• Recht op gegevensportabiliteit\n• Recht van bezwaar tegen verwerking';
+
+  @override
+  String get privacy_kvkk_title => 'KVKK-rechten (Turkije)';
+
+  @override
+  String get privacy_kvkk_content =>
+      '• Weten of uw persoonlijke gegevens worden verwerkt\n• Informatie opvragen als ze worden verwerkt\n• Het doel van de verwerking kennen\n• Derden kennen aan wie gegevens worden doorgegeven\n• Correctie van onvolledige of onjuiste gegevens verzoeken\n• Verwijdering of vernietiging van gegevens verzoeken';
+
+  @override
+  String get privacy_contact_title => 'Neem contact op';
+
+  @override
+  String get privacy_contact_content =>
+      'Als u vragen heeft over dit Privacybeleid:\n\nE-mail: dilaraacikgoz.dev@gmail.com\nReactietijd: Wij streven ernaar binnen 48 uur te reageren.';
 }

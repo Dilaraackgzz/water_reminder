@@ -158,7 +158,7 @@ class _RemindersScreenState extends ConsumerState<RemindersScreen> {
 
               // Premium: Custom Timed Reminders
               Text(
-                'Premium: Özel Saatli Hatırlatıcılar',
+                l10n.reminders_premium_custom_title,
                 style: GoogleFonts.poppins(
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
@@ -220,10 +220,11 @@ class _CustomRemindersCardState extends ConsumerState<_CustomRemindersCard> {
     await widget.reminderService.scheduleCustomReminder(time: scheduled);
 
     if (mounted) {
+      final l10n = AppLocalizations.of(context)!;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(
-            'Özel hatırlatıcı eklendi: ${picked.format(context)}',
+            l10n.reminders_custom_added(picked.format(context)),
           ),
           backgroundColor: Theme.of(context).colorScheme.primary,
         ),
@@ -234,6 +235,7 @@ class _CustomRemindersCardState extends ConsumerState<_CustomRemindersCard> {
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
+    final l10n = AppLocalizations.of(context)!;
 
     return Container(
       decoration: BoxDecoration(
@@ -253,7 +255,7 @@ class _CustomRemindersCardState extends ConsumerState<_CustomRemindersCard> {
               const SizedBox(width: 8),
               Expanded(
                 child: Text(
-                  'Sınırsız, kendi saatlerinle hatırlatıcı ekle',
+                  l10n.reminders_custom_description,
                   style: GoogleFonts.poppins(
                     fontSize: 13,
                     color: widget.isDark ? Colors.white70 : Colors.black54,
@@ -287,7 +289,7 @@ class _CustomRemindersCardState extends ConsumerState<_CustomRemindersCard> {
             child: OutlinedButton.icon(
               onPressed: _pickTime,
               icon: const Icon(Icons.add_alarm_rounded, size: 18),
-              label: const Text('Özel Saat Ekle'),
+              label: Text(l10n.reminders_custom_add_button),
               style: OutlinedButton.styleFrom(
                 foregroundColor: colorScheme.primary,
                 side: BorderSide(color: colorScheme.primary),

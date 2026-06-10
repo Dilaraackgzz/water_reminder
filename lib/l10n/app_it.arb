@@ -1,9 +1,7 @@
 {
   "@@locale": "it",
-
   "appName": "Aqualert",
   "appTagline": "Resta idratato per una vita sana",
-
   "common_cancel": "Annulla",
   "common_save": "Salva",
   "common_delete": "Elimina",
@@ -21,7 +19,6 @@
   "common_loading": "Caricamento...",
   "common_error": "Errore",
   "common_success": "Successo",
-
   "auth_login_title": "Accedi",
   "auth_register_title": "Registrati",
   "auth_email_label": "E-mail",
@@ -38,14 +35,12 @@
   "auth_sign_in_google": "Accedi con Google",
   "auth_sign_up_google": "Registrati con Google",
   "auth_logout": "Esci",
-
   "auth_validation_email_required": "L'e-mail è obbligatoria",
   "auth_validation_email_invalid": "Inserisci un'e-mail valida",
   "auth_validation_password_required": "La password è obbligatoria",
   "auth_validation_password_min_length": "La password deve avere almeno 6 caratteri",
   "auth_validation_name_required": "Il nome è obbligatorio",
   "auth_validation_name_min_length": "Il nome deve avere almeno 2 caratteri",
-
   "auth_email_verification_title": "Verifica la tua e-mail",
   "auth_email_verification_sent": "Abbiamo inviato un link di verifica a:",
   "auth_email_verification_instruction": "Controlla la tua e-mail e clicca sul link di verifica per continuare.",
@@ -54,13 +49,11 @@
   "auth_email_verification_check": "Ho verificato la mia e-mail",
   "auth_email_verification_success": "E-mail verificata con successo!",
   "auth_email_verification_failed": "E-mail non ancora verificata. Controlla la tua casella di posta.",
-
   "auth_forgot_password_title": "Reimposta password",
   "auth_forgot_password_instruction": "Inserisci il tuo indirizzo e-mail e ti invieremo un link per reimpostare la password.",
   "auth_forgot_password_button": "Invia link",
   "auth_forgot_password_success": "E-mail di reimpostazione inviata! Controlla la tua casella di posta.",
   "auth_back_to_login": "Torna all'accesso",
-
   "home_title": "Home",
   "home_daily_goal": "Obiettivo giornaliero",
   "home_today": "Oggi",
@@ -72,49 +65,41 @@
   "home_delete_water_success": "Record eliminato",
   "home_no_records_today": "Nessun record oggi",
   "home_start_drinking": "Inizia a bere acqua!",
-
   "progress_current": "Attuale",
   "progress_goal": "Obiettivo",
   "progress_remaining": "Rimanente",
   "progress_completed": "Obiettivo raggiunto!",
   "progress_percentage": "{percent}% dell'obiettivo giornaliero",
-
   "motivational_keep_going": "Continua così! Stai andando alla grande!",
   "motivational_almost_there": "Quasi finito! Ancora un po'!",
   "motivational_goal_reached": "Congratulazioni! Hai raggiunto il tuo obiettivo!",
   "motivational_good_start": "Buon inizio! Continua così!",
   "motivational_stay_hydrated": "Resta idratato durante la giornata!",
-
   "motivational_100_1": "Congratulazioni! Hai raggiunto il tuo obiettivo!",
   "motivational_100_2": "Lavoro incredibile! Resta idratato anche domani!",
   "motivational_100_3": "Sei un campione dell'idratazione!",
   "motivational_100_4": "Perfetto! Mantieni queste buone abitudini!",
   "motivational_100_short": "Obiettivo Raggiunto!",
-
   "motivational_75_1": "Quasi finito! Ancora un po'!",
   "motivational_75_2": "Stai andando alla grande! Continua!",
   "motivational_75_3": "Così vicino al tuo obiettivo!",
   "motivational_75_4": "Progresso fantastico! Non fermarti ora!",
   "motivational_75_short": "Quasi finito!",
-
   "motivational_50_1": "A metà strada! Stai andando benissimo!",
   "motivational_50_2": "Ottimo lavoro! Continua!",
   "motivational_50_3": "Sei sulla strada giusta!",
   "motivational_50_4": "Buon progresso! Resta costante!",
   "motivational_50_short": "A metà!",
-
   "motivational_25_1": "Buon inizio! Continua a bere acqua!",
   "motivational_25_2": "Hai iniziato benissimo!",
   "motivational_25_3": "Bell'inizio! Resta idratato!",
   "motivational_25_4": "Continua! Ogni sorso conta!",
   "motivational_25_short": "Buon inizio!",
-
   "motivational_0_1": "È ora di idratarsi! Il tuo corpo ti ringrazierà!",
   "motivational_0_2": "Iniziamo il tuo viaggio di idratazione!",
   "motivational_0_3": "Inizia la giornata con dell'acqua!",
   "motivational_0_4": "La tua salute conta! Inizia a bere!",
   "motivational_0_short": "Iniziamo!",
-
   "profile_title": "Profilo",
   "profile_edit": "Modifica profilo",
   "profile_personal_info": "Informazioni personali",
@@ -134,11 +119,9 @@
   "profile_save_success": "Profilo aggiornato con successo",
   "profile_save_failed": "Impossibile aggiornare il profilo",
   "profile_user_default": "Utente",
-
   "gender_male": "Maschio",
   "gender_female": "Femmina",
   "gender_other": "Altro",
-
   "activity_sedentary": "Sedentario",
   "activity_sedentary_desc": "Poco o nessun esercizio",
   "activity_light": "Leggermente attivo",
@@ -149,12 +132,10 @@
   "activity_very_active_desc": "Esercizio intenso 6-7 giorni/settimana",
   "activity_extra_active": "Extra attivo",
   "activity_extra_active_desc": "Esercizio molto intenso e lavoro fisico",
-
   "bmi_underweight": "Sottopeso",
   "bmi_normal": "Peso normale",
   "bmi_overweight": "Sovrappeso",
   "bmi_obese": "Obeso",
-
   "settings_title": "Impostazioni",
   "settings_notifications": "Notifiche",
   "settings_reminders": "Promemoria",
@@ -168,22 +149,18 @@
   "settings_import_data": "Importa dati",
   "settings_help": "Aiuto e supporto",
   "settings_about": "Informazioni",
-
   "settings_enable_notifications": "Abilita notifiche",
   "settings_reminder_interval": "Intervallo promemoria",
   "settings_reminder_start_time": "Ora di inizio",
   "settings_reminder_end_time": "Ora di fine",
   "settings_test_notification": "Test notifica",
-
   "settings_theme_light": "Chiaro",
   "settings_theme_dark": "Scuro",
   "settings_theme_system": "Sistema",
-
   "settings_unit_ml": "Millilitri (ml)",
   "settings_unit_floz": "Once liquide (fl oz)",
   "settings_unit_metric": "Sistema metrico",
   "settings_unit_imperial": "Sistema imperiale",
-
   "settings_subtitle": "Personalizza la tua esperienza",
   "settings_reminders_active": "Promemoria acqua attivi",
   "settings_reminders_inactive": "Attiva i promemoria",
@@ -211,14 +188,12 @@
   "settings_import_duplicate_skipped": "duplicati saltati",
   "settings_import_failed_message": "Importazione fallita: {error}",
   "settings_reminder_interval_title": "Intervallo promemoria",
-
   "settings_language_coming_soon": "Prossimamente",
   "settings_export_success": "Dati esportati con successo",
   "settings_export_failed": "Esportazione dati fallita",
   "settings_import_success": "Dati importati con successo",
   "settings_import_failed": "Importazione dati fallita",
   "settings_import_stats": "Importati {imported} record, saltati {skipped} duplicati",
-
   "statistics_title": "Statistiche",
   "statistics_weekly": "Settimanale",
   "statistics_monthly": "Mensile",
@@ -234,7 +209,13 @@
   "statistics_daily_average": "Media giornaliera",
   "statistics_goals_met": "Obiettivi Raggiunti",
   "statistics_out_of": "su {count}",
-  "@statistics_out_of": {"placeholders": {"count": {"type": "int"}}},
+  "@statistics_out_of": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "statistics_progress": "Progresso",
   "statistics_on_track": "In pista!",
   "statistics_keep_going": "Continua così!",
@@ -247,14 +228,12 @@
   "statistics_completed": "Completati",
   "statistics_next_goal": "Prossimo Obiettivo",
   "statistics_days": "giorni",
-
   "achievements_title": "Obiettivi",
   "achievements_unlocked": "Sbloccato",
   "achievements_locked": "Bloccato",
   "achievements_progress": "Progresso",
   "achievements_reward_points": "Punti premio",
   "achievements_total_points": "Punti totali: {points}",
-
   "achievement_first_drop": "Prima goccia",
   "achievement_first_drop_desc": "Registra il tuo primo consumo d'acqua",
   "achievement_daily_goal_1": "Raggiungitore di obiettivi",
@@ -271,7 +250,6 @@
   "achievement_total_100l_desc": "Bevi 100 litri in totale",
   "achievement_consistency": "Settimana costante",
   "achievement_consistency_desc": "Raggiungi l'obiettivo per 7 giorni consecutivi",
-
   "reminders_title": "Promemoria",
   "reminders_active": "Promemoria attivi",
   "reminders_pending": "Notifiche in sospeso",
@@ -281,10 +259,12 @@
   "reminders_interval_90": "Ogni 1,5 ore",
   "reminders_interval_120": "Ogni 2 ore",
   "reminders_interval_180": "Ogni 3 ore",
-
+  "reminders_premium_custom_title": "Premium: Promemoria personalizzati",
+  "reminders_custom_description": "Aggiungi promemoria illimitati ai tuoi orari",
+  "reminders_custom_add_button": "Aggiungi orario personalizzato",
+  "reminders_custom_added": "Promemoria personalizzato aggiunto: {time}",
   "notification_reminder_title": "È ora di bere acqua!",
   "notification_reminder_body": "Resta idratato! Bevi un po' d'acqua ora.",
-
   "streak_current": "Serie attuale",
   "streak_days": "{days} giorni",
   "streak_keep_going": "Mantieni la serie!",
@@ -298,7 +278,6 @@
   "streak_error": "Impossibile caricare i dati della serie",
   "streak_day_singular": "giorno",
   "streak_day_plural": "giorni",
-
   "onboarding_title_1": "Traccia la tua acqua",
   "onboarding_desc_1": "Registra facilmente il tuo consumo giornaliero con un tocco",
   "onboarding_title_2": "Promemoria intelligenti",
@@ -308,7 +287,6 @@
   "onboarding_title_4": "Resta in salute",
   "onboarding_desc_4": "Costruisci abitudini sane e migliora il tuo benessere",
   "onboarding_get_started": "Inizia",
-
   "drawer_home": "Home",
   "drawer_statistics": "Statistiche",
   "drawer_achievements": "Obiettivi",
@@ -318,13 +296,11 @@
   "drawer_help": "Aiuto e supporto",
   "drawer_about": "Informazioni",
   "drawer_logout": "Esci",
-
   "about_title": "Aqualert",
   "about_version": "Versione 1.0.0",
   "about_description": "Resta idratato e in salute con Aqualert. Traccia il tuo consumo giornaliero d'acqua e raggiungi i tuoi obiettivi di idratazione!",
   "about_copyright": "© 2024 Aqualert. Tutti i diritti riservati.",
   "about_close": "Chiudi",
-
   "help_title": "Aiuto e supporto",
   "help_subtitle": "Ottieni aiuto e scopri di più",
   "help_faq": "Domande frequenti",
@@ -332,58 +308,42 @@
   "help_version": "Versione",
   "help_app_info": "Informazioni app",
   "help_coming_soon": "Aiuto e supporto - Prossimamente!",
-
   "help_faq_section": "FAQ",
   "help_features_section": "Guida alle funzionalità",
   "help_about_section": "Informazioni",
-
   "faq_1_q": "Come viene calcolato il mio obiettivo giornaliero d'acqua?",
   "faq_1_a": "Il tuo obiettivo giornaliero viene calcolato in base a peso, altezza, età, genere e livello di attività utilizzando formule scientifiche. Puoi anche impostare un obiettivo personalizzato nelle impostazioni del profilo.",
-
   "faq_2_q": "Come funzionano i promemoria?",
   "faq_2_a": "Puoi impostare intervalli di promemoria (30-180 minuti) e scegliere orari di inizio/fine. L'app ti invierà notifiche durante questo periodo per aiutarti a restare idratato.",
-
   "faq_3_q": "Cosa sono le serie e come funzionano?",
   "faq_3_a": "Le serie tracciano i giorni consecutivi in cui hai raggiunto l'obiettivo giornaliero. Continua a bere acqua ogni giorno per mantenere e aumentare la tua serie!",
-
   "faq_4_q": "Come posso cambiare le unità di misura?",
   "faq_4_a": "Vai in Impostazioni → Unità e passa tra millilitri (ml) e once liquide (fl oz). Tutte le misure si aggiorneranno automaticamente.",
-
   "faq_5_q": "Posso esportare i miei dati di tracciamento?",
   "faq_5_a": "Sì! Vai in Impostazioni → Gestione dati → Esporta dati. Puoi condividere o salvare i tuoi dati come file JSON e importarli in seguito.",
-
   "faq_6_q": "Come funzionano gli obiettivi?",
   "faq_6_a": "Completa le tappe di tracciamento dell'acqua per sbloccare obiettivi e guadagnare punti premio. Segui i tuoi progressi nella schermata Obiettivi.",
-
   "feature_tracking_title": "Tracciamento acqua",
   "feature_tracking_desc": "Registra facilmente il tuo consumo giornaliero con pulsanti rapidi (250ml, 350ml, 500ml, 750ml) o inserisci una quantità personalizzata.",
-
   "feature_reminders_title": "Promemoria intelligenti",
   "feature_reminders_desc": "Imposta intervalli di promemoria personalizzabili e scegli le ore attive. Non dimenticare mai di bere acqua durante il giorno.",
-
   "feature_statistics_title": "Statistiche e approfondimenti",
   "feature_statistics_desc": "Visualizza le tendenze del tuo consumo d'acqua con grafici settimanali, mensili e annuali. Traccia i tuoi progressi nel tempo.",
-
   "feature_achievements_title": "Obiettivi e serie",
   "feature_achievements_desc": "Guadagna obiettivi e mantieni serie giornaliere raggiungendo i tuoi traguardi d'acqua. Resta motivato con la gamification!",
-
   "feature_profile_title": "Profilo e obiettivi",
   "feature_profile_desc": "Imposta le tue informazioni personali e lascia che l'app calcoli il tuo obiettivo giornaliero ottimale d'acqua in base alle tue metriche corporee.",
-
   "help_contact_email": "Contatta via e-mail",
   "help_contact_email_address": "dilaraacikgoz.dev@gmail.com",
   "help_rate_app": "Valuta la nostra app",
   "help_rate_desc": "Ti piace Aqualert? Lasciaci una recensione!",
-
   "help_build_number": "Build",
   "help_copyright": "© 2024 Aqualert. Tutti i diritti riservati.",
   "help_made_with": "Fatto con ❤️ per la tua salute",
-
   "error_generic": "Qualcosa è andato storto. Riprova.",
   "error_network": "Errore di rete. Controlla la connessione.",
   "error_auth_failed": "Autenticazione fallita. Riprova.",
   "error_permission_denied": "Permesso negato.",
-
   "unit_ml": "ml",
   "unit_floz": "fl oz",
   "unit_kg": "kg",
@@ -391,16 +351,13 @@
   "unit_cm": "cm",
   "unit_ft": "ft",
   "unit_liter": "L",
-
   "time_morning": "Mattina",
   "time_afternoon": "Pomeriggio",
   "time_evening": "Sera",
   "time_night": "Notte",
-
   "help_privacy_policy": "Informativa sulla privacy",
   "help_privacy_policy_desc": "Visualizza la nostra informativa sulla privacy",
   "help_privacy_policy_error": "Impossibile aprire l'informativa sulla privacy",
-
   "settings_delete_account": "Elimina account",
   "settings_delete_account_subtitle": "Elimina permanentemente il tuo account e tutti i dati",
   "settings_delete_account_dialog_title": "Eliminare l'account?",
@@ -409,5 +366,26 @@
   "settings_delete_account_cancel": "Annulla",
   "settings_delete_account_success": "Account eliminato con successo",
   "settings_delete_account_error": "Impossibile eliminare l'account",
-  "settings_delete_account_reauth_required": "Effettua nuovamente l'accesso per eliminare il tuo account"
+  "settings_delete_account_reauth_required": "Effettua nuovamente l'accesso per eliminare il tuo account",
+  "privacy_last_updated": "Ultimo aggiornamento: 2 dicembre 2025",
+  "privacy_intro_title": "Introduzione",
+  "privacy_intro_content": "Benvenuto in Aqualert. Rispettiamo la tua privacy e ci impegniamo a proteggere i tuoi dati personali. Questa Informativa sulla Privacy spiega come raccogliamo, utilizziamo e proteggiamo le tue informazioni quando utilizzi la nostra app mobile.",
+  "privacy_collect_title": "Informazioni che Raccogliamo",
+  "privacy_collect_content": "• Indirizzo email — per la creazione dell'account e l'autenticazione\n• Nome visualizzato — opzionale, per la personalizzazione\n• Informazioni del profilo — età, peso, altezza, sesso, livello di attività\n• Registrazioni dell'assunzione d'acqua — quantità e timestamp del consumo\n• Statistiche di utilizzo dell'app — tramite Firebase Analytics\n• Informazioni sul dispositivo — tipo di dispositivo, versione del sistema operativo, identificatori univoci",
+  "privacy_use_title": "Come Utilizziamo le Tue Informazioni",
+  "privacy_use_content": "• Calcolare obiettivi giornalieri personalizzati di assunzione d'acqua\n• Tracciare e visualizzare la cronologia del consumo d'acqua\n• Fornire statistiche e approfondimenti sulle tue abitudini di idratazione\n• Inviare notifiche di promemoria\n• Sincronizzare i tuoi dati tra i dispositivi\n• Migliorare le prestazioni dell'app e l'esperienza utente",
+  "privacy_storage_title": "Archiviazione dei Dati e Sicurezza",
+  "privacy_storage_content": "I tuoi dati vengono archiviati usando Firebase Authentication e Cloud Firestore (server Google Cloud). I dati trasmessi tra il tuo dispositivo e i nostri server sono crittografati tramite SSL/TLS. I dati dell'utente sono accessibili solo dall'utente autenticato tramite le regole di sicurezza di Firebase.",
+  "privacy_third_party_title": "Servizi di Terze Parti",
+  "privacy_third_party_content": "• Google Firebase — autenticazione, database, analisi, notifiche push\n• Google Sign-In — autenticazione OAuth\n• Firebase Analytics — analisi dell'utilizzo dell'app\n\nNON vendiamo, scambiamo o affittiamo le tue informazioni personali a terze parti.",
+  "privacy_rights_title": "I Tuoi Diritti",
+  "privacy_rights_content": "• Accedere e aggiornare le tue informazioni personali tramite Profilo e Impostazioni\n• Esportare i tuoi dati (registrazioni acqua, risultati, impostazioni) in formato JSON\n• Richiedere la cancellazione del tuo account e di tutti i dati associati\n• Controllare le preferenze di notifica\n\nPer la cancellazione dei dati, contattaci a: dilaraacikgoz.dev@gmail.com\nDopo la cancellazione, tutti i dati personali verranno rimossi dai nostri server entro 30 giorni.",
+  "privacy_children_title": "Privacy dei Minori",
+  "privacy_children_content": "Aqualert non è destinato a bambini di età inferiore ai 13 anni. Non raccogliamo consapevolmente informazioni personali da bambini di età inferiore ai 13 anni.",
+  "privacy_gdpr_title": "Diritti GDPR (Utenti UE/SEE)",
+  "privacy_gdpr_content": "• Diritto di accesso ai tuoi dati personali\n• Diritto di rettifica dei dati inesatti\n• Diritto alla cancellazione (\"diritto all'oblio\")\n• Diritto alla limitazione del trattamento\n• Diritto alla portabilità dei dati\n• Diritto di opposizione al trattamento",
+  "privacy_kvkk_title": "Diritti KVKK (Turchia)",
+  "privacy_kvkk_content": "• Sapere se i tuoi dati personali vengono elaborati\n• Richiedere informazioni se vengono elaborati\n• Conoscere lo scopo dell'elaborazione\n• Conoscere i terzi a cui vengono trasferiti i dati\n• Richiedere la correzione di dati incompleti o errati\n• Richiedere la cancellazione o la distruzione dei dati",
+  "privacy_contact_title": "Contattaci",
+  "privacy_contact_content": "Se hai domande su questa Informativa sulla Privacy:\n\nEmail: dilaraacikgoz.dev@gmail.com\nTempo di risposta: Miriamo a rispondere entro 48 ore."
 }

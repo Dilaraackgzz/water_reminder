@@ -925,6 +925,22 @@ class AppLocalizationsTr extends AppLocalizations {
   String get reminders_schedule_info => 'Mevcut Program';
 
   @override
+  String get reminders_premium_custom_title =>
+      'Premium: Özel Saatli Hatırlatıcılar';
+
+  @override
+  String get reminders_custom_description =>
+      'Sınırsız, kendi saatlerinle hatırlatıcı ekle';
+
+  @override
+  String get reminders_custom_add_button => 'Özel Saat Ekle';
+
+  @override
+  String reminders_custom_added(String time) {
+    return 'Özel hatırlatıcı eklendi: $time';
+  }
+
+  @override
   String get notification_reminder_title => 'Su İçme Zamanı!';
 
   @override
@@ -1326,4 +1342,77 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get settings_premium_restore_subtitle =>
       'Daha önce satın aldın mı? Geri yükle';
+
+  @override
+  String get privacy_last_updated => 'Son Güncelleme: 2 Aralık 2025';
+
+  @override
+  String get privacy_intro_title => 'Giriş';
+
+  @override
+  String get privacy_intro_content =>
+      'Aqualert\'e hoş geldiniz. Gizliliğinize saygı duyuyor ve kişisel verilerinizi korumaya kararlıyız. Bu Gizlilik Politikası, mobil uygulamamızı kullandığınızda bilgilerinizi nasıl topladığımızı, kullandığımızı ve koruduğumuzu açıklamaktadır.';
+
+  @override
+  String get privacy_collect_title => 'Topladığımız Bilgiler';
+
+  @override
+  String get privacy_collect_content =>
+      '• E-posta Adresi — hesap oluşturma ve kimlik doğrulama için\n• Görünen Ad — isteğe bağlı, kişiselleştirme için\n• Profil Bilgileri — yaş, kilo, boy, cinsiyet, aktivite düzeyi\n• Su Tüketim Kayıtları — tüketim miktarı ve zaman damgası\n• Uygulama Kullanım İstatistikleri — Firebase Analytics aracılığıyla\n• Cihaz Bilgileri — cihaz türü, işletim sistemi sürümü, benzersiz tanımlayıcılar';
+
+  @override
+  String get privacy_use_title => 'Bilgilerinizi Nasıl Kullanıyoruz';
+
+  @override
+  String get privacy_use_content =>
+      '• Kişiselleştirilmiş günlük su içme hedefleri hesaplama\n• Su tüketim geçmişinizi takip etme ve görüntüleme\n• Hidrasyon alışkanlıklarınız hakkında istatistik ve öngörüler sunma\n• Hatırlatma bildirimleri gönderme\n• Verilerinizi cihazlar arasında senkronize etme\n• Uygulama performansını ve kullanıcı deneyimini geliştirme';
+
+  @override
+  String get privacy_storage_title => 'Veri Depolama ve Güvenlik';
+
+  @override
+  String get privacy_storage_content =>
+      'Verileriniz Firebase Authentication ve Cloud Firestore (Google Cloud sunucuları) kullanılarak depolanmaktadır. Cihazınız ile sunucularımız arasında iletilen veriler SSL/TLS kullanılarak şifrelenmektedir. Kullanıcı verilerine yalnızca kimliği doğrulanmış kullanıcı Firebase Güvenlik Kuralları aracılığıyla erişebilmektedir.';
+
+  @override
+  String get privacy_third_party_title => 'Üçüncü Taraf Hizmetler';
+
+  @override
+  String get privacy_third_party_content =>
+      '• Google Firebase — kimlik doğrulama, veritabanı, analitik, push bildirimleri\n• Google Sign-In — OAuth kimlik doğrulama\n• Firebase Analytics — uygulama kullanım analitiği\n\nKişisel bilgilerinizi üçüncü taraflara SATMIYORUZ, takas etmiyor veya kiralamıyoruz.';
+
+  @override
+  String get privacy_rights_title => 'Haklarınız';
+
+  @override
+  String get privacy_rights_content =>
+      '• Kişisel bilgilerinize Profil ve Ayarlar üzerinden erişme ve güncelleme\n• Verilerinizi (su kayıtları, başarımlar, ayarlar) JSON formatında dışa aktarma\n• Hesabınızın ve tüm ilgili verilerin silinmesini talep etme\n• Bildirim tercihlerini kontrol etme\n\nVeri silme için bize ulaşın: dilaraacikgoz.dev@gmail.com\nSilme işlemi sonrasında tüm kişisel veriler 30 gün içinde sunucularımızdan kaldırılacaktır.';
+
+  @override
+  String get privacy_children_title => 'Çocukların Gizliliği';
+
+  @override
+  String get privacy_children_content =>
+      'Aqualert, 13 yaşın altındaki çocuklar için tasarlanmamıştır. 13 yaşın altındaki çocuklardan bilerek kişisel bilgi toplamıyoruz.';
+
+  @override
+  String get privacy_gdpr_title => 'GDPR Hakları (AB/AEA Kullanıcıları)';
+
+  @override
+  String get privacy_gdpr_content =>
+      '• Kişisel verilerinize Erişim hakkı\n• Yanlış verilerin Düzeltilmesi hakkı\n• Silme hakkı (\"unutulma hakkı\")\n• İşlemeyi Kısıtlama hakkı\n• Veri Taşınabilirliği hakkı\n• İşlemeye İtiraz hakkı';
+
+  @override
+  String get privacy_kvkk_title => 'KVKK Hakları (Türkiye)';
+
+  @override
+  String get privacy_kvkk_content =>
+      '• Kişisel verilerinizin işlenip işlenmediğini öğrenme\n• İşlenmişse buna ilişkin bilgi talep etme\n• İşlenme amacını ve amacına uygun kullanılıp kullanılmadığını öğrenme\n• Eksik veya yanlış işlenmişse düzeltilmesini isteme\n• Silinmesini veya yok edilmesini isteme\n• Kişisel verilerin aktarıldığı üçüncü kişileri bilme';
+
+  @override
+  String get privacy_contact_title => 'Bize Ulaşın';
+
+  @override
+  String get privacy_contact_content =>
+      'Bu Gizlilik Politikası hakkında sorularınız varsa:\n\nE-posta: dilaraacikgoz.dev@gmail.com\nYanıt Süresi: 48 saat içinde yanıt vermeyi hedefliyoruz.';
 }

@@ -931,6 +931,22 @@ class AppLocalizationsEn extends AppLocalizations {
   String get reminders_schedule_info => 'Current Schedule';
 
   @override
+  String get reminders_premium_custom_title =>
+      'Premium: Custom Timed Reminders';
+
+  @override
+  String get reminders_custom_description =>
+      'Add unlimited reminders at your own times';
+
+  @override
+  String get reminders_custom_add_button => 'Add Custom Time';
+
+  @override
+  String reminders_custom_added(String time) {
+    return 'Custom reminder added: $time';
+  }
+
+  @override
   String get notification_reminder_title => 'Time to Drink Water!';
 
   @override
@@ -1335,4 +1351,77 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get settings_premium_restore_subtitle =>
       'Already purchased? Tap to restore';
+
+  @override
+  String get privacy_last_updated => 'Last Updated: December 2, 2025';
+
+  @override
+  String get privacy_intro_title => 'Introduction';
+
+  @override
+  String get privacy_intro_content =>
+      'Welcome to Aqualert. We respect your privacy and are committed to protecting your personal data. This Privacy Policy explains how we collect, use, and safeguard your information when you use our mobile application.';
+
+  @override
+  String get privacy_collect_title => 'Information We Collect';
+
+  @override
+  String get privacy_collect_content =>
+      '• Email Address — for account creation and authentication\n• Display Name — optional, for personalization\n• Profile Information — age, weight, height, gender, activity level\n• Water Intake Records — amount and timestamp of consumption\n• App Usage Statistics — via Firebase Analytics\n• Device Information — device type, OS version, unique identifiers';
+
+  @override
+  String get privacy_use_title => 'How We Use Your Information';
+
+  @override
+  String get privacy_use_content =>
+      '• Calculate personalized daily water intake goals\n• Track and display your water consumption history\n• Provide statistics and insights about your hydration habits\n• Send reminder notifications\n• Sync your data across devices\n• Improve app performance and user experience';
+
+  @override
+  String get privacy_storage_title => 'Data Storage and Security';
+
+  @override
+  String get privacy_storage_content =>
+      'Your data is stored using Firebase Authentication and Cloud Firestore (Google Cloud servers). Data transmitted between your device and our servers is encrypted using SSL/TLS. User data is accessible only by the authenticated user through Firebase Security Rules.';
+
+  @override
+  String get privacy_third_party_title => 'Third-Party Services';
+
+  @override
+  String get privacy_third_party_content =>
+      '• Google Firebase — authentication, database, analytics, push notifications\n• Google Sign-In — OAuth authentication\n• Firebase Analytics — app usage analytics\n\nWe do NOT sell, trade, or rent your personal information to third parties.';
+
+  @override
+  String get privacy_rights_title => 'Your Rights';
+
+  @override
+  String get privacy_rights_content =>
+      '• Access and update your personal information via Profile & Settings\n• Export your data (water records, achievements, settings) in JSON format\n• Request deletion of your account and all associated data\n• Control notification preferences\n\nFor data deletion, contact us at: dilaraacikgoz.dev@gmail.com\nUpon deletion, all personal data will be removed from our servers within 30 days.';
+
+  @override
+  String get privacy_children_title => 'Children\'s Privacy';
+
+  @override
+  String get privacy_children_content =>
+      'Aqualert is not intended for children under the age of 13. We do not knowingly collect personal information from children under 13.';
+
+  @override
+  String get privacy_gdpr_title => 'GDPR Rights (EU/EEA Users)';
+
+  @override
+  String get privacy_gdpr_content =>
+      '• Right to Access your personal data\n• Right to Rectification of inaccurate data\n• Right to Erasure (\"right to be forgotten\")\n• Right to Restrict Processing\n• Right to Data Portability\n• Right to Object to processing';
+
+  @override
+  String get privacy_kvkk_title => 'KVKK Rights (Turkey)';
+
+  @override
+  String get privacy_kvkk_content =>
+      '• Learn whether your personal data is being processed\n• Request information if processed\n• Learn the purpose of processing\n• Know the third parties to whom data is transferred\n• Request correction of incomplete or incorrect data\n• Request deletion or destruction of data';
+
+  @override
+  String get privacy_contact_title => 'Contact Us';
+
+  @override
+  String get privacy_contact_content =>
+      'If you have any questions regarding this Privacy Policy:\n\nEmail: dilaraacikgoz.dev@gmail.com\nResponse Time: We aim to respond within 48 hours.';
 }

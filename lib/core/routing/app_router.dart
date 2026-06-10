@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -14,17 +15,46 @@ import '../../features/reminders/presentation/screens/reminders_screen.dart';
 import '../../features/profile/presentation/screens/profile_screen.dart';
 import '../../features/achievements/presentation/screens/achievements_screen.dart';
 import '../../features/help/presentation/screens/help_screen.dart';
+import '../../features/help/presentation/screens/privacy_policy_screen.dart';
 import '../../features/premium/presentation/screens/paywall_screen.dart';
 import '../services/onboarding_service.dart';
 
-// Router provider with auth state management
-final routerProvider = Provider<GoRouter>((ref) {
-  final authState = ref.watch(authStateProvider);
-  final isOnboardingCompleted = ref.watch(isOnboardingCompletedProvider);
+// Auth state provider - watches Firebase auth state
+final authStateProvider = StreamProvider<User?>((ref) {
+  return FirebaseAuth.instance.authStateChanges();
+});
 
-  return GoRouter(
+// Notifier that signals GoRouter to re-evaluate redirects without recreating it
+class _RouterNotifier extends ChangeNotifier {
+  _RouterNotifier(this._ref) {
+    _ref.listen<AsyncValue<User?>>(authStateProvider, (_, __) {
+      notifyListeners();
+    });
+    _ref.listen<bool>(isOnboardingCompletedProvider, (_, __) {
+      notifyListeners();
+    });
+  }
+
+  final Ref _ref;
+
+  AsyncValue<User?> get authState => _ref.read(authStateProvider);
+  bool get isOnboardingCompleted => _ref.read(isOnboardingCompletedProvider);
+}
+
+final _routerNotifierProvider = ChangeNotifierProvider<_RouterNotifier>((ref) {
+  return _RouterNotifier(ref);
+});
+
+final routerProvider = Provider<GoRouter>((ref) {
+  final notifier = ref.read(_routerNotifierProvider);
+
+  final router = GoRouter(
     initialLocation: '/',
+    refreshListenable: notifier,
     redirect: (context, state) {
+      final authState = notifier.authState;
+      final isOnboardingCompleted = notifier.isOnboardingCompleted;
+
       final isInitialized = authState.hasValue;
       final isAuthenticated = authState.value != null;
       final user = authState.value;
@@ -33,23 +63,21 @@ final routerProvider = Provider<GoRouter>((ref) {
       // Root route - decide where to go based on auth state and onboarding
       if (state.matchedLocation == '/') {
         if (!isInitialized) {
-          return '/splash'; // Show splash while checking auth
+          return '/splash';
         }
 
         if (isAuthenticated) {
-          // Check email verification
           if (!isEmailVerified) {
             return '/verify-email';
           }
           return '/home';
         }
 
-        // Not authenticated - check onboarding status
         if (isOnboardingCompleted) {
-          return '/login'; // Skip splash, go directly to login
+          return '/login';
         }
 
-        return '/splash'; // First time user, show splash
+        return '/splash';
       }
 
       // Special handling for splash screen
@@ -60,19 +88,17 @@ final routerProvider = Provider<GoRouter>((ref) {
           }
           return '/home';
         }
-        // If onboarding completed but not authenticated, skip splash
         if (isInitialized && !isAuthenticated && isOnboardingCompleted) {
           return '/login';
         }
         return null;
       }
 
-      // If not initialized yet, stay on current route
       if (!isInitialized) {
         return null;
       }
 
-      // Email verification screen - only accessible if authenticated but not verified
+      // Email verification screen
       if (state.matchedLocation == '/verify-email') {
         if (!isAuthenticated) {
           return '/login';
@@ -83,7 +109,7 @@ final routerProvider = Provider<GoRouter>((ref) {
         return null;
       }
 
-      // Auth routes - redirect based on authentication and verification status
+      // Auth routes
       final isOnAuthRoute = state.matchedLocation == '/login' ||
           state.matchedLocation == '/register' ||
           state.matchedLocation == '/forgot-password';
@@ -95,7 +121,7 @@ final routerProvider = Provider<GoRouter>((ref) {
         return '/home';
       }
 
-      // Protected routes - redirect to login if not authenticated or verify-email if not verified
+      // Protected routes
       final isOnProtectedRoute = state.matchedLocation == '/home' ||
           state.matchedLocation.startsWith('/profile') ||
           state.matchedLocation.startsWith('/settings') ||
@@ -113,7 +139,6 @@ final routerProvider = Provider<GoRouter>((ref) {
         }
       }
 
-      // All good, no redirect needed
       return null;
     },
     routes: [
@@ -183,15 +208,18 @@ final routerProvider = Provider<GoRouter>((ref) {
         builder: (context, state) => const HelpScreen(),
       ),
       GoRoute(
+        path: '/privacy-policy',
+        name: 'privacyPolicy',
+        builder: (context, state) => const PrivacyPolicyScreen(),
+      ),
+      GoRoute(
         path: '/paywall',
         name: 'paywall',
         builder: (context, state) => const PaywallScreen(),
       ),
     ],
   );
-});
 
-// Auth state provider - watches Firebase auth state
-final authStateProvider = StreamProvider<User?>((ref) {
-  return FirebaseAuth.instance.authStateChanges();
+  ref.onDispose(router.dispose);
+  return router;
 });

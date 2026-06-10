@@ -1,16 +1,13 @@
 {
   "@@locale": "en",
-
   "appName": "Aqualert",
   "@appName": {
     "description": "Application name"
   },
-
   "appTagline": "Stay hydrated for a healthy life",
   "@appTagline": {
     "description": "Application tagline"
   },
-
   "common_cancel": "Cancel",
   "common_save": "Save",
   "common_delete": "Delete",
@@ -28,7 +25,6 @@
   "common_loading": "Loading...",
   "common_error": "Error",
   "common_success": "Success",
-
   "auth_login_title": "Sign In",
   "auth_register_title": "Sign Up",
   "auth_email_label": "Email",
@@ -45,7 +41,6 @@
   "auth_sign_in_google": "Sign in with Google",
   "auth_sign_up_google": "Sign up with Google",
   "auth_logout": "Logout",
-
   "auth_validation_email_required": "Email is required",
   "auth_validation_email_invalid": "Please enter a valid email",
   "auth_validation_password_required": "Password is required",
@@ -55,7 +50,6 @@
   "auth_validation_name_min_length": "Name must be at least 2 characters",
   "auth_confirm_password_label": "Confirm Password",
   "auth_confirm_password_hint": "Re-enter your password",
-
   "auth_resend_countdown": "Resend in {seconds}s",
   "@auth_resend_countdown": {
     "placeholders": {
@@ -67,7 +61,6 @@
   "auth_verification_check_failed": "Failed to check verification status",
   "auth_verification_send_failed": "Failed to send verification email",
   "auth_signout_failed": "Failed to sign out",
-
   "auth_email_verification_title": "Verify Your Email",
   "auth_email_verification_sent": "We've sent a verification link to:",
   "auth_email_verification_instruction": "Please check your email and click the verification link to continue.",
@@ -76,13 +69,11 @@
   "auth_email_verification_check": "I've verified my email",
   "auth_email_verification_success": "Email verified successfully!",
   "auth_email_verification_failed": "Email not verified yet. Please check your inbox.",
-
   "auth_forgot_password_title": "Reset Password",
   "auth_forgot_password_instruction": "Enter your email address and we'll send you a link to reset your password.",
   "auth_forgot_password_button": "Send Reset Link",
   "auth_forgot_password_success": "Password reset email sent! Check your inbox.",
   "auth_back_to_login": "Back to Sign In",
-
   "home_title": "Home",
   "home_daily_goal": "Daily Goal",
   "home_today": "Today",
@@ -104,7 +95,6 @@
   "home_delete_water_success": "Water record deleted",
   "home_no_records_today": "No water records today",
   "home_start_drinking": "Start drinking water!",
-
   "progress_current": "Current",
   "progress_goal": "Goal",
   "progress_remaining": "Remaining",
@@ -117,43 +107,36 @@
       }
     }
   },
-
   "motivational_keep_going": "Keep going! You're doing great!",
   "motivational_almost_there": "Almost there! Just a bit more!",
   "motivational_goal_reached": "Congratulations! You've reached your goal!",
   "motivational_good_start": "Great start! Keep it up!",
   "motivational_stay_hydrated": "Stay hydrated throughout the day!",
-
   "motivational_100_1": "Congratulations! You've reached your goal!",
   "motivational_100_2": "Amazing work! Stay hydrated tomorrow too!",
   "motivational_100_3": "You're a hydration champion!",
   "motivational_100_4": "Perfect! Keep up the great habits!",
   "motivational_100_short": "Goal Reached!",
-
   "motivational_75_1": "Almost there! Just a bit more to go!",
   "motivational_75_2": "You're doing great! Keep it up!",
   "motivational_75_3": "So close to your goal!",
   "motivational_75_4": "Fantastic progress! Don't stop now!",
   "motivational_75_short": "Almost there!",
-
   "motivational_50_1": "Halfway there! You're doing awesome!",
   "motivational_50_2": "Great job! Keep going!",
   "motivational_50_3": "You're on the right track!",
   "motivational_50_4": "Nice progress! Stay consistent!",
   "motivational_50_short": "Halfway!",
-
   "motivational_25_1": "Good start! Keep drinking water!",
   "motivational_25_2": "You're off to a great start!",
   "motivational_25_3": "Nice beginning! Stay hydrated!",
   "motivational_25_4": "Keep going! Every sip counts!",
   "motivational_25_short": "Good start!",
-
   "motivational_0_1": "Time to start hydrating! Your body will thank you!",
   "motivational_0_2": "Let's begin your hydration journey!",
   "motivational_0_3": "Start your day with some water!",
   "motivational_0_4": "Your health matters! Start drinking!",
   "motivational_0_short": "Let's begin!",
-
   "profile_title": "Profile",
   "profile_edit": "Edit Profile",
   "profile_personal_info": "Personal Information",
@@ -177,11 +160,9 @@
   "profile_validation_age_invalid": "Age must be between 1 and 120",
   "profile_validation_weight_invalid": "Weight must be between 10 and 500 kg",
   "profile_validation_height_invalid": "Height must be between 50 and 300 cm",
-
   "gender_male": "Male",
   "gender_female": "Female",
   "gender_other": "Other",
-
   "activity_sedentary": "Sedentary",
   "activity_sedentary_desc": "Little or no exercise",
   "activity_light": "Lightly Active",
@@ -192,12 +173,10 @@
   "activity_very_active_desc": "Heavy exercise 6-7 days/week",
   "activity_extra_active": "Extra Active",
   "activity_extra_active_desc": "Very heavy exercise & physical job",
-
   "bmi_underweight": "Underweight",
   "bmi_normal": "Normal Weight",
   "bmi_overweight": "Overweight",
   "bmi_obese": "Obese",
-
   "settings_title": "Settings",
   "settings_notifications": "Notifications",
   "settings_reminders": "Reminders",
@@ -211,22 +190,18 @@
   "settings_import_data": "Import Data",
   "settings_help": "Help & Support",
   "settings_about": "About",
-
   "settings_enable_notifications": "Enable Notifications",
   "settings_reminder_interval": "Reminder Interval",
   "settings_reminder_start_time": "Start Time",
   "settings_reminder_end_time": "End Time",
   "settings_test_notification": "Test Notification",
-
   "settings_theme_light": "Light",
   "settings_theme_dark": "Dark",
   "settings_theme_system": "System Default",
-
   "settings_unit_ml": "Milliliters (ml)",
   "settings_unit_floz": "Fluid Ounces (fl oz)",
   "settings_unit_metric": "Metric system",
   "settings_unit_imperial": "Imperial system",
-
   "settings_subtitle": "Customize your experience",
   "settings_reminders_active": "Water reminders are active",
   "settings_reminders_inactive": "Turn on to get reminders",
@@ -270,7 +245,6 @@
     }
   },
   "settings_reminder_interval_title": "Reminder Interval",
-
   "settings_language_coming_soon": "Coming Soon",
   "settings_export_success": "Data exported successfully",
   "settings_export_failed": "Failed to export data",
@@ -287,7 +261,6 @@
       }
     }
   },
-
   "statistics_title": "Statistics",
   "statistics_weekly": "Weekly",
   "statistics_monthly": "Monthly",
@@ -322,7 +295,6 @@
   "statistics_completed": "Completed",
   "statistics_next_goal": "Next Goal",
   "statistics_days": "days",
-
   "achievements_title": "Achievements",
   "achievements_unlocked": "Unlocked",
   "achievements_locked": "Locked",
@@ -336,7 +308,6 @@
       }
     }
   },
-
   "achievement_first_drop": "First Drop",
   "achievement_first_drop_desc": "Log your first water intake",
   "achievement_daily_goal_1": "Goal Achiever",
@@ -371,7 +342,6 @@
   "achievement_total_5l_desc": "Consumed a total of 5 liters of water",
   "achievement_total_50l": "50 Liters",
   "achievement_total_50l_desc": "Consumed a total of 50 liters of water",
-
   "reminders_title": "Reminders",
   "reminders_active": "Active Reminders",
   "reminders_pending": "Pending Notifications",
@@ -389,7 +359,17 @@
   "reminders_cancel_success": "All reminders cancelled",
   "reminders_info_message": "Reminders help you stay hydrated throughout the day. Customize your schedule in Settings.",
   "reminders_schedule_info": "Current Schedule",
-
+  "reminders_premium_custom_title": "Premium: Custom Timed Reminders",
+  "reminders_custom_description": "Add unlimited reminders at your own times",
+  "reminders_custom_add_button": "Add Custom Time",
+  "reminders_custom_added": "Custom reminder added: {time}",
+  "@reminders_custom_added": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
   "notification_reminder_title": "Time to Drink Water!",
   "notification_reminder_body": "Stay hydrated! Drink some water now.",
   "notification_title_1": "Time to Hydrate!",
@@ -407,7 +387,6 @@
   "notification_body_6": "Stay healthy and hydrated! Drink up!",
   "notification_body_7": "Time for a water break! You're doing great!",
   "notification_body_8": "Remember to drink water regularly for better health!",
-
   "streak_current": "Current Streak",
   "streak_days": "{days} days",
   "@streak_days": {
@@ -428,7 +407,6 @@
   "streak_error": "Failed to load streak data",
   "streak_day_singular": "day",
   "streak_day_plural": "days",
-
   "onboarding_title_1": "Track Your Water",
   "onboarding_desc_1": "Easily log your daily water intake with just a tap",
   "onboarding_title_2": "Smart Reminders",
@@ -438,7 +416,6 @@
   "onboarding_title_4": "Stay Healthy",
   "onboarding_desc_4": "Build healthy habits and improve your overall wellness",
   "onboarding_get_started": "Get Started",
-
   "drawer_home": "Home",
   "drawer_statistics": "Statistics",
   "drawer_achievements": "Achievements",
@@ -448,13 +425,11 @@
   "drawer_help": "Help & Support",
   "drawer_about": "About",
   "drawer_logout": "Logout",
-
   "about_title": "Aqualert",
   "about_version": "Version 1.0.0",
   "about_description": "Stay hydrated and healthy with Aqualert. Track your daily water intake and achieve your hydration goals!",
   "about_copyright": "© 2024 Aqualert. All rights reserved.",
   "about_close": "Close",
-
   "help_title": "Help & Support",
   "help_subtitle": "Get help and learn more",
   "help_faq": "Frequently Asked Questions",
@@ -462,58 +437,42 @@
   "help_version": "Version",
   "help_app_info": "App Information",
   "help_coming_soon": "Help & Support - Coming Soon!",
-
   "help_faq_section": "FAQs",
   "help_features_section": "Features Guide",
   "help_about_section": "About",
-
   "faq_1_q": "How is my daily water goal calculated?",
   "faq_1_a": "Your daily water goal is calculated based on your weight, height, age, gender, and activity level using scientific formulas. You can also set a custom goal in Profile settings.",
-
   "faq_2_q": "How do water reminders work?",
   "faq_2_a": "You can set reminder intervals (30-180 minutes) and choose start/end times. The app will send you notifications during this period to help you stay hydrated.",
-
   "faq_3_q": "What are streaks and how do they work?",
   "faq_3_a": "Streaks track consecutive days you've reached your daily water goal. Keep drinking water daily to maintain and increase your streak!",
-
   "faq_4_q": "How can I change the measurement units?",
   "faq_4_a": "Go to Settings → Units and switch between milliliters (ml) and fluid ounces (fl oz). All measurements will update automatically.",
-
   "faq_5_q": "Can I export my water tracking data?",
   "faq_5_a": "Yes! Go to Settings → Data Management → Export Data. You can share or save your data as a JSON file and import it later.",
-
   "faq_6_q": "How do achievements work?",
   "faq_6_a": "Complete water tracking milestones to unlock achievements and earn reward points. Track your progress in the Achievements screen.",
-
   "feature_tracking_title": "Water Tracking",
   "feature_tracking_desc": "Easily log your daily water intake with quick-add buttons (250ml, 350ml, 500ml, 750ml) or enter a custom amount.",
-
   "feature_reminders_title": "Smart Reminders",
   "feature_reminders_desc": "Set customizable reminder intervals and choose active hours. Never forget to drink water throughout the day.",
-
   "feature_statistics_title": "Statistics & Insights",
   "feature_statistics_desc": "View your water consumption trends with weekly, monthly, and yearly charts. Track your progress over time.",
-
   "feature_achievements_title": "Achievements & Streaks",
   "feature_achievements_desc": "Earn achievements and maintain daily streaks by reaching your water goals. Stay motivated with gamification!",
-
   "feature_profile_title": "Profile & Goals",
   "feature_profile_desc": "Set your personal information and let the app calculate your optimal daily water goal based on your body metrics.",
-
   "help_contact_email": "Contact via Email",
   "help_contact_email_address": "dilaraacikgoz.dev@gmail.com",
   "help_rate_app": "Rate Our App",
   "help_rate_desc": "Enjoying Aqualert? Leave us a review!",
-
   "help_build_number": "Build",
   "help_copyright": "© 2024 Aqualert. All rights reserved.",
   "help_made_with": "Made with ❤️ for your health",
-
   "error_generic": "Something went wrong. Please try again.",
   "error_network": "Network error. Please check your connection.",
   "error_auth_failed": "Authentication failed. Please try again.",
   "error_permission_denied": "Permission denied.",
-
   "unit_ml": "ml",
   "unit_floz": "fl oz",
   "unit_kg": "kg",
@@ -521,16 +480,13 @@
   "unit_cm": "cm",
   "unit_ft": "ft",
   "unit_liter": "L",
-
   "time_morning": "Morning",
   "time_afternoon": "Afternoon",
   "time_evening": "Evening",
   "time_night": "Night",
-
   "help_privacy_policy": "Privacy Policy",
   "help_privacy_policy_desc": "View our privacy policy",
   "help_privacy_policy_error": "Could not open Privacy Policy",
-
   "settings_delete_account": "Delete Account",
   "settings_delete_account_subtitle": "Permanently delete your account and all data",
   "settings_delete_account_dialog_title": "Delete Account?",
@@ -540,11 +496,31 @@
   "settings_delete_account_success": "Account deleted successfully",
   "settings_delete_account_error": "Failed to delete account",
   "settings_delete_account_reauth_required": "Please sign in again to delete your account",
-
   "settings_premium_section": "Premium",
   "settings_premium_upgrade": "Upgrade to Premium",
   "settings_premium_upgrade_subtitle": "Unlock all features",
   "settings_premium_active": "Premium Active ✓",
   "settings_premium_restore": "Restore Purchase",
-  "settings_premium_restore_subtitle": "Already purchased? Tap to restore"
+  "settings_premium_restore_subtitle": "Already purchased? Tap to restore",
+  "privacy_last_updated": "Last Updated: December 2, 2025",
+  "privacy_intro_title": "Introduction",
+  "privacy_intro_content": "Welcome to Aqualert. We respect your privacy and are committed to protecting your personal data. This Privacy Policy explains how we collect, use, and safeguard your information when you use our mobile application.",
+  "privacy_collect_title": "Information We Collect",
+  "privacy_collect_content": "• Email Address — for account creation and authentication\n• Display Name — optional, for personalization\n• Profile Information — age, weight, height, gender, activity level\n• Water Intake Records — amount and timestamp of consumption\n• App Usage Statistics — via Firebase Analytics\n• Device Information — device type, OS version, unique identifiers",
+  "privacy_use_title": "How We Use Your Information",
+  "privacy_use_content": "• Calculate personalized daily water intake goals\n• Track and display your water consumption history\n• Provide statistics and insights about your hydration habits\n• Send reminder notifications\n• Sync your data across devices\n• Improve app performance and user experience",
+  "privacy_storage_title": "Data Storage and Security",
+  "privacy_storage_content": "Your data is stored using Firebase Authentication and Cloud Firestore (Google Cloud servers). Data transmitted between your device and our servers is encrypted using SSL/TLS. User data is accessible only by the authenticated user through Firebase Security Rules.",
+  "privacy_third_party_title": "Third-Party Services",
+  "privacy_third_party_content": "• Google Firebase — authentication, database, analytics, push notifications\n• Google Sign-In — OAuth authentication\n• Firebase Analytics — app usage analytics\n\nWe do NOT sell, trade, or rent your personal information to third parties.",
+  "privacy_rights_title": "Your Rights",
+  "privacy_rights_content": "• Access and update your personal information via Profile & Settings\n• Export your data (water records, achievements, settings) in JSON format\n• Request deletion of your account and all associated data\n• Control notification preferences\n\nFor data deletion, contact us at: dilaraacikgoz.dev@gmail.com\nUpon deletion, all personal data will be removed from our servers within 30 days.",
+  "privacy_children_title": "Children's Privacy",
+  "privacy_children_content": "Aqualert is not intended for children under the age of 13. We do not knowingly collect personal information from children under 13.",
+  "privacy_gdpr_title": "GDPR Rights (EU/EEA Users)",
+  "privacy_gdpr_content": "• Right to Access your personal data\n• Right to Rectification of inaccurate data\n• Right to Erasure (\"right to be forgotten\")\n• Right to Restrict Processing\n• Right to Data Portability\n• Right to Object to processing",
+  "privacy_kvkk_title": "KVKK Rights (Turkey)",
+  "privacy_kvkk_content": "• Learn whether your personal data is being processed\n• Request information if processed\n• Learn the purpose of processing\n• Know the third parties to whom data is transferred\n• Request correction of incomplete or incorrect data\n• Request deletion or destruction of data",
+  "privacy_contact_title": "Contact Us",
+  "privacy_contact_content": "If you have any questions regarding this Privacy Policy:\n\nEmail: dilaraacikgoz.dev@gmail.com\nResponse Time: We aim to respond within 48 hours."
 }

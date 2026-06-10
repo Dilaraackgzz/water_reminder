@@ -429,7 +429,6 @@ Contributions are welcome! Please follow these steps:
 - Some TODOs pending for navigation handlers
 - Apple Sign-In not implemented yet (optional)
 
-See [PROJECT_PLAN.md](PROJECT_PLAN.md) for detailed project status and roadmap.
 
 ---
 

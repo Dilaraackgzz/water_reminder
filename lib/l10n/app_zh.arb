@@ -1,9 +1,7 @@
 {
   "@@locale": "zh",
-
   "appName": "Aqualert",
   "appTagline": "保持水分，健康生活",
-
   "common_cancel": "取消",
   "common_save": "保存",
   "common_delete": "删除",
@@ -21,7 +19,6 @@
   "common_loading": "加载中...",
   "common_error": "错误",
   "common_success": "成功",
-
   "auth_login_title": "登录",
   "auth_register_title": "注册",
   "auth_email_label": "邮箱",
@@ -38,14 +35,12 @@
   "auth_sign_in_google": "使用Google登录",
   "auth_sign_up_google": "使用Google注册",
   "auth_logout": "退出登录",
-
   "auth_validation_email_required": "请输入邮箱",
   "auth_validation_email_invalid": "请输入有效的邮箱",
   "auth_validation_password_required": "请输入密码",
   "auth_validation_password_min_length": "密码至少需要6个字符",
   "auth_validation_name_required": "请输入姓名",
   "auth_validation_name_min_length": "姓名至少需要2个字符",
-
   "auth_email_verification_title": "验证邮箱",
   "auth_email_verification_sent": "我们已发送验证链接至：",
   "auth_email_verification_instruction": "请查看邮箱并点击验证链接。",
@@ -54,13 +49,11 @@
   "auth_email_verification_check": "我已验证邮箱",
   "auth_email_verification_success": "邮箱验证成功！",
   "auth_email_verification_failed": "邮箱尚未验证，请检查收件箱。",
-
   "auth_forgot_password_title": "重置密码",
   "auth_forgot_password_instruction": "输入您的邮箱地址，我们将发送密码重置链接。",
   "auth_forgot_password_button": "发送重置链接",
   "auth_forgot_password_success": "密码重置邮件已发送！",
   "auth_back_to_login": "返回登录",
-
   "home_title": "首页",
   "home_daily_goal": "每日目标",
   "home_today": "今天",
@@ -72,7 +65,6 @@
   "home_delete_water_success": "记录已删除",
   "home_no_records_today": "今天没有记录",
   "home_start_drinking": "开始喝水吧！",
-
   "progress_current": "当前",
   "progress_goal": "目标",
   "progress_remaining": "剩余",
@@ -85,43 +77,36 @@
       }
     }
   },
-
   "motivational_keep_going": "继续加油！你做得很好！",
   "motivational_almost_there": "快到了！再坚持一下！",
   "motivational_goal_reached": "恭喜！目标达成！",
   "motivational_good_start": "好的开始！继续保持！",
   "motivational_stay_hydrated": "全天保持水分摄入！",
-
   "motivational_100_1": "恭喜！目标达成！",
   "motivational_100_2": "太棒了！明天继续保持！",
   "motivational_100_3": "你是补水冠军！",
   "motivational_100_4": "完美！保持好习惯！",
   "motivational_100_short": "目标达成！",
-
   "motivational_75_1": "快到了！再坚持一下！",
   "motivational_75_2": "做得很好！继续加油！",
   "motivational_75_3": "离目标很近了！",
   "motivational_75_4": "进展很棒！别停下！",
   "motivational_75_short": "快到了！",
-
   "motivational_50_1": "完成一半！太棒了！",
   "motivational_50_2": "做得好！继续加油！",
   "motivational_50_3": "方向正确！",
   "motivational_50_4": "进展不错！保持一致！",
   "motivational_50_short": "一半！",
-
   "motivational_25_1": "好的开始！继续喝水！",
   "motivational_25_2": "起步很好！",
   "motivational_25_3": "开始不错！保持水分！",
   "motivational_25_4": "继续加油！每一口都很重要！",
   "motivational_25_short": "好的开始！",
-
   "motivational_0_1": "是时候补水了！你的身体会感谢你！",
   "motivational_0_2": "开始补水之旅！",
   "motivational_0_3": "用水开始新的一天！",
   "motivational_0_4": "健康很重要！开始喝水！",
   "motivational_0_short": "开始吧！",
-
   "profile_title": "个人资料",
   "profile_edit": "编辑",
   "profile_personal_info": "个人信息",
@@ -141,11 +126,9 @@
   "profile_save_success": "个人资料已更新",
   "profile_save_failed": "更新失败",
   "profile_user_default": "用户",
-
   "gender_male": "男",
   "gender_female": "女",
   "gender_other": "其他",
-
   "activity_sedentary": "久坐",
   "activity_sedentary_desc": "很少或没有运动",
   "activity_light": "轻度活动",
@@ -156,12 +139,10 @@
   "activity_very_active_desc": "每周6-7天高强度运动",
   "activity_extra_active": "非常活跃",
   "activity_extra_active_desc": "非常高强度运动和体力劳动",
-
   "bmi_underweight": "体重过轻",
   "bmi_normal": "正常体重",
   "bmi_overweight": "超重",
   "bmi_obese": "肥胖",
-
   "settings_title": "设置",
   "settings_notifications": "通知",
   "settings_reminders": "提醒",
@@ -175,22 +156,18 @@
   "settings_import_data": "导入数据",
   "settings_help": "帮助",
   "settings_about": "关于",
-
   "settings_enable_notifications": "启用通知",
   "settings_reminder_interval": "提醒间隔",
   "settings_reminder_start_time": "开始时间",
   "settings_reminder_end_time": "结束时间",
   "settings_test_notification": "测试通知",
-
   "settings_theme_light": "浅色",
   "settings_theme_dark": "深色",
   "settings_theme_system": "跟随系统",
-
   "settings_unit_ml": "毫升 (ml)",
   "settings_unit_floz": "液盎司 (fl oz)",
   "settings_unit_metric": "公制",
   "settings_unit_imperial": "英制",
-
   "settings_subtitle": "自定义体验",
   "settings_reminders_active": "提醒已启用",
   "settings_reminders_inactive": "开启提醒",
@@ -232,7 +209,6 @@
     }
   },
   "settings_reminder_interval_title": "提醒间隔",
-
   "settings_language_coming_soon": "即将推出",
   "settings_export_success": "数据导出成功",
   "settings_export_failed": "导出失败",
@@ -249,7 +225,6 @@
       }
     }
   },
-
   "statistics_title": "统计",
   "statistics_weekly": "每周",
   "statistics_monthly": "每月",
@@ -265,7 +240,13 @@
   "statistics_daily_average": "日均",
   "statistics_goals_met": "达成目标",
   "statistics_out_of": "共{count}天",
-  "@statistics_out_of": {"placeholders": {"count": {"type": "int"}}},
+  "@statistics_out_of": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "statistics_progress": "进度",
   "statistics_on_track": "进展顺利！",
   "statistics_keep_going": "继续加油！",
@@ -278,7 +259,6 @@
   "statistics_completed": "已完成",
   "statistics_next_goal": "下一个目标",
   "statistics_days": "天",
-
   "achievements_title": "成就",
   "achievements_unlocked": "已解锁",
   "achievements_locked": "未解锁",
@@ -292,7 +272,6 @@
       }
     }
   },
-
   "achievement_first_drop": "第一滴水",
   "achievement_first_drop_desc": "记录第一次饮水",
   "achievement_daily_goal_1": "目标达成者",
@@ -309,7 +288,6 @@
   "achievement_total_100l_desc": "累计饮水100升",
   "achievement_consistency": "坚持一周",
   "achievement_consistency_desc": "连续7天达成目标",
-
   "reminders_title": "提醒",
   "reminders_active": "活动提醒",
   "reminders_pending": "待处理通知",
@@ -319,10 +297,12 @@
   "reminders_interval_90": "每1.5小时",
   "reminders_interval_120": "每2小时",
   "reminders_interval_180": "每3小时",
-
+  "reminders_premium_custom_title": "高级：自定义提醒",
+  "reminders_custom_description": "在您自己的时间添加无限提醒",
+  "reminders_custom_add_button": "添加自定义时间",
+  "reminders_custom_added": "已添加自定义提醒：{time}",
   "notification_reminder_title": "该喝水了！",
   "notification_reminder_body": "保持水分！现在喝点水吧。",
-
   "streak_current": "当前连续",
   "streak_days": "{days}天",
   "@streak_days": {
@@ -343,7 +323,6 @@
   "streak_error": "加载数据失败",
   "streak_day_singular": "天",
   "streak_day_plural": "天",
-
   "onboarding_title_1": "追踪饮水",
   "onboarding_desc_1": "轻松记录每日饮水量",
   "onboarding_title_2": "智能提醒",
@@ -353,7 +332,6 @@
   "onboarding_title_4": "保持健康",
   "onboarding_desc_4": "养成健康习惯，改善整体健康",
   "onboarding_get_started": "开始使用",
-
   "drawer_home": "首页",
   "drawer_statistics": "统计",
   "drawer_achievements": "成就",
@@ -363,13 +341,11 @@
   "drawer_help": "帮助",
   "drawer_about": "关于",
   "drawer_logout": "退出登录",
-
   "about_title": "Aqualert",
   "about_version": "版本 1.0.0",
   "about_description": "使用Aqualert保持水分。追踪每日饮水量并达成目标！",
   "about_copyright": "© 2024 Aqualert. 保留所有权利。",
   "about_close": "关闭",
-
   "help_title": "帮助",
   "help_subtitle": "获取帮助",
   "help_faq": "常见问题",
@@ -377,58 +353,42 @@
   "help_version": "版本",
   "help_app_info": "应用信息",
   "help_coming_soon": "帮助 - 即将推出！",
-
   "help_faq_section": "常见问题",
   "help_features_section": "功能指南",
   "help_about_section": "关于",
-
   "faq_1_q": "每日饮水目标是如何计算的？",
   "faq_1_a": "每日饮水目标根据您的体重、身高、年龄、性别和活动水平使用科学公式计算。您也可以在个人资料设置中设置自定义目标。",
-
   "faq_2_q": "提醒如何工作？",
   "faq_2_a": "您可以设置提醒间隔（30-180分钟）并选择开始/结束时间。应用会在此期间发送通知帮助您保持水分。",
-
   "faq_3_q": "什么是连续，如何运作？",
   "faq_3_a": "连续追踪您达成每日饮水目标的连续天数。每天喝水以保持和增加您的连续！",
-
   "faq_4_q": "如何更改测量单位？",
   "faq_4_a": "进入设置→单位，在毫升（ml）和液盎司（fl oz）之间切换。所有测量值将自动更新。",
-
   "faq_5_q": "可以导出饮水数据吗？",
   "faq_5_a": "可以！进入设置→数据管理→导出数据。您可以将数据保存为JSON文件并稍后导入。",
-
   "faq_6_q": "成就如何运作？",
   "faq_6_a": "完成饮水追踪里程碑以解锁成就并获得奖励积分。在成就页面追踪您的进度。",
-
   "feature_tracking_title": "饮水追踪",
   "feature_tracking_desc": "使用快速添加按钮（250ml、350ml、500ml、750ml）或输入自定义量轻松记录每日饮水。",
-
   "feature_reminders_title": "智能提醒",
   "feature_reminders_desc": "设置可自定义的提醒间隔和活动时间。全天不忘喝水。",
-
   "feature_statistics_title": "统计与洞察",
   "feature_statistics_desc": "通过每周、每月和每年图表查看饮水趋势。追踪您的长期进度。",
-
   "feature_achievements_title": "成就与连续",
   "feature_achievements_desc": "通过达成饮水目标获得成就并保持每日连续。通过游戏化保持动力！",
-
   "feature_profile_title": "个人资料与目标",
   "feature_profile_desc": "设置个人信息，让应用根据您的身体数据计算最佳每日饮水目标。",
-
   "help_contact_email": "通过邮件联系",
   "help_contact_email_address": "dilaraacikgoz.dev@gmail.com",
   "help_rate_app": "评价应用",
   "help_rate_desc": "喜欢Aqualert？给我们留下评价！",
-
   "help_build_number": "版本号",
   "help_copyright": "© 2024 Aqualert. 保留所有权利。",
   "help_made_with": "为您的健康用❤️制作",
-
   "error_generic": "出了点问题。请重试。",
   "error_network": "网络错误。请检查连接。",
   "error_auth_failed": "认证失败。请重试。",
   "error_permission_denied": "权限被拒绝。",
-
   "unit_ml": "ml",
   "unit_floz": "fl oz",
   "unit_kg": "kg",
@@ -436,16 +396,13 @@
   "unit_cm": "cm",
   "unit_ft": "ft",
   "unit_liter": "L",
-
   "time_morning": "早晨",
   "time_afternoon": "下午",
   "time_evening": "傍晚",
   "time_night": "夜晚",
-
   "help_privacy_policy": "隐私政策",
   "help_privacy_policy_desc": "查看隐私政策",
   "help_privacy_policy_error": "无法打开隐私政策",
-
   "settings_delete_account": "删除账户",
   "settings_delete_account_subtitle": "永久删除您的账户和所有数据",
   "settings_delete_account_dialog_title": "删除账户？",
@@ -454,5 +411,26 @@
   "settings_delete_account_cancel": "取消",
   "settings_delete_account_success": "账户删除成功",
   "settings_delete_account_error": "删除账户失败",
-  "settings_delete_account_reauth_required": "请重新登录以删除您的账户"
+  "settings_delete_account_reauth_required": "请重新登录以删除您的账户",
+  "privacy_last_updated": "最后更新：2025年12月2日",
+  "privacy_intro_title": "简介",
+  "privacy_intro_content": "欢迎使用 Aqualert。我们尊重您的隐私，并致力于保护您的个人数据。本隐私政策解释了您在使用我们的移动应用程序时，我们如何收集、使用和保护您的信息。",
+  "privacy_collect_title": "我们收集的信息",
+  "privacy_collect_content": "• 电子邮件地址 — 用于账户创建和身份验证\n• 显示名称 — 可选，用于个性化\n• 个人资料信息 — 年龄、体重、身高、性别、活动水平\n• 饮水记录 — 消耗量和时间戳\n• 应用使用统计 — 通过 Firebase Analytics\n• 设备信息 — 设备类型、操作系统版本、唯一标识符",
+  "privacy_use_title": "我们如何使用您的信息",
+  "privacy_use_content": "• 计算个性化的每日饮水目标\n• 追踪并显示您的饮水历史\n• 提供有关您补水习惯的统计数据和见解\n• 发送提醒通知\n• 跨设备同步您的数据\n• 改善应用性能和用户体验",
+  "privacy_storage_title": "数据存储和安全",
+  "privacy_storage_content": "您的数据使用 Firebase Authentication 和 Cloud Firestore（Google Cloud 服务器）存储。您的设备和我们服务器之间传输的数据使用 SSL/TLS 加密。用户数据只能通过 Firebase 安全规则由经过身份验证的用户访问。",
+  "privacy_third_party_title": "第三方服务",
+  "privacy_third_party_content": "• Google Firebase — 身份验证、数据库、分析、推送通知\n• Google Sign-In — OAuth 身份验证\n• Firebase Analytics — 应用使用分析\n\n我们不会向第三方出售、交易或出租您的个人信息。",
+  "privacy_rights_title": "您的权利",
+  "privacy_rights_content": "• 通过个人资料和设置访问和更新您的个人信息\n• 以 JSON 格式导出您的数据（饮水记录、成就、设置）\n• 请求删除您的账户及所有关联数据\n• 控制通知偏好设置\n\n如需删除数据，请联系我们：dilaraacikgoz.dev@gmail.com\n删除后，所有个人数据将在30天内从我们的服务器中删除。",
+  "privacy_children_title": "儿童隐私",
+  "privacy_children_content": "Aqualert 不适用于13岁以下的儿童。我们不会故意收集13岁以下儿童的个人信息。",
+  "privacy_gdpr_title": "GDPR 权利（欧盟/欧经区用户）",
+  "privacy_gdpr_content": "• 访问您个人数据的权利\n• 纠正不准确数据的权利\n• 删除权（\"被遗忘权\"）\n• 限制处理的权利\n• 数据可携带性权利\n• 反对处理的权利",
+  "privacy_kvkk_title": "KVKK 权利（土耳其）",
+  "privacy_kvkk_content": "• 了解个人数据是否正在被处理\n• 如果正在处理，请求相关信息\n• 了解处理目的\n• 了解数据传输给哪些第三方\n• 请求更正不完整或不正确的数据\n• 请求删除或销毁数据",
+  "privacy_contact_title": "联系我们",
+  "privacy_contact_content": "如果您对本隐私政策有任何疑问：\n\n电子邮件：dilaraacikgoz.dev@gmail.com\n响应时间：我们力争在48小时内回复。"
 }

@@ -1,9 +1,7 @@
 {
   "@@locale": "tr",
-
   "appName": "Aqualert",
   "appTagline": "Sağlıklı yaşam için su içmeyi unutma",
-
   "common_cancel": "İptal",
   "common_save": "Kaydet",
   "common_delete": "Sil",
@@ -21,7 +19,6 @@
   "common_loading": "Yükleniyor...",
   "common_error": "Hata",
   "common_success": "Başarılı",
-
   "auth_login_title": "Giriş Yap",
   "auth_register_title": "Kayıt Ol",
   "auth_email_label": "E-posta",
@@ -38,7 +35,6 @@
   "auth_sign_in_google": "Google ile Giriş Yap",
   "auth_sign_up_google": "Google ile Kayıt Ol",
   "auth_logout": "Çıkış Yap",
-
   "auth_validation_email_required": "E-posta adresi gerekli",
   "auth_validation_email_invalid": "Geçerli bir e-posta adresi girin",
   "auth_validation_password_required": "Şifre gerekli",
@@ -48,7 +44,6 @@
   "auth_validation_name_min_length": "Ad en az 2 karakter olmalı",
   "auth_confirm_password_label": "Şifre Tekrar",
   "auth_confirm_password_hint": "Şifrenizi tekrar girin",
-
   "auth_resend_countdown": "{seconds} saniye sonra tekrar gönder",
   "@auth_resend_countdown": {
     "placeholders": {
@@ -60,7 +55,6 @@
   "auth_verification_check_failed": "Doğrulama durumu kontrol edilemedi",
   "auth_verification_send_failed": "Doğrulama e-postası gönderilemedi",
   "auth_signout_failed": "Çıkış yapılamadı",
-
   "auth_email_verification_title": "E-postanı Doğrula",
   "auth_email_verification_sent": "Doğrulama bağlantısını gönderdik:",
   "auth_email_verification_instruction": "Lütfen e-postanı kontrol et ve devam etmek için doğrulama bağlantısına tıkla.",
@@ -69,13 +63,11 @@
   "auth_email_verification_check": "E-postamı doğruladım",
   "auth_email_verification_success": "E-posta başarıyla doğrulandı!",
   "auth_email_verification_failed": "E-posta henüz doğrulanmadı. Lütfen gelen kutunu kontrol et.",
-
   "auth_forgot_password_title": "Şifre Sıfırla",
   "auth_forgot_password_instruction": "E-posta adresini gir, sana şifreni sıfırlaman için bir bağlantı gönderelim.",
   "auth_forgot_password_button": "Sıfırlama Bağlantısı Gönder",
   "auth_forgot_password_success": "Şifre sıfırlama e-postası gönderildi! Gelen kutunu kontrol et.",
   "auth_back_to_login": "Giriş Sayfasına Dön",
-
   "home_title": "Ana Sayfa",
   "home_daily_goal": "Günlük Hedef",
   "home_today": "Bugün",
@@ -97,49 +89,41 @@
   "home_delete_water_success": "Su kaydı silindi",
   "home_no_records_today": "Bugün su kaydı yok",
   "home_start_drinking": "Su içmeye başla!",
-
   "progress_current": "Mevcut",
   "progress_goal": "Hedef",
   "progress_remaining": "Kalan",
   "progress_completed": "Hedef tamamlandı!",
   "progress_percentage": "Günlük hedefin %{percent}'i",
-
   "motivational_keep_going": "Devam et! Harika gidiyorsun!",
   "motivational_almost_there": "Neredeyse bitti! Biraz daha!",
   "motivational_goal_reached": "Tebrikler! Hedefe ulaştın!",
   "motivational_good_start": "Harika bir başlangıç! Devam et!",
   "motivational_stay_hydrated": "Gün boyunca bol su iç!",
-
   "motivational_100_1": "Tebrikler! Hedefe ulaştın!",
   "motivational_100_2": "Harika iş! Yarın da susuz kalma!",
   "motivational_100_3": "Hidrasyon şampiyonusun!",
   "motivational_100_4": "Mükemmel! Bu harika alışkanlığını sürdür!",
   "motivational_100_short": "Hedefe Ulaşıldı!",
-
   "motivational_75_1": "Neredeyse bitti! Biraz daha!",
   "motivational_75_2": "Harika gidiyorsun! Devam et!",
   "motivational_75_3": "Hedefe çok yakınsın!",
   "motivational_75_4": "Fantastik ilerleme! Şimdi durma!",
   "motivational_75_short": "Neredeyse bitti!",
-
   "motivational_50_1": "Yarıladın! Harika gidiyorsun!",
   "motivational_50_2": "Harika iş! Devam et!",
   "motivational_50_3": "Doğru yoldasın!",
   "motivational_50_4": "Güzel ilerleme! Tutarlı ol!",
   "motivational_50_short": "Yarıda!",
-
   "motivational_25_1": "İyi bir başlangıç! Su içmeye devam et!",
   "motivational_25_2": "Harika bir başlangıç yaptın!",
   "motivational_25_3": "Güzel başlangıç! Susuz kalma!",
   "motivational_25_4": "Devam et! Her yudum önemli!",
   "motivational_25_short": "İyi başlangıç!",
-
   "motivational_0_1": "Hidrasyon zamanı! Vücudun sana teşekkür edecek!",
   "motivational_0_2": "Hadi hidrasyon yolculuğuna başlayalım!",
   "motivational_0_3": "Güne biraz suyla başla!",
   "motivational_0_4": "Sağlığın önemli! İçmeye başla!",
   "motivational_0_short": "Hadi başlayalım!",
-
   "profile_title": "Profil",
   "profile_edit": "Profili Düzenle",
   "profile_personal_info": "Kişisel Bilgiler",
@@ -163,11 +147,9 @@
   "profile_validation_age_invalid": "Yaş 1 ile 120 arasında olmalı",
   "profile_validation_weight_invalid": "Kilo 10 ile 500 kg arasında olmalı",
   "profile_validation_height_invalid": "Boy 50 ile 300 cm arasında olmalı",
-
   "gender_male": "Erkek",
   "gender_female": "Kadın",
   "gender_other": "Diğer",
-
   "activity_sedentary": "Hareketsiz",
   "activity_sedentary_desc": "Çok az veya hiç egzersiz yok",
   "activity_light": "Az Hareketli",
@@ -178,12 +160,10 @@
   "activity_very_active_desc": "Haftada 6-7 gün yoğun egzersiz",
   "activity_extra_active": "Son Derece Hareketli",
   "activity_extra_active_desc": "Çok yoğun egzersiz ve fiziksel iş",
-
   "bmi_underweight": "Zayıf",
   "bmi_normal": "Normal Kilo",
   "bmi_overweight": "Fazla Kilolu",
   "bmi_obese": "Obez",
-
   "settings_title": "Ayarlar",
   "settings_notifications": "Bildirimler",
   "settings_reminders": "Hatırlatıcılar",
@@ -197,22 +177,18 @@
   "settings_import_data": "Verileri İçe Aktar",
   "settings_help": "Yardım ve Destek",
   "settings_about": "Hakkında",
-
   "settings_enable_notifications": "Bildirimleri Etkinleştir",
   "settings_reminder_interval": "Hatırlatma Aralığı",
   "settings_reminder_start_time": "Başlangıç Saati",
   "settings_reminder_end_time": "Bitiş Saati",
   "settings_test_notification": "Test Bildirimi",
-
   "settings_theme_light": "Açık",
   "settings_theme_dark": "Koyu",
   "settings_theme_system": "Sistem Varsayılanı",
-
   "settings_unit_ml": "Mililitre (ml)",
   "settings_unit_floz": "Sıvı Ons (fl oz)",
   "settings_unit_metric": "Metrik sistem",
   "settings_unit_imperial": "İngiliz sistemi",
-
   "settings_subtitle": "Deneyimini özelleştir",
   "settings_reminders_active": "Su hatırlatıcıları aktif",
   "settings_reminders_inactive": "Hatırlatıcıları açmak için etkinleştir",
@@ -242,14 +218,12 @@
   "settings_import_duplicate_skipped": "tekrarlanan kayıt atlandı",
   "settings_import_failed_message": "İçe aktarma başarısız: {error}",
   "settings_reminder_interval_title": "Hatırlatma Aralığı",
-
   "settings_language_coming_soon": "Yakında Gelecek",
   "settings_export_success": "Veriler başarıyla dışa aktarıldı",
   "settings_export_failed": "Veriler dışa aktarılamadı",
   "settings_import_success": "Veriler başarıyla içe aktarıldı",
   "settings_import_failed": "Veriler içe aktarılamadı",
   "settings_import_stats": "{imported} kayıt içe aktarıldı, {skipped} tekrarlanan atlandı",
-
   "statistics_title": "İstatistikler",
   "statistics_weekly": "Haftalık",
   "statistics_monthly": "Aylık",
@@ -284,14 +258,12 @@
   "statistics_completed": "Tamamlanan",
   "statistics_next_goal": "Sonraki Hedef",
   "statistics_days": "gün",
-
   "achievements_title": "Başarımlar",
   "achievements_unlocked": "Açıldı",
   "achievements_locked": "Kilitli",
   "achievements_progress": "İlerleme",
   "achievements_reward_points": "Ödül Puanları",
   "achievements_total_points": "Toplam Puan: {points}",
-
   "achievement_first_drop": "İlk Damla",
   "achievement_first_drop_desc": "İlk su kaydını ekle",
   "achievement_daily_goal_1": "Hedef Başarıcı",
@@ -326,7 +298,6 @@
   "achievement_total_5l_desc": "Toplamda 5 litre su içtin",
   "achievement_total_50l": "50 Litre",
   "achievement_total_50l_desc": "Toplamda 50 litre su içtin",
-
   "reminders_title": "Hatırlatıcılar",
   "reminders_active": "Aktif Hatırlatıcılar",
   "reminders_pending": "Bekleyen Bildirimler",
@@ -344,7 +315,10 @@
   "reminders_cancel_success": "Tüm hatırlatıcılar iptal edildi",
   "reminders_info_message": "Hatırlatıcılar gün boyunca su içmenize yardımcı olur. Programınızı Ayarlar'dan özelleştirin.",
   "reminders_schedule_info": "Mevcut Program",
-
+  "reminders_premium_custom_title": "Premium: Özel Saatli Hatırlatıcılar",
+  "reminders_custom_description": "Sınırsız, kendi saatlerinle hatırlatıcı ekle",
+  "reminders_custom_add_button": "Özel Saat Ekle",
+  "reminders_custom_added": "Özel hatırlatıcı eklendi: {time}",
   "notification_reminder_title": "Su İçme Zamanı!",
   "notification_reminder_body": "Susuz kalma! Şimdi biraz su iç.",
   "notification_title_1": "Su İçme Zamanı!",
@@ -362,7 +336,6 @@
   "notification_body_6": "Sağlıklı ve susuz kal! Haydi iç!",
   "notification_body_7": "Su molası zamanı! Harika gidiyorsun!",
   "notification_body_8": "Düzenli su içmeyi unutma, sağlığın için önemli!",
-
   "streak_current": "Mevcut Seri",
   "streak_days": "{days} gün",
   "streak_keep_going": "Serini sürdür!",
@@ -376,7 +349,6 @@
   "streak_error": "Seri verileri yüklenemedi",
   "streak_day_singular": "gün",
   "streak_day_plural": "gün",
-
   "onboarding_title_1": "Suyunu Takip Et",
   "onboarding_desc_1": "Günlük su tüketimini tek dokunuşla kolayca kaydet",
   "onboarding_title_2": "Akıllı Hatırlatıcılar",
@@ -386,7 +358,6 @@
   "onboarding_title_4": "Sağlıklı Kal",
   "onboarding_desc_4": "Sağlıklı alışkanlıklar geliştir ve genel sağlığını iyileştir",
   "onboarding_get_started": "Başlayalım",
-
   "drawer_home": "Ana Sayfa",
   "drawer_statistics": "İstatistikler",
   "drawer_achievements": "Başarımlar",
@@ -396,13 +367,11 @@
   "drawer_help": "Yardım ve Destek",
   "drawer_about": "Hakkında",
   "drawer_logout": "Çıkış Yap",
-
   "about_title": "Aqualert",
   "about_version": "Sürüm 1.0.0",
   "about_description": "Aqualert ile sağlıklı kal ve susuz kalma. Günlük su tüketimini takip et ve hidrasyon hedeflerine ulaş!",
   "about_copyright": "© 2024 Aqualert. Tüm hakları saklıdır.",
   "about_close": "Kapat",
-
   "help_title": "Yardım ve Destek",
   "help_subtitle": "Yardım alın ve daha fazlasını öğrenin",
   "help_faq": "Sık Sorulan Sorular",
@@ -410,58 +379,42 @@
   "help_version": "Sürüm",
   "help_app_info": "Uygulama Bilgileri",
   "help_coming_soon": "Yardım ve Destek - Yakında Gelecek!",
-
   "help_faq_section": "Sık Sorulan Sorular",
   "help_features_section": "Özellikler Rehberi",
   "help_about_section": "Hakkında",
-
   "faq_1_q": "Günlük su hedefim nasıl hesaplanıyor?",
   "faq_1_a": "Günlük su hedefiniz kilo, boy, yaş, cinsiyet ve aktivite seviyenize göre bilimsel formüller kullanılarak hesaplanır. Profil ayarlarından özel hedef de belirleyebilirsiniz.",
-
   "faq_2_q": "Su hatırlatıcıları nasıl çalışır?",
   "faq_2_a": "Hatırlatma aralıkları (30-180 dakika) belirleyip başlangıç/bitiş saatleri seçebilirsiniz. Uygulama bu dönemde susuz kalmamanız için bildirim gönderir.",
-
   "faq_3_q": "Seriler nedir ve nasıl çalışır?",
   "faq_3_a": "Seriler, günlük su hedefinize ulaştığınız ardışık günleri takip eder. Serinizi sürdürmek ve artırmak için her gün su içmeye devam edin!",
-
   "faq_4_q": "Ölçü birimlerini nasıl değiştirebilirim?",
   "faq_4_a": "Ayarlar → Birimler bölümünden mililitre (ml) ve sıvı ons (fl oz) arasında geçiş yapabilirsiniz. Tüm ölçümler otomatik güncellenir.",
-
   "faq_5_q": "Su takip verilerimi dışa aktarabilir miyim?",
   "faq_5_a": "Evet! Ayarlar → Veri Yönetimi → Verileri Dışa Aktar'a gidin. Verilerinizi JSON dosyası olarak paylaşabilir veya kaydedip sonra içe aktarabilirsiniz.",
-
   "faq_6_q": "Başarımlar nasıl çalışır?",
   "faq_6_a": "Su takip kilometre taşlarını tamamlayarak başarımların kilidini açın ve ödül puanları kazanın. İlerlemelerinizi Başarımlar ekranından takip edin.",
-
   "feature_tracking_title": "Su Takibi",
   "feature_tracking_desc": "Hızlı ekleme butonları (250ml, 350ml, 500ml, 750ml) veya özel miktar girerek günlük su tüketiminizi kolayca kaydedin.",
-
   "feature_reminders_title": "Akıllı Hatırlatıcılar",
   "feature_reminders_desc": "Özelleştirilebilir hatırlatma aralıkları belirleyin ve aktif saatleri seçin. Gün boyunca su içmeyi asla unutmayın.",
-
   "feature_statistics_title": "İstatistikler ve İçgörüler",
   "feature_statistics_desc": "Haftalık, aylık ve yıllık grafiklerle su tüketim trendlerinizi görüntüleyin. Zaman içindeki ilerlemenizi takip edin.",
-
   "feature_achievements_title": "Başarımlar ve Seriler",
   "feature_achievements_desc": "Su hedeflerinize ulaşarak başarımlar kazanın ve günlük serilerinizi sürdürün. Oyunlaştırma ile motive kalın!",
-
   "feature_profile_title": "Profil ve Hedefler",
   "feature_profile_desc": "Kişisel bilgilerinizi girin ve uygulamanın vücut ölçülerinize göre optimal günlük su hedefinizi hesaplamasını sağlayın.",
-
   "help_contact_email": "E-posta ile İletişim",
   "help_contact_email_address": "dilaraacikgoz.dev@gmail.com",
   "help_rate_app": "Uygulamayı Değerlendir",
   "help_rate_desc": "Aqualert'i beğendiniz mi? Bize yorum bırakın!",
-
   "help_build_number": "Yapı",
   "help_copyright": "© 2024 Aqualert. Tüm hakları saklıdır.",
   "help_made_with": "Sağlığınız için ❤️ ile yapıldı",
-
   "error_generic": "Bir şeyler ters gitti. Lütfen tekrar dene.",
   "error_network": "Ağ hatası. Lütfen bağlantını kontrol et.",
   "error_auth_failed": "Kimlik doğrulama başarısız. Lütfen tekrar dene.",
   "error_permission_denied": "İzin reddedildi.",
-
   "unit_ml": "ml",
   "unit_floz": "fl oz",
   "unit_kg": "kg",
@@ -469,16 +422,13 @@
   "unit_cm": "cm",
   "unit_ft": "ft",
   "unit_liter": "L",
-
   "time_morning": "Sabah",
   "time_afternoon": "Öğleden Sonra",
   "time_evening": "Akşam",
   "time_night": "Gece",
-
   "help_privacy_policy": "Gizlilik Politikası",
   "help_privacy_policy_desc": "Gizlilik politikamızı görüntüle",
   "help_privacy_policy_error": "Gizlilik Politikası açılamadı",
-
   "settings_delete_account": "Hesabı Sil",
   "settings_delete_account_subtitle": "Hesabınızı ve tüm verilerinizi kalıcı olarak silin",
   "settings_delete_account_dialog_title": "Hesabı Sil?",
@@ -488,11 +438,31 @@
   "settings_delete_account_success": "Hesap başarıyla silindi",
   "settings_delete_account_error": "Hesap silinemedi",
   "settings_delete_account_reauth_required": "Hesabınızı silmek için lütfen tekrar giriş yapın",
-
   "settings_premium_section": "Premium",
   "settings_premium_upgrade": "Premium'a Geç",
   "settings_premium_upgrade_subtitle": "Tüm özelliklerin kilidini aç",
   "settings_premium_active": "Premium Aktif ✓",
   "settings_premium_restore": "Satın Alımı Geri Yükle",
-  "settings_premium_restore_subtitle": "Daha önce satın aldın mı? Geri yükle"
+  "settings_premium_restore_subtitle": "Daha önce satın aldın mı? Geri yükle",
+  "privacy_last_updated": "Son Güncelleme: 2 Aralık 2025",
+  "privacy_intro_title": "Giriş",
+  "privacy_intro_content": "Aqualert'e hoş geldiniz. Gizliliğinize saygı duyuyor ve kişisel verilerinizi korumaya kararlıyız. Bu Gizlilik Politikası, mobil uygulamamızı kullandığınızda bilgilerinizi nasıl topladığımızı, kullandığımızı ve koruduğumuzu açıklamaktadır.",
+  "privacy_collect_title": "Topladığımız Bilgiler",
+  "privacy_collect_content": "• E-posta Adresi — hesap oluşturma ve kimlik doğrulama için\n• Görünen Ad — isteğe bağlı, kişiselleştirme için\n• Profil Bilgileri — yaş, kilo, boy, cinsiyet, aktivite düzeyi\n• Su Tüketim Kayıtları — tüketim miktarı ve zaman damgası\n• Uygulama Kullanım İstatistikleri — Firebase Analytics aracılığıyla\n• Cihaz Bilgileri — cihaz türü, işletim sistemi sürümü, benzersiz tanımlayıcılar",
+  "privacy_use_title": "Bilgilerinizi Nasıl Kullanıyoruz",
+  "privacy_use_content": "• Kişiselleştirilmiş günlük su içme hedefleri hesaplama\n• Su tüketim geçmişinizi takip etme ve görüntüleme\n• Hidrasyon alışkanlıklarınız hakkında istatistik ve öngörüler sunma\n• Hatırlatma bildirimleri gönderme\n• Verilerinizi cihazlar arasında senkronize etme\n• Uygulama performansını ve kullanıcı deneyimini geliştirme",
+  "privacy_storage_title": "Veri Depolama ve Güvenlik",
+  "privacy_storage_content": "Verileriniz Firebase Authentication ve Cloud Firestore (Google Cloud sunucuları) kullanılarak depolanmaktadır. Cihazınız ile sunucularımız arasında iletilen veriler SSL/TLS kullanılarak şifrelenmektedir. Kullanıcı verilerine yalnızca kimliği doğrulanmış kullanıcı Firebase Güvenlik Kuralları aracılığıyla erişebilmektedir.",
+  "privacy_third_party_title": "Üçüncü Taraf Hizmetler",
+  "privacy_third_party_content": "• Google Firebase — kimlik doğrulama, veritabanı, analitik, push bildirimleri\n• Google Sign-In — OAuth kimlik doğrulama\n• Firebase Analytics — uygulama kullanım analitiği\n\nKişisel bilgilerinizi üçüncü taraflara SATMIYORUZ, takas etmiyor veya kiralamıyoruz.",
+  "privacy_rights_title": "Haklarınız",
+  "privacy_rights_content": "• Kişisel bilgilerinize Profil ve Ayarlar üzerinden erişme ve güncelleme\n• Verilerinizi (su kayıtları, başarımlar, ayarlar) JSON formatında dışa aktarma\n• Hesabınızın ve tüm ilgili verilerin silinmesini talep etme\n• Bildirim tercihlerini kontrol etme\n\nVeri silme için bize ulaşın: dilaraacikgoz.dev@gmail.com\nSilme işlemi sonrasında tüm kişisel veriler 30 gün içinde sunucularımızdan kaldırılacaktır.",
+  "privacy_children_title": "Çocukların Gizliliği",
+  "privacy_children_content": "Aqualert, 13 yaşın altındaki çocuklar için tasarlanmamıştır. 13 yaşın altındaki çocuklardan bilerek kişisel bilgi toplamıyoruz.",
+  "privacy_gdpr_title": "GDPR Hakları (AB/AEA Kullanıcıları)",
+  "privacy_gdpr_content": "• Kişisel verilerinize Erişim hakkı\n• Yanlış verilerin Düzeltilmesi hakkı\n• Silme hakkı (\"unutulma hakkı\")\n• İşlemeyi Kısıtlama hakkı\n• Veri Taşınabilirliği hakkı\n• İşlemeye İtiraz hakkı",
+  "privacy_kvkk_title": "KVKK Hakları (Türkiye)",
+  "privacy_kvkk_content": "• Kişisel verilerinizin işlenip işlenmediğini öğrenme\n• İşlenmişse buna ilişkin bilgi talep etme\n• İşlenme amacını ve amacına uygun kullanılıp kullanılmadığını öğrenme\n• Eksik veya yanlış işlenmişse düzeltilmesini isteme\n• Silinmesini veya yok edilmesini isteme\n• Kişisel verilerin aktarıldığı üçüncü kişileri bilme",
+  "privacy_contact_title": "Bize Ulaşın",
+  "privacy_contact_content": "Bu Gizlilik Politikası hakkında sorularınız varsa:\n\nE-posta: dilaraacikgoz.dev@gmail.com\nYanıt Süresi: 48 saat içinde yanıt vermeyi hedefliyoruz."
 }

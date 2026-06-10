@@ -1,9 +1,7 @@
 {
   "@@locale": "ru",
-
   "appName": "Aqualert",
   "appTagline": "Оставайтесь гидратированными для здоровой жизни",
-
   "common_cancel": "Отмена",
   "common_save": "Сохранить",
   "common_delete": "Удалить",
@@ -21,7 +19,6 @@
   "common_loading": "Загрузка...",
   "common_error": "Ошибка",
   "common_success": "Успешно",
-
   "auth_login_title": "Вход",
   "auth_register_title": "Регистрация",
   "auth_email_label": "Email",
@@ -38,14 +35,12 @@
   "auth_sign_in_google": "Войти через Google",
   "auth_sign_up_google": "Регистрация через Google",
   "auth_logout": "Выйти",
-
   "auth_validation_email_required": "Требуется email",
   "auth_validation_email_invalid": "Введите корректный email",
   "auth_validation_password_required": "Требуется пароль",
   "auth_validation_password_min_length": "Пароль должен быть не менее 6 символов",
   "auth_validation_name_required": "Требуется имя",
   "auth_validation_name_min_length": "Имя должно быть не менее 2 символов",
-
   "auth_email_verification_title": "Подтвердите Email",
   "auth_email_verification_sent": "Мы отправили ссылку для подтверждения на:",
   "auth_email_verification_instruction": "Проверьте почту и нажмите на ссылку для подтверждения.",
@@ -54,13 +49,11 @@
   "auth_email_verification_check": "Я подтвердил email",
   "auth_email_verification_success": "Email успешно подтвержден!",
   "auth_email_verification_failed": "Email еще не подтвержден. Проверьте почту.",
-
   "auth_forgot_password_title": "Сброс пароля",
   "auth_forgot_password_instruction": "Введите email, и мы отправим ссылку для сброса пароля.",
   "auth_forgot_password_button": "Отправить ссылку",
   "auth_forgot_password_success": "Письмо для сброса пароля отправлено!",
   "auth_back_to_login": "Вернуться к входу",
-
   "home_title": "Главная",
   "home_daily_goal": "Дневная цель",
   "home_today": "Сегодня",
@@ -72,7 +65,6 @@
   "home_delete_water_success": "Запись удалена",
   "home_no_records_today": "Сегодня нет записей",
   "home_start_drinking": "Начните пить воду!",
-
   "progress_current": "Текущий",
   "progress_goal": "Цель",
   "progress_remaining": "Осталось",
@@ -85,43 +77,36 @@
       }
     }
   },
-
   "motivational_keep_going": "Продолжайте! Вы молодец!",
   "motivational_almost_there": "Почти готово! Еще немного!",
   "motivational_goal_reached": "Поздравляем! Вы достигли цели!",
   "motivational_good_start": "Отличное начало! Продолжайте!",
   "motivational_stay_hydrated": "Поддерживайте гидратацию весь день!",
-
   "motivational_100_1": "Поздравляем! Вы достигли цели!",
   "motivational_100_2": "Отличная работа! Продолжайте завтра!",
   "motivational_100_3": "Вы чемпион по гидратации!",
   "motivational_100_4": "Идеально! Сохраняйте привычку!",
   "motivational_100_short": "Цель достигнута!",
-
   "motivational_75_1": "Почти готово! Еще немного!",
   "motivational_75_2": "Отлично! Продолжайте!",
   "motivational_75_3": "Так близко к цели!",
   "motivational_75_4": "Фантастический прогресс!",
   "motivational_75_short": "Почти готово!",
-
   "motivational_50_1": "Половина пути! Вы молодец!",
   "motivational_50_2": "Отличная работа! Продолжайте!",
   "motivational_50_3": "Вы на правильном пути!",
   "motivational_50_4": "Хороший прогресс!",
   "motivational_50_short": "Половина!",
-
   "motivational_25_1": "Хорошее начало! Пейте воду!",
   "motivational_25_2": "Отличный старт!",
   "motivational_25_3": "Хорошее начало! Пейте больше!",
   "motivational_25_4": "Продолжайте! Каждый глоток важен!",
   "motivational_25_short": "Хорошее начало!",
-
   "motivational_0_1": "Время пить воду! Ваше тело скажет спасибо!",
   "motivational_0_2": "Начните путь к гидратации!",
   "motivational_0_3": "Начните день со стакана воды!",
   "motivational_0_4": "Ваше здоровье важно! Начните пить!",
   "motivational_0_short": "Начнем!",
-
   "profile_title": "Профиль",
   "profile_edit": "Редактировать",
   "profile_personal_info": "Личная информация",
@@ -141,11 +126,9 @@
   "profile_save_success": "Профиль обновлен",
   "profile_save_failed": "Не удалось обновить профиль",
   "profile_user_default": "Пользователь",
-
   "gender_male": "Мужской",
   "gender_female": "Женский",
   "gender_other": "Другой",
-
   "activity_sedentary": "Сидячий",
   "activity_sedentary_desc": "Мало или нет физических упражнений",
   "activity_light": "Легкая активность",
@@ -156,12 +139,10 @@
   "activity_very_active_desc": "Интенсивные упражнения 6-7 дней/неделю",
   "activity_extra_active": "Очень высокая активность",
   "activity_extra_active_desc": "Очень интенсивные упражнения и физическая работа",
-
   "bmi_underweight": "Недостаточный вес",
   "bmi_normal": "Нормальный вес",
   "bmi_overweight": "Избыточный вес",
   "bmi_obese": "Ожирение",
-
   "settings_title": "Настройки",
   "settings_notifications": "Уведомления",
   "settings_reminders": "Напоминания",
@@ -175,22 +156,18 @@
   "settings_import_data": "Импорт данных",
   "settings_help": "Помощь",
   "settings_about": "О приложении",
-
   "settings_enable_notifications": "Включить уведомления",
   "settings_reminder_interval": "Интервал напоминаний",
   "settings_reminder_start_time": "Время начала",
   "settings_reminder_end_time": "Время окончания",
   "settings_test_notification": "Тест уведомления",
-
   "settings_theme_light": "Светлая",
   "settings_theme_dark": "Темная",
   "settings_theme_system": "Системная",
-
   "settings_unit_ml": "Миллилитры (мл)",
   "settings_unit_floz": "Жидкие унции (fl oz)",
   "settings_unit_metric": "Метрическая система",
   "settings_unit_imperial": "Имперская система",
-
   "settings_subtitle": "Настройте приложение",
   "settings_reminders_active": "Напоминания активны",
   "settings_reminders_inactive": "Включите напоминания",
@@ -232,7 +209,6 @@
     }
   },
   "settings_reminder_interval_title": "Интервал напоминаний",
-
   "settings_language_coming_soon": "Скоро",
   "settings_export_success": "Данные экспортированы",
   "settings_export_failed": "Ошибка экспорта",
@@ -249,7 +225,6 @@
       }
     }
   },
-
   "statistics_title": "Статистика",
   "statistics_weekly": "Неделя",
   "statistics_monthly": "Месяц",
@@ -265,7 +240,13 @@
   "statistics_daily_average": "Среднее за день",
   "statistics_goals_met": "Целей достигнуто",
   "statistics_out_of": "из {count}",
-  "@statistics_out_of": {"placeholders": {"count": {"type": "int"}}},
+  "@statistics_out_of": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "statistics_progress": "Прогресс",
   "statistics_on_track": "На верном пути!",
   "statistics_keep_going": "Продолжайте!",
@@ -278,7 +259,6 @@
   "statistics_completed": "Завершено",
   "statistics_next_goal": "Следующая цель",
   "statistics_days": "дней",
-
   "achievements_title": "Достижения",
   "achievements_unlocked": "Разблокировано",
   "achievements_locked": "Заблокировано",
@@ -292,7 +272,6 @@
       }
     }
   },
-
   "achievement_first_drop": "Первая капля",
   "achievement_first_drop_desc": "Запишите первое потребление воды",
   "achievement_daily_goal_1": "Достиженец",
@@ -309,7 +288,6 @@
   "achievement_total_100l_desc": "Выпейте 100 литров всего",
   "achievement_consistency": "Стабильная неделя",
   "achievement_consistency_desc": "Достигайте цели 7 дней подряд",
-
   "reminders_title": "Напоминания",
   "reminders_active": "Активные напоминания",
   "reminders_pending": "Ожидающие уведомления",
@@ -319,10 +297,12 @@
   "reminders_interval_90": "Каждые 1.5 часа",
   "reminders_interval_120": "Каждые 2 часа",
   "reminders_interval_180": "Каждые 3 часа",
-
+  "reminders_premium_custom_title": "Премиум: индивидуальные напоминания",
+  "reminders_custom_description": "Добавляйте неограниченные напоминания в удобное время",
+  "reminders_custom_add_button": "Добавить время",
+  "reminders_custom_added": "Напоминание добавлено: {time}",
   "notification_reminder_title": "Время пить воду!",
   "notification_reminder_body": "Пейте воду! Поддерживайте гидратацию.",
-
   "streak_current": "Текущая серия",
   "streak_days": "{days} дней",
   "@streak_days": {
@@ -343,7 +323,6 @@
   "streak_error": "Ошибка загрузки данных",
   "streak_day_singular": "день",
   "streak_day_plural": "дней",
-
   "onboarding_title_1": "Отслеживайте воду",
   "onboarding_desc_1": "Легко записывайте потребление воды одним нажатием",
   "onboarding_title_2": "Умные напоминания",
@@ -353,7 +332,6 @@
   "onboarding_title_4": "Будьте здоровы",
   "onboarding_desc_4": "Формируйте здоровые привычки",
   "onboarding_get_started": "Начать",
-
   "drawer_home": "Главная",
   "drawer_statistics": "Статистика",
   "drawer_achievements": "Достижения",
@@ -363,13 +341,11 @@
   "drawer_help": "Помощь",
   "drawer_about": "О приложении",
   "drawer_logout": "Выйти",
-
   "about_title": "Aqualert",
   "about_version": "Версия 1.0.0",
   "about_description": "Следите за гидратацией с Aqualert. Отслеживайте потребление воды и достигайте целей!",
   "about_copyright": "© 2024 Aqualert. Все права защищены.",
   "about_close": "Закрыть",
-
   "help_title": "Помощь",
   "help_subtitle": "Получите помощь",
   "help_faq": "Часто задаваемые вопросы",
@@ -377,58 +353,42 @@
   "help_version": "Версия",
   "help_app_info": "Информация о приложении",
   "help_coming_soon": "Помощь - Скоро!",
-
   "help_faq_section": "ЧЗВ",
   "help_features_section": "Функции",
   "help_about_section": "О приложении",
-
   "faq_1_q": "Как рассчитывается дневная норма воды?",
   "faq_1_a": "Дневная норма рассчитывается на основе веса, роста, возраста, пола и уровня активности. Вы также можете установить свою цель в настройках профиля.",
-
   "faq_2_q": "Как работают напоминания?",
   "faq_2_a": "Вы можете установить интервал (30-180 минут) и время начала/окончания. Приложение будет отправлять уведомления в этот период.",
-
   "faq_3_q": "Что такое серии и как они работают?",
   "faq_3_a": "Серии отслеживают дни подряд, когда вы достигали дневной цели. Пейте воду каждый день, чтобы увеличивать серию!",
-
   "faq_4_q": "Как изменить единицы измерения?",
   "faq_4_a": "Перейдите в Настройки → Единицы и выберите миллилитры (мл) или жидкие унции (fl oz). Все измерения обновятся автоматически.",
-
   "faq_5_q": "Можно ли экспортировать данные?",
   "faq_5_a": "Да! Перейдите в Настройки → Управление данными → Экспорт данных. Вы можете сохранить данные в JSON файл и импортировать позже.",
-
   "faq_6_q": "Как работают достижения?",
   "faq_6_a": "Выполняйте цели отслеживания воды, чтобы разблокировать достижения и получать очки. Следите за прогрессом на экране достижений.",
-
   "feature_tracking_title": "Отслеживание воды",
   "feature_tracking_desc": "Легко записывайте потребление воды кнопками быстрого добавления (250мл, 350мл, 500мл, 750мл) или введите свое количество.",
-
   "feature_reminders_title": "Умные напоминания",
   "feature_reminders_desc": "Настройте интервал напоминаний и активные часы. Никогда не забывайте пить воду.",
-
   "feature_statistics_title": "Статистика",
   "feature_statistics_desc": "Просматривайте тренды потребления воды с недельными, месячными и годовыми графиками.",
-
   "feature_achievements_title": "Достижения и серии",
   "feature_achievements_desc": "Зарабатывайте достижения и поддерживайте серии, достигая целей. Мотивация через геймификацию!",
-
   "feature_profile_title": "Профиль и цели",
   "feature_profile_desc": "Установите личную информацию, и приложение рассчитает оптимальную дневную норму воды.",
-
   "help_contact_email": "Связаться по Email",
   "help_contact_email_address": "dilaraacikgoz.dev@gmail.com",
   "help_rate_app": "Оценить приложение",
   "help_rate_desc": "Нравится Aqualert? Оставьте отзыв!",
-
   "help_build_number": "Сборка",
   "help_copyright": "© 2024 Aqualert. Все права защищены.",
   "help_made_with": "Сделано с ❤️ для вашего здоровья",
-
   "error_generic": "Что-то пошло не так. Попробуйте снова.",
   "error_network": "Ошибка сети. Проверьте подключение.",
   "error_auth_failed": "Ошибка авторизации. Попробуйте снова.",
   "error_permission_denied": "Доступ запрещен.",
-
   "unit_ml": "мл",
   "unit_floz": "fl oz",
   "unit_kg": "кг",
@@ -436,16 +396,13 @@
   "unit_cm": "см",
   "unit_ft": "ft",
   "unit_liter": "л",
-
   "time_morning": "Утро",
   "time_afternoon": "День",
   "time_evening": "Вечер",
   "time_night": "Ночь",
-
   "help_privacy_policy": "Политика конфиденциальности",
   "help_privacy_policy_desc": "Просмотреть политику конфиденциальности",
   "help_privacy_policy_error": "Не удалось открыть политику конфиденциальности",
-
   "settings_delete_account": "Удалить аккаунт",
   "settings_delete_account_subtitle": "Навсегда удалить аккаунт и все данные",
   "settings_delete_account_dialog_title": "Удалить аккаунт?",
@@ -454,5 +411,26 @@
   "settings_delete_account_cancel": "Отмена",
   "settings_delete_account_success": "Аккаунт успешно удален",
   "settings_delete_account_error": "Не удалось удалить аккаунт",
-  "settings_delete_account_reauth_required": "Пожалуйста, войдите снова, чтобы удалить аккаунт"
+  "settings_delete_account_reauth_required": "Пожалуйста, войдите снова, чтобы удалить аккаунт",
+  "privacy_last_updated": "Последнее обновление: 2 декабря 2025 г.",
+  "privacy_intro_title": "Введение",
+  "privacy_intro_content": "Добро пожаловать в Aqualert. Мы уважаем вашу конфиденциальность и стремимся защитить ваши персональные данные. Данная Политика конфиденциальности объясняет, как мы собираем, используем и защищаем вашу информацию при использовании нашего мобильного приложения.",
+  "privacy_collect_title": "Информация, которую мы собираем",
+  "privacy_collect_content": "• Адрес электронной почты — для создания аккаунта и аутентификации\n• Отображаемое имя — необязательно, для персонализации\n• Информация профиля — возраст, вес, рост, пол, уровень активности\n• Записи о потреблении воды — количество и временная метка потребления\n• Статистика использования приложения — через Firebase Analytics\n• Информация об устройстве — тип устройства, версия ОС, уникальные идентификаторы",
+  "privacy_use_title": "Как мы используем вашу информацию",
+  "privacy_use_content": "• Расчёт персонализированных ежедневных целей потребления воды\n• Отслеживание и отображение истории потребления воды\n• Предоставление статистики и аналитики о привычках гидратации\n• Отправка напоминаний\n• Синхронизация данных между устройствами\n• Улучшение производительности приложения и пользовательского опыта",
+  "privacy_storage_title": "Хранение данных и безопасность",
+  "privacy_storage_content": "Ваши данные хранятся с использованием Firebase Authentication и Cloud Firestore (серверы Google Cloud). Данные, передаваемые между вашим устройством и нашими серверами, зашифрованы с помощью SSL/TLS. Данные пользователя доступны только аутентифицированному пользователю через правила безопасности Firebase.",
+  "privacy_third_party_title": "Сторонние сервисы",
+  "privacy_third_party_content": "• Google Firebase — аутентификация, база данных, аналитика, push-уведомления\n• Google Sign-In — OAuth-аутентификация\n• Firebase Analytics — аналитика использования приложения\n\nМы НЕ продаём, не торгуем и не сдаём в аренду вашу личную информацию третьим лицам.",
+  "privacy_rights_title": "Ваши права",
+  "privacy_rights_content": "• Доступ к личной информации и её обновление через Профиль и Настройки\n• Экспорт данных (записи о воде, достижения, настройки) в формате JSON\n• Запрос на удаление аккаунта и всех связанных данных\n• Управление настройками уведомлений\n\nДля удаления данных свяжитесь с нами: dilaraacikgoz.dev@gmail.com\nПосле удаления все личные данные будут удалены с наших серверов в течение 30 дней.",
+  "privacy_children_title": "Конфиденциальность детей",
+  "privacy_children_content": "Aqualert не предназначен для детей до 13 лет. Мы намеренно не собираем личную информацию от детей до 13 лет.",
+  "privacy_gdpr_title": "Права GDPR (пользователи ЕС/ЕЭЗ)",
+  "privacy_gdpr_content": "• Право доступа к персональным данным\n• Право на исправление неточных данных\n• Право на удаление («право быть забытым»)\n• Право на ограничение обработки\n• Право на переносимость данных\n• Право на возражение против обработки",
+  "privacy_kvkk_title": "Права KVKK (Турция)",
+  "privacy_kvkk_content": "• Узнать, обрабатываются ли персональные данные\n• Запросить информацию в случае обработки\n• Узнать цель обработки\n• Знать третьих лиц, которым передаются данные\n• Запросить исправление неполных или неверных данных\n• Запросить удаление или уничтожение данных",
+  "privacy_contact_title": "Свяжитесь с нами",
+  "privacy_contact_content": "Если у вас есть вопросы по данной Политике конфиденциальности:\n\nЭлектронная почта: dilaraacikgoz.dev@gmail.com\nВремя ответа: Мы стремимся ответить в течение 48 часов."
 }

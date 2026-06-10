@@ -930,6 +930,21 @@ class AppLocalizationsHi extends AppLocalizations {
   String get reminders_schedule_info => 'Current Schedule';
 
   @override
+  String get reminders_premium_custom_title => 'प्रीमियम: कस्टम रिमाइंडर';
+
+  @override
+  String get reminders_custom_description =>
+      'अपने समय पर असीमित रिमाइंडर जोड़ें';
+
+  @override
+  String get reminders_custom_add_button => 'कस्टम समय जोड़ें';
+
+  @override
+  String reminders_custom_added(String time) {
+    return 'कस्टम रिमाइंडर जोड़ा गया: $time';
+  }
+
+  @override
   String get notification_reminder_title => 'पानी पीने का समय!';
 
   @override
@@ -1334,4 +1349,77 @@ class AppLocalizationsHi extends AppLocalizations {
   @override
   String get settings_premium_restore_subtitle =>
       'Already purchased? Tap to restore';
+
+  @override
+  String get privacy_last_updated => 'अंतिम अपडेट: 2 दिसंबर 2025';
+
+  @override
+  String get privacy_intro_title => 'परिचय';
+
+  @override
+  String get privacy_intro_content =>
+      'Aqualert में आपका स्वागत है। हम आपकी गोपनीयता का सम्मान करते हैं और आपके व्यक्तिगत डेटा की सुरक्षा के लिए प्रतिबद्ध हैं। यह गोपनीयता नीति बताती है कि हम हमारे मोबाइल ऐप का उपयोग करते समय आपकी जानकारी कैसे एकत्र, उपयोग और सुरक्षित करते हैं।';
+
+  @override
+  String get privacy_collect_title => 'हम जो जानकारी एकत्र करते हैं';
+
+  @override
+  String get privacy_collect_content =>
+      '• ईमेल पता — खाता बनाने और प्रमाणीकरण के लिए\n• प्रदर्शन नाम — वैकल्पिक, व्यक्तिगतकरण के लिए\n• प्रोफ़ाइल जानकारी — आयु, वजन, ऊंचाई, लिंग, गतिविधि स्तर\n• पानी सेवन रिकॉर्ड — उपभोग की मात्रा और टाइमस्टैंप\n• ऐप उपयोग सांख्यिकी — Firebase Analytics के माध्यम से\n• डिवाइस जानकारी — डिवाइस प्रकार, OS संस्करण, अद्वितीय पहचानकर्ता';
+
+  @override
+  String get privacy_use_title => 'हम आपकी जानकारी का उपयोग कैसे करते हैं';
+
+  @override
+  String get privacy_use_content =>
+      '• व्यक्तिगत दैनिक जल सेवन लक्ष्य की गणना करना\n• आपके पानी की खपत इतिहास को ट्रैक और प्रदर्शित करना\n• आपकी जलयोजन आदतों के बारे में आंकड़े और अंतर्दृष्टि प्रदान करना\n• रिमाइंडर नोटिफिकेशन भेजना\n• आपके डेटा को डिवाइस के पार सिंक करना\n• ऐप प्रदर्शन और उपयोगकर्ता अनुभव में सुधार करना';
+
+  @override
+  String get privacy_storage_title => 'डेटा संग्रहण और सुरक्षा';
+
+  @override
+  String get privacy_storage_content =>
+      'आपका डेटा Firebase Authentication और Cloud Firestore (Google Cloud सर्वर) का उपयोग करके संग्रहीत किया जाता है। आपके डिवाइस और हमारे सर्वर के बीच प्रेषित डेटा SSL/TLS का उपयोग करके एन्क्रिप्ट किया जाता है। उपयोगकर्ता डेटा केवल Firebase Security Rules के माध्यम से प्रमाणित उपयोगकर्ता द्वारा ही पहुंच योग्य है।';
+
+  @override
+  String get privacy_third_party_title => 'तृतीय-पक्ष सेवाएं';
+
+  @override
+  String get privacy_third_party_content =>
+      '• Google Firebase — प्रमाणीकरण, डेटाबेस, विश्लेषण, पुश नोटिफिकेशन\n• Google Sign-In — OAuth प्रमाणीकरण\n• Firebase Analytics — ऐप उपयोग विश्लेषण\n\nहम तृतीय पक्षों को आपकी व्यक्तिगत जानकारी नहीं बेचते, व्यापार नहीं करते या किराए पर नहीं देते।';
+
+  @override
+  String get privacy_rights_title => 'आपके अधिकार';
+
+  @override
+  String get privacy_rights_content =>
+      '• प्रोफ़ाइल और सेटिंग्स के माध्यम से अपनी व्यक्तिगत जानकारी तक पहुंचें और अपडेट करें\n• JSON प्रारूप में अपना डेटा (पानी रिकॉर्ड, उपलब्धियां, सेटिंग्स) निर्यात करें\n• अपने खाते और सभी संबद्ध डेटा को हटाने का अनुरोध करें\n• नोटिफिकेशन प्राथमिकताएं नियंत्रित करें\n\nडेटा हटाने के लिए, हमसे संपर्क करें: dilaraacikgoz.dev@gmail.com\nहटाने के बाद, सभी व्यक्तिगत डेटा 30 दिनों के भीतर हमारे सर्वर से हटा दिए जाएंगे।';
+
+  @override
+  String get privacy_children_title => 'बच्चों की गोपनीयता';
+
+  @override
+  String get privacy_children_content =>
+      'Aqualert 13 वर्ष से कम आयु के बच्चों के लिए नहीं है। हम जानबूझकर 13 वर्ष से कम आयु के बच्चों से व्यक्तिगत जानकारी एकत्र नहीं करते।';
+
+  @override
+  String get privacy_gdpr_title => 'GDPR अधिकार (EU/EEA उपयोगकर्ता)';
+
+  @override
+  String get privacy_gdpr_content =>
+      '• अपने व्यक्तिगत डेटा तक पहुंच का अधिकार\n• गलत डेटा के सुधार का अधिकार\n• मिटाने का अधिकार (\"भुला दिए जाने का अधिकार\")\n• प्रोसेसिंग को प्रतिबंधित करने का अधिकार\n• डेटा पोर्टेबिलिटी का अधिकार\n• प्रोसेसिंग पर आपत्ति का अधिकार';
+
+  @override
+  String get privacy_kvkk_title => 'KVKK अधिकार (तुर्की)';
+
+  @override
+  String get privacy_kvkk_content =>
+      '• जानें कि आपका व्यक्तिगत डेटा संसाधित हो रहा है या नहीं\n• यदि संसाधित हो तो जानकारी का अनुरोध करें\n• प्रसंस्करण का उद्देश्य जानें\n• वे तृतीय पक्ष जानें जिन्हें डेटा स्थानांतरित किया जाता है\n• अधूरे या गलत डेटा के सुधार का अनुरोध करें\n• डेटा के विलोपन या विनाश का अनुरोध करें';
+
+  @override
+  String get privacy_contact_title => 'संपर्क करें';
+
+  @override
+  String get privacy_contact_content =>
+      'यदि आपके पास इस गोपनीयता नीति के बारे में कोई प्रश्न है:\n\nईमेल: dilaraacikgoz.dev@gmail.com\nप्रतिक्रिया समय: हम 48 घंटों के भीतर प्रतिक्रिया देने का प्रयास करते हैं।';
 }

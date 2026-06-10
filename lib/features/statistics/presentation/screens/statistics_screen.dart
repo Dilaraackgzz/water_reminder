@@ -55,7 +55,10 @@ class StatisticsScreen extends ConsumerWidget {
                             const SizedBox(height: UIConstants.spacingL),
                             const StreakStatsCard(),
                             const SizedBox(height: UIConstants.spacingL),
-                            StatisticsChart(statistics: statistics),
+                            StatisticsChart(
+                              statistics: statistics,
+                              period: selectedPeriod,
+                            ),
                             const SizedBox(height: UIConstants.spacingL),
                             _AchievementCard(
                               statistics: statistics,

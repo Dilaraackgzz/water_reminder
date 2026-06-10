@@ -920,6 +920,20 @@ class AppLocalizationsZh extends AppLocalizations {
   String get reminders_schedule_info => 'Current Schedule';
 
   @override
+  String get reminders_premium_custom_title => '高级：自定义提醒';
+
+  @override
+  String get reminders_custom_description => '在您自己的时间添加无限提醒';
+
+  @override
+  String get reminders_custom_add_button => '添加自定义时间';
+
+  @override
+  String reminders_custom_added(String time) {
+    return '已添加自定义提醒：$time';
+  }
+
+  @override
   String get notification_reminder_title => '该喝水了！';
 
   @override
@@ -1306,4 +1320,77 @@ class AppLocalizationsZh extends AppLocalizations {
   @override
   String get settings_premium_restore_subtitle =>
       'Already purchased? Tap to restore';
+
+  @override
+  String get privacy_last_updated => '最后更新：2025年12月2日';
+
+  @override
+  String get privacy_intro_title => '简介';
+
+  @override
+  String get privacy_intro_content =>
+      '欢迎使用 Aqualert。我们尊重您的隐私，并致力于保护您的个人数据。本隐私政策解释了您在使用我们的移动应用程序时，我们如何收集、使用和保护您的信息。';
+
+  @override
+  String get privacy_collect_title => '我们收集的信息';
+
+  @override
+  String get privacy_collect_content =>
+      '• 电子邮件地址 — 用于账户创建和身份验证\n• 显示名称 — 可选，用于个性化\n• 个人资料信息 — 年龄、体重、身高、性别、活动水平\n• 饮水记录 — 消耗量和时间戳\n• 应用使用统计 — 通过 Firebase Analytics\n• 设备信息 — 设备类型、操作系统版本、唯一标识符';
+
+  @override
+  String get privacy_use_title => '我们如何使用您的信息';
+
+  @override
+  String get privacy_use_content =>
+      '• 计算个性化的每日饮水目标\n• 追踪并显示您的饮水历史\n• 提供有关您补水习惯的统计数据和见解\n• 发送提醒通知\n• 跨设备同步您的数据\n• 改善应用性能和用户体验';
+
+  @override
+  String get privacy_storage_title => '数据存储和安全';
+
+  @override
+  String get privacy_storage_content =>
+      '您的数据使用 Firebase Authentication 和 Cloud Firestore（Google Cloud 服务器）存储。您的设备和我们服务器之间传输的数据使用 SSL/TLS 加密。用户数据只能通过 Firebase 安全规则由经过身份验证的用户访问。';
+
+  @override
+  String get privacy_third_party_title => '第三方服务';
+
+  @override
+  String get privacy_third_party_content =>
+      '• Google Firebase — 身份验证、数据库、分析、推送通知\n• Google Sign-In — OAuth 身份验证\n• Firebase Analytics — 应用使用分析\n\n我们不会向第三方出售、交易或出租您的个人信息。';
+
+  @override
+  String get privacy_rights_title => '您的权利';
+
+  @override
+  String get privacy_rights_content =>
+      '• 通过个人资料和设置访问和更新您的个人信息\n• 以 JSON 格式导出您的数据（饮水记录、成就、设置）\n• 请求删除您的账户及所有关联数据\n• 控制通知偏好设置\n\n如需删除数据，请联系我们：dilaraacikgoz.dev@gmail.com\n删除后，所有个人数据将在30天内从我们的服务器中删除。';
+
+  @override
+  String get privacy_children_title => '儿童隐私';
+
+  @override
+  String get privacy_children_content =>
+      'Aqualert 不适用于13岁以下的儿童。我们不会故意收集13岁以下儿童的个人信息。';
+
+  @override
+  String get privacy_gdpr_title => 'GDPR 权利（欧盟/欧经区用户）';
+
+  @override
+  String get privacy_gdpr_content =>
+      '• 访问您个人数据的权利\n• 纠正不准确数据的权利\n• 删除权（\"被遗忘权\"）\n• 限制处理的权利\n• 数据可携带性权利\n• 反对处理的权利';
+
+  @override
+  String get privacy_kvkk_title => 'KVKK 权利（土耳其）';
+
+  @override
+  String get privacy_kvkk_content =>
+      '• 了解个人数据是否正在被处理\n• 如果正在处理，请求相关信息\n• 了解处理目的\n• 了解数据传输给哪些第三方\n• 请求更正不完整或不正确的数据\n• 请求删除或销毁数据';
+
+  @override
+  String get privacy_contact_title => '联系我们';
+
+  @override
+  String get privacy_contact_content =>
+      '如果您对本隐私政策有任何疑问：\n\n电子邮件：dilaraacikgoz.dev@gmail.com\n响应时间：我们力争在48小时内回复。';
 }

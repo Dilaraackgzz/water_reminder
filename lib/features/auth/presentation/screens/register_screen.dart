@@ -167,7 +167,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                       AuthTextField(
                         controller: _nameController,
                         label: l10n.auth_name_label,
-                        hint: l10n.auth_name_hint,
+                        hint: '',
                         prefixIcon: Icons.person_outline,
                         keyboardType: TextInputType.name,
                         semanticLabel: l10n.auth_name_label,
@@ -175,7 +175,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                           if (value == null || value.isEmpty) {
                             return l10n.auth_validation_name_required;
                           }
-                          if (value.length < 3) {
+                          if (value.length < 2) {
                             return l10n.auth_validation_name_min_length;
                           }
                           return null;
@@ -275,7 +275,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                           }
                           return null;
                         },
-                      ).animate().fadeIn(delay: 600.ms).slideX(
+                      ).animate().fadeIn(delay: 700.ms).slideX(
                             begin: -0.2,
                             duration: 400.ms,
                           ),
@@ -314,7 +314,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                                   ),
                           ),
                         ),
-                      ).animate().fadeIn(delay: 700.ms).scale(
+                      ).animate().fadeIn(delay: 800.ms).scale(
                             begin: const Offset(0.8, 0.8),
                             duration: 400.ms,
                           ),
