@@ -29,7 +29,10 @@
       "Bash(pod repo update)",
       "Bash(pod install:*)",
       "Bash(dart analyze:*)",
-      "WebSearch"
+      "WebSearch",
+      "Bash(flutterfire --version)",
+      "Bash(firebase login *)",
+      "Bash(flutterfire configure *)"
     ],
     "deny": [],
     "ask": []

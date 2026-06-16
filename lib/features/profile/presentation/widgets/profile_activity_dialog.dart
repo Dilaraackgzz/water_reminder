@@ -107,32 +107,34 @@ class _ProfileActivityDialogState extends State<ProfileActivityDialog> {
         ),
       ),
       content: SingleChildScrollView(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: ActivityLevel.values.map((level) {
-            return RadioListTile<ActivityLevel>(
-              title: Text(
-                _getActivityLevelName(level, l10n),
-                style: GoogleFonts.poppins(
-                  color: colorScheme.onSurfaceVariant,
+        child: RadioGroup<ActivityLevel>(
+          groupValue: _selectedLevel,
+          onChanged: (value) {
+            if (value != null) {
+              setState(() => _selectedLevel = value);
+            }
+          },
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: ActivityLevel.values.map((level) {
+              return RadioListTile<ActivityLevel>(
+                title: Text(
+                  _getActivityLevelName(level, l10n),
+                  style: GoogleFonts.poppins(
+                    color: colorScheme.onSurfaceVariant,
+                  ),
                 ),
-              ),
-              subtitle: Text(
-                _getActivityLevelDescription(level, l10n),
-                style: GoogleFonts.poppins(
-                  fontSize: 12,
-                  color: colorScheme.outline,
+                subtitle: Text(
+                  _getActivityLevelDescription(level, l10n),
+                  style: GoogleFonts.poppins(
+                    fontSize: 12,
+                    color: colorScheme.outline,
+                  ),
                 ),
-              ),
-              value: level,
-              groupValue: _selectedLevel,
-              onChanged: (value) {
-                if (value != null) {
-                  setState(() => _selectedLevel = value);
-                }
-              },
-            );
-          }).toList(),
+                value: level,
+              );
+            }).toList(),
+          ),
         ),
       ),
       actions: [

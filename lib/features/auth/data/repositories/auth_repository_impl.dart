@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import '../../domain/models/user_model.dart';
@@ -46,21 +47,21 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   Future<UserModel> signInWithEmail(String email, String password) async {
     try {
-      print('DEBUG: Attempting sign in with email: $email');
+      debugPrint('DEBUG: Attempting sign in with email: $email');
       final userCredential = await _firebaseAuth.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
-      print('DEBUG: Sign in successful');
+      debugPrint('DEBUG: Sign in successful');
       return _userToUserModel(userCredential.user!);
     } on FirebaseAuthException catch (e) {
-      print('DEBUG: FirebaseAuthException - code: ${e.code}, message: ${e.message}');
+      debugPrint('DEBUG: FirebaseAuthException - code: ${e.code}, message: ${e.message}');
       throw Exception(_handleAuthException(e));
     } on FirebaseException catch (e) {
-      print('DEBUG: FirebaseException - code: ${e.code}, message: ${e.message}');
+      debugPrint('DEBUG: FirebaseException - code: ${e.code}, message: ${e.message}');
       throw Exception(_handleFirebaseException(e));
     } catch (e) {
-      print('DEBUG: General exception - type: ${e.runtimeType}, error: $e');
+      debugPrint('DEBUG: General exception - type: ${e.runtimeType}, error: $e');
       throw Exception('Giriş yapılırken bir hata oluştu: $e');
     }
   }
@@ -72,26 +73,26 @@ class AuthRepositoryImpl implements AuthRepository {
     String displayName,
   ) async {
     try {
-      print('DEBUG: Attempting register with email: $email, password length: ${password.length}');
+      debugPrint('DEBUG: Attempting register with email: $email, password length: ${password.length}');
       final userCredential = await _firebaseAuth.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
-      print('DEBUG: Register successful, user: ${userCredential.user?.uid}');
-      print('DEBUG: Current user after register: ${_firebaseAuth.currentUser?.email}');
+      debugPrint('DEBUG: Register successful, user: ${userCredential.user?.uid}');
+      debugPrint('DEBUG: Current user after register: ${_firebaseAuth.currentUser?.email}');
 
       await userCredential.user!.updateDisplayName(displayName);
       await userCredential.user!.sendEmailVerification();
 
       return _userToUserModel(userCredential.user!);
     } on FirebaseAuthException catch (e) {
-      print('DEBUG: Register FirebaseAuthException - code: ${e.code}, message: ${e.message}');
+      debugPrint('DEBUG: Register FirebaseAuthException - code: ${e.code}, message: ${e.message}');
       throw Exception(_handleAuthException(e));
     } on FirebaseException catch (e) {
-      print('DEBUG: Register FirebaseException - code: ${e.code}, message: ${e.message}');
+      debugPrint('DEBUG: Register FirebaseException - code: ${e.code}, message: ${e.message}');
       throw Exception(_handleFirebaseException(e));
     } catch (e) {
-      print('DEBUG: Register general exception - type: ${e.runtimeType}, error: $e');
+      debugPrint('DEBUG: Register general exception - type: ${e.runtimeType}, error: $e');
       throw Exception('Kayıt olurken bir hata oluştu: $e');
     }
   }

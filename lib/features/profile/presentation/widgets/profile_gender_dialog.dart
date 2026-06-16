@@ -87,25 +87,27 @@ class _ProfileGenderDialogState extends State<ProfileGenderDialog> {
           color: colorScheme.onSurface,
         ),
       ),
-      content: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: Gender.values.map((gender) {
-          return RadioListTile<Gender>(
-            title: Text(
-              _getGenderDisplayName(gender, l10n),
-              style: GoogleFonts.poppins(
-                color: colorScheme.onSurfaceVariant,
+      content: RadioGroup<Gender>(
+        groupValue: _selectedGender,
+        onChanged: (value) {
+          if (value != null) {
+            setState(() => _selectedGender = value);
+          }
+        },
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: Gender.values.map((gender) {
+            return RadioListTile<Gender>(
+              title: Text(
+                _getGenderDisplayName(gender, l10n),
+                style: GoogleFonts.poppins(
+                  color: colorScheme.onSurfaceVariant,
+                ),
               ),
-            ),
-            value: gender,
-            groupValue: _selectedGender,
-            onChanged: (value) {
-              if (value != null) {
-                setState(() => _selectedGender = value);
-              }
-            },
-          );
-        }).toList(),
+              value: gender,
+            );
+          }).toList(),
+        ),
       ),
       actions: [
         TextButton(

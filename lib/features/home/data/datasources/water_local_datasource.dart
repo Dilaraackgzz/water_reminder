@@ -123,8 +123,6 @@ class WaterLocalDataSource {
     final waterBox = await _waterIntakes;
     final goalBox = await _dailyGoals;
 
-    // Get all water intakes and filter by userId
-    final allIntakes = waterBox.values.toList();
     final keysToDelete = <dynamic>[];
 
     for (final entry in waterBox.toMap().entries) {
