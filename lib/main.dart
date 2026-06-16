@@ -25,76 +25,86 @@ void main() async {
   await runZonedGuarded(() async {
     WidgetsFlutterBinding.ensureInitialized();
 
-    // Initialize Firebase - check if already initialized
     try {
       await Firebase.initializeApp(
         options: DefaultFirebaseOptions.currentPlatform,
       );
     } catch (e) {
-      // Firebase already initialized during hot reload
       if (e.toString().contains('duplicate-app')) {
         debugPrint('Firebase already initialized');
       } else {
-        rethrow;
+        debugPrint('Firebase initialization failed: $e');
       }
     }
 
-    // Initialize Crashlytics
     if (!kDebugMode) {
       FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
     }
 
-    await Hive.initFlutter();
+    try {
+      await Hive.initFlutter();
+    } catch (e) {
+      debugPrint('Hive initialization failed: $e');
+    }
 
-  final localStorageService = LocalStorageService();
-  try {
-    await localStorageService.initialize();
-  } catch (e) {
-    debugPrint('LocalStorageService initialization failed: $e');
-  }
+    final localStorageService = LocalStorageService();
+    try {
+      await localStorageService.initialize();
+    } catch (e) {
+      debugPrint('LocalStorageService initialization failed: $e');
+    }
 
-  tz.initializeTimeZones();
+    tz.initializeTimeZones();
 
-  // Initialize NotificationService
-  final notificationService = NotificationService();
-  try {
-    await notificationService.initialize();
-  } catch (e) {
-    debugPrint('NotificationService initialization failed: $e');
-  }
+    final notificationService = NotificationService();
+    try {
+      await notificationService.initialize();
+    } catch (e) {
+      debugPrint('NotificationService initialization failed: $e');
+    }
 
-  // Initialize Firebase Messaging
-  FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
-  final firebaseMessagingService = FirebaseMessagingService();
-  try {
-    await firebaseMessagingService.initialize();
-  } catch (e) {
-    debugPrint('FirebaseMessagingService initialization failed: $e');
-  }
+    try {
+      FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
+    } catch (e) {
+      debugPrint('Background message handler setup failed: $e');
+    }
 
-  // Initialize ReminderService and schedule daily reminders
-  final reminderService = ReminderService(
-    notificationService: notificationService,
-    storageService: localStorageService,
-  );
-  try {
-    await reminderService.checkAndScheduleDaily();
-  } catch (e) {
-    debugPrint('ReminderService daily schedule check failed: $e');
-  }
+    final firebaseMessagingService = FirebaseMessagingService();
+    try {
+      await firebaseMessagingService.initialize();
+    } catch (e) {
+      debugPrint('FirebaseMessagingService initialization failed: $e');
+    }
 
-  final sharedPreferences = await SharedPreferences.getInstance();
+    final reminderService = ReminderService(
+      notificationService: notificationService,
+      storageService: localStorageService,
+    );
+    try {
+      await reminderService.checkAndScheduleDaily();
+    } catch (e) {
+      debugPrint('ReminderService daily schedule check failed: $e');
+    }
+
+    SharedPreferences? sharedPreferences;
+    try {
+      sharedPreferences = await SharedPreferences.getInstance();
+    } catch (e) {
+      debugPrint('SharedPreferences initialization failed: $e');
+    }
 
     runApp(
       ProviderScope(
         overrides: [
-          sharedPreferencesProvider.overrideWithValue(sharedPreferences),
+          if (sharedPreferences != null)
+            sharedPreferencesProvider.overrideWithValue(sharedPreferences),
           localStorageServiceProvider.overrideWithValue(localStorageService),
         ],
         child: const AqualertApp(),
       ),
     );
   }, (error, stack) {
+    debugPrint('Uncaught error: $error\n$stack');
     if (!kDebugMode) {
       FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
     }
