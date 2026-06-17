@@ -1,12 +1,11 @@
+import 'dart:io';
+import 'package:flutter/foundation.dart';
+import 'package:purchases_flutter/purchases_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-// TODO: Adım 1 tamamlandığında aşağıdaki satırı aktif et:
-// import 'package:purchases_flutter/purchases_flutter.dart';
-
-// ignore: unused_element — RevenueCat aktif edildiğinde kullanılacak
 const String _entitlementId = 'premium';
 
-/// RevenueCat API Key'leri — Adım 1'den sonra gerçek key'lerle değiştir
+// RevenueCat API Key'leri — app.revenuecat.com konsolundan alınır
 const String _androidApiKey = 'YOUR_REVENUECAT_ANDROID_API_KEY';
 const String _iosApiKey = 'YOUR_REVENUECAT_IOS_API_KEY';
 
@@ -23,28 +22,38 @@ class PremiumService {
 
   /// RevenueCat'i başlatır. main.dart'tan çağrılır.
   static Future<void> initialize() async {
-    if (_isMockMode) return;
+    if (_isMockMode) {
+      debugPrint('PremiumService: Mock modda çalışıyor (API key girilmemiş)');
+      return;
+    }
 
-    // TODO: Adım 1 tamamlandığında aşağıdaki bloğu aktif et:
-    // import 'dart:io';
-    // await Purchases.setLogLevel(LogLevel.debug);
-    // final PurchasesConfiguration config = Platform.isAndroid
-    //     ? PurchasesConfiguration(_androidApiKey)
-    //     : PurchasesConfiguration(_iosApiKey);
-    // await Purchases.configure(config);
+    await Purchases.setLogLevel(kDebugMode ? LogLevel.debug : LogLevel.error);
+
+    final PurchasesConfiguration config = Platform.isAndroid
+        ? PurchasesConfiguration(_androidApiKey)
+        : PurchasesConfiguration(_iosApiKey);
+
+    await Purchases.configure(config);
   }
 
   /// Kullanıcı Firebase UID'si ile RevenueCat kullanıcısını eşleştirir.
-  /// Kullanıcı cihaz değiştirdiğinde premium'unu korur.
   Future<void> setUserId(String uid) async {
     if (_isMockMode) return;
-    // TODO: await Purchases.logIn(uid);
+    try {
+      await Purchases.logIn(uid);
+    } catch (e) {
+      debugPrint('PremiumService.setUserId error: $e');
+    }
   }
 
   /// Kullanıcı çıkış yaptığında çağrılır.
   Future<void> logOut() async {
     if (_isMockMode) return;
-    // TODO: await Purchases.logOut();
+    try {
+      await Purchases.logOut();
+    } catch (e) {
+      debugPrint('PremiumService.logOut error: $e');
+    }
   }
 
   /// Kullanıcının premium olup olmadığını kontrol eder.
@@ -52,39 +61,39 @@ class PremiumService {
     if (_isMockMode) {
       return _prefs.getBool(_mockPremiumKey) ?? false;
     }
-    // TODO: Adım 1 tamamlandığında aşağıdaki bloğu aktif et:
-    // try {
-    //   final customerInfo = await Purchases.getCustomerInfo();
-    //   return customerInfo.entitlements.active.containsKey(_entitlementId);
-    // } catch (_) {
-    //   return false;
-    // }
-    return false;
+    try {
+      final customerInfo = await Purchases.getCustomerInfo();
+      return customerInfo.entitlements.active.containsKey(_entitlementId);
+    } catch (e) {
+      debugPrint('PremiumService.isPremium error: $e');
+      return false;
+    }
   }
 
-  /// Lifetime / aylık / yıllık paket satın alır.
-  /// [packageIdentifier]: RevenueCat'te tanımlanan paket ID'si
+  /// Belirtilen paketi satın alır.
   Future<PurchaseResult> purchasePackage(String packageIdentifier) async {
     if (_isMockMode) {
       await _prefs.setBool(_mockPremiumKey, true);
       return PurchaseResult.success;
     }
-    // TODO: Adım 1 tamamlandığında aşağıdaki bloğu aktif et:
-    // try {
-    //   final offerings = await Purchases.getOfferings();
-    //   final package = offerings.current?.availablePackages.firstWhere(
-    //     (p) => p.identifier == packageIdentifier,
-    //   );
-    //   if (package == null) return PurchaseResult.failed;
-    //   await Purchases.purchasePackage(package);
-    //   return PurchaseResult.success;
-    // } on PurchasesErrorCode catch (e) {
-    //   if (e == PurchasesErrorCode.purchaseCancelledError) {
-    //     return PurchaseResult.cancelled;
-    //   }
-    //   return PurchaseResult.failed;
-    // }
-    return PurchaseResult.failed;
+    try {
+      final offerings = await Purchases.getOfferings();
+      final package = offerings.current?.availablePackages.firstWhere(
+        (p) => p.identifier == packageIdentifier,
+        orElse: () => throw Exception('Package not found: $packageIdentifier'),
+      );
+      await Purchases.purchasePackage(package!);
+      return PurchaseResult.success;
+    } on PurchasesErrorCode catch (e) {
+      if (e == PurchasesErrorCode.purchaseCancelledError) {
+        return PurchaseResult.cancelled;
+      }
+      debugPrint('PremiumService.purchasePackage error: $e');
+      return PurchaseResult.failed;
+    } catch (e) {
+      debugPrint('PremiumService.purchasePackage error: $e');
+      return PurchaseResult.failed;
+    }
   }
 
   /// Daha önce yapılmış satın almaları geri yükler.
@@ -93,15 +102,15 @@ class PremiumService {
       final isMockPremium = _prefs.getBool(_mockPremiumKey) ?? false;
       return isMockPremium ? PurchaseResult.success : PurchaseResult.notFound;
     }
-    // TODO: Adım 1 tamamlandığında aşağıdaki bloğu aktif et:
-    // try {
-    //   final customerInfo = await Purchases.restorePurchases();
-    //   final hasPremium = customerInfo.entitlements.active.containsKey(_entitlementId);
-    //   return hasPremium ? PurchaseResult.success : PurchaseResult.notFound;
-    // } catch (_) {
-    //   return PurchaseResult.failed;
-    // }
-    return PurchaseResult.notFound;
+    try {
+      final customerInfo = await Purchases.restorePurchases();
+      final hasPremium =
+          customerInfo.entitlements.active.containsKey(_entitlementId);
+      return hasPremium ? PurchaseResult.success : PurchaseResult.notFound;
+    } catch (e) {
+      debugPrint('PremiumService.restorePurchases error: $e');
+      return PurchaseResult.failed;
+    }
   }
 
   // --- Sadece geliştirme/test amaçlı ---

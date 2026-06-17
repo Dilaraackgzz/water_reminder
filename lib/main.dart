@@ -20,6 +20,8 @@ import 'shared/services/local_storage_service.dart';
 import 'shared/services/notification_service.dart';
 import 'shared/services/firebase_messaging_service.dart';
 import 'shared/services/reminder_service.dart';
+import 'core/services/premium_service.dart';
+import 'core/services/ad_service.dart';
 
 void main() async {
   await runZonedGuarded(() async {
@@ -84,6 +86,18 @@ void main() async {
       await reminderService.checkAndScheduleDaily();
     } catch (e) {
       debugPrint('ReminderService daily schedule check failed: $e');
+    }
+
+    try {
+      await PremiumService.initialize();
+    } catch (e) {
+      debugPrint('PremiumService initialization failed: $e');
+    }
+
+    try {
+      await AdService.initialize();
+    } catch (e) {
+      debugPrint('AdService initialization failed: $e');
     }
 
     SharedPreferences? sharedPreferences;

@@ -12,6 +12,7 @@ import '../widgets/stats_summary_cards.dart';
 import '../widgets/streak_stats_card.dart';
 import '../../../../shared/widgets/modern_app_bar.dart';
 import '../../../../shared/widgets/app_drawer.dart';
+import '../../../../shared/widgets/banner_ad_widget.dart';
 
 class StatisticsScreen extends ConsumerWidget {
   const StatisticsScreen({super.key});
@@ -34,6 +35,7 @@ class StatisticsScreen extends ConsumerWidget {
         subtitle: isPremium ? _getSubtitle(selectedPeriod, l10n) : null,
       ),
       drawer: const AppDrawer(),
+      bottomNavigationBar: const BannerAdWidget(),
       body: SafeArea(
         child: isPremium
             ? RefreshIndicator(

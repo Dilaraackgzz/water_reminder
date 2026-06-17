@@ -18,6 +18,7 @@ import '../../../../core/providers/premium_provider.dart';
 import '../../../../core/themes/app_theme.dart';
 import '../../../../core/utils/snackbar_helper.dart';
 import '../../../../l10n/app_localizations.dart';
+import '../../../../shared/widgets/banner_ad_widget.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
@@ -155,6 +156,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         subtitle: DateFormat('EEEE, MMM d').format(DateTime.now()),
       ),
       drawer: const AppDrawer(),
+      bottomNavigationBar: const BannerAdWidget(),
       body: SafeArea(
         child: Semantics(
           label: l10n.home_title,
