@@ -8,6 +8,7 @@ import '../../../core/constants/ui_constants.dart';
 import '../../../core/routing/app_router.dart';
 import '../../../core/services/onboarding_service.dart';
 import '../../../core/themes/app_theme.dart';
+import '../../../features/home/presentation/providers/home_providers.dart';
 
 class SplashScreen extends ConsumerStatefulWidget {
   const SplashScreen({super.key});
@@ -30,6 +31,16 @@ class _SplashScreenState extends ConsumerState<SplashScreen>
   void dispose() {
     _lottieController.dispose();
     super.dispose();
+  }
+
+  void _syncWaterDataInBackground() {
+    // Hata olursa sessizce geç; uygulama akışını engelleme
+    Future.microtask(() async {
+      try {
+        final waterRepository = ref.read(waterRepositoryProvider);
+        await waterRepository.syncFromCloud();
+      } catch (_) {}
+    });
   }
 
   void _onAnimationLoaded(LottieComposition composition) {
@@ -56,6 +67,8 @@ class _SplashScreenState extends ConsumerState<SplashScreen>
     final isEmailVerified = user?.emailVerified ?? false;
 
     if (isAuthenticated && isEmailVerified) {
+      // Kullanıcı zaten oturum açmışsa Firestore'dan verileri senkronize et
+      _syncWaterDataInBackground();
       context.go('/home');
     } else if (isAuthenticated && !isEmailVerified) {
       context.go('/verify-email');

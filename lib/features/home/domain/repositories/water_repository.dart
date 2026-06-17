@@ -31,4 +31,7 @@ abstract class WaterRepository {
 
   /// Stream of today's daily goal
   Stream<DailyGoal> watchTodaysDailyGoal();
+
+  /// Firestore'dan yerel depolamaya veri senkronize et
+  Future<void> syncFromCloud();
 }

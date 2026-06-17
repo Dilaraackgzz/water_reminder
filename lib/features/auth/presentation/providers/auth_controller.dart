@@ -28,6 +28,9 @@ class AuthController extends StateNotifier<AsyncValue<UserModel?>> {
       await onboardingService.completeOnboarding();
 
       state = AsyncValue.data(user);
+
+      // Firestore'dan yerel depolamaya veri senkronize et
+      await _syncWaterData();
     } catch (e, st) {
       state = AsyncValue.error(e, st);
     }
@@ -71,6 +74,15 @@ class AuthController extends StateNotifier<AsyncValue<UserModel?>> {
       state = AsyncValue.data(user);
     } catch (e, st) {
       state = AsyncValue.error(e, st);
+    }
+  }
+
+  Future<void> _syncWaterData() async {
+    try {
+      final waterRepository = _ref.read(waterRepositoryProvider);
+      await waterRepository.syncFromCloud();
+    } catch (e) {
+      // Senkronizasyon hatası oturum açmayı engellemez
     }
   }
 

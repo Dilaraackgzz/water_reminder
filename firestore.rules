@@ -23,6 +23,11 @@ service cloud.firestore {
         // Users can read, create, update and delete their own achievements
         allow read, write: if isOwner(userId);
       }
+
+      // Water intakes subcollection — su kayıtları kullanıcıya özel
+      match /water_intakes/{intakeId} {
+        allow read, write: if isOwner(userId);
+      }
     }
 
     // Water records collection
