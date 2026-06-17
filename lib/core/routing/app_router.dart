@@ -60,37 +60,13 @@ final routerProvider = Provider<GoRouter>((ref) {
       final user = authState.value;
       final isEmailVerified = user?.emailVerified ?? false;
 
-      // Root route - decide where to go based on auth state and onboarding
+      // Root route always goes to splash — SplashScreen handles the rest
       if (state.matchedLocation == '/') {
-        if (!isInitialized) {
-          return '/splash';
-        }
-
-        if (isAuthenticated) {
-          if (!isEmailVerified) {
-            return '/verify-email';
-          }
-          return '/home';
-        }
-
-        if (isOnboardingCompleted) {
-          return '/login';
-        }
-
         return '/splash';
       }
 
-      // Special handling for splash screen
+      // Splash screen manages its own navigation after animation completes
       if (state.matchedLocation == '/splash') {
-        if (isInitialized && isAuthenticated) {
-          if (!isEmailVerified) {
-            return '/verify-email';
-          }
-          return '/home';
-        }
-        if (isInitialized && !isAuthenticated && isOnboardingCompleted) {
-          return '/login';
-        }
         return null;
       }
 

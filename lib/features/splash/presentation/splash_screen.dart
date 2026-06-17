@@ -16,41 +16,54 @@ class SplashScreen extends ConsumerStatefulWidget {
   ConsumerState<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends ConsumerState<SplashScreen> {
+class _SplashScreenState extends ConsumerState<SplashScreen>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _lottieController;
+
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      _navigate();
-    });
+    _lottieController = AnimationController(vsync: this);
   }
 
-  Future<void> _navigate() async {
+  @override
+  void dispose() {
+    _lottieController.dispose();
+    super.dispose();
+  }
+
+  void _onAnimationLoaded(LottieComposition composition) {
+    _lottieController
+      ..duration = composition.duration
+      ..forward().whenComplete(_navigateAfterAnimation);
+  }
+
+  Future<void> _navigateAfterAnimation() async {
     if (!mounted) return;
 
-    final authState = ref.read(authStateProvider);
+    // Auth state henüz hazır değilse (Firebase yavaş başladıysa) bekle
+    final authStateAsync = ref.read(authStateProvider);
+    final user = authStateAsync.hasValue
+        ? authStateAsync.value
+        : await ref
+            .read(authStateProvider.future)
+            .timeout(const Duration(seconds: 5), onTimeout: () => null);
+
+    if (!mounted) return;
+
     final isOnboardingCompleted = ref.read(isOnboardingCompletedProvider);
-    final isAuthenticated = authState.value != null;
+    final isAuthenticated = user != null;
+    final isEmailVerified = user?.emailVerified ?? false;
 
-    // If user is authenticated, skip animation and go directly to home
-    if (isAuthenticated) {
+    if (isAuthenticated && isEmailVerified) {
       context.go('/home');
-      return;
-    }
-
-    // If not authenticated but onboarding completed, skip animation and go to login
-    if (isOnboardingCompleted) {
+    } else if (isAuthenticated && !isEmailVerified) {
+      context.go('/verify-email');
+    } else if (isOnboardingCompleted) {
       context.go('/login');
-      return;
+    } else {
+      context.go('/onboarding');
     }
-
-    // Only show animation for first-time users
-    await Future.delayed(const Duration(milliseconds: 2500));
-
-    if (!mounted) return;
-
-    // First time user -> show onboarding
-    context.go('/onboarding');
   }
 
   @override
@@ -76,9 +89,11 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
                 excludeSemantics: true,
                 child: Lottie.asset(
                   'assets/animations/splash.json',
+                  controller: _lottieController,
                   width: sizing.splashAnimationSize,
                   height: sizing.splashAnimationSize,
                   fit: BoxFit.contain,
+                  onLoaded: _onAnimationLoaded,
                 ),
               ),
 
